@@ -1,0 +1,67 @@
+<html>
+  <title>SCLP Official</title>
+  <div id="navigation">
+    <button id="seamless-button" onclick="open_page(1)"><u>Home</u></button>
+    <button id="seamless-button" onclick="open_page(2)"><u>Towers</u></button>
+    <button id="seamless-button" onclick="open_page(3)"><u>Leaderboard</u></button>
+  </div>
+  <div id="menu-page">
+    <h1>
+      Soul-Crushing Leaderboard Project
+    </h1>
+    <h2>
+      <a href="https://discord.gg/t9crQndHyn">Join the Discord Server to submit completions</a>
+    </h2>
+    The SCLP is a leaderboard for obbyists and SC completionists.
+    <br>Harder SCs give more XP and get you further up the board.
+    <br>
+    <h3>
+      <div id="owner">[Owner]</div>thej10n
+      <br><br><div id="co-owner">[Co-Owner]</div>...
+      <br><br><div id="manager">[Managers]</div>XChocolateMLGX, vt_et, Z_Exzer
+      <br><br><div id="trial">[Trial Staff]</div>...
+      <br><br><div id="former">[Former Staff]</div>...
+    </h3>
+  </div>
+  <div id="tower-lookup-page">
+    <div id="left">
+      <h1>
+        Tower Lookup
+      </h1>
+      <input type="text" id="sclp-tower-search" placeholder="Search..."></input>
+      <button id="search-button" onclick="towers=search(g('sclp-tower-search').value);list_towers();">🔎</button>
+      <p id="searchmenu">
+  
+      </p>
+    </div>
+    <div id="right">
+      <div id="extra-data">
+        Click on the "+" button next to a tower to see extra info here
+      </div>
+    </div>
+  </div>
+  <div id="leaderboard-page">
+    <div id="left">
+      <h1>
+        The Top Obbyists
+      </h1>
+      <input type="text" id="sclp-player-search" placeholder="Search..."></input>
+      <button id="search-button" onclick="completions=psearch(g('sclp-player-search').value);list_players();">🔎</button>
+      <p id="leaderboard">
+  
+      </p>
+    </div>
+    <div id="right">
+      <div id="player-data">
+        Click on the "+" button next to a player to see extra info here
+      </div>
+    </div>
+  </div>
+</html>
+<link rel="stylesheet" href="style.css">
+
+<script src="https://drive.google.com/uc?id=1q-LUDxYEj-M-ca6lXEYbpPepKlcaPGBj"></script>
+<script src="https://drive.google.com/uc?id=1Bte_JCXiq-oqQ9gmRt5j_kBfAHKXaZHl"></script>
+
+<script src="pagehandler.js"></script>
+<script src="towermanager.js"></script>

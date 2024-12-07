@@ -1,0 +1,111 @@
+html {
+  font-size: 20px;
+  background: #202428;
+  color: #FFFFFF;
+  font-family: "Courier New", Courier, monospace
+}
+::placeholder, input {
+  color: #FFFFFF;
+  font-family: "Courier New", Courier, monospace
+}
+a {
+  color: #FFFFFF;
+}
+#sclp-tower-search, #sclp-player-search, #search-button {
+  display: inline-block;
+  vertical-align: middle;
+  border: none;
+  border-radius: 8px;
+  height: 36px;
+  font-size: 20px;
+  background: #505A64;
+}
+#info-button {
+  display: inline-block;
+  vertical-align: middle;
+  border: none;
+  border-radius: 8px;
+  font-size: 20px;
+  background: #505A64;
+  color: #FFFFFF;
+  font-family: "Courier New", Courier, monospace
+}
+#seamless-button {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  color: #FFFFFF;
+  font-family: "Courier New", Courier, monospace
+}
+#item {
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 20px;
+  background: #101214;
+}
+#big {
+  font-size: 30px;
+}
+#small {
+  font-size: 16px;
+}
+
+#navigation {
+  background: #505A64;
+  width: 100%;
+  margin: 0px;
+}
+#tower-lookup-page, #leaderboard-page {
+  display: flex;
+}
+#left, #right {
+  flex: 50%;
+  padding: 5px;
+}
+#extra-data, #player-data {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 20px;
+  background: #101214;
+}
+
+
+#Insane {
+  color: #0000FF;
+}
+#Extreme {
+  color: #0287FF;
+}
+#Terrifying {
+  color: #00FFFF;
+}
+#Catastrophic {
+  color: #FFFFFF;
+}
+#Horrific {
+  color: #ECB2FA;
+}
+#Unreal {
+  color: #521989;
+}
+#Nil {
+  color: #797981;
+}
+
+#owner {
+  color: #6AC;
+}
+#co-owner {
+  color: #48A;
+}
+#manager {
+  color: #C6A;
+}
+#trial {
+  color: #CA6;
+}
+#former {
+  color: #6C6;
+}
