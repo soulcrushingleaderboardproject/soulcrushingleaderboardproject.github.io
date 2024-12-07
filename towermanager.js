@@ -15,6 +15,18 @@ var completions = all_completions;
 function g(element_id) {
   return document.getElementById(element_id);
 }
+g("sclp-tower-search").addEventListener("keypress", function(event) {
+  if (event.key == "Enter") {
+    towers = search(g("sclp-tower-search").value);
+    list_towers();
+  }
+})
+g("sclp-player-search").addEventListener("keypress", function(event) {
+  if (event.key == "Enter") {
+    completions = psearch(g("sclp-player-search").value);
+    list_players();
+  }
+})
 function difficulty_to_name(d) {
   if (d < 900) {return "Insane";}
   if (d < 1000) {return "Extreme";}
@@ -86,6 +98,9 @@ function open_extra(id) {
   extra += "<p id='big'><b>(" + tower["abbr"] + ")</b> " + tower["name"] + "</p>";
   extra += "<b id=\"" + difficulty_to_name(tower["diff"]) + "\">[*] </b> Difficulty: " + difficulty_to_range(tower["diff"]) + " " + difficulty_to_name(tower["diff"]) + " (" + format_difficulty(tower["diff"]) + ")";
   extra += "<br>Location: " + format_location(tower["places"]);
+  if (format_location(tower["places"]) == "Place") {
+    extra += " <a href='" + tower["game"] + "' target='_blank'>(Game link)</a>";
+  }
   extra += "<br>Rank: #" + tower["rank"];
   extra += "<br>EXP for completion: " + tower["exp"];
   extra += "<br>Victors: " + get_victors(id);
@@ -102,8 +117,7 @@ function list_towers() {
     t_area = towers[i]["places"];
     t_rank = towers[i]["rank"];
 
-    t += "<p id='item'>";
-    t += "<b id=\"" + difficulty_to_name(t_diff) + "\">[*] </b>"
+    t += "<p id='item" + difficulty_to_name(t_diff) + "'>";
     t += "<b>(" + t_abbr + ") </b>" + t_name;
     t += " <button id='info-button' onclick='open_extra(" + t_id + ")'>+</button>"
     t += "<br><i id='small'>";
