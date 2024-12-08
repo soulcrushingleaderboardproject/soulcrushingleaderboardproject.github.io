@@ -174,14 +174,17 @@ function psearch(s) {
 }
 function format_comps(c) {
   f = "";
+  rank = 1;
+  padding = c.length.toString().length;
   for (t = all_towers.length - 1; t >= 0; t--) {
     if (c.includes(all_towers[t]["id"])) {
       tower = all_towers[t];
-      f += "<b id=\"" + difficulty_to_name(tower["diff"]) + "\">[*] </b>"
+      f += "<b id=\"" + difficulty_to_name(tower["diff"]) + "\">[#" + "0".repeat(padding - rank.toString().length) + rank + "] </b>"
       f += "<b>(" + tower["abbr"] + ") </b>" + tower["name"];
       f += " <i id='small'>";
       f += format_difficulty(tower["diff"]) + " - #" + tower["rank"];
       f += "</i><br>";
+      rank++;
     }
   }
   return f;
@@ -189,10 +192,12 @@ function format_comps(c) {
 function open_player(name) {
   var player = player_from_name(name);
   var extra = "";
+  var completion_link = "soulcrushingleaderboardproject.github.io?u=" + name;
   extra += "<p id='big'><b>" + name + "</b></p>";
   extra += "<br>Total EXP: " + player["exp"];
   extra += "<br>Level: " + format_level(player["exp"]);
   extra += "<br>Rank: #" + player["rank"];
+  extra += "<br><a href='https://" + completion_link + "'>" + completion_link + "</a>";
   extra += "<br><br><b>Completions:</b><br>";
   extra += format_comps(player["completions"]);
   g("player-data").innerHTML = extra;
@@ -216,3 +221,29 @@ function list_players() {
   g("leaderboard").innerHTML = p;
 }
 list_players();
+
+
+
+g("tower-lookup-page").style.display = "none";
+g("leaderboard-page").style.display = "none";
+function open_page(page_num) {
+  // 1 - Home
+  // 2 - Towers
+  // 3 - Leaderboard
+  g("menu-page").style.display = "none";
+  g("tower-lookup-page").style.display = "none";
+  g("leaderboard-page").style.display = "none";
+  if (page_num == 1) {
+    g("menu-page").style.display = "";
+  } else if (page_num == 2) {
+    g("tower-lookup-page").style.display = "";
+  } else if (page_num == 3) {
+    g("leaderboard-page").style.display = "";
+  }
+}
+const url = window.location.search;
+const params = new URLSearchParams(url);
+if (params.get("u")) {
+  open_page(3);
+  open_player(params.get("u"));
+}
