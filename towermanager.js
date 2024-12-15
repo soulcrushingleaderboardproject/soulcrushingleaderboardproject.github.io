@@ -172,6 +172,22 @@ function psearch(s) {
   }
   return new_players;
 }
+function get_towers_within_range(towers, minimum, maximum) {
+  towers_within_range = [];
+  for (i = 0; i < towers.length; i++) {
+    if (minimum <= towers[i]["diff"] && towers[i]["diff"] <= maximum) {
+      towers_within_range.push(towers[i]);
+    }
+  }
+  return towers_within_range;
+}
+function get_completed_data(c) {
+  c_data = [];
+  for (comp = 0; comp < c.length; comp++) {
+    c_data.push(tower_from_id(c[comp]))
+  }
+  return c_data;
+}
 function format_comps(c) {
   f = "";
   rank = 1;
@@ -189,6 +205,9 @@ function format_comps(c) {
   }
   return f;
 }
+function format_ratio(a, b) {
+  return a + "/" + b + " (" + Math.floor((a / b) * 100) + "%)";
+}
 function open_player(name) {
   var player = player_from_name(name);
   var extra = "";
@@ -198,6 +217,11 @@ function open_player(name) {
   extra += "<br>Level: " + format_level(player["exp"]);
   extra += "<br>Rank: #" + player["rank"];
   extra += "<br><a href='https://" + completion_link + "'>" + completion_link + "</a>";
+  extra += "<br><br><b>... Total:</b> " + format_ratio(player["completions"].length, all_towers.length);
+  for (d = 8; d < 14; d++) {
+    extra += "<br><b id='" + difficulty_to_name(d * 100) + "'>[*]</b> <b>" + difficulty_to_name(d * 100) + ":</b> " + 
+    format_ratio(get_towers_within_range(get_completed_data(player["completions"]), d * 100, (d * 100) + 99).length, get_towers_within_range(all_towers, d * 100, (d * 100) + 99).length);
+  }
   extra += "<br><br><b>Completions:</b><br>";
   extra += format_comps(player["completions"]);
   g("player-data").innerHTML = extra;
