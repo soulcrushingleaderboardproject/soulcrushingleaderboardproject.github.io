@@ -39,7 +39,7 @@ a {
 }
 #item {
   border-radius: 8px;
-  padding: 8px;
+  padding: 6px;
   font-size: 20px;
   background: #101214;
 }
@@ -47,7 +47,7 @@ a {
   font-size: 30px;
 }
 #small {
-  font-size: 16px;
+  font-size: 15px;
 }
 
 #navigation {
@@ -73,8 +73,10 @@ a {
   font-size: 20px;
   background: #101214;
 }
-
-
+p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
 #Insane {
   color: #0000FF;
 }
@@ -99,37 +101,37 @@ a {
 
 #itemInsane {
   border-radius: 8px;
-  padding: 8px;
+  padding: 6px;
   font-size: 20px;
   background: #000080;
 }
 #itemExtreme {
   border-radius: 8px;
-  padding: 8px;
+  padding: 6px;
   font-size: 20px;
   background: #004080;
 }
 #itemTerrifying {
   border-radius: 8px;
-  padding: 8px;
+  padding: 6px;
   font-size: 20px;
   background: #008080;
 }
 #itemCatastrophic {
   border-radius: 8px;
-  padding: 8px;
+  padding: 6px;
   font-size: 20px;
   background: #808080;
 }
 #itemHorrific {
   border-radius: 8px;
-  padding: 8px;
+  padding: 6px;
   font-size: 20px;
   background: #706080;
 }
 #itemUnreal {
   border-radius: 8px;
-  padding: 8px;
+  padding: 6px;
   font-size: 20px;
   background: #200040;
 }
