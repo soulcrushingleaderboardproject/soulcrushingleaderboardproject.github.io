@@ -12,6 +12,7 @@ for (player = 0; player < all_completions.length; player++) {
   all_completions[player]["rank"] = player + 1;
 }
 var completions = all_completions;
+var games = all_games;
 function g(element_id) {
   return document.getElementById(element_id);
 }
@@ -118,11 +119,11 @@ function list_towers() {
     t_rank = towers[i]["rank"];
 
     t += "<p id='item" + difficulty_to_name(t_diff) + "'>";
-    t += "<b>(" + t_abbr + ") </b>" + t_name;
-    t += " <button id='info-button' onclick='open_extra(" + t_id + ")'>+</button>"
-    t += "<br><i id='small'>";
+    t += "<button id='info-button' onclick='open_extra(" + t_id + ")'>+</button>"
+    t += "<b> (" + t_abbr + ") </b>" + t_name;
+    t += "<i id='small'> (";
     t += format_difficulty(t_diff) + " - " + format_location(t_area) + " - #" + t_rank;
-    t += "</i></p>";
+    t += ")</i></p>";
   }
   g("searchmenu").innerHTML = t;
 }
@@ -248,8 +249,26 @@ list_players();
 
 
 
+// game links
+function list_games() {
+  var gm = "";
+  for (i = 0; i < games.length; i++) {
+    g_abbr = games[i]["abbr"];
+    g_name = games[i]["name"];
+    g_link = games[i]["link"];
+
+    gm += "<a href='" + g_link + "'><b>(" + g_abbr + ") </b>" + g_name + "</a><br>"
+  }
+  g("games").innerHTML = gm;
+}
+list_games();
+
+
+
+
 g("tower-lookup-page").style.display = "none";
 g("leaderboard-page").style.display = "none";
+g("game-links-page").style.display = "none";
 function open_page(page_num) {
   // 1 - Home
   // 2 - Towers
@@ -257,12 +276,15 @@ function open_page(page_num) {
   g("menu-page").style.display = "none";
   g("tower-lookup-page").style.display = "none";
   g("leaderboard-page").style.display = "none";
+  g("game-links-page").style.display = "none";
   if (page_num == 1) {
     g("menu-page").style.display = "";
   } else if (page_num == 2) {
     g("tower-lookup-page").style.display = "";
   } else if (page_num == 3) {
     g("leaderboard-page").style.display = "";
+  } else if (page_num == 4) {
+    g("game-links-page").style.display = "";
   }
 }
 const url = window.location.search;
