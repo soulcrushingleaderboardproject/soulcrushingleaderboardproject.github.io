@@ -227,7 +227,7 @@ all_towers = [
   {"id": 226, "abbr": "IT:SN", "name": "Ikea Tower: Super Nerf", "diff": 889, "places": [["ATS", "Ring 1"]]},
   {"id": 227, "abbr": "ToSR:SN", "name": "Tower of Spiritual Rise: Super Nerf", "diff": 890, "places": [["ATS", "Ring 1"]]},
   {"id": 228, "abbr": "ToCP:SN", "name": "Tower of Cruel Punishment: Super Nerf", "diff": 894, "places": [["ATS", "Ring 3"]]},
-  {"id": 229, "abbr": "ToP:SN", "name": "Tower of Paradise: Super Nerf", "diff": 956, "places": [["ATS", "Ring 2"]]},
+  {"id": 229, "abbr": "ToP:SN", "name": "Tower of Paradise: Super Nerf", "diff": 926, "places": [["ATS", "Ring 2"]]},
   {"id": 230, "abbr": "ToBF:SN", "name": "Tower of Blind Fate: Super Nerf", "diff": 930, "places": [["ATS", "Ring 1"]]},
   {"id": 231, "abbr": "ToSA:SN", "name": "Tower of Spatial Awareness: Super Nerf", "diff": 947, "places": [["ATS", "Ring 3"]]},
   {"id": 232, "abbr": "ToQU:SN", "name": "Tower of Qwerty Uiop: Super Nerf", "diff": 974, "places": [["ATS", "Ring 2"]]},
@@ -362,8 +362,6 @@ all_towers = [
   {"id": 361, "abbr": "ToIBTW", "name": "Tower of I Beat Tidal Wave", "diff": 1097, "places": [["Place", ""]], "game": "https://www.roblox.com/games/6202328566/Tower-of-I-Beat-Tidal-Wave"},
   {"id": 362, "abbr": "ToPaC", "name": "Tower of Peace and Chaos", "diff": 1116, "places": [["AHoSCT", "Spot 1"]]},
   {"id": 363, "abbr": "ToAR:U", "name": "Tower of Alien Radiance: Unnerfed", "diff": 1193, "places": [["Place", ""]], "game": "https://www.roblox.com/games/5484667482/Tower-of-Alien-Radiance-Unnerfed"},
-  
-  
   {"id": 364, "abbr": "ToHAO", "name": "Tower of Harsh Aesthetical Obstacles", "diff": 802, "places": [["PToH", "Ring 1"]]}, 
   {"id": 365, "abbr": "ToSM", "name": "Tower of Space Management", "diff": 803, "places": [["ZToA", "Dimension 2"]]},        
   {"id": 366, "abbr": "ToSP", "name": "Tower of Silent Panic", "diff": 807, "places": [["ZToA", "Regret's Cave"]]},
@@ -408,5 +406,6 @@ all_towers = [
   {"id": 405, "abbr": "ToDO", "name": "Tower of Dripping Obstacles", "diff": 1025, "places": [["PToH", "Ring 3"]]},
   {"id": 406, "abbr": "ToRT", "name": "Tower of Radiant Terror", "diff": 1035, "places": [["PToH", "Ring 5"]]},
   {"id": 407, "abbr": "ToFI", "name": "Tower of Fervent Imperfection", "diff": 1105, "places": [["Place", ""]], "game": "https://www.roblox.com/games/8615728938/Tower-of-Fervent-Imperfection"},
-  {"id": 408, "abbr": "ToDL", "name": "Tower of Disengaging Lunacy", "diff": 1172, "places": [["ZToA", "Regret's Cave"]]}
+  {"id": 408, "abbr": "ToDL", "name": "Tower of Disengaging Lunacy", "diff": 1172, "places": [["ZToA", "Regret's Cave"]]},
+  {"id": 409, "abbr": "CE2024", "name": "Tower of Jolly Situations", "diff": 877, "places": [["Place", ""]], "game": "https://www.roblox.com/games/17651463073/Tower-of-Jolly-Situations"}
 ]
