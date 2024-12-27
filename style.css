@@ -4,14 +4,19 @@ html {
   color: #FFFFFF;
   font-family: "Courier New", Courier, monospace
 }
-::placeholder, input {
+::placeholder, input, #game-select {
   color: #FFFFFF;
   font-family: "Courier New", Courier, monospace
+}
+input[type=checkbox] {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
 }
 a {
   color: #FFFFFF;
 }
-#sclp-tower-search, #sclp-player-search, #search-button {
+#sclp-tower-search, #sclp-player-search, #search-button, #checklist-player, #game-select {
   display: inline-block;
   vertical-align: middle;
   border: none;
@@ -137,9 +142,21 @@ p {
 }
 #itemNil {
   border-radius: 8px;
-  padding: 8px;
+  padding: 6px;
   font-size: 20px;
   background: #404040;
+}
+#itemCompleted {
+  border-radius: 8px;
+  padding: 6px;
+  font-size: 20px;
+  background: #408040;
+}
+#itemUncompleted {
+  border-radius: 8px;
+  padding: 6px;
+  font-size: 20px;
+  background: #804040;
 }
 
 #owner {
