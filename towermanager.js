@@ -67,12 +67,44 @@ function format_location(a) {
   }
   return s;
 }
+function is_tower_in_place(places, place) {
+  for (i = 0; i < places.length; i++) {
+    game = places[i][0]
+    if (game == place) {
+      return true;
+    }
+  }
+  return false;
+}
 function search(s) {
   new_towers = [];
+  allowed_difficulties = [];
+  place_filter = g("game-select").value;
+  if (g("diff-8").checked) {
+    allowed_difficulties.push(8);
+  }
+  if (g("diff-9").checked) {
+    allowed_difficulties.push(9);
+  }
+  if (g("diff-10").checked) {
+    allowed_difficulties.push(10);
+  }
+  if (g("diff-11").checked) {
+    allowed_difficulties.push(11);
+  }
+  if (g("diff-12").checked) {
+    allowed_difficulties.push(12);
+  }
+  if (g("diff-13").checked) {
+    allowed_difficulties.push(13);
+  }
   for (tower_search = 0; tower_search < all_towers.length; tower_search++) {
     tower = all_towers[tower_search];
     if (tower["abbr"].toLowerCase().includes(s.toLowerCase()) || tower["name"].toLowerCase().includes(s.toLowerCase())) {
-      new_towers.push(tower)
+      if (allowed_difficulties.includes(Math.floor(tower["diff"] / 100))
+        && (place_filter == "" || is_tower_in_place(tower["places"], place_filter))) {
+        new_towers.push(tower)
+      }
     }
   }
   return new_towers;
@@ -110,6 +142,10 @@ function open_extra(id) {
 }
 function list_towers() {
   var t = "";
+  var is_valid_name = player_from_name(g("checklist-player").value) != false;
+  if (is_valid_name) {
+    var comp_data = player_from_name(g("checklist-player").value)["completions"];
+  }
   for (i = 0; i < towers.length; i++) {
     t_id = towers[i]["id"];
     t_abbr = towers[i]["abbr"];
@@ -118,7 +154,16 @@ function list_towers() {
     t_area = towers[i]["places"];
     t_rank = towers[i]["rank"];
 
-    t += "<p id='item" + difficulty_to_name(t_diff) + "'>";
+    if (is_valid_name && g("color-checklist").checked) {
+      if (comp_data.includes(t_id)) {
+        t += "<p id='itemCompleted'>";
+      } else {
+        t += "<p id='itemUncompleted'>";
+      }
+    } else {
+      t += "<p id='item" + difficulty_to_name(t_diff) + "'>";
+    }
+
     t += "<button id='info-button' onclick='open_extra(" + t_id + ")'>+</button>"
     t += "<b> (" + t_abbr + ") </b>" + t_name;
     t += "<i id='small'> (";
@@ -140,6 +185,7 @@ function player_from_name(name) {
       return all_completions[i];
     }
   }
+  return false;
 }
 function format_level(exp) {
   current_level = 0;
@@ -263,7 +309,13 @@ function list_games() {
 }
 list_games();
 
-
+// idfk what im doing anymore
+gm = "<option value=''>All</option><option value='Place'>Place</option>";
+for (i = 0; i < all_games.length; i++) {
+  game = all_games[i];
+  gm += "<option value='" + game["abbr"] + "'>" + game["abbr"] + "</option>";
+}
+g("game-select").innerHTML = gm;
 
 
 g("tower-lookup-page").style.display = "none";
@@ -273,6 +325,7 @@ function open_page(page_num) {
   // 1 - Home
   // 2 - Towers
   // 3 - Leaderboard
+  // 4 - Games
   g("menu-page").style.display = "none";
   g("tower-lookup-page").style.display = "none";
   g("leaderboard-page").style.display = "none";
