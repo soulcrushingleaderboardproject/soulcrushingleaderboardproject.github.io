@@ -14,7 +14,7 @@
       <a href="https://discord.gg/t9crQndHyn">Join the Discord Server to submit completions</a>
     </h2>
     The SCLP is a leaderboard for obbyists and SC completionists.
-    <br>Harder SCs give more XP and get you further up the board.
+    <br>Harder SCs give more EXP and get you further up the board.
     <br>
     <h3>
       <div id="owner">[Owner]</div>thej10n
@@ -31,6 +31,19 @@
       </h1>
       <input type="text" id="sclp-tower-search" placeholder="Search..."></input>
       <button id="search-button" onclick="towers=search(g('sclp-tower-search').value);list_towers();">🔎</button>
+      <br><br>
+      <input type="checkbox" id="diff-8" checked>Insane</input>
+      <input type="checkbox" id="diff-9" checked>Extreme</input>
+      <input type="checkbox" id="diff-10" checked>Terrifying</input>
+      <input type="checkbox" id="diff-11" checked>Catastrophic</input>
+      <input type="checkbox" id="diff-12" checked>Horrific</input>
+      <input type="checkbox" id="diff-13" checked>Unreal</input>
+      <br>
+      Game: <select name="game-select" id="game-select">
+
+      </select>
+      <input type="checkbox" id="color-checklist">Color by checklist?</input>
+      <input type="text" id="checklist-player" placeholder="Player..."></input>
       <p id="searchmenu">
   
       </p>
