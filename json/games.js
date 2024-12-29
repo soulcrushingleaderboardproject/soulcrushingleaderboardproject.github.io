@@ -5,6 +5,7 @@ var all_games = [
   {"abbr": "ATS", "name": "Amazing's Tower Supernerfs", "link": "https://www.roblox.com/games/17120699596/Amazings-Tower-Supernerfs"},
   {"abbr": "CSCD", "name": "Caleb's Soul Crushing Domain", "link": "https://www.roblox.com/games/10283991824/SCOPE-3-Calebs-Soul-Crushing-Domain"},
   {"abbr": "DEToH", "name": "Democratically Elected Towers of Hell", "link": "https://www.roblox.com/games/116948649505593/Alpha-DEToH"},
+  {"abbr": "HT", "name": "Hades Towers", "link": "https://www.roblox.com/games/121125135868314/Hades-Towers-CHRISTMAS"},
   {"abbr": "JToH", "name": "Juke's Towers of Hell", "link": "https://www.roblox.com/games/8562822414/Jukes-Towers-of-Hell"},
   {"abbr": "JXL", "name": "JToH XL Project", "link": "https://www.roblox.com/games/13218032675/JToH-XL"},
   {"abbr": "JXXL", "name": "JToH XXL Project", "link": "https://www.roblox.com/games/17846926884/RING-1-UPDATE-3-5-4-JToH-XXL"},
@@ -14,6 +15,7 @@ var all_games = [
   {"abbr": "PToH", "name": "Purist Towers of Hell", "link": "https://www.roblox.com/games/7593639579/RING-5-Purist-Towers-of-Hell"},
   {"abbr": "TBP", "name": "The Baseplate Project", "link": "https://www.roblox.com/games/15957446104/EVILPLATE-The-Baseplate-Project"},
   {"abbr": "TCT", "name": "Thai's Crazy Towers", "link": "https://www.roblox.com/games/9066198427/Thais-Crazy-Towers"},
+  {"abbr": "TG", "name": "Tower Game", "link": "https://www.roblox.com/games/5976062696/tower-game"},
   {"abbr": "TWR$", "name": "Tower$", "link": "https://www.roblox.com/games/13594795843/Tower"},
   {"abbr": "ZToA", "name": "Zee's Towers of Anger", "link": "https://www.roblox.com/games/5630198391/ToCUP-Zees-Towers-of-Anger-Reborn"}
 ]
