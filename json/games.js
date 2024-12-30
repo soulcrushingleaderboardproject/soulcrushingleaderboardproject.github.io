@@ -1,6 +1,6 @@
 var all_games = [
   {"abbr": "AHoSCT", "name": "Azi's House of Soul Crushing Towers", "link": "https://www.roblox.com/games/83360243495088/ToPD-ToNCL-Azis-House-of-Soul-Crushing-Towers"},
-  {"abbr": "AToBM", "name": "Andr's Towers of Bruh Moments", "link": "https://www.roblox.com/games/2830417603/anothers-towers"},
+  {"abbr": "AToBM", "name": "Andr's Towers of Bruh Moments", "link": "https://www.roblox.com/games/11300875374/CHRISTMAS-Andrs-Towers-of-Bruh-Moments"},
   {"abbr": "AToS", "name": "Another's Towers of Stupidity", "link": "https://www.roblox.com/games/2830417603/anothers-towers"},
   {"abbr": "ATS", "name": "Amazing's Tower Supernerfs", "link": "https://www.roblox.com/games/17120699596/Amazings-Tower-Supernerfs"},
   {"abbr": "CSCD", "name": "Caleb's Soul Crushing Domain", "link": "https://www.roblox.com/games/10283991824/SCOPE-3-Calebs-Soul-Crushing-Domain"},
@@ -11,7 +11,10 @@ var all_games = [
   {"abbr": "JXXL", "name": "JToH XXL Project", "link": "https://www.roblox.com/games/17846926884/RING-1-UPDATE-3-5-4-JToH-XXL"},
   {"abbr": "KToN", "name": "Kirk's Towers of Nonsense", "link": "https://www.roblox.com/games/7184682048/QoL-SECTION-3-Kirks-Towers-of-Nonsense"},
   {"abbr": "LToD", "name": "Lask's Towers of Dread", "link": "https://www.roblox.com/games/18386437234/lasks-towers-of-dread"},
+  {"abbr": "MCToH", "name": "Mtrk5's Classic Towers of Hell", "link": "https://www.roblox.com/games/4732391729/NEW-TOWERS-Mtrk5s-Classic-Towers-of-Hell"},
   {"abbr": "NCoH", "name": "Nox's Citadels of Hell", "link": "https://www.roblox.com/games/9237964584/Noxs-Citadels-of-Hell"},
+  {"abbr": "PoM:N", "name": "Pit of Misery: Nerfed", "link": "https://www.roblox.com/games/10914322251/Pit-of-Misery-Nerfed"},
+  {"abbr": "PToD", "name": "Player's Towers of Desperation", "link": "https://www.roblox.com/games/10914322251/Pit-of-Misery-Nerfed"},
   {"abbr": "PToH", "name": "Purist Towers of Hell", "link": "https://www.roblox.com/games/7593639579/RING-5-Purist-Towers-of-Hell"},
   {"abbr": "TBP", "name": "The Baseplate Project", "link": "https://www.roblox.com/games/15957446104/EVILPLATE-The-Baseplate-Project"},
   {"abbr": "TCT", "name": "Thai's Crazy Towers", "link": "https://www.roblox.com/games/9066198427/Thais-Crazy-Towers"},
