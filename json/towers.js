@@ -503,5 +503,6 @@ all_towers = [
   {"id": 502, "abbr": "GCoR2", "name": "Great Citadel of Ring 2", "diff": 825, "places": [["Place", ""]], "game": "https://www.roblox.com/games/12644600101/Great-Citadel-of-Ring-2"},
   {"id": 503, "abbr": "ToEL", "name": "Tower of Escaping Lava", "diff": 853, "places": [["KT", "Kratic Tower"]]},
   {"id": 504, "abbr": "ToK", "name": "Tower of Kratic", "diff": 908, "places": [["KT", "Kratic Tower"]]},
-  {"id": 505, "abbr": "ToQU", "name": "Tower of Qwerty Uiop", "diff": 1348, "places": [["JToH", "The Eternal Abyss"]]}
+  {"id": 505, "abbr": "ToQU", "name": "Tower of Qwerty Uiop", "diff": 1348, "places": [["JToH", "The Eternal Abyss"]]},
+  {"id": 506, "abbr": "ToDIE", "name": "Tower of Dying Inside Eternally", "diff": 829, "places": [["AHoSCT", "Spot 2"]]}
 ]
