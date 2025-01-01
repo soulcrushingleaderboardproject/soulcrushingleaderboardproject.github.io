@@ -14,6 +14,7 @@ var all_games = [
   {"abbr": "KToN", "name": "Kirk's Towers of Nonsense", "link": "https://www.roblox.com/games/7184682048/QoL-SECTION-3-Kirks-Towers-of-Nonsense"},
   {"abbr": "LToD", "name": "Lask's Towers of Dread", "link": "https://www.roblox.com/games/18386437234/lasks-towers-of-dread"},
   {"abbr": "MCToH", "name": "Mtrk5's Classic Towers of Hell", "link": "https://www.roblox.com/games/4732391729/NEW-TOWERS-Mtrk5s-Classic-Towers-of-Hell"},
+  {"abbr": "MToH", "name": "Mal's Towers of Hell", "link": "https://www.roblox.com/games/4588307161/Discontinued-Mals-Towers-of-Hell"},
   {"abbr": "NCoH", "name": "Nox's Citadels of Hell", "link": "https://www.roblox.com/games/9237964584/Noxs-Citadels-of-Hell"},
   {"abbr": "PoM:N", "name": "Pit of Misery: Nerfed", "link": "https://www.roblox.com/games/10914322251/Pit-of-Misery-Nerfed"},
   {"abbr": "PToD", "name": "Player's Towers of Desperation", "link": "https://www.roblox.com/games/10914322251/Pit-of-Misery-Nerfed"},
