@@ -9,6 +9,7 @@ var all_games = [
   {"abbr": "JToH", "name": "Juke's Towers of Hell", "link": "https://www.roblox.com/games/8562822414/Jukes-Towers-of-Hell"},
   {"abbr": "JXL", "name": "JToH XL Project", "link": "https://www.roblox.com/games/13218032675/JToH-XL"},
   {"abbr": "JXXL", "name": "JToH XXL Project", "link": "https://www.roblox.com/games/17846926884/RING-1-UPDATE-3-5-4-JToH-XXL"},
+  {"abbr": "KT", "name": "Kratic Tower", "link": "https://www.roblox.com/games/9218804696/Kratic-Tower"},
   {"abbr": "KToN", "name": "Kirk's Towers of Nonsense", "link": "https://www.roblox.com/games/7184682048/QoL-SECTION-3-Kirks-Towers-of-Nonsense"},
   {"abbr": "LToD", "name": "Lask's Towers of Dread", "link": "https://www.roblox.com/games/18386437234/lasks-towers-of-dread"},
   {"abbr": "MCToH", "name": "Mtrk5's Classic Towers of Hell", "link": "https://www.roblox.com/games/4732391729/NEW-TOWERS-Mtrk5s-Classic-Towers-of-Hell"},
