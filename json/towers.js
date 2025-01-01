@@ -500,4 +500,8 @@ all_towers = [
   {"id": 499, "abbr": "ToSQ", "name": "Tower of Substantial Quietus", "diff": 1261, "places": [["JToH", "The Eternal Abyss"]]},
   {"id": 500, "abbr": "ToLL", "name": "Tower of Lavender Lustre", "diff": 1276, "places": [["Place", ""]], "game": "https://www.roblox.com/games/117774906877197/ToLL"},
   {"id": 501, "abbr": "ToSD", "name": "Tower of Sudden Death", "diff": 1319, "places": [["CSCD", "Scope 3"]]},
+  {"id": 502, "abbr": "GCoR2", "name": "Great Citadel of Ring 2", "diff": 825, "places": [["Place", ""]], "game": "https://www.roblox.com/games/12644600101/Great-Citadel-of-Ring-2"},
+  {"id": 503, "abbr": "ToEL", "name": "Tower of Escaping Lava", "diff": 853, "places": [["KT", "Kratic Tower"]]},
+  {"id": 504, "abbr": "ToK", "name": "Tower of Kratic", "diff": 908, "places": [["KT", "Kratic Tower"]]},
+  {"id": 505, "abbr": "ToQU", "name": "Tower of Qwerty Uiop", "diff": 1348, "places": [["JToH", "The Eternal Abyss"]]}
 ]
