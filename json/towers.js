@@ -506,5 +506,8 @@ all_towers = [
   {"id": 505, "abbr": "ToQU", "name": "Tower of Qwerty Uiop", "diff": 1348, "places": [["JToH", "The Eternal Abyss"], ["CTT", "Domain 1"]]},
   {"id": 506, "abbr": "ToDIE", "name": "Tower of Dying Inside Eternally", "diff": 829, "places": [["AHoSCT", "Spot 2"]]},
   {"id": 507, "abbr": "ToIH", "name": "Tower of Inverted Hope", "diff": 952, "places": [["MToH", "Place 1"]]},  
-  {"id": 508, "abbr": "ToNN", "name": "Tower of Neon Nightmares", "diff": 963, "places": [["MToH", "Place 4"]]}
+  {"id": 508, "abbr": "ToNN", "name": "Tower of Neon Nightmares", "diff": 963, "places": [["MToH", "Place 4"]]},
+  {"id": 509, "abbr": "SoUB", "name": "Steeple of Underlining Bleakness", "diff": 848, "places": [["JXS", "Ring 1"]]},  
+  {"id": 510, "abbr": "TotP", "name": "Tower of the Planets", "diff": 910, "places": [["SMToH", "Ring 5"]]},
+  {"id": 511, "abbr": "ToHG", "name": "Tower of Hella Gimmicks", "diff": 936, "places": [["JToH", "April Fools 2021"]]}
 ]
