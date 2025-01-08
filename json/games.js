@@ -3,6 +3,7 @@ var all_games = [
   {"abbr": "AToBM", "name": "Andr's Towers of Bruh Moments", "link": "https://www.roblox.com/games/11300875374/CHRISTMAS-Andrs-Towers-of-Bruh-Moments"},
   {"abbr": "AToS", "name": "Another's Towers of Stupidity", "link": "https://www.roblox.com/games/2830417603/anothers-towers"},
   {"abbr": "ATS", "name": "Amazing's Tower Supernerfs", "link": "https://www.roblox.com/games/17120699596/Amazings-Tower-Supernerfs"},
+  {"abbr": "CKR", "name": "Crazy's Kaizo Regions", "link": "https://www.roblox.com/games/3103266746/Crazys-Kaizo-Regions"},
   {"abbr": "CSCD", "name": "Caleb's Soul Crushing Domain", "link": "https://www.roblox.com/games/10283991824/SCOPE-3-Calebs-Soul-Crushing-Domain"},
   {"abbr": "CTT", "name": "Community Top Towers", "link": "https://www.roblox.com/games/109970721198777/Domain-1-LETS-GO"},
   {"abbr": "DEToH", "name": "Democratically Elected Towers of Hell", "link": "https://www.roblox.com/games/116948649505593/Alpha-DEToH"},
