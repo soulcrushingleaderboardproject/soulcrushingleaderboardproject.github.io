@@ -513,4 +513,6 @@ all_towers = [
   {"id": 512, "abbr": "ToTJJ", "name": "Tower of The Jump Junkyard", "diff": 942, "places": [["CTT", "Domain 1"]]},
   {"id": 513, "abbr": "SoIM", "name": "Steeple of Irrelevant Movement", "diff": 995, "places": [["CKR", "Region 2"]]},
   {"id": 514, "abbr": "ToMJ", "name": "Tower of Miserable Journeys", "diff": 1068, "places": [["Place", ""]], "game": "https://www.roblox.com/games/7200776444/Tower-of-Miserable-Journeys-itemed"},
+  {"id": 515, "abbr": "SS", "name": "Sans Steeple", "diff": 1215, "places": [["JToH", "The Eternal Abyss"]]},
+  {"id": 516, "abbr": "ToWC", "name": "Tower of Weird Core", "diff": 1267, "places": [["CTT", "Domain 1"]]},
 ]
