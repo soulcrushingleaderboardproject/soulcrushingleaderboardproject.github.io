@@ -17,7 +17,7 @@ all_towers = [
   {"id": 16, "abbr": "ToC", "name": "Tower of Confusion", "diff": 884, "places": [["JToH", "Ring 3"]]},
   {"id": 17, "abbr": "ToFaCT", "name": "Tower of Frightening and Confusing Trials", "diff": 898, "places": [["JToH", "Ring 9"]]},
   {"id": 18, "abbr": "ToAE", "name": "Tower of Astral Eclipse", "diff": 900, "places": [["JToH", "Zone 8"]]},
-  {"id": 19, "abbr": "ToPB", "name": "Tower of Panelling Barricades", "diff": 939, "places": [["JToH", "Zone 9"]]},
+  {"id": 19, "abbr": "ToPB", "name": "Tower of Panelling Barricades", "diff": 919, "places": [["JToH", "Zone 9"]]},
   {"id": 20, "abbr": "ToBK", "name": "Tower of Bloodthirsty Kenos", "diff": 912, "places": [["JToH", "Ring 9"]]},
   {"id": 21, "abbr": "ToWF", "name": "Tower of Wicked Fortress", "diff": 927, "places": [["JToH", "Ashen Towerworks"]]},
   {"id": 22, "abbr": "ToSM", "name": "Tower of Strategic Mechanics", "diff": 938, "places": [["JToH", "Ring 6"]]},
@@ -519,5 +519,8 @@ all_towers = [
   {"id": 518, "abbr": "SoWD", "name": "Steeple of Wallhop Destiny", "diff": 1180, "places": [["Place", ""]], "game": "https://www.roblox.com/games/75397706299938/Steeple-of-Wallhop-Destiny"},
   {"id": 519, "abbr": "ToCOA", "name": "Tower of Challenging Obstacle Anarchy", "diff": 1225, "places": [["Place", ""]], "game": "https://www.roblox.com/games/12262736589/Tower-of-Challenging-Obstacle-Anarchy"},
   {"id": 520, "abbr": "ToPE", "name": "Tower of Perpetual Eccentricity", "diff": 804, "places": [["AHoSCT", "Spot 4"]]},
-  {"id": 521, "abbr": "ToQQ", "name": "Tower of Quarrelsome Quarters", "diff": 980, "places": [["AHoSCT", "Spot 4"]]}
+  {"id": 521, "abbr": "ToQQ", "name": "Tower of Quarrelsome Quarters", "diff": 980, "places": [["AHoSCT", "Spot 4"]]},
+  {"id": 522, "abbr": "ToROMW", "name": "Tower of Rain On My World", "diff": 858, "places": [["Place", ""]], "game": "https://www.roblox.com/games/16724768882/tower-of-rain-on-my-world"},
+  {"id": 523, "abbr": "ToARS", "name": "Tower of Au Revoir, Sunset", "diff": 871, "places": [["Place", ""]], "game": "https://www.roblox.com/games/14068555139/Tower-of-Au-Revoir-Sunset"},
+  {"id": 524, "abbr": "ToBO", "name": "Tower of Being Outdoors", "diff": 902, "places": [["Place", ""]], "game": "https://www.roblox.com/games/6884408311/Tower-of-Being-Outdoors-REVAMPED"}
 ]
