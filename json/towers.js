@@ -522,5 +522,19 @@ all_towers = [
   {"id": 521, "abbr": "ToQQ", "name": "Tower of Quarrelsome Quarters", "diff": 980, "places": [["AHoSCT", "Spot 4"]]},
   {"id": 522, "abbr": "ToROMW", "name": "Tower of Rain On My World", "diff": 858, "places": [["Place", ""]], "game": "https://www.roblox.com/games/16724768882/tower-of-rain-on-my-world"},
   {"id": 523, "abbr": "ToARS", "name": "Tower of Au Revoir, Sunset", "diff": 871, "places": [["Place", ""]], "game": "https://www.roblox.com/games/14068555139/Tower-of-Au-Revoir-Sunset"},
-  {"id": 524, "abbr": "ToBO", "name": "Tower of Being Outdoors", "diff": 902, "places": [["Place", ""]], "game": "https://www.roblox.com/games/6884408311/Tower-of-Being-Outdoors-REVAMPED"}
+  {"id": 524, "abbr": "ToBO", "name": "Tower of Being Outdoors", "diff": 902, "places": [["Place", ""]], "game": "https://www.roblox.com/games/6884408311/Tower-of-Being-Outdoors-REVAMPED"},
+  {"id": 525, "abbr": "ToSEP", "name": "Tower of Sukhavati Eternal Paradise", "diff": 806, "places": [["Place", ""]], "game": "https://www.roblox.com/games/10976704228/Sukhavati-Eternal-Paradise"},    
+  {"id": 526, "abbr": "ToAE", "name": "Tower of Analysis Explorer", "diff": 808, "places": [["AToH", "Land 5"]]},
+  {"id": 527, "abbr": "ToDA", "name": "Tower of Desktop Annihilation", "diff": 812, "places": [["ATM", "Ring 2"]]},       
+  {"id": 528, "abbr": "ToPTD", "name": "Tower of Pinky To Darkness", "diff": 833, "places": [["AToH", "Land 9"]]},        
+  {"id": 529, "abbr": "SoPF", "name": "Steeple of Painful Fails", "diff": 838, "places": [["AToH", "Cave"]]},
+  {"id": 530, "abbr": "ToITH", "name": "Tower of Insanely Tall Heights", "diff": 840, "places": [["TCTA", "District 1"]]},
+  {"id": 531, "abbr": "ToFU", "name": "Tower of Flattened Uprising", "diff": 859, "places": [["Place", ""]], "game": "https://www.roblox.com/games/10694071974/Tower-of-Flattened-Uprising"},
+  {"id": 532, "abbr": "ToTN", "name": "Tower of Twenty Nineteen", "diff": 870, "places": [["ATM", "Ring 1"]]},
+  {"id": 533, "abbr": "ToPS", "name": "Tower of Pure Suffering", "diff": 876, "places": [["EAT", "Area 1"]]},
+  {"id": 534, "abbr": "ToUP", "name": "Tower of Ultimate Painful", "diff": 877, "places": [["AToH", "Land 1"]]},
+  {"id": 535, "abbr": "ToEHP", "name": "Tower of Extra Hard Part", "diff": 969, "places": [["AToH", "Land 2"]]},
+  {"id": 536, "abbr": "ToRF", "name": "Tower of Ruined Feeling", "diff": 993, "places": [["AToH", "Land 5"]]},
+  {"id": 537, "abbr": "SoToFA", "name": "Steeple of Toxic of Failure Acid", "diff": 1002, "places": [["AToH", "Cave"]]},  
+  {"id": 538, "abbr": "ToED", "name": "Tower of Eternal Doom", "diff": 1254, "places": [["PToH", "Ring 5"]]}
 ]
