@@ -253,7 +253,7 @@ function format_comps(c) {
   return f;
 }
 function format_ratio(a, b) {
-  return a + "/" + b + " (" + Math.floor((a / b) * 100) + "%)";
+  return a + "/" + b + " (" + Math.floor((a / b) * 100) + "," + "0".repeat(2 - Math.floor(((a / b) * 10000) % 100).toString().length) + Math.floor((a / b) * 10000) % 100 + "%)";
 }
 function open_player(name) {
   var player = player_from_name(name);
