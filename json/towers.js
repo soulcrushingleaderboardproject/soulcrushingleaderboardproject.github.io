@@ -540,5 +540,19 @@ all_towers = [
   {"id": 539, "abbr": "ToDF", "name": "Tower of Dimension Frenetic", "diff": 836, "places": [["AHoSCT", "Spot 3"]]},   
   {"id": 540, "abbr": "ToIDK", "name": "Tower of I Don't Know", "diff": 879, "places": [["TWR$", "Ring 3.5"]]},        
   {"id": 541, "abbr": "ToAIW", "name": "Tower of An Iron Will", "diff": 932, "places": [["AHoSCT", "Spot 3"]]},        
-  {"id": 542, "abbr": "ToTS:B", "name": "Tower of True Skill: Buff", "diff": 1003, "places": [["BT:R", "Ring 1"]]}
+  {"id": 542, "abbr": "ToTS:B", "name": "Tower of True Skill: Buff", "diff": 1003, "places": [["BT:R", "Ring 1"]]},
+  {"id": 543, "abbr": "ToDO", "name": "Tower of Disruptive Obstacles", "diff": 806, "places": [["AHoSCT", "Spot 4"]]},
+  {"id": 544, "abbr": "GCoTFE", "name": "Great Citadel of The Five Elements", "diff": 812, "places": [["Place", ""]], "game": "https://www.roblox.com/games/18503105831/Great-Citadel-of-The-Five-Elements"},
+  {"id": 545, "abbr": "ToSI", "name": "Tower of Structural Instability", "diff": 828, "places": [["AHoSCT", "Spot 3"]]},       
+  {"id": 546, "abbr": "ToOaV", "name": "Tower of Otadi and Vli", "diff": 832, "places": [["RT", "Area 2"]]},
+  {"id": 547, "abbr": "ToRE", "name": "Tower of Risky Expeditions", "diff": 835, "places": [["RT", "Area 1"]]},
+  {"id": 548, "abbr": "ToQP", "name": "Tower of Quick Purism", "diff": 855, "places": [["Place", ""]], "game": "https://www.roblox.com/games/10635900021/inSANE-toqp"},
+  {"id": 549, "abbr": "ToTCA", "name": "Tower of The Corner Ascension", "diff": 869, "places": [["RT", "Magmatic Lands"]]},    
+  {"id": 550, "abbr": "SoCS", "name": "Steeple of Celestial Serenity", "diff": 910, "places": [["RT", "Magmatic Lands"]]},     
+  {"id": 551, "abbr": "ToSH", "name": "Tower of Softlock Heaven", "diff": 915, "places": [["AHoSCT", "Spot 4"]]},
+  {"id": 552, "abbr": "ToSS", "name": "Tower of Sideways Strides", "diff": 934, "places": [["RT", "Magmatic Lands"]]},
+  {"id": 553, "abbr": "ToNCL", "name": "Tower of No Confidence Left", "diff": 957, "places": [["AHoSCT", "Spot 1"]]},
+  {"id": 554, "abbr": "ToRHQ", "name": "Tower of Ruthless Hidden Quintessence", "diff": 986, "places": [["AHoSCT", "Spot 4"]]},
+  {"id": 555, "abbr": "ToIM", "name": "Tower of Infuriating Misfortune", "diff": 1162, "places": [["RT", "Magmatic Lands"]]},  
+  {"id": 556, "abbr": "ToRI", "name": "Tower of Righteous Indignation", "diff": 1195, "places": [["Place", ""]], "game": "https://www.roblox.com/games/9345112933/Righteous-Indignation"}
 ]
