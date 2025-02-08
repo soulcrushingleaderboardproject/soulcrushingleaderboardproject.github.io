@@ -1,12 +1,19 @@
+* {
+  box-sizing: border-box;
+}
 html {
   font-size: 20px;
-  background: #202428;
+  background: #161820;
   color: #FFFFFF;
-  font-family: "Courier New", Courier, monospace
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 1;
+  overflow: hidden;
+  height: 100%;
 }
 ::placeholder, input, #game-select {
   color: #FFFFFF;
-  font-family: "Courier New", Courier, monospace
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 1;
 }
 input[type=checkbox] {
   width: 20px;
@@ -16,6 +23,26 @@ input[type=checkbox] {
 a {
   color: #FFFFFF;
 }
+button {
+  cursor: pointer;
+}
+span {
+  display: inline-block;
+  width: 3rem;
+  text-align: right;
+  padding-right: 10px;
+}
+#main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+#tower-lookup-page, #leaderboard-page {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  height: calc(100% - 40px);
+}
 #sclp-tower-search, #sclp-player-search, #search-button, #checklist-player, #game-select {
   display: inline-block;
   vertical-align: middle;
@@ -24,6 +51,7 @@ a {
   height: 36px;
   font-size: 20px;
   background: #505A64;
+  padding: 2px;
 }
 #info-button {
   display: inline-block;
@@ -33,20 +61,47 @@ a {
   font-size: 20px;
   background: #00000090;
   color: #FFFFFF;
-  font-family: "Courier New", Courier, monospace
+  font-family: "Montserrat", sans-serif;
 }
 #seamless-button {
   background: transparent;
   border: none;
   font-size: 20px;
   color: #FFFFFF;
-  font-family: "Courier New", Courier, monospace
+  font-family: "Montserrat", sans-serif;
+}
+#tower-button, #player-button {
+  font-size: 20px;
+  border-radius: 8px;
+  background: #00000000;
+  color: #FFFFFF;
+  border: none;
+  font-family: "Montserrat", sans-serif;
+}
+#player-button {
+  width: 15em;
+  text-align: left;
+}
+#tower-button-crossed {
+  font-size: 20px;
+  border-radius: 8px;
+  background: #00000000;
+  color: #FFFFFF20;
+  border: none;
+  font-family: "Montserrat", sans-serif;
+}
+#tower-button:hover, #tower-button-crossed:hover, #player-button:hover {
+  background: #363840;
+}
+.difficulty-display {
+  width: 8em;
+  text-align: right;
 }
 #item {
   border-radius: 8px;
   padding: 6px;
   font-size: 20px;
-  background: #101214;
+  background: #00000000;
 }
 #big {
   font-size: 30px;
@@ -54,39 +109,52 @@ a {
 #small {
   font-size: 15px;
 }
-
+#searchmenu, #leaderboard, #player-data {
+  overflow-y: scroll;
+  flex-grow: 1;
+}
 #navigation {
   background: #505A64;
   width: 100%;
   margin: 0px;
 }
-#tower-lookup-page, #leaderboard-page {
-  display: flex;
-}
-#left, #right {
-  flex: 50%;
+#left {
+  flex: 45%;
   padding: 5px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
-#extra-data {
-  position: fixed;
+#right {
+  flex: 55%;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 #extra-data, #player-data {
   width: 100%;
-  height: 100%;
+  flex-grow: 1;
   border-radius: 8px;
   padding: 8px;
   font-size: 20px;
   background: #101214;
+}
+#player-data {
+  overflow-y: scroll;
+}
+#options {
+  display: inline;
 }
 p {
   margin-top: 5px;
   margin-bottom: 5px;
 }
 #Insane {
-  color: #0000FF;
+  color: #003FFF;
 }
 #Extreme {
-  color: #0287FF;
+  color: #009FFF;
 }
 #Terrifying {
   color: #00FFFF;
@@ -98,67 +166,11 @@ p {
   color: #ECB2FA;
 }
 #Unreal {
-  color: #521989;
+  color: #9F3FFF;
 }
 #Nil {
   color: #797981;
 }
-
-#itemInsane {
-  border-radius: 8px;
-  padding: 6px;
-  font-size: 20px;
-  background: #000080;
-}
-#itemExtreme {
-  border-radius: 8px;
-  padding: 6px;
-  font-size: 20px;
-  background: #004080;
-}
-#itemTerrifying {
-  border-radius: 8px;
-  padding: 6px;
-  font-size: 20px;
-  background: #008080;
-}
-#itemCatastrophic {
-  border-radius: 8px;
-  padding: 6px;
-  font-size: 20px;
-  background: #808080;
-}
-#itemHorrific {
-  border-radius: 8px;
-  padding: 6px;
-  font-size: 20px;
-  background: #706080;
-}
-#itemUnreal {
-  border-radius: 8px;
-  padding: 6px;
-  font-size: 20px;
-  background: #200040;
-}
-#itemNil {
-  border-radius: 8px;
-  padding: 6px;
-  font-size: 20px;
-  background: #404040;
-}
-#itemCompleted {
-  border-radius: 8px;
-  padding: 6px;
-  font-size: 20px;
-  background: #408040;
-}
-#itemUncompleted {
-  border-radius: 8px;
-  padding: 6px;
-  font-size: 20px;
-  background: #804040;
-}
-
 #owner {
   color: #6AC;
 }
