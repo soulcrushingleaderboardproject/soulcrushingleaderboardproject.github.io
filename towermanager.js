@@ -1,6 +1,6 @@
-all_towers.sort((a, b) => a["diff"] - b["diff"]);
+all_towers.sort((a, b) => b["diff"] - a["diff"]);
 for (t = 0; t < all_towers.length; t++) {
-  all_towers[t]["rank"] = all_towers.length - t;
+  all_towers[t]["rank"] = t + 1;
   all_towers[t]["exp"] = Math.floor((3 ** ((all_towers[t]["diff"] - 800) / 100)) * 100);
 }
 var towers = all_towers;
@@ -129,7 +129,7 @@ function open_extra(id) {
   var tower = tower_from_id(id);
   var extra = "";
   extra += "<p id='big'><b>(" + tower["abbr"] + ")</b> " + tower["name"] + "</p>";
-  extra += "<b id=\"" + difficulty_to_name(tower["diff"]) + "\">[*] </b> Difficulty: " + difficulty_to_range(tower["diff"]) + " " + difficulty_to_name(tower["diff"]) + " (" + format_difficulty(tower["diff"]) + ")";
+  extra += "<br>Difficulty: " + difficulty_to_range(tower["diff"]) + " " + difficulty_to_name(tower["diff"]) + " (" + format_difficulty(tower["diff"]) + ")";
   extra += "<br>Location: " + format_location(tower["places"]);
   if (format_location(tower["places"]) == "Place") {
     extra += " <a href='" + tower["game"] + "' target='_blank'>(Game link)</a>";
@@ -141,34 +141,54 @@ function open_extra(id) {
   g("extra-data").innerHTML = extra;
 }
 function list_towers() {
-  var t = "";
+  var t = "<br>";
   var is_valid_name = player_from_name(g("checklist-player").value) != false;
   if (is_valid_name) {
     var comp_data = player_from_name(g("checklist-player").value)["completions"];
   }
-  for (i = 0; i < towers.length; i++) {
-    t_id = towers[i]["id"];
-    t_abbr = towers[i]["abbr"];
-    t_name = towers[i]["name"];
-    t_diff = towers[i]["diff"];
-    t_area = towers[i]["places"];
-    t_rank = towers[i]["rank"];
-
-    if (is_valid_name && g("color-checklist").checked) {
+  if (is_valid_name && g("color-checklist").checked) {
+    for (i = 0; i < towers.length; i++) {
+      t_id = towers[i]["id"];
+      t_abbr = towers[i]["abbr"];
+      t_name = towers[i]["name"];
+      t_diff = towers[i]["diff"];
+      t_area = towers[i]["places"];
+      t_rank = towers[i]["rank"];
+      t += "<div id='item'>"
+      t += "<span id='" + difficulty_to_name(t_diff) + "'>#" + t_rank + "</span>"
       if (comp_data.includes(t_id)) {
-        t += "<p id='itemCompleted'>";
+        t += "<button id='tower-button-crossed' onclick='open_extra(" + t_id + ")'><b><s>" + t_name + "</s></b></button>"
       } else {
-        t += "<p id='itemUncompleted'>";
+        t += "<button id='tower-button' onclick='open_extra(" + t_id + ")'><b>" + t_name + "</b></button>"
       }
-    } else {
-      t += "<p id='item" + difficulty_to_name(t_diff) + "'>";
+      t += "</div>"
     }
-
-    t += "<button id='info-button' onclick='open_extra(" + t_id + ")'>+</button>"
-    t += "<b> (" + t_abbr + ") </b>" + t_name;
-    t += "<i id='small'> (";
-    t += format_difficulty(t_diff) + " - " + format_location(t_area) + " - #" + t_rank;
-    t += ")</i></p>";
+  } else {
+    for (i = 0; i < towers.length; i++) {
+      t_id = towers[i]["id"];
+      t_abbr = towers[i]["abbr"];
+      t_name = towers[i]["name"];
+      t_diff = towers[i]["diff"];
+      t_area = towers[i]["places"];
+      t_rank = towers[i]["rank"];
+  
+      //if (is_valid_name && g("color-checklist").checked && comp_data.includes(t_id)) {
+      //  t += "<div id='itemCompleted'>";
+      //} else {
+      //  t += "<div id='item" + difficulty_to_name(t_diff) + "'>";
+      //}
+  
+      t += "<div id='item'>"
+      t += "<span id='" + difficulty_to_name(t_diff) + "'>#" + t_rank + "</span>"
+      t += "<button id='tower-button' onclick='open_extra(" + t_id + ")'><b>" + t_name + "</b></button>"
+      t += "</div>"
+  
+      //t += "<button id='info-button' onclick='open_extra(" + t_id + ")'>+</button>"
+      //t += "<b> #" + t_rank + " </b>" + t_name;
+      //t += "<i id='small'> (";
+      //t += format_difficulty(t_diff) + " - " + format_location(t_area) + " - #" + t_rank;
+      //t += ")</i></p>";
+    }
   }
   g("searchmenu").innerHTML = t;
 }
@@ -187,19 +207,27 @@ function player_from_name(name) {
   }
   return false;
 }
-function format_level(exp) {
+function format_level(exp, level_only) {
   current_level = 0;
   last_exp = 150;
   total = 0;
   if (exp < 175) {
-    return "0 (" + exp + "/175)";
+    if (level_only == true) {
+      return "0";
+    } else {
+      return "0 (" + exp + "/175)";
+    }
   }
   while (total <= exp) {
     current_level += 1;
     last_exp = 150 + (25 * (current_level ** 2));
     total += last_exp;
   }
-  return (current_level - 1) + " (" + (exp - (total - last_exp)) + "/" + (150 + (25 * (current_level ** 2))) + ")";
+  if (level_only == true) {
+    return current_level - 1
+  } else {
+    return (current_level - 1) + " (" + (exp - (total - last_exp)) + "/" + (150 + (25 * (current_level ** 2))) + ")";
+  }
 }
 function get_total_exp(player) {
   c = player_from_name(player)["completions"];
@@ -239,21 +267,28 @@ function format_comps(c) {
   f = "";
   rank = 1;
   padding = c.length.toString().length;
-  for (t = all_towers.length - 1; t >= 0; t--) {
+  for (t = 0; t < all_towers.length; t++) {
     if (c.includes(all_towers[t]["id"])) {
       tower = all_towers[t];
-      f += "<b id=\"" + difficulty_to_name(tower["diff"]) + "\">[#" + "0".repeat(padding - rank.toString().length) + rank + "] </b>"
-      f += "<b>(" + tower["abbr"] + ") </b>" + tower["name"];
-      f += " <i id='small'>";
-      f += format_difficulty(tower["diff"]) + " - #" + tower["rank"];
-      f += "</i><br>";
+
+
+      f += "<span id='" + difficulty_to_name(tower["diff"]) + "'>#" + tower["rank"] + "</span>"
+      f += "<button id='tower-button' onclick='open_page(2);open_extra(" + tower["id"] + ")'><b>" + tower["name"] + "</b></button>"
+      f += "<br>"
+
+
+      //f += "<b id=\"" + difficulty_to_name(tower["diff"]) + "\">[#" + "0".repeat(padding - rank.toString().length) + rank + "] </b>"
+      //f += "<b>(" + tower["abbr"] + ") </b>" + tower["name"];
+      //f += " <i id='small'>";
+      //f += format_difficulty(tower["diff"]) + " - #" + tower["rank"];
+      //f += "</i><br>";
       rank++;
     }
   }
   return f;
 }
 function format_ratio(a, b) {
-  return a + "/" + b + " (" + Math.floor((a / b) * 100) + "," + "0".repeat(2 - Math.floor(((a / b) * 10000) % 100).toString().length) + Math.floor((a / b) * 10000) % 100 + "%)";
+  return "<span class='difficulty-display'>" + a + "/" + b + "</span><span class='difficulty-display'>" + Math.floor((a / b) * 100) + "," + "0".repeat(2 - Math.floor(((a / b) * 10000) % 100).toString().length) + Math.floor((a / b) * 10000) % 100 + "%</span>";
 }
 function open_player(name) {
   var player = player_from_name(name);
@@ -264,30 +299,36 @@ function open_player(name) {
   extra += "<br>Level: " + format_level(player["exp"]);
   extra += "<br>Rank: #" + player["rank"];
   extra += "<br><a href='https://" + completion_link + "'>" + completion_link + "</a>";
-  extra += "<br><br><b>... Total:</b> " + format_ratio(player["completions"].length, all_towers.length);
+  extra += "<br><br><b id='big'>Stats</b><br><br>";
+  extra += "<span class='difficulty-display'><b>TOTAL</b></span> " + format_ratio(player["completions"].length, all_towers.length);
   for (d = 8; d < 14; d++) {
-    extra += "<br><b id='" + difficulty_to_name(d * 100) + "'>[*]</b> <b>" + difficulty_to_name(d * 100) + ":</b> " + 
+    extra += "<br><span id='" + difficulty_to_name(d * 100) + "' class='difficulty-display'>" + difficulty_to_name(d * 100) + "</span> " + 
     format_ratio(get_towers_within_range(get_completed_data(player["completions"]), d * 100, (d * 100) + 99).length, get_towers_within_range(all_towers, d * 100, (d * 100) + 99).length);
   }
-  extra += "<br><br><b>Completions:</b><br>";
+  extra += "<br><br><b id='big'>Completions</b><br><br>";
   extra += format_comps(player["completions"]);
   g("player-data").innerHTML = extra;
 }
 function list_players() {
-  var p = "";
+  var p = "<br>";
   for (i = 0; i < completions.length; i++) {
     p_name = completions[i]["name"];
     p_comps = completions[i]["completions"];
     p_exp = completions[i]["exp"];
     p_rank = completions[i]["rank"];
 
-    p += "<p id='item'>";
-    p += "<b>[" + (i + 1) + "] </b>"
-    p += p_name;
-    p += " <button id='info-button' onclick='open_player(\"" + p_name + "\")'>+</button>"
-    p += "<br><i id='small'>";
-    p += p_comps.length + " Completions - " + p_exp + " EXP - Level " + format_level(p_exp) + " - #" + p_rank;
-    p += "</i></p>";
+    p += "<div id='item'>";
+    p += "<span>#" + p_rank + "</span>"
+    p += "<button id='player-button' onclick='open_player(\"" + p_name + "\")'><b>" + p_name + "</b></button>"
+    p += " Level " + format_level(p_exp, true)
+    p += "</div>"
+
+    //p += "<b>[" + (i + 1) + "] </b>"
+    //p += p_name;
+    //p += " <button id='info-button' onclick='open_player(\"" + p_name + "\")'>+</button>"
+    //p += "<br><i id='small'>";
+    //p += p_comps.length + " Completions - " + p_exp + " EXP - Level " + format_level(p_exp) + " - #" + p_rank;
+    //p += "</i></div>";
   }
   g("leaderboard").innerHTML = p;
 }
