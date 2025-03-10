@@ -5,14 +5,13 @@
       <button id="seamless-button" onclick="open_page(1)"><u>Home</u></button>
       <button id="seamless-button" onclick="open_page(2)"><u>Towers</u></button>
       <button id="seamless-button" onclick="open_page(3)"><u>Leaderboard</u></button>
-      <button id="seamless-button" onclick="open_page(4)"><u>Games</u></button>
     </div>
     <div id="menu-page">
       <h1>
         Soul Crushing Leaderboard Project
       </h1>
       <h2>
-        <a href="https://discord.gg/t9crQndHyn">Join the Discord Server to submit completions</a>
+        <a href="https://discord.gg/t9crQndHyn" target="_blank">Join the Discord Server to submit completions</a>
       </h2>
       <h3>
         <div id="owner">[Owner]</div>thej10n
@@ -36,18 +35,19 @@
           <input type="text" id="sclp-tower-search" placeholder="Search..."></input>
           <button id="search-button" onclick="towers=search(g('sclp-tower-search').value);list_towers();">🔎</button>
           <br><br>
-          <input type="checkbox" id="diff-8" checked>Insane</input>
-          <input type="checkbox" id="diff-9" checked>Extreme</input>
-          <input type="checkbox" id="diff-10" checked>Terrifying</input>
-          <input type="checkbox" id="diff-11" checked>Catastrophic</input>
-          <input type="checkbox" id="diff-12" checked>Horrific</input>
-          <input type="checkbox" id="diff-13" checked>Unreal</input>
+          <input type="checkbox" id="diff-8" onclick="towers=search(g('sclp-tower-search').value);list_towers();" checked>Insane</input>
+          <input type="checkbox" id="diff-9" onclick="towers=search(g('sclp-tower-search').value);list_towers();" checked>Extreme</input>
+          <input type="checkbox" id="diff-10" onclick="towers=search(g('sclp-tower-search').value);list_towers();" checked>Terrifying</input>
+          <input type="checkbox" id="diff-11" onclick="towers=search(g('sclp-tower-search').value);list_towers();" checked>Catastrophic</input>
+          <input type="checkbox" id="diff-12" onclick="towers=search(g('sclp-tower-search').value);list_towers();" checked>Horrific</input>
+          <input type="checkbox" id="diff-13" onclick="towers=search(g('sclp-tower-search').value);list_towers();" checked>Unreal</input>
           <br>
           Game: <select name="game-select" id="game-select">
 
           </select>
-          <input type="checkbox" id="color-checklist">Color by checklist?</input>
+          <input type="checkbox" id="color-checklist" onclick="towers=search(g('sclp-tower-search').value);list_towers();">Color by checklist?</input>
           <input type="text" id="checklist-player" placeholder="Player..."></input>
+          <input type="checkbox" id="extra-tower-info" onclick="towers=search(g('sclp-tower-search').value);list_towers();">Show extra info</input>
         </div>
         <div id="extra-data">
           Click on a tower to see extra info here
@@ -67,19 +67,12 @@
           </h1>
           <input type="text" id="sclp-player-search" placeholder="Search..."></input>
           <button id="search-button" onclick="completions=psearch(g('sclp-player-search').value);list_players();">🔎</button>
+          <input type="checkbox" id="extra-player-info" onclick="completions=psearch(g('sclp-player-search').value);list_players();">Show extra info</input>
         </div>
         <div id="player-data">
           Click on a player to see extra info here
         </div>
       </div>
-    </div>
-    <div id="game-links-page">
-      <h1>
-        Game Links
-      </h1>
-      <p id="games">
-    
-      </p>
     </div>
   </div>
 </html>
