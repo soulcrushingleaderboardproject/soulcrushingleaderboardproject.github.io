@@ -1,7 +1,11 @@
+all_towers.sort((a, b) => b["id"] - a["id"]);
 all_towers.sort((a, b) => b["diff"] - a["diff"]);
 for (t = 0; t < all_towers.length; t++) {
   all_towers[t]["rank"] = t + 1;
   all_towers[t]["exp"] = Math.floor((3 ** ((all_towers[t]["diff"] - 800) / 100)) * 100);
+  if (all_towers[t]["game"] != null) {
+    all_towers[t]["places"].push(["Place", ""])
+  }
 }
 var towers = all_towers;
 for (player = 0; player < all_completions.length; player++) {
@@ -53,19 +57,27 @@ function format_difficulty(d) {
   s = d.toString();
   return s.slice(0, s.length - 2) + "," + s.slice(s.length - 2, s.length + 1);
 }
-function format_location(a) {
-  s = "";
-  for (j = 0; j < a.length; j++) {
-    l = a[j];
-    s += l[0];
-    if (l[1] != "") {
-      s += ", " + l[1];
+function format_location(tower, start, end) {
+  places = tower["places"].slice(start, end)
+  game = tower["game"]
+  formatted = "";
+  for (i = 0; i < places.length; i++) {
+    loc = places[i];
+    if (loc[0] == "Place") {
+      formatted += "<a href='" + game + "' target='_blank'>" + loc[0] + "</a>";
+    } else {
+      formatted += "<a href='" + game_from_abbr(loc[0])["link"] + "' target='_blank'>" + loc[0]
     }
-    if (j != a.length - 1) {
-      s += " / ";
+    if (loc[1] != "") {
+      formatted += ", " + loc[1] + "</a>";
+    } else {
+      formatted += "</a>"
+    }
+    if (i != places.length - 1) {
+      formatted += " / ";
     }
   }
-  return s;
+  return formatted;
 }
 function is_tower_in_place(places, place) {
   for (i = 0; i < places.length; i++) {
@@ -80,23 +92,10 @@ function search(s) {
   new_towers = [];
   allowed_difficulties = [];
   place_filter = g("game-select").value;
-  if (g("diff-8").checked) {
-    allowed_difficulties.push(8);
-  }
-  if (g("diff-9").checked) {
-    allowed_difficulties.push(9);
-  }
-  if (g("diff-10").checked) {
-    allowed_difficulties.push(10);
-  }
-  if (g("diff-11").checked) {
-    allowed_difficulties.push(11);
-  }
-  if (g("diff-12").checked) {
-    allowed_difficulties.push(12);
-  }
-  if (g("diff-13").checked) {
-    allowed_difficulties.push(13);
+  for (i = 8; i < 14; i++) {
+    if (g("diff-" + i).checked) {
+      allowed_difficulties.push(i);
+    }
   }
   for (tower_search = 0; tower_search < all_towers.length; tower_search++) {
     tower = all_towers[tower_search];
@@ -130,9 +129,9 @@ function open_extra(id) {
   var extra = "";
   extra += "<p id='big'><b>(" + tower["abbr"] + ")</b> " + tower["name"] + "</p>";
   extra += "<br>Difficulty: " + difficulty_to_range(tower["diff"]) + " " + difficulty_to_name(tower["diff"]) + " (" + format_difficulty(tower["diff"]) + ")";
-  extra += "<br>Location: " + format_location(tower["places"]);
-  if (format_location(tower["places"]) == "Place") {
-    extra += " <a href='" + tower["game"] + "' target='_blank'>(Game link)</a>";
+  extra += "<br>Location: " + format_location(tower, 0, 1);
+  if (tower["places"].length > 1) {
+    extra += "<br><i id='small'>Other Locations: " + format_location(tower, 1, tower["places"].length) + "</i>";
   }
   extra += "<br>Rank: #" + tower["rank"];
   extra += "<br>EXP for completion: " + tower["exp"];
@@ -171,6 +170,7 @@ function list_towers() {
       t_diff = towers[i]["diff"];
       t_area = towers[i]["places"];
       t_rank = towers[i]["rank"];
+      t_exp = towers[i]["exp"];
   
       //if (is_valid_name && g("color-checklist").checked && comp_data.includes(t_id)) {
       //  t += "<div id='itemCompleted'>";
@@ -181,6 +181,10 @@ function list_towers() {
       t += "<div id='item'>"
       t += "<span id='" + difficulty_to_name(t_diff) + "'>#" + t_rank + "</span>"
       t += "<button id='tower-button' onclick='open_extra(" + t_id + ")'><b>" + t_name + "</b></button>"
+      if (g("extra-tower-info").checked) {
+        t += "<i id='small'><br><span></span>"
+        t += "(" + format_difficulty(t_diff) + " - " + t_area[0][0] + " - " + t_exp + " EXP)</i>"
+      }
       t += "</div>"
   
       //t += "<button id='info-button' onclick='open_extra(" + t_id + ")'>+</button>"
@@ -321,6 +325,10 @@ function list_players() {
     p += "<span>#" + p_rank + "</span>"
     p += "<button id='player-button' onclick='open_player(\"" + p_name + "\")'><b>" + p_name + "</b></button>"
     p += " Level " + format_level(p_exp, true)
+    if (g("extra-player-info").checked) {
+      p += "<i id='small'><br><span></span>"
+      p += "(" + p_comps.length + " SCs - " + p_exp + " Total EXP)</i>"
+    }
     p += "</div>"
 
     //p += "<b>[" + (i + 1) + "] </b>"
@@ -337,18 +345,14 @@ list_players();
 
 
 // game links
-function list_games() {
-  var gm = "";
-  for (i = 0; i < games.length; i++) {
-    g_abbr = games[i]["abbr"];
-    g_name = games[i]["name"];
-    g_link = games[i]["link"];
-
-    gm += "<a href='" + g_link + "'><b>(" + g_abbr + ") </b>" + g_name + "</a><br>"
+function game_from_abbr(abbr) {
+  for (gm = 0; gm < games.length; gm++) {
+    if (abbr == games[gm]["abbr"]) {
+      return games[gm];
+    }
   }
-  g("games").innerHTML = gm;
+  return false;
 }
-list_games();
 
 // idfk what im doing anymore
 gm = "<option value=''>All</option><option value='Place'>Place</option>";
@@ -361,24 +365,19 @@ g("game-select").innerHTML = gm;
 
 g("tower-lookup-page").style.display = "none";
 g("leaderboard-page").style.display = "none";
-g("game-links-page").style.display = "none";
 function open_page(page_num) {
   // 1 - Home
   // 2 - Towers
   // 3 - Leaderboard
-  // 4 - Games
   g("menu-page").style.display = "none";
   g("tower-lookup-page").style.display = "none";
   g("leaderboard-page").style.display = "none";
-  g("game-links-page").style.display = "none";
   if (page_num == 1) {
     g("menu-page").style.display = "";
   } else if (page_num == 2) {
     g("tower-lookup-page").style.display = "";
   } else if (page_num == 3) {
     g("leaderboard-page").style.display = "";
-  } else if (page_num == 4) {
-    g("game-links-page").style.display = "";
   }
 }
 const url = window.location.search;
