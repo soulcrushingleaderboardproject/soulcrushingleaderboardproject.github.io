@@ -583,5 +583,11 @@ all_towers = [
   {"id": 582, "abbr": "ToStW", "name": "Tower of Spin to Win", "diff": 888, "places": [], "game": "https://www.roblox.com/games/101331151767644/tower-of-spin-to-win"},
   {"id": 583, "abbr": "ToR:B", "name": "Tower of Rage: Buff", "diff": 929, "places": [["BT:R", "Area 1"]]},
   {"id": 584, "abbr": "ToTnW", "name": "Tower of Tech n Wraps", "diff": 941, "places": [["LToD", "Ring 3"]]},
-  {"id": 585, "abbr": "SoH", "name": "Steeple of Höhentranszendenteätherflammenprojektionsmanufaktur", "diff": 1082, "places": [], "game": "https://www.roblox.com/games/13779823179/H-hentranszendente-therflammenprojektionmanufaktur"}
+  {"id": 585, "abbr": "SoH", "name": "Steeple of Höhentranszendenteätherflammenprojektionsmanufaktur", "diff": 1082, "places": [], "game": "https://www.roblox.com/games/13779823179/H-hentranszendente-therflammenprojektionmanufaktur"},
+  {"id": 586, "abbr": "ToCaV", "name": "Tower of Complexity and Volatility", "diff": 1018, "places": [], "game": "https://www.roblox.com/games/18276078701/Tower-of-Complexity-and-Volatility"},
+  {"id": 587, "abbr": "ToZZ", "name": "Tower of Zimble Zamble", "diff": 1077, "places": [["TBP", "Plate 6"]]},
+  {"id": 588, "abbr": "ToIP", "name": "Tower of Indeterminate Predicament", "diff": 1147, "places": [["AHoSCT", "Spot 1"]]},
+  {"id": 589, "abbr": "TS", "name": "Thje Steeple", "diff": 1181, "places": [], "game": "https://www.roblox.com/games/17818591425/Thje-Steeple"},
+  {"id": 590, "abbr": "ToYK", "name": "Tower of Yasamsal Kiyamet", "diff": 1290, "places": [["CTT", "Domain 1"]], "game": "https://www.roblox.com/games/17457144064/Tower-of-Yasamsal-Kiyamet"},
+  {"id": 591, "abbr": "GCoGDC", "name": "Great Citadel of Great Difficulty Chart", "diff": 1295, "places": [], "game": "https://www.roblox.com/games/89370639927242/Great-Citadel-of-Great-Difficulty-Chart-List-Ver"}
 ]
