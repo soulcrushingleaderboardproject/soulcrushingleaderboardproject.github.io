@@ -153,12 +153,17 @@ function list_towers() {
       t_diff = towers[i]["diff"];
       t_area = towers[i]["places"];
       t_rank = towers[i]["rank"];
+      t_exp = towers[i]["exp"];
       t += "<div id='item'>"
       t += "<span id='" + difficulty_to_name(t_diff) + "'>#" + t_rank + "</span>"
       if (comp_data.includes(t_id)) {
         t += "<button id='tower-button-crossed' onclick='open_extra(" + t_id + ")'><b><s>" + t_name + "</s></b></button>"
       } else {
         t += "<button id='tower-button' onclick='open_extra(" + t_id + ")'><b>" + t_name + "</b></button>"
+      }
+      if (g("extra-tower-info").checked) {
+        t += "<i id='small'><br><span></span>"
+        t += "(" + format_difficulty(t_diff) + " - " + t_area[0][0] + " - " + t_exp + " EXP)</i>"
       }
       t += "</div>"
     }
