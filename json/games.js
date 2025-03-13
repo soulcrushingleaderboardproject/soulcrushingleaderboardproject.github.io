@@ -1,4 +1,5 @@
 var all_games = [
+  {"abbr": "ACT", "name": "Addison's Classic Towers", "link": "https://www.roblox.com/games/6851369199/Addisons-Classic-Towers"},
   {"abbr": "AHoSCT", "name": "Azi's House of Soul Crushing Towers", "link": "https://www.roblox.com/games/83360243495088/ToPD-ToNCL-Azis-House-of-Soul-Crushing-Towers"},
   {"abbr": "ATM", "name": "Anno's Tantrum Machine", "link": "https://www.roblox.com/games/14155809913/Annos-Tantrum-Machine"},
   {"abbr": "AToBM", "name": "Andr's Towers of Bruh Moments", "link": "https://www.roblox.com/games/11300875374/CHRISTMAS-Andrs-Towers-of-Bruh-Moments"},
@@ -11,6 +12,7 @@ var all_games = [
   {"abbr": "CTT", "name": "Community Top Towers", "link": "https://www.roblox.com/games/109970721198777/Domain-1-LETS-GO"},
   {"abbr": "DEToH", "name": "Democratically Elected Towers of Hell", "link": "https://www.roblox.com/games/116948649505593/Alpha-DEToH"},
   {"abbr": "EAT", "name": "Eloi's Artistic Towers", "link": "https://www.roblox.com/games/10192639557/Elois-Artistic-Towers"},
+  {"abbr": "EToE", "name": "Exwum's Towers of Expertise", "link": "https://www.roblox.com/games/6211616001/Exwums-Towers-of-Expertise"},
   {"abbr": "HT", "name": "Hades Towers", "link": "https://www.roblox.com/games/121125135868314/Hades-Towers-CHRISTMAS"},
   {"abbr": "JToH", "name": "no longer Juke's Towers of Hell", "link": "https://www.roblox.com/games/8562822414/Jukes-Towers-of-Hell"},
   {"abbr": "JXL", "name": "JToH XL", "link": "https://www.roblox.com/games/13218032675/JToH-XL"},
