@@ -607,6 +607,13 @@ all_towers = [
   {"id": 606, "abbr": "ToCR", "name": "Tower of Cosmix Resonance", "diff": 1166, "places": [], "game": "https://www.roblox.com/games/11197382974/Tower-of-Cosmix-Resonance"},
   {"id": 607, "abbr": "ToPtW", "name": "Tower of Play to Win", "diff": 1169, "places": [["CTT", "Domain 1"]]},
   {"id": 608, "abbr": "ToDE", "name": "Tower of Daunting Experiences", "diff": 1179, "places": [], "game": "https://www.roblox.com/games/7060820470/Tower-of-Daunting-Experiences"},   
-  {"id": 609, "abbr": "SoIT", "name": "Steeple of Immeasurable Trusses", "diff": 1131, "places": [], "game": "https://www.roblox.com/games/5908359824/The-Immeasurable-Truss-Steeple"},
-  {"id": 610, "abbr": "JT", "name": "Jumbo Tower", "diff": 1203, "places": [], "game": "https://www.roblox.com/games/124330223311622/Jumbo-Tower"}
+  {"id": 609, "abbr": "TRUSS", "name": "The Really Ugly Sad Steeple", "diff": 1131, "places": [], "game": "https://www.roblox.com/games/5908359824/The-Immeasurable-Truss-Steeple"},
+  {"id": 610, "abbr": "JT", "name": "Jumbo Tower", "diff": 1203, "places": [], "game": "https://www.roblox.com/games/124330223311622/Jumbo-Tower"},
+  {"id": 611, "abbr": "ToSA", "name": "Tower of Somnium, Aeternum", "diff": 833, "places": [], "game": "https://www.roblox.com/games/116603977858440/Somnium-Aeternum-STRAY-BALL-UPDATE"},
+  {"id": 612, "abbr": "ToSF:I", "name": "Tower of Spiralling Fates: Insane", "diff": 875, "places": [], "game": "https://www.roblox.com/games/9165919145/Tower-of-Revolving-Fates-Nerf"},
+  {"id": 613, "abbr": "ToC", "name": "Tower of Claustrophobia", "diff": 943, "places": [], "game": "https://www.roblox.com/games/14218018323/Tower-of-Claustrophobia"},
+  {"id": 614, "abbr": "ToAS", "name": "Tower of Amazing Skill", "diff": 964, "places": [], "game": "https://www.roblox.com/games/126617802463587/Tower-of-amazing-skill"},
+  {"id": 615, "abbr": "CoNDC", "name": "Citadel of New Difficulty Chart", "diff": 1049, "places": [], "game": "https://www.roblox.com/games/73925245312473/Citadel-of-New-Difficulty-Chart"},       
+  {"id": 616, "abbr": "ToRP", "name": "Tower of Ruthless Punishment", "diff": 1178, "places": [], "game": "https://www.roblox.com/games/15536775114/Tower-of-Ruthless-Punishment#!/game-instances"},
+  {"id": 617, "abbr": "CT", "name": "Corner Tower", "diff": 1252, "places": [], "game": "https://www.roblox.com/games/17399542554/Corner-Tower"}
 ]
