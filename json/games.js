@@ -14,7 +14,7 @@ var all_games = [
   {"abbr": "EAT", "name": "Eloi's Artistic Towers", "link": "https://www.roblox.com/games/10192639557/Elois-Artistic-Towers"},
   {"abbr": "EToE", "name": "Exwum's Towers of Expertise", "link": "https://www.roblox.com/games/6211616001/Exwums-Towers-of-Expertise"},
   {"abbr": "HT", "name": "Hades Towers", "link": "https://www.roblox.com/games/121125135868314/Hades-Towers-CHRISTMAS"},
-  {"abbr": "JToH", "name": "no longer Juke's Towers of Hell", "link": "https://www.roblox.com/games/8562822414/Jukes-Towers-of-Hell"},
+  {"abbr": "JToH", "name": "Juke's Towers of Hell", "link": "https://www.roblox.com/games/8562822414/Jukes-Towers-of-Hell"},
   {"abbr": "JXL", "name": "JToH XL", "link": "https://www.roblox.com/games/13218032675/JToH-XL"},
   {"abbr": "JXS", "name": "JToH XS Project", "link": "https://www.roblox.com/games/18358123333/JToH-XS-Project"},
   {"abbr": "JXXL", "name": "JToH XXL", "link": "https://www.roblox.com/games/17846926884/RING-1-UPDATE-3-5-4-JToH-XXL"},
@@ -34,5 +34,6 @@ var all_games = [
   {"abbr": "TCTA", "name": "The Classic Tower Archive", "link": "https://www.roblox.com/games/14377924053/The-Classic-Tower-Archive-CHRISTMAS-EVENT"},
   {"abbr": "TG", "name": "Tower Game", "link": "https://www.roblox.com/games/5976062696/tower-game"},
   {"abbr": "TWR$", "name": "Tower$", "link": "https://www.roblox.com/games/13594795843/Tower"},
+  {"abbr": "WBT", "name": "World's Best Towers", "link": "https://www.roblox.com/games/6456404072/Worlds-Best-Towers"},
   {"abbr": "ZToA", "name": "Zee's Towers of Anger", "link": "https://www.roblox.com/games/5630198391/ToCUP-Zees-Towers-of-Anger-Reborn"}
 ]
