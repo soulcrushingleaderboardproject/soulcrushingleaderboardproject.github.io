@@ -635,5 +635,19 @@ all_towers = [
   {"id": 634, "abbr": "ToHoP", "name": "Tower of Hop on Pop", "diff": 944, "places": [["ToS", "Jongular Jungle"]]},
   {"id": 635, "abbr": "SoCLG", "name": "Steeple of Constant Ledge Grabbing", "diff": 982, "places": [["AlToH", "Layer 1"]]},
   {"id": 636, "abbr": "ToBD", "name": "Tower of Bad Design", "diff": 1074, "places": [], "game": "https://www.roblox.com/games/17661251039/Tower-of-Bad-Design"},
-  {"id": 637, "abbr": "ToSH", "name": "Tower of Spicy Headcream", "diff": 1135, "places": [["ToS", "Gras Ville"]]}
+  {"id": 637, "abbr": "ToSH", "name": "Tower of Spicy Headcream", "diff": 1135, "places": [["ToS", "Gras Ville"]]},
+  {"id": 638, "abbr": "ToVV", "name": "Tower of Vice Versa", "diff": 854, "places": [], "game": "https://www.roblox.com/games/9197520715/Tower-of-Vice-Versa"},
+  {"id": 639, "abbr": "ToUO", "name": "Tower of Unfortunate Outcomes", "diff": 862, "places": [], "game": "https://www.roblox.com/games/11981030192/Tower-of-Unfortunate-Outcomes"},
+  {"id": 640, "abbr": "TTTT", "name": "Tower Tower Tower Tower", "diff": 871, "places": [], "game": "https://www.roblox.com/games/89711247124810/v2-Tower-Tower-Tower-Tower"},
+  {"id": 641, "abbr": "ToDP", "name": "Tower of Deadly Pitfalls", "diff": 880, "places": [["VToA", "Destination 1"]]},
+  {"id": 642, "abbr": "ToSO", "name": "Tower of Spiral Obligations", "diff": 895, "places": [], "game": "https://www.roblox.com/games/16712886019/Tower-of-Spiral-Obligations"},
+  {"id": 643, "abbr": "ToCCP", "name": "Tower of Confusingly Curved Pole", "diff": 906, "places": [], "game": "https://www.roblox.com/games/7348687682/tower-of-confusingly-curved-pole"},      
+  {"id": 644, "abbr": "ToVS", "name": "Tower of Void Storm", "diff": 909, "places": [], "game": "https://www.roblox.com/games/10639534326/VOIDSTORM"},
+  {"id": 645, "abbr": "ToO", "name": "Tower of Octophobia", "diff": 917, "places": [], "game": "https://www.roblox.com/games/10219303400/Octophobia"},
+  {"id": 646, "abbr": "ToEA", "name": "Tower of Extreme Anguish", "diff": 925, "places": [["VToA", "Destination 1"]]},
+  {"id": 647, "abbr": "ToM", "name": "Tower of Manifestation", "diff": 958, "places": [], "game": "https://www.roblox.com/games/10868590664/tower-of-meme"},
+  {"id": 648, "abbr": "ToDC:IR", "name": "Tower of Difficulty Chart: It_Near's Revamp", "diff": 975, "places": [], "game": "https://www.roblox.com/games/2392347276/Tower-of-Difficulty-Chart"},
+  {"id": 649, "abbr": "ToSP", "name": "Tower of Sorrowful Purgatory", "diff": 1011, "places": [["VToA", "Destination 1"]]},
+  {"id": 650, "abbr": "CoSM", "name": "Citadel of Strategic Mechanics", "diff": 1024, "places": [], "game": "https://www.roblox.com/games/12873539596/Citadel-of-Strategic-Mechanics"},
+  {"id": 651, "abbr": "ToRA", "name": "Tower of Relentless Attitude", "diff": 1086, "places": [], "game": "https://www.roblox.com/games/95925543574227/Relentless-Altitude-Legit-Mode"}
 ]
