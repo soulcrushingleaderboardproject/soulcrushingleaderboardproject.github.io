@@ -36,6 +36,7 @@ var all_games = [
   {"abbr": "ToS", "name": "Towers of Showers", "link": "https://www.roblox.com/games/4589295517/MEGA-OVERHAUL-Towers-of-Showers"},
   {"abbr": "TTP", "name": "The Tower Pantheon", "link": "https://www.roblox.com/games/121125135868314/Hades-Towers-CHRISTMAS"},
   {"abbr": "TWR$", "name": "Tower$", "link": "https://www.roblox.com/games/13594795843/Tower"},
+  {"abbr": "VToA", "name": "Vi's Towers of Anguish", "link": "https://www.roblox.com/games/18651848312/CoST-RELEASE-Vis-Towers-of-Anguish"},
   {"abbr": "WBT", "name": "World's Best Towers", "link": "https://www.roblox.com/games/6456404072/Worlds-Best-Towers"},
   {"abbr": "ZToA", "name": "Zee's Towers of Anger", "link": "https://www.roblox.com/games/5630198391/ToCUP-Zees-Towers-of-Anger-Reborn"}
 ]
