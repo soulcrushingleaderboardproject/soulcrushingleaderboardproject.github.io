@@ -36,7 +36,7 @@ all_towers = [
   {"id": 35, "abbr": "ToUA", "name": "Tower of Uncanny Agony", "diff": 1067, "places": [["JToH", "Zone 7"]]},
   {"id": 36, "abbr": "ToWWW", "name": "Tower of Wildly Wacky Wonders", "diff": 1081, "places": [["JToH", "Zone 9"]]},
   {"id": 37, "abbr": "ToI", "name": "Tower of Inception", "diff": 1091, "places": [["JToH", "Ring 4"]]},
-  {"id": 38, "abbr": "ToAM", "name": "Tower of Augmented Misery", "diff": 1100, "places": [["JToH", "Ring 9"]]},
+  {"id": 38, "abbr": "ToAM", "name": "Tower of Augmented Misery", "diff": 987, "places": [["JToH", "Ring 9"]]},
   {"id": 39, "abbr": "ToGF", "name": "Tower of Generation Failure", "diff": 1118, "places": [["JToH", "Ring 8"]]},
   {"id": 40, "abbr": "ToEMP", "name": "Tower of Empty Meaningless Patterns", "diff": 1133, "places": [["JToH", "Zone 9"]]},
   {"id": 41, "abbr": "ToDIE", "name": "Tower of Descent Into Exile", "diff": 1142, "places": [["JToH", "Zone 8"], ["AToS", "Ring 8"]]},
