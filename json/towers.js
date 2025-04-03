@@ -36,7 +36,7 @@ all_towers = [
   {"id": 35, "abbr": "ToUA", "name": "Tower of Uncanny Agony", "diff": 1067, "places": [["JToH", "Zone 7"]]},
   {"id": 36, "abbr": "ToWWW", "name": "Tower of Wildly Wacky Wonders", "diff": 1081, "places": [["JToH", "Zone 9"]]},
   {"id": 37, "abbr": "ToI", "name": "Tower of Inception", "diff": 1091, "places": [["JToH", "Ring 4"]]},
-  {"id": 38, "abbr": "ToAM", "name": "Tower of Augmented Misery", "diff": 987, "places": [["JToH", "Ring 9"]]},
+  {"id": 38, "abbr": "ToAM", "name": "Tower of Augmented Misery", "diff": 1100, "places": [["JToH", "Ring 9"]]},
   {"id": 39, "abbr": "ToGF", "name": "Tower of Generation Failure", "diff": 1118, "places": [["JToH", "Ring 8"]]},
   {"id": 40, "abbr": "ToEMP", "name": "Tower of Empty Meaningless Patterns", "diff": 1133, "places": [["JToH", "Zone 9"]]},
   {"id": 41, "abbr": "ToDIE", "name": "Tower of Descent Into Exile", "diff": 1142, "places": [["JToH", "Zone 8"], ["AToS", "Ring 8"]]},
@@ -633,7 +633,7 @@ all_towers = [
   {"id": 632, "abbr": "ToSoTT", "name": "Tower of Sat on The Toe", "diff": 872, "places": [["ToS", "Gras Ville"]]},
   {"id": 633, "abbr": "ToIS", "name": "Tower of Irritating Structures", "diff": 911, "places": [["AlToH", "Layer 1"]]},
   {"id": 634, "abbr": "ToHoP", "name": "Tower of Hop on Pop", "diff": 944, "places": [["ToS", "Jongular Jungle"]]},
-  {"id": 635, "abbr": "SoCLG", "name": "Steeple of Constant Ledge Grabbing", "diff": 982, "places": [["AlToH", "Layer 1"]]},
+  {"id": 635, "abbr": "SoCLG", "name": "Steeple of Consistent Ledge Grabbing", "diff": 982, "places": [["AlToH", "Layer 1"]]},
   {"id": 636, "abbr": "ToBD", "name": "Tower of Bad Design", "diff": 1074, "places": [], "game": "https://www.roblox.com/games/17661251039/Tower-of-Bad-Design"},
   {"id": 637, "abbr": "ToSH", "name": "Tower of Spicy Headcream", "diff": 1135, "places": [["ToS", "Gras Ville"]]},
   {"id": 638, "abbr": "ToVV", "name": "Tower of Vice Versa", "diff": 854, "places": [], "game": "https://www.roblox.com/games/9197520715/Tower-of-Vice-Versa"},
@@ -649,5 +649,9 @@ all_towers = [
   {"id": 648, "abbr": "ToDC:IR", "name": "Tower of Difficulty Chart: It_Near's Revamp", "diff": 975, "places": [], "game": "https://www.roblox.com/games/2392347276/Tower-of-Difficulty-Chart"},
   {"id": 649, "abbr": "ToSP", "name": "Tower of Sorrowful Purgatory", "diff": 1011, "places": [["VToA", "Destination 1"]]},
   {"id": 650, "abbr": "CoSM", "name": "Citadel of Strategic Mechanics", "diff": 1024, "places": [], "game": "https://www.roblox.com/games/12873539596/Citadel-of-Strategic-Mechanics"},
-  {"id": 651, "abbr": "ToRA", "name": "Tower of Relentless Attitude", "diff": 1086, "places": [], "game": "https://www.roblox.com/games/95925543574227/Relentless-Altitude-Legit-Mode"}
+  {"id": 651, "abbr": "ToRA", "name": "Tower of Relentless Attitude", "diff": 1086, "places": [], "game": "https://www.roblox.com/games/95925543574227/Relentless-Altitude-Legit-Mode"},
+  {"id": 652, "abbr": "ToT", "name": "Tower of Thje", "diff": 897, "places": [["ZToA", "April Fools 2025"]], "game": "https://www.roblox.com/games/126767416014012/Tower-of-Thje"},
+  {"id": 653, "abbr": "TogM", "name": "Tower of g Möller", "diff": 931, "places": [["JToH", "April Fools 2025"]]},
+  {"id": 654, "abbr": "SoT&T", "name": "Steeple of Tombs & Torture", "diff": 954, "places": [["JToH", "April Fools 2025"]]},
+  {"id": 655, "abbr": "CoW", "name": "Citadel of Walkies", "diff": 976, "places": [["JToH", "April Fools 2025"]]}
 ]
