@@ -653,5 +653,9 @@ all_towers = [
   {"id": 652, "abbr": "ToT", "name": "Tower of Thje", "diff": 897, "places": [["ZToA", "April Fools 2025"]], "game": "https://www.roblox.com/games/126767416014012/Tower-of-Thje"},
   {"id": 653, "abbr": "TogM", "name": "Tower of g Möller", "diff": 931, "places": [["JToH", "April Fools 2025"]]},
   {"id": 654, "abbr": "SoT&T", "name": "Steeple of Tombs & Torture", "diff": 954, "places": [["JToH", "April Fools 2025"]]},
-  {"id": 655, "abbr": "CoW", "name": "Citadel of Walkies", "diff": 976, "places": [["JToH", "April Fools 2025"]]}
+  {"id": 655, "abbr": "CoW", "name": "Citadel of Walkies", "diff": 976, "places": [["JToH", "April Fools 2025"]]},
+  {"id": 656, "abbr": "ToRVAI", "name": "Tower of Really Very Artificial Inspiration", "diff": 870, "places": [["JToH", "April Fools 2025"]]},
+  {"id": 657, "abbr": "ToTT", "name": "Tower of Thje Toilet", "diff": 1195, "places": [], "game": "https://www.roblox.com/games/85719069705358/Tower-of-Thje-Toilet"},
+  {"id": 658, "abbr": "ToTtSG", "name": "Tower of Time to Say Goodbye", "diff": 1202, "places": [], "game": "https://www.roblox.com/games/88342523101254/Tower-of-Time-to-Say-Goodbye-TV-Size"},
+  {"id": 659, "abbr": "ToZT", "name": "Tower of Zettai-Tekina", "diff": 1247, "places": [], "game": "https://www.roblox.com/games/14206274864/Tower-of-Zettai-Tekina"}
 ]
