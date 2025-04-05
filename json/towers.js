@@ -625,7 +625,7 @@ all_towers = [
   {"id": 624, "abbr": "ToPCA", "name": "Tower of Perebas CumpleAnos", "diff": 992, "places": [["AToS", "April Fools 2024"], ["WBT", "Area 2"]]},
   {"id": 625, "abbr": "ToSM", "name": "Tower of Sandy Meat", "diff": 1084, "places": [], "game": "https://www.roblox.com/games/81951569121171/Tower-of-Sandy-Meat"},
   {"id": 626, "abbr": "SoSC", "name": "Steeple of Sophisticated Challenges", "diff": 1107, "places": [["WBT", "Area 2"]]},
-  {"id": 627, "abbr": "SoSS", "name": "Steeple of Sunny Scenes", "diff": 807, "places": [["AlToH", "Layer 1"]]},
+  {"id": 627, "abbr": "SoSS", "name": "Steeple of Sunny Scenes", "diff": 801, "places": [["AlToH", "Layer 1"]]},
   {"id": 628, "abbr": "ToM", "name": "Tower of Mad", "diff": 814, "places": [["ToS", "Logan Lagoon"]]},
   {"id": 629, "abbr": "ToCA", "name": "Tower of Cartoony Architecture", "diff": 819, "places": [["AlToH", "Layer 1"]]},
   {"id": 630, "abbr": "ToEL", "name": "Tower of Eroding Layers", "diff": 825, "places": [["TTP", "Ring 1"]]},
@@ -657,5 +657,7 @@ all_towers = [
   {"id": 656, "abbr": "ToRVAI", "name": "Tower of Really Very Artificial Inspiration", "diff": 870, "places": [["JToH", "April Fools 2025"]]},
   {"id": 657, "abbr": "ToTT", "name": "Tower of Thje Toilet", "diff": 1195, "places": [], "game": "https://www.roblox.com/games/85719069705358/Tower-of-Thje-Toilet"},
   {"id": 658, "abbr": "ToTtSG", "name": "Tower of Time to Say Goodbye", "diff": 1202, "places": [], "game": "https://www.roblox.com/games/88342523101254/Tower-of-Time-to-Say-Goodbye-TV-Size"},
-  {"id": 659, "abbr": "ToZT", "name": "Tower of Zettai-Tekina", "diff": 1247, "places": [], "game": "https://www.roblox.com/games/14206274864/Tower-of-Zettai-Tekina"}
+  {"id": 659, "abbr": "ToZT", "name": "Tower of Zettai-Tekina", "diff": 1247, "places": [], "game": "https://www.roblox.com/games/14206274864/Tower-of-Zettai-Tekina"},
+  {"id": 660, "abbr": "ToSPT", "name": "Tower of Super Probably Tower", "diff": 808, "places": [["AHoSCT", "Spot 4"]]},
+  {"id": 661, "abbr": "ToC3", "name": "Tower of Colon 3", "diff": 867, "places": [["AToS", "April Fools 2025"]]}
 ]
