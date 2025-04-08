@@ -235,7 +235,7 @@ all_towers = [
   {"id": 234, "abbr": "ToSF:SN", "name": "Tower of Spiralling Fates: Super Nerf", "diff": 1043, "places": [["ATS", "Ring 1"]]},
   {"id": 235, "abbr": "ToSaFT", "name": "Tower of Short and Fatal Trouble", "diff": 1046, "places": [], "game": "https://www.roblox.com/games/13781276177/Tower-of-Short-and-Fatal-Trouble-TTT"},
   {"id": 236, "abbr": "ToTC", "name": "Tower of Thje Corner", "diff": 1059, "places": [], "game": "https://www.roblox.com/games/11964777492/tower-of-thje-corner"},
-  {"id": 237, "abbr": "ToUC", "name": "Tower of Un Ca", "diff": 1144, "places": [], "game": "https://www.roblox.com/games/9454260129/Tower-of-Un-Ca"},
+  {"id": 237, "abbr": "ToUC", "name": "Tower of Un Ca", "diff": 1144, "places": [["AHoSCT", "Spot 4"]], "game": "https://www.roblox.com/games/9454260129/Tower-of-Un-Ca"},
   {"id": 238, "abbr": "ToTDTHL:SN", "name": "Tower of The Drive Towards Human Limits: Super Nerf", "diff": 1152, "places": [["ATS", "Ring 3"]]},
   {"id": 239, "abbr": "ToTWV", "name": "Tower of The Wedge's Vengeance", "diff": 1168, "places": [], "game": "https://www.roblox.com/games/10196698433/Tower-of-The-Wedges-Vengeance"},
   {"id": 240, "abbr": "ToSA", "name": "Tower of Spatial Awareness", "diff": 1245, "places": [["CTT", "Domain 1"]]},
@@ -520,7 +520,7 @@ all_towers = [
   {"id": 519, "abbr": "ToCOA", "name": "Tower of Challenging Obstacle Anarchy", "diff": 1225, "places": [["AHoSCT", "Spot 1"]]},
   {"id": 520, "abbr": "ToPE", "name": "Tower of Perpetual Eccentricity", "diff": 804, "places": [["AHoSCT", "Spot 4"]]},
   {"id": 521, "abbr": "ToQQ", "name": "Tower of Quarrelsome Quarters", "diff": 980, "places": [["AHoSCT", "Spot 4"]]},
-  {"id": 522, "abbr": "ToROMW", "name": "Tower of Rain On My World", "diff": 858, "places": [["JToH", "Zone 10"]], "game": "https://www.roblox.com/games/16724768882/tower-of-rain-on-my-world"},
+  {"id": 522, "abbr": "ToROMW", "name": "Tower of Rain on My World", "diff": 858, "places": [["JToH", "Zone 10"]], "game": "https://www.roblox.com/games/16724768882/tower-of-rain-on-my-world"},
   {"id": 523, "abbr": "ToARS", "name": "Tower of Au Revoir, Sunset", "diff": 871, "places": [], "game": "https://www.roblox.com/games/14068555139/Tower-of-Au-Revoir-Sunset"},
   {"id": 524, "abbr": "ToBO", "name": "Tower of Being Outdoors", "diff": 902, "places": [], "game": "https://www.roblox.com/games/6884408311/Tower-of-Being-Outdoors-REVAMPED"},
   {"id": 525, "abbr": "ToSEP", "name": "Tower of Sukhavati Eternal Paradise", "diff": 806, "places": [], "game": "https://www.roblox.com/games/10976704228/Sukhavati-Eternal-Paradise"},    
@@ -659,5 +659,11 @@ all_towers = [
   {"id": 658, "abbr": "ToTtSG", "name": "Tower of Time to Say Goodbye", "diff": 1202, "places": [], "game": "https://www.roblox.com/games/88342523101254/Tower-of-Time-to-Say-Goodbye-TV-Size"},
   {"id": 659, "abbr": "ToZT", "name": "Tower of Zettai-Tekina", "diff": 1247, "places": [], "game": "https://www.roblox.com/games/14206274864/Tower-of-Zettai-Tekina"},
   {"id": 660, "abbr": "ToSPT", "name": "Tower of Super Probably Tower", "diff": 808, "places": [["AHoSCT", "Spot 4"]]},
-  {"id": 661, "abbr": "ToC3", "name": "Tower of Colon 3", "diff": 867, "places": [["AToS", "April Fools 2025"]]}
+  {"id": 661, "abbr": "ToC3", "name": "Tower of Colon 3", "diff": 867, "places": [["AToS", "April Fools 2025"]]},
+  {"id": 662, "abbr": "ToCRS", "name": "Tower of Class Resident Storage", "diff": 807, "places": [["JToH", "April Fools 2025"]]},
+  {"id": 663, "abbr": "ToSIC", "name": "Tower of Scarred, Infernal Calamity", "diff": 873, "places": [], "game": "https://www.roblox.com/games/14826795394/Tower-of-Scarred-Infernal-Calamity"},
+  {"id": 664, "abbr": "ToBIGFAIL", "name": "Tower of BIG IGB GIB FAIL AILF ILFA LFAI", "diff": 894, "places": [["JToH", "April Fools 2025"]]},
+  {"id": 665, "abbr": "SoUO", "name": "Steeple of Unyielding Obsession", "diff": 953, "places": [["AlToH", "April Fools 2025"]]},
+  {"id": 666, "abbr": "ToGM", "name": "Tower of Game Mn", "diff": 962, "places": [], "game": "https://www.roblox.com/games/87153809298710/Tower-of-Game-Mn-itemless"},
+  {"id": 667, "abbr": "ToMDF", "name": "Tower of Multiple Different Fates", "diff": 978, "places": [["AlToH", "April Fools 2025"]]}
 ]
