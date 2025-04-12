@@ -234,8 +234,8 @@ all_towers = [
   {"id": 233, "abbr": "CoTEC:SN", "name": "Citadel of The Eternal Calamity: Super Nerf", "diff": 1003, "places": [["ATS", "Ring 1"]]},
   {"id": 234, "abbr": "ToSF:SN", "name": "Tower of Spiralling Fates: Super Nerf", "diff": 1043, "places": [["ATS", "Ring 1"]]},
   {"id": 235, "abbr": "ToSaFT", "name": "Tower of Short and Fatal Trouble", "diff": 1046, "places": [], "game": "https://www.roblox.com/games/13781276177/Tower-of-Short-and-Fatal-Trouble-TTT"},
-  {"id": 236, "abbr": "ToTC", "name": "Tower of Thje Corner", "diff": 1059, "places": [], "game": "https://www.roblox.com/games/11964777492/tower-of-thje-corner"},
-  {"id": 237, "abbr": "ToUC", "name": "Tower of Un Ca", "diff": 1144, "places": [["AHoSCT", "Spot 4"]], "game": "https://www.roblox.com/games/9454260129/Tower-of-Un-Ca"},
+  {"id": 236, "abbr": "ToTC", "name": "Tower of Thje Corner", "diff": 1059, "places": [["AHoSCT", "Spot 4"]], "game": "https://www.roblox.com/games/11964777492/tower-of-thje-corner"},
+  {"id": 237, "abbr": "ToUC", "name": "Tower of Un Ca", "diff": 1144, "places": [], "game": "https://www.roblox.com/games/9454260129/Tower-of-Un-Ca"},
   {"id": 238, "abbr": "ToTDTHL:SN", "name": "Tower of The Drive Towards Human Limits: Super Nerf", "diff": 1152, "places": [["ATS", "Ring 3"]]},
   {"id": 239, "abbr": "ToTWV", "name": "Tower of The Wedge's Vengeance", "diff": 1168, "places": [], "game": "https://www.roblox.com/games/10196698433/Tower-of-The-Wedges-Vengeance"},
   {"id": 240, "abbr": "ToSA", "name": "Tower of Spatial Awareness", "diff": 1245, "places": [["CTT", "Domain 1"]]},
@@ -487,7 +487,7 @@ all_towers = [
   {"id": 486, "abbr": "ToWM:N", "name": "Tower of Water Melon: Nerf", "diff": 1060, "places": [["PoM:N", "Ring 1"]]},
   {"id": 487, "abbr": "ToPN", "name": "Tower of Penultimate Nostalgia", "diff": 1063, "places": [], "game": "https://www.roblox.com/games/12917426906/Tower-of-Penultimate-Nostalgia"},
   {"id": 488, "abbr": "ToDU", "name": "Tower of Double Up", "diff": 1064, "places": [["AHoSCT", "Spot 3"]]},
-  {"id": 489, "abbr": "ToCP:DC", "name": "Tower of Cruel Punishment: Difficulty Chart", "diff": 1069, "places": [], "game": "https://www.roblox.com/games/6745466620/Tower-of-Cruel-Punishment-Difficulty-Chart"},
+  {"id": 489, "abbr": "ToTWHE", "name": "Tower of The Walls Have Eyes", "diff": 832, "places": [], "game": "https://www.roblox.com/games/131158987928305/Tower-of-The-Walls-Have-Eyes"},
   {"id": 490, "abbr": "ToTRP:N", "name": "Tower of The Roof's Pique: Nerf", "diff": 1072, "places": [["PoM:N", "Ring 1"]]},
   {"id": 491, "abbr": "ToEV:N", "name": "Tower of Eternal Void: Nerf", "diff": 1088, "places": [["PoM:N", "Ring 1"]]},
   {"id": 492, "abbr": "ToBF:N", "name": "Tower of Blind Fate: Nerf", "diff": 1101, "places": [["PoM:N", "Ring 1"]]},
@@ -665,5 +665,5 @@ all_towers = [
   {"id": 664, "abbr": "ToBIGFAIL", "name": "Tower of BIG IGB GIB FAIL AILF ILFA LFAI", "diff": 894, "places": [["JToH", "April Fools 2025"]]},
   {"id": 665, "abbr": "SoUO", "name": "Steeple of Unyielding Obsession", "diff": 953, "places": [["AlToH", "April Fools 2025"]]},
   {"id": 666, "abbr": "ToGM", "name": "Tower of Game Mn", "diff": 962, "places": [], "game": "https://www.roblox.com/games/87153809298710/Tower-of-Game-Mn-itemless"},
-  {"id": 667, "abbr": "ToMDF", "name": "Tower of Multiple Different Fates", "diff": 978, "places": [["AlToH", "April Fools 2025"]]}
+  {"id": 667, "abbr": "ToMDF", "name": "Tower of Multiple Different Fates", "diff": 978, "places": [["AlToH", "April Fools 2025"]]},
 ]
