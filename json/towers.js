@@ -398,7 +398,7 @@ all_towers = [
   {"id": 397, "abbr": "ToGAR", "name": "Tower of Going Against Reality", "diff": 997, "places": [["CTT", "Domain 1"]]},
   {"id": 398, "abbr": "ToMT:GBJ", "name": "Tower of Mean Tasks: GBJ Edition", "diff": 999, "places": [["JToH", "Ring 8"]]},
   {"id": 399, "abbr": "ToMT", "name": "Tower of Mark Tower", "diff": 1004, "places": [], "game": "https://www.roblox.com/games/11709267392/Tower-Of-Mark-Tower"},
-  {"id": 400, "abbr": "ToBP", "name": "Tower of Blast Power", "diff": 1006, "places": [["JToH", "Zone 10"], ["CTT", "Domain 1"]]},
+  {"id": 400, "abbr": "ToBP", "name": "Tower of Blast Power", "diff": 966, "places": [["JToH", "Zone 10"]]},
   {"id": 401, "abbr": "ToCC", "name": "Tower of Corrupting Consequences", "diff": 1010, "places": [["ZToA", "Regret's Cave"]]},
   {"id": 402, "abbr": "ToMD", "name": "Tower of Metropolis Downpour", "diff": 1011, "places": [["PToH", "Ring 5"]]},
   {"id": 403, "abbr": "ToCA", "name": "Tower of Chromatic Acrimony", "diff": 1014, "places": [], "game": "https://www.roblox.com/games/15856245390/Tower-of-Chromatic-Acrimony-AToS-Vers"},
@@ -666,4 +666,12 @@ all_towers = [
   {"id": 665, "abbr": "SoUO", "name": "Steeple of Unyielding Obsession", "diff": 953, "places": [["AlToH", "April Fools 2025"]]},
   {"id": 666, "abbr": "ToGM", "name": "Tower of Game Mn", "diff": 962, "places": [], "game": "https://www.roblox.com/games/87153809298710/Tower-of-Game-Mn-itemless"},
   {"id": 667, "abbr": "ToMDF", "name": "Tower of Multiple Different Fates", "diff": 978, "places": [["AlToH", "April Fools 2025"]]},
+  {"id": 668, "abbr": "ToSITN", "name": "Tower of Suffering In The Night", "diff": 816, "places": [["FToH", "Area 1"]]},
+  {"id": 669, "abbr": "ToTV", "name": "Tower of Thinning Vengeance", "diff": 835, "places": [], "game": "https://www.roblox.com/games/12645408688/ToTL-R-Tower-of-Thinning-Vengeance"}, 
+  {"id": 670, "abbr": "ToLI", "name": "Tower of Luxuriant Interference", "diff": 842, "places": [], "game": "https://www.roblox.com/games/8743786340/Tower-of-Luxuriant-Interference"}, 
+  {"id": 671, "abbr": "SoBC", "name": "Steeple of Blood Clot", "diff": 881, "places": [["TCT", "Halloween 2024"]]},
+  {"id": 672, "abbr": "ToHA", "name": "Tower of Hollow Augmentations", "diff": 918, "places": [], "game": "https://www.roblox.com/games/15032517362/Hollow-Augmentations-ToHR-Classic"},
+  {"id": 673, "abbr": "ToHD", "name": "Tower of Hopeless Defeat", "diff": 936, "places": [["FToH", "Area 1"]]},
+  {"id": 674, "abbr": "ToTFoR", "name": "Tower of The Flag of Rebellion", "diff": 970, "places": [], "game": "https://www.roblox.com/games/80503445372820/The-Flag-of-Rebellion"},      
+  {"id": 675, "abbr": "ToBP:C", "name": "Tower of Blast Power: Classic", "diff": 1006, "places": [["CTT", "Domain 1"]]}
 ]
