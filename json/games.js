@@ -14,6 +14,7 @@ var all_games = [
   {"abbr": "DEToH", "name": "Democratically Elected Towers of Hell", "link": "https://www.roblox.com/games/116948649505593/Alpha-DEToH"},
   {"abbr": "EAT", "name": "Eloi's Artistic Towers", "link": "https://www.roblox.com/games/10192639557/Elois-Artistic-Towers"},
   {"abbr": "EToE", "name": "Exwum's Towers of Expertise", "link": "https://www.roblox.com/games/6211616001/Exwums-Towers-of-Expertise"},
+  {"abbr": "FToH", "name": "Flare's Towers of Hell", "link": "https://www.roblox.com/games/9403208410/Flares-Towers-of-Hell"},
   {"abbr": "JToH", "name": "Juke's Towers of Hell", "link": "https://www.roblox.com/games/8562822414/Jukes-Towers-of-Hell"},
   {"abbr": "JXL", "name": "JToH XL", "link": "https://www.roblox.com/games/13218032675/JToH-XL"},
   {"abbr": "JXS", "name": "JToH XS Project", "link": "https://www.roblox.com/games/18358123333/JToH-XS-Project"},
