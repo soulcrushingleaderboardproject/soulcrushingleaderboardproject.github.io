@@ -1,7 +1,6 @@
 var all_games = [
   {"abbr": "ACT", "name": "Addison's Classic Towers", "link": "https://www.roblox.com/games/6851369199/Addisons-Classic-Towers"},
   {"abbr": "AHoSCT", "name": "Azi's House of Soul Crushing Towers", "link": "https://www.roblox.com/games/83360243495088/ToPD-ToNCL-Azis-House-of-Soul-Crushing-Towers"},
-  {"abbr": "AlToH", "name": "AlexIBT's Towers of Hecc", "link": "https://www.roblox.com/games/72580264480229/RELEASE-AlexIBTs-Towers-of-Hecc"},
   {"abbr": "ATM", "name": "Anno's Tantrum Machine", "link": "https://www.roblox.com/games/14155809913/Annos-Tantrum-Machine"},
   {"abbr": "AToBM", "name": "Andr's Towers of Bruh Moments", "link": "https://www.roblox.com/games/11300875374/CHRISTMAS-Andrs-Towers-of-Bruh-Moments"},
   {"abbr": "AToH", "name": "Aspetic's Towers of Hardness", "link": "https://www.roblox.com/games/5902053520/Aspetics-Tower-of-Hardness"},
@@ -39,5 +38,6 @@ var all_games = [
   {"abbr": "TWR$", "name": "Tower$", "link": "https://www.roblox.com/games/13594795843/Tower"},
   {"abbr": "VToA", "name": "Vi's Towers of Anguish", "link": "https://www.roblox.com/games/18651848312/CoST-RELEASE-Vis-Towers-of-Anguish"},
   {"abbr": "WBT", "name": "World's Best Towers", "link": "https://www.roblox.com/games/6456404072/Worlds-Best-Towers"},
-  {"abbr": "ZToA", "name": "Zee's Towers of Anger", "link": "https://www.roblox.com/games/5630198391/ToCUP-Zees-Towers-of-Anger-Reborn"}
+  {"abbr": "ZToA", "name": "Zee's Towers of Anger", "link": "https://www.roblox.com/games/5630198391/ToCUP-Zees-Towers-of-Anger-Reborn"},
+  {"abbr": "ZToH", "name": "Zektrix's Towers of Hecc", "link": "https://www.roblox.com/games/72580264480229/RELEASE-AlexIBTs-Towers-of-Hecc"},
 ]
