@@ -1,188 +1,227 @@
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
+
 html {
-  font-size: 20px;
-  background: #161820;
-  color: #FFFFFF;
-  font-family: "Montserrat", sans-serif;
-  letter-spacing: 1;
-  overflow: hidden;
-  height: 100%;
+    font-size: 20px;
+    background: #161820;
+    color: #FFFFFF;
+    font-family: "Montserrat", sans-serif;
+    letter-spacing: 1;
+    overflow: hidden;
+    height: 100%;
 }
+
 ::placeholder, input, #game-select {
-  color: #FFFFFF;
-  font-family: "Montserrat", sans-serif;
-  letter-spacing: 1;
+    color: #FFFFFF;
+    font-family: "Montserrat", sans-serif;
+    letter-spacing: 1;
 }
+
 input[type=checkbox] {
-  width: 20px;
-  height: 20px;
-  vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
 }
+
 a {
-  color: #FFFFFF;
+    color: #FFFFFF;
 }
+
 button {
-  cursor: pointer;
+    cursor: pointer;
 }
+
 span {
-  display: inline-block;
-  width: 3rem;
-  text-align: right;
-  padding-right: 10px;
+    display: inline-block;
+    width: 3rem;
+    text-align: right;
+    padding-right: 10px;
 }
+
 #main {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
+
 #tower-lookup-page, #leaderboard-page {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: row;
-  height: calc(100% - 40px);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    height: calc(100% - 40px);
 }
+
 #sclp-tower-search, #sclp-player-search, #search-button, #checklist-player, #game-select {
-  display: inline-block;
-  vertical-align: middle;
-  border: none;
-  border-radius: 8px;
-  height: 36px;
-  font-size: 20px;
-  background: #505A64;
-  padding: 2px;
+    display: inline-block;
+    vertical-align: middle;
+    border: none;
+    border-radius: 8px;
+    height: 36px;
+    font-size: 20px;
+    background: #505A64;
+    padding: 2px;
 }
+
 #info-button {
-  display: inline-block;
-  vertical-align: middle;
-  border: none;
-  border-radius: 8px;
-  font-size: 20px;
-  background: #00000090;
-  color: #FFFFFF;
-  font-family: "Montserrat", sans-serif;
+    display: inline-block;
+    vertical-align: middle;
+    border: none;
+    border-radius: 8px;
+    font-size: 20px;
+    background: #00000090;
+    color: #FFFFFF;
+    font-family: "Montserrat", sans-serif;
 }
+
 #seamless-button {
-  background: transparent;
-  border: none;
-  font-size: 20px;
-  color: #FFFFFF;
-  font-family: "Montserrat", sans-serif;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    color: #FFFFFF;
+    font-family: "Montserrat", sans-serif;
 }
+
 #tower-button, #player-button {
-  font-size: 20px;
-  border-radius: 8px;
-  background: #00000000;
-  color: #FFFFFF;
-  border: none;
-  font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    border-radius: 8px;
+    background: #00000000;
+    color: #FFFFFF;
+    border: none;
+    font-family: "Montserrat", sans-serif;
 }
+
 #player-button {
-  width: 15em;
-  text-align: left;
+    width: 15em;
+    text-align: left;
 }
+
 #tower-button-crossed {
-  font-size: 20px;
-  border-radius: 8px;
-  background: #00000000;
-  color: #FFFFFF20;
-  border: none;
-  font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    border-radius: 8px;
+    background: #00000000;
+    color: #FFFFFF20;
+    border: none;
+    font-family: "Montserrat", sans-serif;
 }
+
 #tower-button:hover, #tower-button-crossed:hover, #player-button:hover {
-  background: #363840;
+    background: #363840;
 }
+
 .difficulty-display {
-  width: 8em;
-  text-align: right;
+    width: 8em;
+    text-align: right;
 }
+
 #item {
-  border-radius: 8px;
-  padding: 6px;
-  font-size: 20px;
-  background: #00000000;
+    border-radius: 8px;
+    padding: 6px;
+    font-size: 20px;
+    background: #00000000;
 }
+
 #big {
-  font-size: 30px;
+    font-size: 30px;
 }
+
 #small {
-  font-size: 15px;
+    font-size: 15px;
 }
+
 #searchmenu, #leaderboard, #player-data {
-  overflow-y: scroll;
-  flex-grow: 1;
+    overflow-y: scroll;
+    flex-grow: 1;
 }
+
 #navigation {
-  background: #505A64;
-  width: 100%;
-  margin: 0px;
+    background: #505A64;
+    width: 100%;
+    margin: 0px;
 }
+
 #left {
-  flex: 45%;
-  padding: 5px;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+    flex: 45%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
+
 #right {
-  flex: 55%;
-  padding: 5px;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+    flex: 55%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
+
 #extra-data, #player-data {
-  width: 100%;
-  flex-grow: 1;
-  border-radius: 8px;
-  padding: 8px;
-  font-size: 20px;
-  background: #101214;
+    width: 100%;
+    flex-grow: 1;
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 20px;
+    background: #101214;
 }
+
 #player-data {
-  overflow-y: scroll;
+    overflow-y: scroll;
 }
+
 #options {
-  display: inline;
+    display: inline;
 }
+
 p {
-  margin-top: 5px;
-  margin-bottom: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
+
 #Insane {
-  color: #003FFF;
+    color: #003FFF;
 }
+
 #Extreme {
-  color: #009FFF;
+    color: #009FFF;
 }
+
 #Terrifying {
-  color: #00FFFF;
+    color: #00FFFF;
 }
+
 #Catastrophic {
-  color: #FFFFFF;
+    color: #FFFFFF;
 }
+
 #Horrific {
-  color: #ECB2FA;
+    color: #ECB2FA;
 }
+
 #Unreal {
-  color: #9F3FFF;
+    color: #9F3FFF;
 }
+
 #Nil {
-  color: #797981;
+    color: #797981;
 }
+
 #owner {
-  color: #6AC;
+    color: #6AC;
 }
+
 #co-owner {
-  color: #48A;
+    color: #48A;
 }
+
 #manager {
-  color: #C6A;
+    color: #C6A;
 }
+
 #trial {
-  color: #CA6;
+    color: #CA6;
 }
+
 #former {
-  color: #6C6;
+    color: #6C6;
 }
