@@ -208,21 +208,25 @@ p {
 }
 
 #owner {
-    color: #6AC;
+    color: #1abc9c;
 }
 
 #co-owner {
-    color: #48A;
+    color: #0f806a;
+}
+
+#developers {
+    color: #315528;
 }
 
 #managers {
-    color: #C6A;
+    color: #9b59b6;
 }
 
 #trial-staff {
-    color: #CA6;
+    color: #f5e5a4;
 }
 
 #former-staff {
-    color: #6C6;
+    color: #49559e;
 }
