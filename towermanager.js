@@ -1,3 +1,15 @@
+const credits = {
+    "Owner": ["thej10n"],
+    "Co-Owner": ["Z_Exzer"],
+    "Managers": ["XChocolateMLGX", "vt_et", "Spitfire_YT5", "jumper101110", "ThePhantomDevil666", "jarofjam_14", "DJdestroyer916539"],
+    "Trial Staff": ["..."],
+    "Former Staff": ["arthraix"]
+}
+
+for (let [role, users] of Object.entries(credits)) {
+    g("credits").innerHTML += `<h3><div id="${role.toLowerCase().replaceAll(" ", "-")}">[${role}]</div>${users.join(", ")}</h3>`;
+}
+
 all_towers.sort((a, b) => b["id"] - a["id"]);
 all_towers.sort((a, b) => b["diff"] - a["diff"]);
 for (t = 0; t < all_towers.length; t++) {
