@@ -74,12 +74,13 @@ span {
     font-family: "Montserrat", sans-serif;
 }
 
-#seamless-button {
+.seamless-button {
     background: transparent;
     border: none;
     font-size: 20px;
     color: #FFFFFF;
     font-family: "Montserrat", sans-serif;
+    text-decoration: underline;
 }
 
 #tower-button, #player-button {
