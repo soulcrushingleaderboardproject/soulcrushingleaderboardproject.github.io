@@ -22,5 +22,9 @@ def static_files(filename):
     response.headers['Expires'] = '0'
     return response
 
+@app.route("/favicon.ico")
+def favicon():
+    return app.send_static_file("sclp.png")
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True, port=5000)
