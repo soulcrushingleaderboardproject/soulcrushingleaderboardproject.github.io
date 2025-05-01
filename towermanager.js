@@ -144,8 +144,7 @@ function get_victors(id) {
             victors += 1;
         }
     }
-    return v
-    ictors;
+    return victors;
 }
 function open_extra(id) {
     var tower = tower_from_id(id);
@@ -203,12 +202,6 @@ function list_towers() {
             t_rank = towers[i]["rank"];
             t_exp = towers[i]["exp"];
 
-            //if (is_valid_name && $("#color-checklist").prop("checked") && comp_data.includes(t_id)) {
-            //  t += "<div id='itemCompleted'>";
-            //} else {
-            //  t += "<div id='item" + difficulty_to_name(t_diff) + "'>";
-            //}
-
             t += "<div id='item'>";
             t += "<span id='" + difficulty_to_name(t_diff) + "'>#" + t_rank + "</span>";
             t += "<button id='tower-button' onclick='open_extra(" + t_id + ")'><b>" + t_name + "</b></button>";
@@ -217,21 +210,11 @@ function list_towers() {
                 t += "(" + format_difficulty(t_diff) + " - " + t_area[0][0] + " - " + t_exp + " EXP)</i>";
             }
             t += "</div>";
-
-            //t += "<button id='info-button' onclick='open_extra(" + t_id + ")'>+</button>"
-            //t += "<b> #" + t_rank + " </b>" + t_name;
-            //t += "<i id='small'> (";
-            //t += format_difficulty(t_diff) + " - " + format_location(t_area) + " - #" + t_rank;
-            //t += ")</i></p>";
         }
     }
     $("#searchmenu").html(t);
 }
 list_towers();
-
-
-
-
 
 // player leaderboard
 function player_from_name(name) {
@@ -263,7 +246,7 @@ function format_level(exp, level_only) {
     }
 
     if (level_only == true) {
-        return current_level - 1
+        return current_level - 1;
     } else {
         return (current_level - 1) + " (" + (exp - (total - last_exp)) + "/" + (150 + (25 * (current_level ** 2))) + ")";
     }
@@ -273,7 +256,7 @@ function get_total_exp(player) {
     c = player_from_name(player)["completions"];
     total_exp = 0;
     for (let comp_index = 0; comp_index < c.length; comp_index++) {
-        total_exp += tower_from_id(c[comp_index])["exp"]
+        total_exp += tower_from_id(c[comp_index])["exp"];
     }
     return total_exp;
 }
@@ -291,7 +274,7 @@ function psearch(s) {
 
 function get_towers_within_range(towers, minimum, maximum) {
     let towers_within_range = [];
-    for (i = 0; i < towers.length; i++) {
+    for (let i = 0; i < towers.length; i++) {
         if (minimum <= towers[i]["diff"] && towers[i]["diff"] <= maximum) {
             towers_within_range.push(towers[i]);
         }
@@ -301,7 +284,7 @@ function get_towers_within_range(towers, minimum, maximum) {
 
 function get_completed_data(c) {
     let c_data = [];
-    for (comp = 0; comp < c.length; comp++) {
+    for (let comp = 0; comp < c.length; comp++) {
         c_data.push(tower_from_id(c[comp]));
     }
     return c_data;
@@ -310,21 +293,14 @@ function get_completed_data(c) {
 function format_comps(c) {
     let f = "";
     let rank = 1;
-    let padding = c.length.toString().length;
 
-    for (t = 0; t < all_towers.length; t++) {
+    for (let t = 0; t < all_towers.length; t++) {
         if (c.includes(all_towers[t]["id"])) {
-            tower = all_towers[t];
+            let tower = all_towers[t];
 
             f += "<span id='" + difficulty_to_name(tower["diff"]) + "'>#" + tower["rank"] + "</span>";
             f += "<button id='tower-button' onclick='open_page(2);open_extra(" + tower["id"] + ")'><b>" + tower["name"] + "</b></button>";
             f += "<br>";
-
-            //f += "<b id=\"" + difficulty_to_name(tower["diff"]) + "\">[#" + "0".repeat(padding - rank.toString().length) + rank + "] </b>"
-            //f += "<b>(" + tower["abbr"] + ") </b>" + tower["name"];
-            //f += " <i id='small'>";
-            //f += format_difficulty(tower["diff"]) + " - #" + tower["rank"];
-            //f += "</i><br>";
             rank++;
         }
     }
@@ -374,23 +350,14 @@ function list_players() {
             p += "(" + p_comps.length + " SCs - " + p_exp + " Total EXP)</i>";
         }
         p += "</div>";
-
-        //p += "<b>[" + (i + 1) + "] </b>";
-        //p += p_name;
-        //p += " <button id='info-button' onclick='open_player(\"" + p_name + "\")'>+</button>";
-        //p += "<br><i id='small'>";
-        //p += p_comps.length + " Completions - " + p_exp + " EXP - Level " + format_level(p_exp) + " - #" + p_rank;
-        //p += "</i></div>";
     }
     $("#leaderboard").html(p);
 }
 list_players();
 
-
-
 // game links
 function game_from_abbr(abbr) {
-    for (gm = 0; gm < games.length; gm++) {
+    for (let gm = 0; gm < games.length; gm++) {
         if (abbr == games[gm]["abbr"]) {
             return games[gm];
         }
@@ -406,7 +373,6 @@ for (let i = 0; i < all_games.length; i++) {
 }
 $("#game-select").html(gm);
 
-
 $("#tower-lookup-page").hide();
 $("#leaderboard-page").hide();
 function open_page(page_num) {
@@ -416,7 +382,7 @@ function open_page(page_num) {
     $("#menu-page").hide();
     $("#tower-lookup-page").hide();
     $("#leaderboard-page").hide();
-    
+
     if (page_num == 1) {
         $("#menu-page").show();
     } else if (page_num == 2) {
