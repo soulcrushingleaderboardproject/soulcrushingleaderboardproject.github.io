@@ -326,19 +326,20 @@ function format_ratio(a, b) {
 
 function open_player(name) {
     var player = player_from_name(name);
-    var extra = "";
     var completion_link = "sclp.vercel.app?u=" + name;
-    extra += "<p id='big'><b>" + name + "</b></p>";
-    extra += "<br>Total EXP: " + player["exp"];
-    extra += "<br>Level: " + format_level(player["exp"]);
-    extra += "<br>Rank: #" + player["rank"];
-    extra += "<br><a href='https://" + completion_link + "'>" + completion_link + "</a>";
-    extra += "<br><br><b id='big'>Stats</b><br><br>";
-    extra += "<span class='difficulty-display'><b>TOTAL</b></span> " + format_ratio(player["completions"].length, all_towers.length);
+
+    var extra = `
+        <p id="big"><b>${name}</b></p>
+        <br>Total EXP: ${player["exp"]}
+        <br>Level: ${format_level(player["exp"])}
+        <br>Rank: #${player["rank"]}
+        <br><a href="https://${completion_link}">${completion_link}</a>
+        <br><br><b id='big'>Stats</b><br><br>
+        <span class='difficulty-display'><b>TOTAL</b></span> ${format_ratio(player["completions"].length, all_towers.length)}
+    `;
 
     for (let d = 8; d < 14; d++) {
-        extra += "<br><span id='" + difficulty_to_name(d * 100) + "' class='difficulty-display'>" + difficulty_to_name(d * 100) + "</span> " + 
-        format_ratio(get_towers_within_range(get_completed_data(player["completions"]), d * 100, (d * 100) + 99).length, get_towers_within_range(all_towers, d * 100, (d * 100) + 99).length);
+        extra += `<br><span id="${difficulty_to_name(d * 100)}" class="difficulty-display">${difficulty_to_name(d * 100)}</span> ${format_ratio(get_towers_within_range(get_completed_data(player["completions"]), d * 100, (d * 100) + 99).length, get_towers_within_range(all_towers, d * 100, (d * 100) + 99).length)}`;
     }
     
     extra += "<br><br><b id='big'>Completions</b><br><br>";
