@@ -381,7 +381,7 @@ let page_maps = {
     "Towers": "tower-lookup",
     "Leaderboard": "leaderboard"
 }
-for (let [k, v] of Object.entries(page_maps)) {
+for (let [k, _] of Object.entries(page_maps)) {
     $("#navigation").append(`<button class="seamless-button" onclick="open_page('${k}')">${k}</button>`);
 }
             
@@ -396,6 +396,6 @@ function open_page(page_name) {
 const url = window.location.search;
 const params = new URLSearchParams(url);
 if (params.get("u")) {
-    open_page(3);
+    open_page("Leaderboard");
     open_player(params.get("u"));
 }
