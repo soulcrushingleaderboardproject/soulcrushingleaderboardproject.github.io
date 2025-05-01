@@ -31,19 +31,19 @@
                 <div id="options">
                     <h1>The List</h1>
                     <input type="text" id="sclp-tower-search" placeholder="Search...">
-                    <button id="search-button" onclick="towers=search(g('sclp-tower-search').value);list_towers();">🔎</button>
+                    <button id="search-button" onclick="towers=search($('#sclp-tower-search').val());list_towers();">🔎</button>
                     <br><br>
-                    <input type="checkbox" id="diff-8" onclick="towers=search(g('sclp-tower-search').value);list_towers();" checked>Insane
-                    <input type="checkbox" id="diff-9" onclick="towers=search(g('sclp-tower-search').value);list_towers();" checked>Extreme
-                    <input type="checkbox" id="diff-10" onclick="towers=search(g('sclp-tower-search').value);list_towers();" checked>Terrifying
-                    <input type="checkbox" id="diff-11" onclick="towers=search(g('sclp-tower-search').value);list_towers();" checked>Catastrophic
-                    <input type="checkbox" id="diff-12" onclick="towers=search(g('sclp-tower-search').value);list_towers();" checked>Horrific
-                    <input type="checkbox" id="diff-13" onclick="towers=search(g('sclp-tower-search').value);list_towers();" checked>Unreal
+                    <input type="checkbox" id="diff-8" onclick="towers=search($('#sclp-tower-search').val());list_towers();" checked>Insane
+                    <input type="checkbox" id="diff-9" onclick="towers=search($('#sclp-tower-search').val());list_towers();" checked>Extreme
+                    <input type="checkbox" id="diff-10" onclick="towers=search($('#sclp-tower-search').val());list_towers();" checked>Terrifying
+                    <input type="checkbox" id="diff-11" onclick="towers=search($('#sclp-tower-search').val());list_towers();" checked>Catastrophic
+                    <input type="checkbox" id="diff-12" onclick="towers=search($('#sclp-tower-search').val());list_towers();" checked>Horrific
+                    <input type="checkbox" id="diff-13" onclick="towers=search($('#sclp-tower-search').val());list_towers();" checked>Unreal
                     <br>
                     Game: <select name="game-select" id="game-select"></select>
-                    <input type="checkbox" id="color-checklist" onclick="towers=search(g('sclp-tower-search').value);list_towers();">Color by checklist?
+                    <input type="checkbox" id="color-checklist" onclick="towers=search($('#sclp-tower-search').val());list_towers();">Color by checklist?
                     <input type="text" id="checklist-player" placeholder="Player...">
-                    <input type="checkbox" id="extra-tower-info" onclick="towers=search(g('sclp-tower-search').value);list_towers();">Show extra info
+                    <input type="checkbox" id="extra-tower-info" onclick="towers=search($('#sclp-tower-search').val());list_towers();">Show extra info
                 </div>
                 <div id="extra-data">Click on a tower to see extra info here</div>
             </div>
@@ -56,18 +56,18 @@
                 <div id="leaderboard-header">
                     <h1>The Top Obbyists</h1>
                     <input type="text" id="sclp-player-search" placeholder="Search...">
-                    <button id="search-button" onclick="completions=psearch(g('sclp-player-search').value);list_players();">🔎</button>
-                    <input type="checkbox" id="extra-player-info" onclick="completions=psearch(g('sclp-player-search').value);list_players();">Show extra info
+                    <button id="search-button" onclick="completions=psearch($('#sclp-player-search').val());list_players();">🔎</button>
+                    <input type="checkbox" id="extra-player-info" onclick="completions=psearch($('#sclp-player-search').val());list_players();">Show extra info
                 </div>
                 <div id="player-data">Click on a player to see extra info here</div>
             </div>
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="json/towers.js"></script>
     <script src="json/comps.js"></script>
     <script src="json/games.js"></script>
-
     <script src="towermanager.js"></script>
 </body>
 </html>

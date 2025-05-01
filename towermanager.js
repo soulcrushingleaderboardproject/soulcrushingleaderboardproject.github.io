@@ -7,7 +7,7 @@ const credits = {
 }
 
 for (let [role, users] of Object.entries(credits)) {
-    g("credits").innerHTML += `<h3><div id="${role.toLowerCase().replaceAll(" ", "-")}">[${role}]</div>${users.join(", ")}</h3>`;
+    $("#credits").append(`<h3><div id="${role.toLowerCase().replaceAll(" ", "-")}">[${role}]</div>${users.join(", ")}</h3>`);
 }
 
 all_towers.sort((a, b) => b["id"] - a["id"]);
@@ -29,18 +29,16 @@ for (player = 0; player < all_completions.length; player++) {
 }
 var completions = all_completions;
 var games = all_games;
-function g(element_id) {
-  return document.getElementById(element_id);
-}
-g("sclp-tower-search").addEventListener("keypress", function(event) {
+
+$("#sclp-tower-search").on("keypress", function(event) {
   if (event.key == "Enter") {
-    towers = search(g("sclp-tower-search").value);
+    towers = search($("#sclp-tower-search").val());
     list_towers();
   }
 })
-g("sclp-player-search").addEventListener("keypress", function(event) {
+$("#sclp-player-search").on("keypress", function(event) {
   if (event.key == "Enter") {
-    completions = psearch(g("sclp-player-search").value);
+    completions = psearch($("#sclp-player-search").val());
     list_players();
   }
 })
@@ -103,9 +101,9 @@ function is_tower_in_place(places, place) {
 function search(s) {
   new_towers = [];
   allowed_difficulties = [];
-  place_filter = g("game-select").value;
+  place_filter = $("#game-select").val();
   for (i = 8; i < 14; i++) {
-    if (g("diff-" + i).checked) {
+    if ($("#diff-" + i).prop("checked")) {
       allowed_difficulties.push(i);
     }
   }
@@ -149,15 +147,15 @@ function open_extra(id) {
   extra += "<br>EXP for completion: " + tower["exp"];
   extra += "<br>Victors: " + get_victors(id);
   extra += "<br><i id='small'>Tower ID: " + id + "</i>";
-  g("extra-data").innerHTML = extra;
+  $("#extra-data").html(extra);
 }
 function list_towers() {
   var t = "<br>";
-  var is_valid_name = player_from_name(g("checklist-player").value) != false;
+  var is_valid_name = player_from_name($("#checklist-player").val()) != false;
   if (is_valid_name) {
-    var comp_data = player_from_name(g("checklist-player").value)["completions"];
+    var comp_data = player_from_name($("#checklist-player").val())["completions"];
   }
-  if (is_valid_name && g("color-checklist").checked) {
+  if (is_valid_name && $("#color-checklist").prop("checked")) {
     for (i = 0; i < towers.length; i++) {
       t_id = towers[i]["id"];
       t_abbr = towers[i]["abbr"];
@@ -173,7 +171,7 @@ function list_towers() {
       } else {
         t += "<button id='tower-button' onclick='open_extra(" + t_id + ")'><b>" + t_name + "</b></button>"
       }
-      if (g("extra-tower-info").checked) {
+      if ($("#extra-tower-info").prop("checked")) {
         t += "<i id='small'><br><span></span>"
         t += "(" + format_difficulty(t_diff) + " - " + t_area[0][0] + " - " + t_exp + " EXP)</i>"
       }
@@ -189,7 +187,7 @@ function list_towers() {
       t_rank = towers[i]["rank"];
       t_exp = towers[i]["exp"];
   
-      //if (is_valid_name && g("color-checklist").checked && comp_data.includes(t_id)) {
+      //if (is_valid_name && $("#color-checklist").prop("checked") && comp_data.includes(t_id)) {
       //  t += "<div id='itemCompleted'>";
       //} else {
       //  t += "<div id='item" + difficulty_to_name(t_diff) + "'>";
@@ -198,7 +196,7 @@ function list_towers() {
       t += "<div id='item'>"
       t += "<span id='" + difficulty_to_name(t_diff) + "'>#" + t_rank + "</span>"
       t += "<button id='tower-button' onclick='open_extra(" + t_id + ")'><b>" + t_name + "</b></button>"
-      if (g("extra-tower-info").checked) {
+      if ($("#extra-tower-info").prop("checked")) {
         t += "<i id='small'><br><span></span>"
         t += "(" + format_difficulty(t_diff) + " - " + t_area[0][0] + " - " + t_exp + " EXP)</i>"
       }
@@ -211,7 +209,7 @@ function list_towers() {
       //t += ")</i></p>";
     }
   }
-  g("searchmenu").innerHTML = t;
+  $("#searchmenu").html(t);
 }
 list_towers();
 
@@ -328,7 +326,7 @@ function open_player(name) {
   }
   extra += "<br><br><b id='big'>Completions</b><br><br>";
   extra += format_comps(player["completions"]);
-  g("player-data").innerHTML = extra;
+  $("#player-data").html(extra);
 }
 function list_players() {
   var p = "<br>";
@@ -342,7 +340,7 @@ function list_players() {
     p += "<span>#" + p_rank + "</span>"
     p += "<button id='player-button' onclick='open_player(\"" + p_name + "\")'><b>" + p_name + "</b></button>"
     p += " Level " + format_level(p_exp, true)
-    if (g("extra-player-info").checked) {
+    if ($("#extra-player-info").prop("checked")) {
       p += "<i id='small'><br><span></span>"
       p += "(" + p_comps.length + " SCs - " + p_exp + " Total EXP)</i>"
     }
@@ -355,7 +353,7 @@ function list_players() {
     //p += p_comps.length + " Completions - " + p_exp + " EXP - Level " + format_level(p_exp) + " - #" + p_rank;
     //p += "</i></div>";
   }
-  g("leaderboard").innerHTML = p;
+  $("#leaderboard").html(p);
 }
 list_players();
 
@@ -377,24 +375,24 @@ for (i = 0; i < all_games.length; i++) {
   game = all_games[i];
   gm += "<option value='" + game["abbr"] + "'>" + game["abbr"] + "</option>";
 }
-g("game-select").innerHTML = gm;
+$("#game-select").html(gm);
 
 
-g("tower-lookup-page").style.display = "none";
-g("leaderboard-page").style.display = "none";
+$("#tower-lookup-page").hide();
+$("#leaderboard-page").hide();
 function open_page(page_num) {
   // 1 - Home
   // 2 - Towers
   // 3 - Leaderboard
-  g("menu-page").style.display = "none";
-  g("tower-lookup-page").style.display = "none";
-  g("leaderboard-page").style.display = "none";
+  $("#menu-page").hide();
+  $("#tower-lookup-page").hide();
+  $("#leaderboard-page").hide();
   if (page_num == 1) {
-    g("menu-page").style.display = "";
+    $("#menu-page").show();
   } else if (page_num == 2) {
-    g("tower-lookup-page").style.display = "";
+    $("#tower-lookup-page").show();
   } else if (page_num == 3) {
-    g("leaderboard-page").style.display = "";
+    $("#leaderboard-page").show();
   }
 }
 const url = window.location.search;
