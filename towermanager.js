@@ -399,3 +399,8 @@ if (params.get("u")) {
     open_page("Leaderboard");
     open_player(params.get("u"));
 }
+
+let old_url = "soulcrushingleaderboardproject.github.io";
+if (window.location.hostname == old_url) {
+    window.location.href = window.location.href.replace(old_url, "sclp.vercel.app");
+}
