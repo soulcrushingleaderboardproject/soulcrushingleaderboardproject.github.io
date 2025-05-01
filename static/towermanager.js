@@ -11,6 +11,18 @@ for (let [role, users] of Object.entries(credits)) {
     $("#credits").append(`<h3><div id="${role.toLowerCase().replaceAll(" ", "-")}">[${role}]</div>${users.join(", ")}</h3>`);
 }
 
+function getAbbr(x) {
+    x = x.replace("CumpleAnos", "Cumple Anos").replace(" Facility", "").replace("GBJ Edition", "G B J").replace(/\.([^\s])/g, ' $1').split(" (")[0];
+    let main = x.replace(":", " :").replaceAll('-', ' ').split(' ').map(word => {
+        if (!word) return '';
+        if (/^\d+$/.test(word)) return word[0];
+        let letter = word[0];
+        let digit = word.match(/\d/);
+        return (letter === letter.toLowerCase() ? letter : letter.toUpperCase()) + (digit ? digit[0] : '');
+    }).join('');
+    return main;
+}
+
 all_towers.sort((a, b) => b["id"] - a["id"]);
 all_towers.sort((a, b) => b["diff"] - a["diff"]);
 for (let t = 0; t < all_towers.length; t++) {
@@ -119,7 +131,7 @@ function search(s) {
     }
     for (let tower_search = 0; tower_search < all_towers.length; tower_search++) {
         let tower = all_towers[tower_search];
-        if (tower["abbr"].toLowerCase().includes(s.toLowerCase()) || tower["name"].toLowerCase().includes(s.toLowerCase())) {
+        if (getAbbr(tower["name"]).toLowerCase().includes(s.toLowerCase()) || tower["name"].toLowerCase().includes(s.toLowerCase())) {
             if (allowed_difficulties.includes(Math.floor(tower["diff"] / 100))
             && (place_filter == "" || is_tower_in_place(tower["places"], place_filter))) {
             new_towers.push(tower)
@@ -149,7 +161,7 @@ function get_victors(id) {
 function open_extra(id) {
     var tower = tower_from_id(id);
     var extra = "";
-    extra += "<p id='big'><b>(" + tower["abbr"] + ")</b> " + tower["name"] + "</p>";
+    extra += "<p id='big'><b>(" + getAbbr(tower["name"]) + ")</b> " + tower["name"] + "</p>";
     extra += "<br>Difficulty: " + difficulty_to_range(tower["diff"]) + " " + difficulty_to_name(tower["diff"]) + " (" + format_difficulty(tower["diff"]) + ")";
     extra += "<br>Location: " + format_location(tower, 0, 1);
     if (tower["places"].length > 1) {
@@ -171,8 +183,8 @@ function list_towers() {
     if (is_valid_name && $("#color-checklist").prop("checked")) {
         for (let i = 0; i < towers.length; i++) {
             t_id = towers[i]["id"];
-            t_abbr = towers[i]["abbr"];
             t_name = towers[i]["name"];
+            t_abbr = getAbbr(t_name);
             t_diff = towers[i]["diff"];
             t_area = towers[i]["places"];
             t_rank = towers[i]["rank"];
@@ -195,8 +207,8 @@ function list_towers() {
     } else {
         for (let i = 0; i < towers.length; i++) {
             t_id = towers[i]["id"];
-            t_abbr = towers[i]["abbr"];
             t_name = towers[i]["name"];
+            t_abbr = getAbbr(t_name);
             t_diff = towers[i]["diff"];
             t_area = towers[i]["places"];
             t_rank = towers[i]["rank"];
