@@ -237,7 +237,6 @@ p {
     color: #49559e;
 }
 
-/* Minimum font size for readability */
 @media (max-width: 768px) {
     #left, #right {
         min-width: 0;

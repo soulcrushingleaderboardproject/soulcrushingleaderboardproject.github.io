@@ -160,17 +160,18 @@ function get_victors(id) {
 }
 function open_extra(id) {
     var tower = tower_from_id(id);
-    var extra = "";
-    extra += "<p id='big'><b>(" + getAbbr(tower["name"]) + ")</b> " + tower["name"] + "</p>";
-    extra += "<br>Difficulty: " + difficulty_to_range(tower["diff"]) + " " + difficulty_to_name(tower["diff"]) + " (" + format_difficulty(tower["diff"]) + ")";
-    extra += "<br>Location: " + format_location(tower, 0, 1);
-    if (tower["places"].length > 1) {
-        extra += "<br><i id='small'>Other Locations: " + format_location(tower, 1, tower["places"].length) + "</i>";
-    }
-    extra += "<br>Rank: #" + tower["rank"];
-    extra += "<br>EXP for completion: " + tower["exp"];
-    extra += "<br>Victors: " + get_victors(id);
-    extra += "<br><i id='small'>Tower ID: " + id + "</i>";
+    let other_locations = tower["places"].length > 1 ? `<br><i id="small">Other Locations: ${format_location(tower, 1, tower["places"].length)}</i>` : "";
+    
+    var extra = `
+        <p id="big"><b>(${getAbbr(tower["name"])})</b> ${tower["name"]}</p>
+        <br>Difficulty: ${difficulty_to_range(tower["diff"])} ${difficulty_to_name(tower["diff"])} (${format_difficulty(tower["diff"])})
+        <br>Location: ${format_location(tower, 0, 1)}
+        ${other_locations}
+        <br>Rank: #${tower["rank"]}
+        <br>EXP for completion: ${tower["exp"]}
+        <br>Victors: ${get_victors(id)}
+        <br><i id="small">Tower ID: ${id}</i>
+    `;
     $("#extra-data").html(extra);
 }
 
