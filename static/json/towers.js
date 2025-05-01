@@ -520,7 +520,7 @@ all_towers = [
   {"id": 519, "abbr": "ToCOA", "name": "Tower of Challenging Obstacle Anarchy", "diff": 1225, "places": [["AHoSCT", "Spot 1"]]},
   {"id": 520, "abbr": "ToPE", "name": "Tower of Perpetual Eccentricity", "diff": 804, "places": [["AHoSCT", "Spot 4"]]},
   {"id": 521, "abbr": "ToQQ", "name": "Tower of Quarrelsome Quarters", "diff": 980, "places": [["AHoSCT", "Spot 4"]]},
-  {"id": 522, "abbr": "ToROMW", "name": "Tower of Rain on My World", "diff": 858, "places": [["EToH", "Zone 10"]], "game": "https://www.roblox.com/games/16724768882/tower-of-rain-on-my-world"},
+  {"id": 522, "abbr": "ToRoMW", "name": "Tower of Rain on My World", "diff": 858, "places": [["EToH", "Zone 10"]], "game": "https://www.roblox.com/games/16724768882/tower-of-rain-on-my-world"},
   {"id": 523, "abbr": "ToARS", "name": "Tower of Au Revoir, Sunset", "diff": 871, "places": [], "game": "https://www.roblox.com/games/14068555139/Tower-of-Au-Revoir-Sunset"},
   {"id": 524, "abbr": "ToBO", "name": "Tower of Being Outdoors", "diff": 902, "places": [], "game": "https://www.roblox.com/games/6884408311/Tower-of-Being-Outdoors-REVAMPED"},
   {"id": 525, "abbr": "ToSEP", "name": "Tower of Sukhavati Eternal Paradise", "diff": 806, "places": [], "game": "https://www.roblox.com/games/10976704228/Sukhavati-Eternal-Paradise"},    
@@ -685,3 +685,23 @@ all_towers = [
   {"id": 684, "abbr": "ToSUS", "name": "Tower of Spiced Up Sand", "diff": 1074, "places": [["AHoSCT", "Spot 4B"]]},
   {"id": 685, "abbr": "ToC", "name": "Tower of Complexitivity", "diff": 1146, "places": [], "game": "https://www.roblox.com/games/91976876613808/Tower-of-Complexitivity"}
 ]
+
+function getTowerAbbreviation(x) {
+    x = x.replace("CumpleAnos", "Cumple Anos").replace(" Facility", "").replace("GBJ Edition", "G B J").replace(/\.([^\s])/g, ' $1').split(" (")[0];
+    let main = x.replace(":", " :").replaceAll('-', ' ').split(' ').map(word => {
+        if (!word) return '';
+        if (/^\d+$/.test(word)) return word[0];
+        let letter = word[0];
+        let digit = word.match(/\d/);
+        return (letter === letter.toLowerCase() ? letter : letter.toUpperCase()) + (digit ? digit[0] : '');
+    }).join('');
+    return main;
+}
+
+for (let tower of all_towers) {
+    let one = tower["abbr"];
+    let two = getTowerAbbreviation(tower["name"]);
+    if (one != two) {
+        console.log(one, two);
+    }
+}
