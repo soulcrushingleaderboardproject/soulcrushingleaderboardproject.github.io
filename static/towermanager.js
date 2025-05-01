@@ -299,7 +299,7 @@ function format_comps(c) {
             let tower = all_towers[t];
 
             f += "<span id='" + difficulty_to_name(tower["diff"]) + "'>#" + tower["rank"] + "</span>";
-            f += "<button id='tower-button' onclick='open_page(2);open_extra(" + tower["id"] + ")'><b>" + tower["name"] + "</b></button>";
+            f += "<button id='tower-button' onclick='open_page(\"Towers\");open_extra(" + tower["id"] + ")'><b>" + tower["name"] + "</b></button>";
             f += "<br>";
             rank++;
         }
@@ -314,7 +314,7 @@ function format_ratio(a, b) {
 function open_player(name) {
     var player = player_from_name(name);
     var extra = "";
-    var completion_link = "soulcrushingleaderboardproject.github.io?u=" + name;
+    var completion_link = "sclp.vercel.app?u=" + name;
     extra += "<p id='big'><b>" + name + "</b></p>";
     extra += "<br>Total EXP: " + player["exp"];
     extra += "<br>Level: " + format_level(player["exp"]);
@@ -384,13 +384,32 @@ let page_maps = {
 for (let [k, _] of Object.entries(page_maps)) {
     $("#navigation").append(`<button class="seamless-button" onclick="open_page('${k}')">${k}</button>`);
 }
+
+function scaleLayout() {
+    const designedWidth = 800;
+    const screenWidth = window.innerWidth;
+    const scale = Math.min(screenWidth / designedWidth, 1);
+    const main = document.getElementById('main');
+    if (screenWidth < designedWidth) {
+        main.style.transform = `scale(${scale})`;
+        main.style.transformOrigin = 'top left';
+        main.style.width = `${designedWidth}px`;
+        main.style.height = `${100 / scale}%`;
+    } else {
+        main.style.transform = '';
+        main.style.width = '';
+        main.style.height = '';
+    }
+}
+
+window.addEventListener('resize', scaleLayout);
+scaleLayout();
             
 function open_page(page_name) {
     for (let [_, v] of Object.entries(page_maps)) {
         $(`#${v}-page`).hide();
     }
-
-    $(`#${page_maps[page_name]}-page`).show();
+    $(`#${page_maps[page_name]}-page`).css("display", "flex");
 }
 
 const url = window.location.search;

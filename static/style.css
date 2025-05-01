@@ -47,6 +47,8 @@ span {
     display: flex;
     flex-direction: column;
     height: 100%;
+    width: 100%;
+    overflow: hidden;
 }
 
 #tower-lookup-page, #leaderboard-page {
@@ -233,4 +235,42 @@ p {
 
 #former-staff {
     color: #49559e;
+}
+
+/* Minimum font size for readability */
+@media (max-width: 768px) {
+    #left, #right {
+        min-width: 0;
+    }
+
+    #sclp-tower-search, #sclp-player-search, #checklist-player, #game-select {
+        font-size: 0.8em;
+        height: 1.5em;
+    }
+
+    #tower-button, #player-button, #tower-button-crossed {
+        font-size: 0.8em;
+    }
+
+    .seamless-button {
+        font-size: 0.8em;
+    }
+
+    #big {
+        font-size: 1.2em;
+    }
+
+    #small {
+        font-size: 0.6em;
+    }
+
+    #item {
+        font-size: 0.8em;
+        padding: 0.2em;
+    }
+
+    input[type=checkbox] {
+        width: 0.8em;
+        height: 0.8em;
+    }
 }
