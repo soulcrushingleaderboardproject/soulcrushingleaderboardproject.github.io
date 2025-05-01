@@ -375,21 +375,22 @@ $("#game-select").html(gm);
 
 $("#tower-lookup-page").hide();
 $("#leaderboard-page").hide();
-function open_page(page_num) {
-    // 1 - Home
-    // 2 - Towers
-    // 3 - Leaderboard
-    $("#menu-page").hide();
-    $("#tower-lookup-page").hide();
-    $("#leaderboard-page").hide();
 
-    if (page_num == 1) {
-        $("#menu-page").show();
-    } else if (page_num == 2) {
-        $("#tower-lookup-page").show();
-    } else if (page_num == 3) {
-        $("#leaderboard-page").show();
+let page_maps = {
+    "Home": "menu",
+    "Towers": "tower-lookup",
+    "Leaderboard": "leaderboard"
+}
+for (let [k, v] of Object.entries(page_maps)) {
+    $("#navigation").append(`<button class="seamless-button" onclick="open_page('${k}')">${k}</button>`);
+}
+            
+function open_page(page_name) {
+    for (let [_, v] of Object.entries(page_maps)) {
+        $(`#${v}-page`).hide();
     }
+
+    $(`#${page_maps[page_name]}-page`).show();
 }
 
 const url = window.location.search;
