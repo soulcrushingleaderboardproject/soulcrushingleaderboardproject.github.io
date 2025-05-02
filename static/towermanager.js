@@ -423,7 +423,7 @@ function open_page(page_name) {
     for (let [_, v] of Object.entries(page_maps)) {
         $(`#${v}-page`).hide();
     }
-    $(`#${page_maps[page_name]}-page`).css("display", "flex");
+    $(`#${page_maps[page_name]}-page`).css("display", "");
 }
 
 const url = window.location.search;
