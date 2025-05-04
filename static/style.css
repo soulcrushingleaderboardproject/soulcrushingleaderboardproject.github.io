@@ -213,27 +213,27 @@ p {
     color: #797981;
 }
 
-#owner {
+.owner {
     color: #1abc9c;
 }
 
-#co-owner {
+.co-owner {
     color: #0f806a;
 }
 
-#developers {
+.developers {
     color: #315528;
 }
 
-#managers {
+.managers {
     color: #9b59b6;
 }
 
-#trial-staff {
+.trial-staff {
     color: #f5e5a4;
 }
 
-#former-staff {
+.former-staff {
     color: #49559e;
 }
 

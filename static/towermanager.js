@@ -8,7 +8,7 @@ const credits = {
 }
 
 for (let [role, users] of Object.entries(credits)) {
-    $("#credits").append(`<h3><div id="${role.toLowerCase().replaceAll(" ", "-")}">[${role}]</div>${users.join(", ")}</h3>`);
+    $("#credits").append(`<h3><div class="${role.toLowerCase().replaceAll(" ", "-")}">[${role}]</div>${users.join(", ")}</h3>`);
 }
 
 function getAbbr(x) {
@@ -328,8 +328,17 @@ function open_player(name) {
     var player = player_from_name(name);
     var completion_link = "sclp.vercel.app?u=" + name;
 
+    let role = "";
+    for (let [r, users] of Object.entries(credits)) {
+        if (users.includes(player["name"])) {
+            role = `<p class="${r.toLowerCase().replaceAll(" ", "-")}">${r}</p>`;
+            break;
+        }
+    }
+
     var extra = `
         <p id="big"><b>${name}</b></p>
+        ${role}
         <br>Total EXP: ${player["exp"]}
         <br>Level: ${format_level(player["exp"])}
         <br>Rank: #${player["rank"]}
