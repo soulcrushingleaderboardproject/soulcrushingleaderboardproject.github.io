@@ -340,7 +340,7 @@ function open_player(name) {
     var extra = `
         <p id="big"><b>${name}</b></p>
         ${role}
-        <br>Total EXP: ${player["exp"]}
+        <br>Total EXP: ${formatNumber(player["exp"])}
         <br>Level: ${format_level(player["exp"])}
         <br>Rank: #${player["rank"]}
         <br><a href="https://${completion_link}">${completion_link}</a>
