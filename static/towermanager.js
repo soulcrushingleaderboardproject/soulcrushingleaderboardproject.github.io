@@ -322,7 +322,7 @@ function format_comps(c) {
 }
 
 function format_ratio(a, b) {
-    return "<span class='difficulty-display'>" + a + "/" + b + "</span><span class='difficulty-display'>" + Math.floor((a / b) * 100) + "," + "0".repeat(2 - Math.floor(((a / b) * 10000) % 100).toString().length) + Math.floor((a / b) * 10000) % 100 + "%</span>";
+    return `<span class="difficulty-display">${a}/${b}</span><span class="difficulty-display">${formatNumber(((a / b) * 100).toFixed(2))}%</span>`;
 }
 
 function open_player(name) {
