@@ -11,6 +11,10 @@ for (let [role, users] of Object.entries(credits)) {
     $("#credits").append(`<h3><div class="${role.toLowerCase().replaceAll(" ", "-")}">[${role}]</div>${users.join(", ")}</h3>`);
 }
 
+function formatNumber(num) {
+    return new Intl.NumberFormat().format(num);
+}
+
 function getAbbr(x) {
     x = x.replace("CumpleAnos", "Cumple Anos").replace(" Facility", "").replace("GBJ Edition", "G B J").replace(/\.([^\s])/g, ' $1').split(" (")[0];
     let main = x.replace(":", " :").replaceAll('-', ' ').split(' ').map(word => {
@@ -81,10 +85,6 @@ function difficulty_to_range(d) {
     return "Peak";
 }
 
-function format_difficulty(d) {
-    s = d.toString();
-    return s.slice(0, s.length - 2) + "," + s.slice(s.length - 2, s.length + 1);
-}
 function format_location(tower, start, end) {
     let places = tower["places"].slice(start, end);
     let game = tower["game"];
@@ -165,7 +165,7 @@ function open_extra(id) {
     let diff = difficulty_to_name(tower["diff"]);
     var extra = `
         <p id="big"><b>(${getAbbr(tower["name"])})</b> ${tower["name"]}</p>
-        <br>Difficulty: <span class="${diff}" style="display: inline; width: auto; padding: 0;">${difficulty_to_range(tower["diff"])} ${diff}</span> (${format_difficulty(tower["diff"])})
+        <br>Difficulty: <span class="${diff}" style="display: inline; width: auto; padding: 0;">${difficulty_to_range(tower["diff"])} ${diff}</span> (${formatNumber(tower["diff"] / 100)})
         <br>Location: ${format_location(tower, 0, 1)}
         ${other_locations}
         <br>Rank: #${tower["rank"]}
@@ -202,7 +202,7 @@ function list_towers() {
 
             if ($("#extra-tower-info").prop("checked")) {
                 t += "<i id='small'><br><span></span>";
-                t += "(" + format_difficulty(t_diff) + " - " + t_area[0][0] + " - " + t_exp + " EXP)</i>";
+                t += "(" + formatNumber(t_diff / 100) + " - " + t_area[0][0] + " - " + t_exp + " EXP)</i>";
             }
             t += "</div>";
         }
@@ -221,7 +221,7 @@ function list_towers() {
             t += "<button id='tower-button' onclick='open_extra(" + t_id + ")'><b>" + t_name + "</b></button>";
             if ($("#extra-tower-info").prop("checked")) {
                 t += "<i id='small'><br><span></span>";
-                t += "(" + format_difficulty(t_diff) + " - " + t_area[0][0] + " - " + t_exp + " EXP)</i>";
+                t += "(" + formatNumber(t_diff / 100) + " - " + t_area[0][0] + " - " + t_exp + " EXP)</i>";
             }
             t += "</div>";
         }
