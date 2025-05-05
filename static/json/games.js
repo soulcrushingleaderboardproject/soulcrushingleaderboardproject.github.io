@@ -32,6 +32,7 @@ var all_games = [
     {"abbr": "TBP", "name": "The Baseplate Project", "link": "https://www.roblox.com/games/15957446104"},
     {"abbr": "TCT", "name": "Thai's Crazy Towers", "link": "https://www.roblox.com/games/9066198427"},
     {"abbr": "TCTA", "name": "The Classic Tower Archive", "link": "https://www.roblox.com/games/14377924053"},
+    {"abbr": "TEA", "name": "The Eternal Abyss", "link": "https://www.roblox.com/games/15873244701"},
     {"abbr": "TG", "name": "Tower Game", "link": "https://www.roblox.com/games/5976062696"},
     {"abbr": "ToS", "name": "Towers of Showers", "link": "https://www.roblox.com/games/4589295517"},
     {"abbr": "TTP", "name": "The Tower Pantheon", "link": "https://www.roblox.com/games/121125135868314"},
