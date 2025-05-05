@@ -162,9 +162,10 @@ function open_extra(id) {
     var tower = tower_from_id(id);
     let other_locations = tower["places"].length > 1 ? `<br><i id="small">Other Locations: ${format_location(tower, 1, tower["places"].length)}</i>` : "";
     
+    let diff = difficulty_to_name(tower["diff"]);
     var extra = `
         <p id="big"><b>(${getAbbr(tower["name"])})</b> ${tower["name"]}</p>
-        <br>Difficulty: ${difficulty_to_range(tower["diff"])} ${difficulty_to_name(tower["diff"])} (${format_difficulty(tower["diff"])})
+        <br>Difficulty: <span class="${diff}" style="display: inline; width: auto; padding: 0;">${difficulty_to_range(tower["diff"])} ${diff}</span> (${format_difficulty(tower["diff"])})
         <br>Location: ${format_location(tower, 0, 1)}
         ${other_locations}
         <br>Rank: #${tower["rank"]}
@@ -191,7 +192,7 @@ function list_towers() {
             t_rank = towers[i]["rank"];
             t_exp = towers[i]["exp"];
             t += "<div id='item'>";
-            t += "<span id='" + difficulty_to_name(t_diff) + "'>#" + t_rank + "</span>";
+            t += "<span class='" + difficulty_to_name(t_diff) + "'>#" + t_rank + "</span>";
             
             if (comp_data.includes(t_id)) {
                 t += "<button id='tower-button-crossed' onclick='open_extra(" + t_id + ")'><b><s>" + t_name + "</s></b></button>";
@@ -216,7 +217,7 @@ function list_towers() {
             t_exp = towers[i]["exp"];
 
             t += "<div id='item'>";
-            t += "<span id='" + difficulty_to_name(t_diff) + "'>#" + t_rank + "</span>";
+            t += "<span class='" + difficulty_to_name(t_diff) + "'>#" + t_rank + "</span>";
             t += "<button id='tower-button' onclick='open_extra(" + t_id + ")'><b>" + t_name + "</b></button>";
             if ($("#extra-tower-info").prop("checked")) {
                 t += "<i id='small'><br><span></span>";
@@ -311,7 +312,7 @@ function format_comps(c) {
         if (c.includes(all_towers[t]["id"])) {
             let tower = all_towers[t];
 
-            f += "<span id='" + difficulty_to_name(tower["diff"]) + "'>#" + tower["rank"] + "</span>";
+            f += "<span class='" + difficulty_to_name(tower["diff"]) + "'>#" + tower["rank"] + "</span>";
             f += "<button id='tower-button' onclick='open_page(\"Towers\");open_extra(" + tower["id"] + ")'><b>" + tower["name"] + "</b></button>";
             f += "<br>";
             rank++;
@@ -348,7 +349,7 @@ function open_player(name) {
     `;
 
     for (let d = 8; d < 14; d++) {
-        extra += `<br><span id="${difficulty_to_name(d * 100)}" class="difficulty-display">${difficulty_to_name(d * 100)}</span> ${format_ratio(get_towers_within_range(get_completed_data(player["completions"]), d * 100, (d * 100) + 99).length, get_towers_within_range(all_towers, d * 100, (d * 100) + 99).length)}`;
+        extra += `<br><span class="${difficulty_to_name(d * 100)}" class="difficulty-display">${difficulty_to_name(d * 100)}</span> ${format_ratio(get_towers_within_range(get_completed_data(player["completions"]), d * 100, (d * 100) + 99).length, get_towers_within_range(all_towers, d * 100, (d * 100) + 99).length)}`;
     }
     
     extra += "<br><br><b id='big'>Completions</b><br><br>";

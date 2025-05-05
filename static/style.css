@@ -185,31 +185,31 @@ p {
     margin-bottom: 5px;
 }
 
-#Insane {
+.Insane {
     color: #003FFF;
 }
 
-#Extreme {
+.Extreme {
     color: #009FFF;
 }
 
-#Terrifying {
+.Terrifying {
     color: #00FFFF;
 }
 
-#Catastrophic {
+.Catastrophic {
     color: #FFFFFF;
 }
 
-#Horrific {
+.Horrific {
     color: #ECB2FA;
 }
 
-#Unreal {
+.Unreal {
     color: #9F3FFF;
 }
 
-#Nil {
+.Nil {
     color: #797981;
 }
 
