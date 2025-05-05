@@ -345,7 +345,7 @@ function open_player(name) {
         <br>Rank: #${player["rank"]}
         <br><a href="https://${completion_link}">${completion_link}</a>
         <br><br><b id='big'>Stats</b><br><br>
-        <span class='difficulty-display'><b>TOTAL</b></span> ${format_ratio(player["completions"].length, all_towers.length)}
+        <span class='difficulty-display' style="width: 3em;"><b>TOTAL</b></span> ${format_ratio(player["completions"].length, all_towers.length)}
     `;
 
     for (let d = 8; d < 14; d++) {
