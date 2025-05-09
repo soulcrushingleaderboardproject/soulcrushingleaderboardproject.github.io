@@ -32,9 +32,10 @@ def favicon():
 html = requests.get('https://docs.google.com/spreadsheets/d/1ffz-IFNSEDQay9jkR5JbOj7NPEljBX4jc2oIYzypRLc/edit?gid=0#gid=0').text
 soup = BeautifulSoup(html, "lxml")
 table = soup.find_all("table")[0]
-with open("0.csv", "w") as f:
-    wr = csv.writer(f, quoting=csv.QUOTE_NONNUMERIC)
-    wr.writerows([[td.text for td in row.find_all("td")] for row in table.find_all("tr")])
+
+data = [[td.text.strip() for td in row.find_all("td")] for row in table.find_all("tr")]
+data = [row for row in data if any(row)]
+data = list(map(list, zip(*[col for col in zip(*data) if any(col)])))
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True, port=5000)
