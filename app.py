@@ -13,9 +13,24 @@ def add_no_cache_headers(response):
     response.headers['Expires'] = '0'
     return response
 
+def get_dict(x):
+    res = {}
+    for row in x:
+        res[row[0]] = row[1]
+    return res
+
+html = requests.get('https://docs.google.com/spreadsheets/d/1ffz-IFNSEDQay9jkR5JbOj7NPEljBX4jc2oIYzypRLc/edit?gid=0#gid=0').text
+soup = BeautifulSoup(html, "lxml")
+table = soup.find_all("table")[0]
+
+data = [[td.text.strip() for td in row.find_all("td")] for row in table.find_all("tr")]
+data = [row for row in data if any(row)]
+data = list(map(list, zip(*[col for col in zip(*data) if any(col)])))
+data = get_dict(data)
+
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return render_template("index.html", data=data)
 
 @app.route("/static/<path:filename>")
 def static_files(filename):
@@ -29,13 +44,5 @@ def static_files(filename):
 def favicon():
     return app.send_static_file("sclp.png")
 
-html = requests.get('https://docs.google.com/spreadsheets/d/1ffz-IFNSEDQay9jkR5JbOj7NPEljBX4jc2oIYzypRLc/edit?gid=0#gid=0').text
-soup = BeautifulSoup(html, "lxml")
-table = soup.find_all("table")[0]
-
-data = [[td.text.strip() for td in row.find_all("td")] for row in table.find_all("tr")]
-data = [row for row in data if any(row)]
-data = list(map(list, zip(*[col for col in zip(*data) if any(col)])))
-
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", debug=True, port=5000)
+    app.run(host="0.0.0.0", debug=False, port=5000)
