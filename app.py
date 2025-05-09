@@ -19,7 +19,7 @@ def format_data(x):
     return res
 
 html = requests.get('https://docs.google.com/spreadsheets/d/1ffz-IFNSEDQay9jkR5JbOj7NPEljBX4jc2oIYzypRLc/edit?gid=0#gid=0').text
-soup = BeautifulSoup(html, "lxml")
+soup = BeautifulSoup(html, "html.parser")
 table = soup.find_all("table")[0]
 
 data = [[td.text.strip() for td in row.find_all("td")] for row in table.find_all("tr")]
