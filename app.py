@@ -13,10 +13,10 @@ def add_no_cache_headers(response):
     response.headers['Expires'] = '0'
     return response
 
-def get_dict(x):
-    res = {}
+def format_data(x):
+    res = []
     for row in x:
-        res[row[0]] = row[1]
+        res.append({"name": row[0], "completions": list(map(int, row[1].split(",")))})
     return res
 
 html = requests.get('https://docs.google.com/spreadsheets/d/1ffz-IFNSEDQay9jkR5JbOj7NPEljBX4jc2oIYzypRLc/edit?gid=0#gid=0').text
@@ -26,7 +26,7 @@ table = soup.find_all("table")[0]
 data = [[td.text.strip() for td in row.find_all("td")] for row in table.find_all("tr")]
 data = [row for row in data if any(row)]
 data = list(map(list, zip(*[col for col in zip(*data) if any(col)])))
-data = get_dict(data)
+data = format_data(data)
 
 @app.route("/")
 def home():
