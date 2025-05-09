@@ -1,7 +1,6 @@
 from flask import Flask, render_template, make_response, send_from_directory
 import os
 from bs4 import BeautifulSoup
-import csv
 import requests
 
 app = Flask(__name__)
