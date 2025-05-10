@@ -1,7 +1,8 @@
 from flask import Flask, render_template, make_response, send_from_directory
 import os
-from bs4 import BeautifulSoup
 import requests
+from dotenv import load_dotenv
+load_dotenv()
 
 app = Flask(__name__)
 
@@ -18,13 +19,15 @@ def format_data(x):
         res.append({"name": row[0], "completions": list(map(int, row[1].split(",")))})
     return res
 
-html = requests.get('https://docs.google.com/spreadsheets/d/1ffz-IFNSEDQay9jkR5JbOj7NPEljBX4jc2oIYzypRLc/edit?gid=0#gid=0').text
-soup = BeautifulSoup(html, "html.parser")
-table = soup.find_all("table")[0]
+API_KEY = os.getenv("GOOGLE_SHEETS_API_KEY")
+SHEET_ID = "1ffz-IFNSEDQay9jkR5JbOj7NPEljBX4jc2oIYzypRLc"
+RANGE = "comps!A:B"
 
-data = [[td.text.strip() for td in row.find_all("td")] for row in table.find_all("tr")]
-data = [row for row in data if any(row)]
-data = list(map(list, zip(*[col for col in zip(*data) if any(col)])))
+url = f"https://sheets.googleapis.com/v4/spreadsheets/{SHEET_ID}/values/{RANGE}?key={API_KEY}"
+response = requests.get(url)
+values = response.json().get("values", [])
+
+data = [row for row in values if any(row)]
 data = format_data(data)
 
 @app.route("/")
