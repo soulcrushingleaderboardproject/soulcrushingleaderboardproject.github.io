@@ -20,4 +20,12 @@ values = response.json().get("values", [])
 
 data = [row for row in values if any(row)]
 data = format(data)
+
+with open("edit.txt", "r") as f:
+    for line in f:
+        parts = line.split(";")
+        if parts[0] in data:
+            #user exists
+            pass
+
 print(data)
