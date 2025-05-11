@@ -20,13 +20,13 @@ def get_data(range, key):
 
 data = get_data("comps!A:B", 0)
 towers = get_data("towers!A:D", 1)
-print(towers)
 
 with open("edit.txt", "r") as f:
     for line in f:
-        parts = line.split(";")
-        if parts[0] in data:
-            #user exists
-            pass
+        user, tower = line.strip().split(";")
+        if user in data:
+            if tower in towers:
+                id = towers[tower][0]
+                data[user][0] = ",".join(sorted(data[user][0].split(",") + [id], key=lambda x: int(x)))
 
 print(data)
