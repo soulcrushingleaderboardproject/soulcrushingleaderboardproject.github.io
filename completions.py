@@ -6,7 +6,7 @@ load_dotenv()
 def format(data):
     pairs = {}
     for row in data:
-        pairs[row[0]] = row[1]
+        pairs[row[0]] = row[1:]
             
     return pairs
 
@@ -18,7 +18,8 @@ def get_data(range):
     return format(data)
 
 data = get_data("comps!A:B")
-
+towers = get_data("towers!A:D")
+print(towers)
 
 with open("edit.txt", "r") as f:
     for line in f:
@@ -27,4 +28,4 @@ with open("edit.txt", "r") as f:
             #user exists
             pass
 
-print(data)
+# print(data)
