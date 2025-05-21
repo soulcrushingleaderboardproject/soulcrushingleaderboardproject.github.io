@@ -58,9 +58,12 @@
         </div>
     </div>
 
+    <script>
+        all_completions = {{ data | tojson }};
+    </script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="/static/json/towers.js"></script>
-    <script src="/static/json/comps.js"></script>
     <script src="/static/json/games.js"></script>
     <script src="/static/towermanager.js"></script>
 </body>
