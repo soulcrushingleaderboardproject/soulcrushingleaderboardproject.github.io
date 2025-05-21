@@ -22,7 +22,6 @@ def format(data, key):
 def get_data(range, key):
     response = requests.get(f"https://sheets.googleapis.com/v4/spreadsheets/{SHEET_ID}/values/{range}?key={os.getenv('GOOGLE_SHEETS_API_KEY')}")
     values = response.json().get("values", [])
-
     data = [row for row in values if any(row)]
     return format(data, key)
 
@@ -34,17 +33,21 @@ with open("edit.txt", "r") as f:
         user, tower = line.strip().split(";")
         
         if user not in data:
-            print(f"[WARN] User '{user}' not found in sheet.")
+            print(f"[WARN] User '{user}' not found.")
             continue
 
         if tower not in towers:
-            print(f"[WARN] Tower '{tower}' not found in sheet.")
+            print(f"""[WARN] "{tower}" not found. User: {user}""")
             continue
-        
-        id = towers[tower][0]
-        data[user][0] = ",".join(sorted({*data[user][0].split(","), id}, key=int))
 
-updated_data = [[user, data[user][0]] for user in data]
+        id = towers[tower][0]
+
+        current = data[user][0] if data[user] else ""
+        current_ids = set(current.split(",")) if current else set()
+        current_ids.add(id)
+        data[user] = [",".join(sorted(current_ids, key=int))]
+
+updated_data = [[user, data[user][0] if data[user] else ""] for user in data]
 
 request = sheet.values().update(
     spreadsheetId=SHEET_ID,
