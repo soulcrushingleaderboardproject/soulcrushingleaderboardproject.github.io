@@ -32,10 +32,17 @@ towers = get_data("towers!A:D", 1)
 with open("edit.txt", "r") as f:
     for line in f:
         user, tower = line.strip().split(";")
-        if user in data:
-            if tower in towers:
-                id = towers[tower][0]
-                data[user][0] = ",".join(sorted({*data[user][0].split(","), id}, key=int))
+        
+        if user not in data:
+            print(f"[WARN] User '{user}' not found in sheet.")
+            continue
+
+        if tower not in towers:
+            print(f"[WARN] Tower '{tower}' not found in sheet.")
+            continue
+        
+        id = towers[tower][0]
+        data[user][0] = ",".join(sorted({*data[user][0].split(","), id}, key=int))
 
 updated_data = [[user, data[user][0]] for user in data]
 
