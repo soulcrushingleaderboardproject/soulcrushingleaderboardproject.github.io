@@ -11,6 +11,7 @@ sheet = service.spreadsheets()
 
 SHEET_ID = "1ffz-IFNSEDQay9jkR5JbOj7NPEljBX4jc2oIYzypRLc"
 
+#sybau 🥀🥀
 def format(data, key):
     pairs = {}
     for row in data:
