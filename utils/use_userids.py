@@ -4,6 +4,7 @@ import os
 import requests
 from dotenv import load_dotenv
 load_dotenv()
+import time
 
 creds = service_account.Credentials.from_service_account_file("service.json", scopes=["https://www.googleapis.com/auth/spreadsheets"])
 service = build('sheets', 'v4', credentials=creds)
@@ -20,14 +21,12 @@ for name in names:
         break
     
     user = name[0]
-    # try:
     response = requests.post("https://users.roblox.com/v1/usernames/users", json={"usernames": [user]})
-    print(response.json())
     id = response.json()["data"][0]["id"]
     ids.append([id])
+    
     print(user, id)
-    # except:
-    #     print(user)
+    time.sleep(0.1)
 
 sheet.values().update(
     spreadsheetId=SHEET_ID,
