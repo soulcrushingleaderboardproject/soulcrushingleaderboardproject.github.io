@@ -30,7 +30,7 @@ for name in names:
 
 sheet.values().update(
     spreadsheetId=SHEET_ID,
-    range="backup!A:A",
+    range="backup!B:B",
     valueInputOption="RAW",
     body={"values": ids}
 ).execute()
