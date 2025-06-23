@@ -40,7 +40,7 @@ for (let t = 0; t < all_towers.length; t++) {
 
 var towers = all_towers;
 for (let player = 0; player < all_completions.length; player++) {
-    all_completions[player]["exp"] = get_total_exp(all_completions[player]["name"]);
+    all_completions[player]["exp"] = get_total_exp(all_completions[player]["username"]);
 }
 
 all_completions.sort((a, b) => b["exp"] - a["exp"]);
@@ -233,7 +233,7 @@ list_towers();
 // player leaderboard
 function player_from_name(name) {
     for (let i = 0; i < all_completions.length; i++) {
-        if (all_completions[i]["name"] == name) {
+        if (all_completions[i]["username"] == name) {
             return all_completions[i];
         }
     }
@@ -279,7 +279,7 @@ function psearch(s) {
     new_players = [];
     for (let player_search = 0; player_search < all_completions.length; player_search++) {
         player = all_completions[player_search];
-        if (player["name"].toLowerCase().includes(s.toLowerCase())) {
+        if (player["username"].toLowerCase().includes(s.toLowerCase())) {
             new_players.push(player)
         }
     }
@@ -331,7 +331,7 @@ function open_player(name) {
 
     let role = "";
     for (let [r, users] of Object.entries(credits)) {
-        if (users.includes(player["name"])) {
+        if (users.includes(player["username"])) {
             role = `<p class="${r.toLowerCase().replaceAll(" ", "-")}">${r}</p>`;
             break;
         }
@@ -359,7 +359,7 @@ function open_player(name) {
 function list_players() {
     var p = "<br>";
     for (let i = 0; i < completions.length; i++) {
-        let p_name = completions[i]["name"];
+        let p_name = completions[i]["username"];
         let p_comps = completions[i]["completions"];
         let p_exp = completions[i]["exp"];
         let p_rank = completions[i]["rank"];

@@ -37,22 +37,22 @@ def get_data(r):
     return data
 
 all_completions = get_data("backup!A:C")
-towers = get_data("towers!A:E")
-for tower in towers:
+all_towers = get_data("towers!A:E")
+for tower in all_towers:
     tower["id"] = int(tower["id"])
     tower["difficulty"] = int(tower["difficulty"])
     
     raw = tower.get("places", "").strip()
     if not raw or raw == ";":
-        tower["places"] = None
+        tower["places"] = []
     else:
         parts = [part.strip() for part in raw.split(";") if part.strip()]
         if not parts:
-            tower["places"] = None
+            tower["places"] = []
         else:
             parsed = [p.split(",") for p in parts if p]
             if parsed == [[""]]:
-                tower["places"] = None
+                tower["places"] = []
             else:
                 tower["places"] = parsed
     
@@ -61,7 +61,7 @@ for tower in towers:
 
 @app.route("/")
 def home():
-    return render_template("index.html", all_completions=all_completions, towers=towers)
+    return render_template("index.html", all_completions=all_completions, all_towers=all_towers)
 
 @app.route("/static/<path:filename>")
 def static_files(filename):
