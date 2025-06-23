@@ -28,10 +28,10 @@ function getAbbr(x) {
 }
 
 all_towers.sort((a, b) => b["id"] - a["id"]);
-all_towers.sort((a, b) => b["diff"] - a["diff"]);
+all_towers.sort((a, b) => b["difficulty"] - a["difficulty"]);
 for (let t = 0; t < all_towers.length; t++) {
     all_towers[t]["rank"] = t + 1;
-    all_towers[t]["exp"] = Math.floor((3 ** ((all_towers[t]["diff"] - 800) / 100)) * 100);
+    all_towers[t]["exp"] = Math.floor((3 ** ((all_towers[t]["difficulty"] - 800) / 100)) * 100);
 
     if (all_towers[t]["game"] != null) {
         all_towers[t]["places"].push(["Place", ""])
@@ -132,7 +132,7 @@ function search(s) {
     for (let tower_search = 0; tower_search < all_towers.length; tower_search++) {
         let tower = all_towers[tower_search];
         if (getAbbr(tower["name"]).toLowerCase().includes(s.toLowerCase()) || tower["name"].toLowerCase().includes(s.toLowerCase())) {
-            if (allowed_difficulties.includes(Math.floor(tower["diff"] / 100))
+            if (allowed_difficulties.includes(Math.floor(tower["difficulty"] / 100))
             && (place_filter == "" || is_tower_in_place(tower["places"], place_filter))) {
             new_towers.push(tower)
             }
@@ -162,10 +162,10 @@ function open_extra(id) {
     var tower = tower_from_id(id);
     let other_locations = tower["places"].length > 1 ? `<br><i id="small">Other Locations: ${format_location(tower, 1, tower["places"].length)}</i>` : "";
     
-    let diff = difficulty_to_name(tower["diff"]);
+    let diff = difficulty_to_name(tower["difficulty"]);
     var extra = `
         <p id="big"><b>(${getAbbr(tower["name"])})</b> ${tower["name"]}</p>
-        <br>Difficulty: <span class="${diff}" style="display: inline; width: auto; padding: 0;">${difficulty_to_range(tower["diff"])} ${diff}</span> (${formatNumber(tower["diff"] / 100)})
+        <br>Difficulty: <span class="${diff}" style="display: inline; width: auto; padding: 0;">${difficulty_to_range(tower["difficulty"])} ${diff}</span> (${formatNumber(tower["difficulty"] / 100)})
         <br>Location: ${format_location(tower, 0, 1)}
         ${other_locations}
         <br>Rank: #${tower["rank"]}
@@ -187,7 +187,7 @@ function list_towers() {
             t_id = towers[i]["id"];
             t_name = towers[i]["name"];
             t_abbr = getAbbr(t_name);
-            t_diff = towers[i]["diff"];
+            t_diff = towers[i]["difficulty"];
             t_area = towers[i]["places"];
             t_rank = towers[i]["rank"];
             t_exp = towers[i]["exp"];
@@ -211,7 +211,7 @@ function list_towers() {
             t_id = towers[i]["id"];
             t_name = towers[i]["name"];
             t_abbr = getAbbr(t_name);
-            t_diff = towers[i]["diff"];
+            t_diff = towers[i]["difficulty"];
             t_area = towers[i]["places"];
             t_rank = towers[i]["rank"];
             t_exp = towers[i]["exp"];
@@ -289,7 +289,7 @@ function psearch(s) {
 function get_towers_within_range(towers, minimum, maximum) {
     let towers_within_range = [];
     for (let i = 0; i < towers.length; i++) {
-        if (minimum <= towers[i]["diff"] && towers[i]["diff"] <= maximum) {
+        if (minimum <= towers[i]["difficulty"] && towers[i]["difficulty"] <= maximum) {
             towers_within_range.push(towers[i]);
         }
     }
@@ -312,7 +312,7 @@ function format_comps(c) {
         if (c.includes(all_towers[t]["id"])) {
             let tower = all_towers[t];
 
-            f += "<span class='" + difficulty_to_name(tower["diff"]) + "'>#" + tower["rank"] + "</span>";
+            f += "<span class='" + difficulty_to_name(tower["difficulty"]) + "'>#" + tower["rank"] + "</span>";
             f += "<button id='tower-button' onclick='open_page(\"Towers\");open_extra(" + tower["id"] + ")'><b>" + tower["name"] + "</b></button>";
             f += "<br>";
             rank++;
