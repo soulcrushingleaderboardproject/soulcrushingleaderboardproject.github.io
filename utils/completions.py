@@ -1,7 +1,6 @@
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
-import os
-import requests
+import funcs
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -9,25 +8,12 @@ creds = service_account.Credentials.from_service_account_file("service.json", sc
 service = build('sheets', 'v4', credentials=creds)
 sheet = service.spreadsheets()
 
-SHEET_ID = "1ffz-IFNSEDQay9jkR5JbOj7NPEljBX4jc2oIYzypRLc"
-
 #sybau 🥀🥀
-def format(data, key):
-    pairs = {}
-    for row in data:
-        if len(row) > key:
-            value = row[:key] + row[key+1:]
-            pairs[row[key]] = value
-    return pairs
+data = funcs.get_data("comps!A:C")
+towers = funcs.get_data("towers!A:D")
 
-def get_data(range, key):
-    response = requests.get(f"https://sheets.googleapis.com/v4/spreadsheets/{SHEET_ID}/values/{range}?key={os.getenv('GOOGLE_SHEETS_API_KEY')}")
-    values = response.json().get("values", [])
-    data = [row for row in values if any(row)]
-    return format(data, key)
-
-data = get_data("comps!A:B", 0)
-towers = get_data("towers!A:D", 1)
+data = {entry["username"]: entry for entry in data}
+towers = {entry["name"]: entry for entry in towers}
 
 with open("edit.txt", "r") as f:
     for line in f:
@@ -41,18 +27,21 @@ with open("edit.txt", "r") as f:
             print(f"""[WARN] "{tower}" not found. User: {user}""")
             continue
 
-        id = towers[tower][0]
+        id = str(towers[tower]["id"])
 
-        current = data[user][0] if data[user] else ""
-        current_ids = set(current.split(",")) if current else set()
+        current = data[user].get("completions", [])
+        current_ids = set(map(str, current))
         current_ids.add(id)
-        data[user] = [",".join(sorted(current_ids, key=int))]
+        data[user]["completions"] = sorted(map(int, current_ids))
 
-updated_data = [[user, data[user][0] if data[user] else ""] for user in data]
+updated_data = [
+    [entry["username"], entry["userid"], ",".join(map(str, entry["completions"]))]
+    for entry in data.values()
+]
 
 request = sheet.values().update(
-    spreadsheetId=SHEET_ID,
-    range="comps!A:B",
+    spreadsheetId="1ffz-IFNSEDQay9jkR5JbOj7NPEljBX4jc2oIYzypRLc",
+    range="comps!A:C",
     valueInputOption="USER_ENTERED",
     body={"values": updated_data}
 )

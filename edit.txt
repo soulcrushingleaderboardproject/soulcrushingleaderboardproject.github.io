@@ -474,7 +474,7 @@ mina_cious;Tower of Externalizing Insanity
 mina_cious;Tower of Impossible Movement
 mina_cious;Tower of Frightening Nightmares
 mina_cious;Tower of Nervous Sweating
-mina_cious;Tower of Augumented Misery
+mina_cious;Tower of Augmented Misery
 mina_cious;Tower of Generation Failure
 mina_cious;Tower of Cruel Punishment
 mina_cious;Tower of Disengaging Lunacy
@@ -625,7 +625,7 @@ ImN0tPr0t0;Tower of Frightening Nightmares
 ImN0tPr0t0;Tower of Alien Radiance
 ImN0tPr0t0;Tower of Micro Management
 ImN0tPr0t0;Tower of Uncanny Agony
-ImN0tPr0t0;Tower of Augumented Misery
+ImN0tPr0t0;Tower of Augmented Misery
 ImN0tPr0t0;Tower of Generation Failure
 ImN0tPr0t0;Tower of Empty Meaningless Patterns
 ImN0tPr0t0;Tower of Champion's Road
@@ -900,7 +900,7 @@ zektrixz;Tower of Externalizing Insanity
 zektrixz;Tower of Fractured Memories
 zektrixz;Tower of Alien Radiance
 zektrixz;Tower of Micro Management
-zektrixz;Tower of Augumented Misery
+zektrixz;Tower of Augmented Misery
 zektrixz;Tower of Generation Failure
 zektrixz;Tower of Descent Into Exile
 zektrixz;Tower of Champion's Road
