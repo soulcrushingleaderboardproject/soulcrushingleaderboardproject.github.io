@@ -15,6 +15,7 @@ def add_no_cache_headers(response):
 
 all_completions = funcs.get_data("comps!A:C")
 all_towers = funcs.get_data("towers!A:E")
+all_games = funcs.get_data("games!A:C")
 
 for tower in all_towers:
     tower["id"] = int(tower["id"])
@@ -39,7 +40,7 @@ for tower in all_towers:
 
 @app.route("/")
 def home():
-    return render_template("index.html", all_completions=all_completions, all_towers=all_towers)
+    return render_template("index.html", all_completions=all_completions, all_towers=all_towers, all_games=all_games)
 
 @app.route("/static/<path:filename>")
 def static_files(filename):
