@@ -36,7 +36,7 @@ def get_data(r):
 
     return data
 
-all_completions = get_data("backup!A:C")
+all_completions = get_data("comps!A:C")
 all_towers = get_data("towers!A:E")
 for tower in all_towers:
     tower["id"] = int(tower["id"])
