@@ -38,11 +38,12 @@ updated_data = [
     [entry["username"], entry["userid"], ",".join(map(str, entry["completions"]))]
     for entry in data.values()
 ]
+updated_data.insert(0, ["username", "userid", "completions"])
 
 request = sheet.values().update(
     spreadsheetId="1ffz-IFNSEDQay9jkR5JbOj7NPEljBX4jc2oIYzypRLc",
     range="comps!A:C",
-    valueInputOption="USER_ENTERED",
+    valueInputOption="RAW",
     body={"values": updated_data}
 )
 response = request.execute()

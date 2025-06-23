@@ -4,11 +4,11 @@ Nebvufat;Tower of Interdimensional Rifts
 hunt_rrrr;Tower of Reddish Monolith
 hunt_rrrr;Tower of You're A Star
 Spiders_AreCool9;Tower of Medial Mayhem
-ygtghfhd;Tower of Futile Persual: Super Nerf
+ygtghfhd;Tower of Futile Perusal: Super Nerf
 CTgaming456;Tower of Harsh Endeavour
 ygtghfhd;Tower of Cataclysmic Layers: Super Nerf
 Windows95bro;Tower of Tee Hee Time
-CTgaming456;Tower of Filmsy Architecture
+CTgaming456;Tower of Flimsy Architecture
 CTgaming456;Tower of Suffering In The Night
 Nebvufat;Tower of Thinning Vengeance
 ygtghfhd;Tower of Paradise: Super Nerf
@@ -84,7 +84,7 @@ DJdestroyer916539;Tower of Heaven's Gate
 maddeccy10;Tower of Extreme Hell
 CTgaming456;Steeple of Celestial Serenity
 ThePhantomDevil666;Tower of Carpal Tunnels
-CTgaming456;Tower of Ascent To Glory
+CTgaming456;Tower of Ascent to Glory
 matrixstar656_5;Tower of Past Forward
 guardian_stone;Tower of Super Probably Tower
 SuperSmart_Exists;Tower of Difficulty Chart: Classic
@@ -132,7 +132,7 @@ zeeman2006op;Tower of True Confusion
 technoxlogicaI;Tower of Compromised Fear
 technoxlogicaI;Tower of Weird Core
 technoxlogicaI;Tower of Yasamsal Kiyamet
-Lactrus_Epic;Tower of Franchun's Lullaby: TEA Edition
+Lactrus_Epic;Tower of Franchun's Lullaby
 Lactrus_Epic;Steeple of Exponential Difficulty
 Jdbowles08;Tower of Difficulty Chart: Classic
 Jdbowles08;Tower of Satan's Wrath
@@ -141,7 +141,7 @@ TrayeAJ;Tower of Excruciating Anguish
 TrayeAJ;Tower of Accepting Defeat
 TrayeAJ;Tower of True Confusion
 TrayeAJ;Steeple of Exponential Difficulty
-TrayeAJ;Tower of Franchun's Lullaby: TEA Edition
+TrayeAJ;Tower of Franchun's Lullaby
 TrayeAJ;Tower of Forever Resetting
 TrayeAJ;Tower of Satan's Wrath
 TrayeAJ;Tower of Difficulty Chart: Classic
@@ -166,7 +166,7 @@ CTgaming456;Tower of Accepting Defeat
 vt_et;Tower of Wildly Wacky Wonders
 zxro_grqvity;Steeple of Exponential Difficulty
 zxro_grqvity;Tower of Difficulty Chart: Classic
-CTgaming456;Tower of Franchun's Lullaby: TEA Edition
+CTgaming456;Tower of Franchun's Lullaby
 21Jxc0b;Tower of Thinning Layers: Unnerfed
 bobthesupreme201;Tower of Nice Tasks
 Pandora_LB;Tower of Complexity and Volatility
@@ -189,7 +189,7 @@ hltlgergamer;Tower of Satan's Wrath
 Ken7kl;Tower of You're A Star
 swiftie4forlife1989;Tower of Blazing Industrial Furnaces
 hltlgergamer;Tower of Forever Resetting
-hltlgergamer;Tower of Franchun's Lullaby: TEA Edition
+hltlgergamer;Tower of Franchun's Lullaby
 hltlgergamer;Tower of Accepting Defeat
 matrixstar656_5;Thor Tower
 PrestigeUE;Tower of Paying Them Bills
@@ -203,10 +203,10 @@ Hyperfantasies;Tower of Unraveled Code
 Hyperfantasies;Tower of Indefinite Darkness
 Hyperfantasies;Tower of Room Destruction
 Hyperfantasies;Steeple of Exponential Difficulty
-Hyperfantasies;Tower of Quadrupling The Pain
+Hyperfantasies;Tower of Quadruple The Pain
 Hyperfantasies;Tower of True Confusion
 Hyperfantasies;Tower of Accepting Defeat
-Hyperfantasies;Tower of Franchun's Lullaby: TEA Edition
+Hyperfantasies;Tower of Franchun's Lullaby
 Hyperfantasies;Tower of Forever Resetting
 Hyperfantasies;Tower of Difficulty Chart: Classic
 Hyperfantasies;Tower of Satan's Wrath
@@ -221,7 +221,7 @@ hltlgergamer;Tower of Quadruple The Pain
 matrixstar656_5;Tower of Silver
 matchameiling;Tower of Empty Meaningless Patterns
 Pandora_LB;Tower of Tee Hee Time
-memmedli2011;Tower of Franchun's Lullaby: TEA Edition
+memmedli2011;Tower of Franchun's Lullaby
 j1any1;Tower of True Confusion
 21Jxc0b;Steeple of Exponential Difficulty
 matrixstar656_5;Tower of Satan's Wrath
@@ -241,7 +241,7 @@ Pandora_LB;Tower of Super Probably Tower
 guardian_stone;Tower Tower Tower Tower
 zoze_1906;Tower of Vacant Hindrances
 zFinzora;Edifice of Quarry Excavations
-Celiocardoso63;Tower of Franchun's Lullaby: TEA Edition
+Celiocardoso63;Tower of Franchun's Lullaby
 Celiocardoso63;Tower of Accepting Defeat
 Lactrus_Epic;Tower of Quadruple The Pain
 Nebvufat;Tower of Panelling Barricades
@@ -249,7 +249,7 @@ Lactrus_Epic;Tower of Room Destruction
 Ken7kl;Tower of Empty Meaningless Patterns
 Azusa_iz;Tower of Satan's Wrath
 Azusa_iz;Tower of Forever Resetting
-Azusa_iz;Tower of Franchun's Lullaby: TEA Edition
+Azusa_iz;Tower of Franchun's Lullaby
 Azusa_iz;Tower of Accepting Defeat
 Azusa_iz;Tower of True Confusion
 Azusa_iz;Tower of Quadruple The Pain
@@ -266,7 +266,7 @@ zFinzora;Tower of Malefic Nuisances: Super Nerf
 CTgaming456;Citadel of The Eternal Calamity: Super Nerf
 Hyperfantasies;Tower of Perplexed Ascent
 PrestigeUE;Tower of Being Outdoors
-PrestigeUE;Tower of Filmsy Architecture
+PrestigeUE;Tower of Flimsy Architecture
 I3_en;Radio Tower: Super Nerf
 I3_en;Tower of Thje Ecotism: Super Nerf
 I3_en;Tower of Slightly Queasy: Super Nerf
@@ -299,8 +299,8 @@ Lactrus_Epic;Tower of Unraveled Code
 Ken7kl;Tower of Virulent Sojourn: Super Nerf
 hunt_rrrr;Tower of Difficulty Breezing
 Ken7kl;Tower of Weird Core: Super Nerf
-PrestigeUE;Tower of Breaking The Core
-21Jxc0b;Tower of Franchun's Lullaby: TEA Edition
+PrestigeUE;Tower of Breaking the Core
+21Jxc0b;Tower of Franchun's Lullaby
 NyakehTheBest;Tower of Rough Endoplasmic Reticulum
 matrixstar656_5;Tower of Accepting Defeat
 21Jxc0b;Tower of Difficulty Breezing
@@ -309,7 +309,7 @@ j1any1;Tower of Icy Blizzards
 Celiocardoso63;Tower of True Confusion
 matrixstar656_5;Tower of Purified Illusions
 Lactrus_Epic;Tower of Opposition
-PrestigeUE;Tower of Disrupting Obstacles
+PrestigeUE;Tower of Disruptive Obstacles
 PrestigeUE;Tower of Softlock Heaven
 ProGamAR5_1;Tower of Vindictive Maneuvers
 Hyperfantasies;Tower of Hitbox and Health Abuse
@@ -324,7 +324,7 @@ fundayelover;Tower of Nervous Sweating
 Celiocardoso63;Steeple of Zero Reinforced Frameworks
 Hyperfantasies;Doomsday Tower
 ygtghfhd;Tower of Being Outdoors
-cinimon02;Tower of Harsh Aesthetic Obstacles
+cinimon02;Tower of Harsh Aesthetical Obstacles
 ThePhantomDevil666;Tower of Loud Nine
 cinimon02;Tower of Contraposition
 AdamGamerFun303;Tower of Blast From The Past
@@ -343,7 +343,7 @@ ProGamAR5_1;Tower of Heaven's Gate
 Lactrus_Epic;Tower of Expected Outcomes
 j1any1;Tower of Externalizing Insanity
 darknessman000;Tower of Dangerous Pillar Adventuring
-patrickO927;Tower of Franchun's Lullaby: TEA Edition
+patrickO927;Tower of Franchun's Lullaby
 ThePhantomDevil666;Tower of Vindictive Maneuvers
 guardian_stone;Tower of The Flag of Rebellion
 Azusa_iz;Tower of Spiritual Rise
@@ -367,7 +367,7 @@ AdamGamerFun303;Tower of Thje Wall: Super Nerf
 AdamGamerFun303;Tower of Cataclysmic Layers: Super Nerf
 AdamGamerFun303;Tower of Both Sides
 AdamGamerFun303;Tower of Eternal Void: Super Nerf
-AdamGamerFun303;Tower of Furile Perusal: Super Nerf
+AdamGamerFun303;Tower of Futile Perusal: Super Nerf
 AdamGamerFun303;Tower of Paradise: Super Nerf
 AdamGamerFun303;Ikea Tower: Super Nerf
 zektrixz;Tower of Descent Into Exile
@@ -377,11 +377,11 @@ AdamGamerFun303;Tower of Ease to Abyss
 AdamGamerFun303;Tower of Pure Torment
 Lactrus_Epic;Kaizo Steeple
 aldgir_v2;Tower of Itetsuku Hoshi
-zFinzora;Tower of Spiraling Fates: Insane
+zFinzora;Tower of Spiralling Fates: Insane
 Lactrus_Epic;Tower of Water Melon: Super Nerf
 PrestigeUE;Tower of Silver
 hunt_rrrr;Tower of Futile Perusal: Super Nerf
-PrestigeUE;Tower of Desktop Annihilaton
+PrestigeUE;Tower of Desktop Annihilation
 PrestigeUE;Tower of Thje
 PrestigeUE;Tower of Franchun's Lullaby
 PrestigeUE;Tower of Absolute Nonsense
@@ -401,7 +401,7 @@ swiftie4forlife1989;Tower of Metropolis Downpour
 SuperSmart_Exists;Tower of Tech n Wraps
 zFinzora;Tower of Un Ca: Super Nerf
 patrickO927;Tower of Fiend Massacre
-ProGamAR5_1;Tower of Ease To Abyss
+ProGamAR5_1;Tower of Ease to Abyss
 technoxlogicaI;Tower of Spiritual Rise
 AdamGamerFun303;Tower of Quantum Quadrivium
 Azusa_iz;Doomsday Tower
@@ -439,7 +439,7 @@ Jdbowles08;Tower of Cruel Punishment
 Ken7kl;Tower of Fiend Massacre
 ex_0tical;Steeple of Treacherous Gnomery
 ex_0tical;Steeple of Sunny Scenes
-ex_0tical;Tower of Dizzyjumps Delight
+ex_0tical;Tower of Dizzyjump's Delight
 ex_0tical;Tower of Harsh Aesthetical Obstacles
 ex_0tical;Tower of Blimp In The Sky
 Z_Exzer;Tower of Aesthetic Urbanization
@@ -507,7 +507,7 @@ RedGamer2711;Tower of Bent Trauma
 DAVIDGA2345OLD;Tower of The Roof's Pique: Super Nerf
 DAVIDGA2345OLD;Tower of Ease to Abyss
 DAVIDGA2345OLD;Tower of Hopeless Hell
-DAVIDGA2345OLD;Tower of Spiraling Fates: Insane
+DAVIDGA2345OLD;Tower of Spiralling Fates: Insane
 DAVIDGA2345OLD;Tower of Fractured Memories
 DAVIDGA2345OLD;Tower of Descent Into Exile
 DAVIDGA2345OLD;Tower of Raspy Cascades
@@ -633,17 +633,17 @@ ImN0tPr0t0;Tower of Medial Mayhem
 ImN0tPr0t0;Tower of Cognition
 ImN0tPr0t0;Tower of Cataclysmic Layers
 ImN0tPr0t0;Steeple of A Down
-ImN0tPr0t0;Tower of Uttermost Anatagonism
+ImN0tPr0t0;Tower of Uttermost Antagonism
 legalzoom;Tower of Contraposition
 legalzoom;Tower of Enraging Advancement
-legalzoom;Tower of Harsh Aesthetic Obstacles
+legalzoom;Tower of Harsh Aesthetical Obstacles
 legalzoom;Tower of Stigmatism
 legalzoom;Tower of Dripping Obstacles
 legalzoom;Tower of Cataclysmic Galore
 legalzoom;Tower of Double Trouble
 legalzoom;Tower of Difficulty Chart
 legalzoom;Tower of High Adrenaline
-legalzoom;Tower of Unsetting Heights
+legalzoom;Tower of Unsettling Heights
 legalzoom;Tower of Bent Trauma
 legalzoom;Tower of Curved Ascent
 legalzoom;Tower of Inevitable Failure
@@ -741,7 +741,7 @@ clarinet779;Tower of Difficulty Chart
 clarinet779;Thanos Tower
 clarinet779;Tower of High Adrenaline
 clarinet779;Tower of Extreme Hell
-clarinet779;Tower of Unsettling heights
+clarinet779;Tower of Unsettling Heights
 clarinet779;Tower of Bent Trauma
 clarinet779;Tower of Mind Breaking
 clarinet779;Tower of Inevitable Failure
@@ -847,7 +847,7 @@ Tetrix_MasterII;Tower of Satan's Wrath
 Tetrix_MasterII;Tower of True Confusion
 Tetrix_MasterII;Steeple of Exponential Difficulty
 Tetrix_MasterII;Tower of Forever Resetting
-Tetrix_MasterII;Tower of Franchun's Lullaby: TEA Edition
+Tetrix_MasterII;Tower of Franchun's Lullaby
 Tetrix_MasterII;Tower of Accepting Defeat
 Tetrix_MasterII;Steeple of Treacherous Gnomery
 Tetrix_MasterII;Tower of Throttling Up
@@ -859,7 +859,7 @@ Tetrix_MasterII;Tower of Cognition
 Tetrix_MasterII;Tower of Umbratic Complexity
 Tetrix_MasterII;Tower of Futile Retribution
 Tetrix_MasterII;Tower of Perplexity Tabulation
-Tetrix_MasterII;Tower of Uttermost Anatagonism
+Tetrix_MasterII;Tower of Uttermost Antagonism
 Tetrix_MasterII;Tower of Parallel Heights
 Tetrix_MasterII;Tower of Cliffside Madness
 Tetrix_MasterII;Tower of Swift Chacine
