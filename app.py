@@ -1,4 +1,4 @@
-from flask import Flask, render_template, make_response, send_from_directory
+from flask import Flask, render_template, make_response, send_from_directory, jsonify
 import os
 from dotenv import load_dotenv
 import utils.funcs as funcs
@@ -37,6 +37,10 @@ for tower in all_towers:
     
     if tower["game"] == "":
         tower["game"] = None
+        
+@app.route("/tower_data")
+def tower_data():
+    return jsonify(all_towers)
 
 @app.route("/")
 def home():
