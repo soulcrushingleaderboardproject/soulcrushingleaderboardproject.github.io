@@ -273,3 +273,7 @@ p {
         height: 0.8em;
     }
 }
+
+#menu-page {
+    overflow: scroll;
+}

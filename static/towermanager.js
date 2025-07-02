@@ -2,7 +2,7 @@ const credits = {
     "Owner": ["thej10n"],
     "Co-Owner": ["Z_Exzer"],
     "Developers": ["TheHaloDeveloper"],
-    "Managers": ["XChocolateMLGX", "vt_et", "Spitfire_YT5", "jumper101110", "ThePhantomDevil666", "jarofjam_14", "DJdestroyer916539"],
+    "Managers": ["PrestigeUE", "ThePhantomDevil666", "Spitfire_YT5", "XChocolateMLGX", "jarofjam_14", "DJdestroyer916539", "vt_et", "jumper101110"],
     "Trial Staff": ["..."],
     "Former Staff": ["arthraix"]
 }
