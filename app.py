@@ -40,7 +40,8 @@ for tower in all_towers:
         
 @app.route("/tower_data")
 def tower_data():
-    return jsonify(all_towers)
+    updated = funcs.get_data("towers!A:E")
+    return jsonify(updated)
 
 @app.route("/")
 def home():
