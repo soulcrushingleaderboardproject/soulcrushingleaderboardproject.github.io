@@ -50,17 +50,13 @@ for (let player = 0; player < all_completions.length; player++) {
 var completions = all_completions;
 var games = all_games;
 
-$("#sclp-tower-search").on("keypress", function(event) {
-    if (event.key == "Enter") {
-        towers = search($("#sclp-tower-search").val());
-        list_towers();
-    }
-})
+$("#sclp-tower-search").on("input", function () {
+    towers = search($(this).val());
+    list_towers();
+});
 $("#sclp-player-search").on("keypress", function(event) {
-    if (event.key == "Enter") {
-        completions = psearch($("#sclp-player-search").val());
-        list_players();
-    }
+    completions = psearch($(this).val());
+    list_players();
 })
 
 function difficulty_to_name(d) {
