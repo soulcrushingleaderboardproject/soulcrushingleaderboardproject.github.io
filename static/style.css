@@ -213,24 +213,16 @@ p {
     color: #797981;
 }
 
-.owner {
+.owners {
     color: #1abc9c;
 }
 
-.co-owner {
-    color: #0f806a;
-}
-
-.developers {
+.developer {
     color: #315528;
 }
 
 .managers {
     color: #9b59b6;
-}
-
-.trial-staff {
-    color: #f5e5a4;
 }
 
 .former-staff {
