@@ -319,17 +319,22 @@ function format_ratio(a, b) {
     return `<span class="difficulty-display">${a}/${b}</span><span class="difficulty-display">${formatNumber(((a / b) * 100).toFixed(2))}%</span>`;
 }
 
-function open_player(name) {
-    var player = player_from_name(name);
-    var completion_link = "sclp.vercel.app?u=" + name;
-
+function get_role(x, t=false) {
     let role = "";
     for (let [r, users] of Object.entries(credits)) {
-        if (users.includes(player["username"])) {
-            role = `<p class="${r.toLowerCase().replaceAll(" ", "-")}">${r}</p>`;
+        if (users.includes(x)) {
+            let text = t ? x : r;
+            role = `<p class="${r.toLowerCase().replaceAll(" ", "-")}">${text}</p>`;
             break;
         }
     }
+    return t && role == "" ? x : role;
+}
+
+function open_player(name) {
+    var player = player_from_name(name);
+    var completion_link = "sclp.vercel.app?u=" + name;
+    let role = get_role(player["username"]);
 
     var extra = `
         <p id="big"><b>${name}</b></p>
@@ -361,7 +366,7 @@ function list_players() {
 
         p += `<div id='item'>
             <span>#${p_rank}</span>
-            <button id='player-button' onclick='open_player("${p_name}")'><b>${p_name}</b></button> Level ${format_level(p_exp, true)}
+            <button id='player-button' onclick='open_player("${p_name}")'><b>${get_role(p_name, true)}</b></button> Level ${format_level(p_exp, true)}
         `;
 
         if ($("#extra-player-info").prop("checked")) {
