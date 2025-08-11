@@ -22,21 +22,21 @@
                 <div id="searchmenu"></div>
             </div>
             <div id="right">
-                <div id="options">
+                <div id="options" oninput="towers=search($('#sclp-tower-search').val());list_towers();">
                     <h1>The List</h1>
                     <input type="text" id="sclp-tower-search" placeholder="Search...">
                     <br><br>
-                    <input type="checkbox" id="diff-8" onclick="towers=search($('#sclp-tower-search').val());list_towers();" checked>Insane
-                    <input type="checkbox" id="diff-9" onclick="towers=search($('#sclp-tower-search').val());list_towers();" checked>Extreme
-                    <input type="checkbox" id="diff-10" onclick="towers=search($('#sclp-tower-search').val());list_towers();" checked>Terrifying
-                    <input type="checkbox" id="diff-11" onclick="towers=search($('#sclp-tower-search').val());list_towers();" checked>Catastrophic
-                    <input type="checkbox" id="diff-12" onclick="towers=search($('#sclp-tower-search').val());list_towers();" checked>Horrific
-                    <input type="checkbox" id="diff-13" onclick="towers=search($('#sclp-tower-search').val());list_towers();" checked>Unreal
+                    <input type="checkbox" id="diff-8" checked>Insane
+                    <input type="checkbox" id="diff-9" checked>Extreme
+                    <input type="checkbox" id="diff-10" checked>Terrifying
+                    <input type="checkbox" id="diff-11" checked>Catastrophic
+                    <input type="checkbox" id="diff-12" checked>Horrific
+                    <input type="checkbox" id="diff-13" checked>Unreal
                     <br>
                     Game: <select name="game-select" id="game-select"></select>
-                    <input type="checkbox" id="color-checklist" onclick="towers=search($('#sclp-tower-search').val());list_towers();">Color by checklist?
+                    <input type="checkbox" id="color-checklist">Color by checklist?
                     <input type="text" id="checklist-player" placeholder="Player...">
-                    <input type="checkbox" id="extra-tower-info" onclick="towers=search($('#sclp-tower-search').val());list_towers();">Show extra info
+                    <input type="checkbox" id="extra-tower-info">Show extra info
                 </div>
                 <div id="extra-data">Click on a tower to see extra info here</div>
             </div>
