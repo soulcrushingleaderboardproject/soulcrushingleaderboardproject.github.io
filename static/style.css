@@ -58,7 +58,7 @@ span {
     height: calc(100% - 40px);
 }
 
-#sclp-tower-search, #sclp-player-search, #search-button, #checklist-player, #game-select {
+#sclp-tower-search, #sclp-player-search, #checklist-player, #game-select {
     display: inline-block;
     vertical-align: middle;
     border: none;
