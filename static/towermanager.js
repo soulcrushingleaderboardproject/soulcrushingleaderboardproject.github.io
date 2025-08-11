@@ -162,55 +162,42 @@ function open_extra(id) {
 }
 
 function list_towers() {
-    var t = "<br>";
-    var is_valid_name = player_from_name($("#checklist-player").val()) != false;
-    if (is_valid_name) {
-        var comp_data = player_from_name($("#checklist-player").val())["completions"];
+    var r = "<br>";
+    let player = player_from_name($("#checklist-player").val());
+    if (!player) {
+        var comp_data = ["completions"];
     }
-    if (is_valid_name && $("#color-checklist").prop("checked")) {
+    if (!player && $("#color-checklist").prop("checked")) {
         for (let i = 0; i < towers.length; i++) {
-            t_id = towers[i]["id"];
-            t_name = towers[i]["name"];
-            t_abbr = getAbbr(t_name);
-            t_diff = towers[i]["difficulty"];
-            t_area = towers[i]["places"];
-            t_rank = towers[i]["rank"];
-            t_exp = towers[i]["exp"];
-            t += "<div id='item'>";
-            t += "<span class='" + difficulty_to_name(t_diff) + "'>#" + t_rank + "</span>";
+            let t = towers[i];
+            r += "<div id='item'>";
+            r += "<span class='" + difficulty_to_name(t["difficulty"]) + "'>#" + t["rank"] + "</span>";
             
-            if (comp_data.includes(t_id)) {
-                t += `<button id='tower-button-crossed' onclick='open_extra(${t_id})'><b><s>${t_name}</s></b></button>`;
+            if (comp_data.includes(t["id"])) {
+                r += `<button id='tower-button-crossed' onclick='open_extra(${t["id"]})'><b><s>${t["name"]}</s></b></button>`;
             } else {
-                t += `<button id='tower-button' onclick='open_extra(${t_id})'><b>${t_name}</b></button>`;
+                r += `<button id='tower-button' onclick='open_extra(${t["id"]})'><b>${t["name"]}</b></button>`;
             }
 
             if ($("#extra-tower-info").prop("checked")) {
-                t += "<i id='small'><br><span></span>";
-                t += `(${formatNumber(t_diff / 100)} - ${t_area[0][0]} - ${t_exp} EXP)</i>`;
+                r += "<i id='small'><br><span></span>";
+                r += `(${formatNumber(t["difficulty"] / 100)} - ${t["places"][0][0]} - ${t["exp"]} EXP)</i>`;
             }
-            t += "</div>";
+            r += "</div>";
         }
     } else {
         for (let i = 0; i < towers.length; i++) {
-            t_id = towers[i]["id"];
-            t_name = towers[i]["name"];
-            t_abbr = getAbbr(t_name);
-            t_diff = towers[i]["difficulty"];
-            t_area = towers[i]["places"];
-            t_rank = towers[i]["rank"];
-            t_exp = towers[i]["exp"];
-
-            t += `
+            let t = towers[i];
+            r += `
                 <div id="item">
-                    <span class="${difficulty_to_name(t_diff)}">#${t_rank}</span>
-                    <button id="tower-button" onclick="open_extra(${t_id})"><b>${t_name}</b></button>
-                    ${$("#extra-tower-info").prop("checked") ? `<i id="small"><br><span></span>(${formatNumber(t_diff / 100)} - ${t_area[0][0]} - ${t_exp} EXP)</i>` : ''}
+                    <span class="${difficulty_to_name(t["difficulty"])}">#${t["rank"]}</span>
+                    <button id="tower-button" onclick="open_extra(${t["id"]})"><b>${t["name"]}</b></button>
+                    ${$("#extra-tower-info").prop("checked") ? `<i id="small"><br><span></span>(${formatNumber(t["difficulty"] / 100)} - ${t["places"][0][0]} - ${t["exp"]} EXP)</i>` : ''}
                 </div>
             `;          
         }
     }
-    $("#searchmenu").html(t);
+    $("#searchmenu").html(r);
 }
 list_towers();
 
