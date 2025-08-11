@@ -80,26 +80,17 @@ function difficulty_to_range(d) {
 }
 
 function format_location(tower, start, end) {
-    let places = tower["places"].slice(start, end);
-    let game = tower["game"];
+    const places = tower["places"].slice(start, end);
+    const game = tower["game"];
     let formatted = "";
 
-    for (let i = 0; i < places.length; i++) {
-        let loc = places[i];
-        if (loc[0] == "Place") {
-            formatted += `<a href='${game}' target='_blank'>${loc[0]}</a>`;
-        } else {
-            formatted += `<a href='${game_from_abbr(loc[0])["link"]}' target='_blank'>${loc[0]}` 
-        }
-        if (loc[1] != "") {
-            formatted += `, ${loc[1]}</a>`;
-        } else {
-            formatted += "</a>"
-        }
-        if (i != places.length - 1) {
-            formatted += " / ";
-        }
-    }
+    places.forEach((loc, i) => {
+        const href = loc[0] === "Place" ? game : game_from_abbr(loc[0]).link;
+        const text = loc[1] ? `${loc[0]}, ${loc[1]}` : loc[0];
+        formatted += `<a href='${href}' target='_blank'>${text}</a>`;
+        if (i < places.length - 1) formatted += " / ";
+    });
+
     return formatted;
 }
 
