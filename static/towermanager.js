@@ -87,12 +87,12 @@ function format_location(tower, start, end) {
     for (let i = 0; i < places.length; i++) {
         let loc = places[i];
         if (loc[0] == "Place") {
-            formatted += "<a href='" + game + "' target='_blank'>" + loc[0] + "</a>";
+            formatted += `<a href='${game}' target='_blank'>${loc[0]}</a>`;
         } else {
-            formatted += "<a href='" + game_from_abbr(loc[0])["link"] + "' target='_blank'>" + loc[0]
+            formatted += `<a href='${game_from_abbr(loc[0])["link"]}' target='_blank'>${loc[0]}` 
         }
         if (loc[1] != "") {
-            formatted += ", " + loc[1] + "</a>";
+            formatted += `, ${loc[1]}</a>`;
         } else {
             formatted += "</a>"
         }
@@ -189,14 +189,14 @@ function list_towers() {
             t += "<span class='" + difficulty_to_name(t_diff) + "'>#" + t_rank + "</span>";
             
             if (comp_data.includes(t_id)) {
-                t += "<button id='tower-button-crossed' onclick='open_extra(" + t_id + ")'><b><s>" + t_name + "</s></b></button>";
+                t += `<button id='tower-button-crossed' onclick='open_extra(${t_id})'><b><s>${t_name}</s></b></button>`;
             } else {
-                t += "<button id='tower-button' onclick='open_extra(" + t_id + ")'><b>" + t_name + "</b></button>";
+                t += `<button id='tower-button' onclick='open_extra(${t_id})'><b>${t_name}</b></button>`;
             }
 
             if ($("#extra-tower-info").prop("checked")) {
                 t += "<i id='small'><br><span></span>";
-                t += "(" + formatNumber(t_diff / 100) + " - " + t_area[0][0] + " - " + t_exp + " EXP)</i>";
+                t += `(${formatNumber(t_diff / 100)} - ${t_area[0][0]} - ${t_exp} EXP)</i>`;
             }
             t += "</div>";
         }
@@ -210,14 +210,13 @@ function list_towers() {
             t_rank = towers[i]["rank"];
             t_exp = towers[i]["exp"];
 
-            t += "<div id='item'>";
-            t += "<span class='" + difficulty_to_name(t_diff) + "'>#" + t_rank + "</span>";
-            t += "<button id='tower-button' onclick='open_extra(" + t_id + ")'><b>" + t_name + "</b></button>";
-            if ($("#extra-tower-info").prop("checked")) {
-                t += "<i id='small'><br><span></span>";
-                t += "(" + formatNumber(t_diff / 100) + " - " + t_area[0][0] + " - " + t_exp + " EXP)</i>";
-            }
-            t += "</div>";
+            t += `
+                <div id="item">
+                    <span class="${difficulty_to_name(t_diff)}">#${t_rank}</span>
+                    <button id="tower-button" onclick="open_extra(${t_id})"><b>${t_name}</b></button>
+                    ${$("#extra-tower-info").prop("checked") ? `<i id="small"><br><span></span>(${formatNumber(t_diff / 100)} - ${t_area[0][0]} - ${t_exp} EXP)</i>` : ''}
+                </div>
+            `;          
         }
     }
     $("#searchmenu").html(t);
@@ -395,7 +394,7 @@ function game_from_abbr(abbr) {
 gm = "<option value=''>All</option><option value='Place'>Place</option>";
 for (let i = 0; i < all_games.length; i++) {
     game = all_games[i];
-    gm += "<option value='" + game["abbr"] + "'>" + game["abbr"] + "</option>";
+    gm += `<option value='${game["abbr"]}'>${game["abbr"]}</option>`;
 }
 $("#game-select").html(gm);
 
