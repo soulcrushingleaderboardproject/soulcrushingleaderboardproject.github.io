@@ -51,7 +51,7 @@ span {
     overflow: hidden;
 }
 
-#tower-lookup-page, #leaderboard-page {
+#towers-page, #leaderboard-page {
     flex-grow: 1;
     display: flex;
     flex-direction: row;
@@ -266,6 +266,6 @@ p {
     }
 }
 
-#menu-page {
+#home-page {
     overflow: scroll;
 }

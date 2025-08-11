@@ -306,9 +306,11 @@ function format_comps(c) {
         if (c.includes(all_towers[t]["id"])) {
             let tower = all_towers[t];
 
-            f += "<span class='" + difficulty_to_name(tower["difficulty"]) + "'>#" + tower["rank"] + "</span>";
-            f += "<button id='tower-button' onclick='open_page(\"Towers\");open_extra(" + tower["id"] + ")'><b>" + tower["name"] + "</b></button>";
-            f += "<br>";
+            f += `
+                <span class="${difficulty_to_name(tower["difficulty"])}">#${tower["rank"]}</span>
+                <button id="tower-button" onclick="open_page('Towers');open_extra(${tower["id"]})"><b>${tower["name"]}</b></button>
+                <br>
+            `;          
             rank++;
         }
     }
@@ -397,16 +399,12 @@ for (let i = 0; i < all_games.length; i++) {
 }
 $("#game-select").html(gm);
 
-$("#tower-lookup-page").hide();
+$("#towers-page").hide();
 $("#leaderboard-page").hide();
 
-let page_maps = {
-    "Home": "menu",
-    "Towers": "tower-lookup",
-    "Leaderboard": "leaderboard"
-}
-for (let [k, _] of Object.entries(page_maps)) {
-    $("#navigation").append(`<button class="seamless-button" onclick="open_page('${k}')">${k}</button>`);
+let pages = ["Home", "Towers", "Leaderboard"];
+for (let page of pages) {
+    $("#navigation").append(`<button class="seamless-button" onclick="open_page('${page}')">${page}</button>`);
 }
 
 function scaleLayout() {
@@ -430,10 +428,10 @@ window.addEventListener('resize', scaleLayout);
 scaleLayout();
             
 function open_page(page_name) {
-    for (let [_, v] of Object.entries(page_maps)) {
-        $(`#${v}-page`).hide();
+    for (let page of pages) {
+        $(`#${page.toLowerCase()}-page`).hide();
     }
-    $(`#${page_maps[page_name]}-page`).css("display", "");
+    $(`#${page_name.toLowerCase()}-page`).css("display", "");
 }
 
 const url = window.location.search;
