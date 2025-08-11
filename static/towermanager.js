@@ -350,6 +350,7 @@ function open_player(name) {
     extra += format_comps(player["completions"]);
     $("#player-data").html(extra);
 }
+
 function list_players() {
     var p = "<br>";
     for (let i = 0; i < completions.length; i++) {
@@ -358,14 +359,14 @@ function list_players() {
         let p_exp = completions[i]["exp"];
         let p_rank = completions[i]["rank"];
 
-        p += "<div id='item'>";
-        p += "<span>#" + p_rank + "</span>";
-        p += "<button id='player-button' onclick='open_player(\"" + p_name + "\")'><b>" + p_name + "</b></button>";
-        p += " Level " + format_level(p_exp, true)
+        p += `<div id='item'>
+            <span>#${p_rank}</span>
+            <button id='player-button' onclick='open_player("${p_name}")'><b>${p_name}</b></button> Level ${format_level(p_exp, true)}
+        `;
 
         if ($("#extra-player-info").prop("checked")) {
             p += "<i id='small'><br><span></span>";
-            p += "(" + p_comps.length + " SCs - " + p_exp + " Total EXP)</i>";
+            p += `(${p_comps.length} SCs - ${p_exp} Total EXP)</i>`;
         }
         p += "</div>";
     }
