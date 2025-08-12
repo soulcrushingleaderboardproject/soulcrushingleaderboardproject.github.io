@@ -303,7 +303,7 @@ function get_role(x, t=false) {
     for (let [r, users] of Object.entries(credits)) {
         if (users.includes(x)) {
             let text = t ? x : r;
-            role = `<p class="${r.toLowerCase().replaceAll(" ", "-")}">${text}</p>`;
+            role = `<p class="${r.toLowerCase().replaceAll(" ", "-")}" ${t ? "style='margin: 0;'" : ""}>${text}</p>`;
             break;
         }
     }
