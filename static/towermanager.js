@@ -52,7 +52,7 @@ $("#sclp-tower-search").on("input", function () {
     towers = search($(this).val());
     list_towers();
 });
-$("#sclp-player-search").on("keypress", function(event) {
+$("#sclp-player-search").on("input", function(event) {
     completions = psearch($(this).val());
     list_players();
 })
