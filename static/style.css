@@ -86,6 +86,9 @@ span {
     font-size: 20px;
     color: #FFFFFF;
     font-family: "Montserrat", sans-serif;
+}
+
+.seamless-button:hover {
     text-decoration: underline;
 }
 
@@ -144,7 +147,10 @@ span {
 #navigation {
     background: #505A64;
     width: 100%;
-    margin-top: 0px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
 }
 
 #left {
