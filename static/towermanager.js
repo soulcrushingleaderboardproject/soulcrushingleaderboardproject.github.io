@@ -56,6 +56,9 @@ $("#sclp-player-search").on("input", function(event) {
     completions = psearch($(this).val());
     list_players();
 })
+$("#checklist-player").on("input", function () {
+    list_towers();
+});
 
 function difficulty_to_name(d) {
     if (d < 900) return "Insane";
@@ -164,16 +167,13 @@ function open_extra(id) {
 function list_towers() {
     var r = "<br>";
     let player = player_from_name($("#checklist-player").val());
-    if (!player) {
-        var comp_data = ["completions"];
-    }
-    if (!player && $("#color-checklist").prop("checked")) {
+    if (player) {
         for (let i = 0; i < towers.length; i++) {
             let t = towers[i];
             r += "<div id='item'>";
             r += "<span class='" + difficulty_to_name(t["difficulty"]) + "'>#" + t["rank"] + "</span>";
             
-            if (comp_data.includes(t["id"])) {
+            if (player["completions"].includes(t["id"])) {
                 r += `<button id='tower-button-crossed' onclick='open_extra(${t["id"]})'><b><s>${t["name"]}</s></b></button>`;
             } else {
                 r += `<button id='tower-button' onclick='open_extra(${t["id"]})'><b>${t["name"]}</b></button>`;
