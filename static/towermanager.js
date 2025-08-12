@@ -175,9 +175,9 @@ function list_towers() {
             r += "<span class='" + difficulty_to_name(t["difficulty"]) + "'>#" + t["rank"] + "</span>";
             
             if (player["completions"].includes(t["id"])) {
-                r += `<button id='tower-button-crossed' onclick='open_extra(${t["id"]})'><b><s>${t["name"]}</s></b></button>`;
+                r += `<button id='tower-button-crossed' onclick='open_extra(${t["id"]})' style="margin-left: 5px;"><b><s>${t["name"]}</s></b></button>`;
             } else {
-                r += `<button id='tower-button' onclick='open_extra(${t["id"]})'><b>${t["name"]}</b></button>`;
+                r += `<button id='tower-button' onclick='open_extra(${t["id"]})' style="margin-left: 5px;"><b>${t["name"]}</b></button>`;
             }
 
             if ($("#extra-tower-info").prop("checked")) {
