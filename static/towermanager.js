@@ -381,7 +381,7 @@ $("#leaderboard-page").hide();
 
 let pages = ["Home", "Towers", "Leaderboard"];
 for (let page of pages) {
-    $("#navigation").append(`<button class="seamless-button" onclick="open_page('${page}')">${page}</button>`);
+    $("#links").append(`<button class="seamless-button" onclick="open_page('${page}')">${page}</button>`);
 }
 
 function scaleLayout() {
