@@ -58,6 +58,7 @@ $("#sclp-player-search").on("input", function(event) {
 })
 $("#checklist-player").on("input", function () {
     list_towers();
+    localStorage.setItem("sclp-username", $(this).val());
 });
 
 function difficulty_to_name(d) {
@@ -199,6 +200,7 @@ function list_towers() {
     }
     $("#searchmenu").html(r);
 }
+$("#checklist-player").val(localStorage.getItem("sclp-username") || "");
 list_towers();
 
 // player leaderboard
