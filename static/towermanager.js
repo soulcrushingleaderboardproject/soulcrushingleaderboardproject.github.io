@@ -373,7 +373,7 @@ function add_badges() {
         player.innerHTML += sc_badge;
 
         let hardest_diff = get_hardest_tower(info["completions"]);
-        if (hardest_diff >= 1000) {
+        if (hardest_diff >= 1100) {
             player.innerHTML += `<img src='/static/images/badges/${difficulty_to_name(hardest_diff).toLowerCase()}.png' class="badge">`;
         }
     }
