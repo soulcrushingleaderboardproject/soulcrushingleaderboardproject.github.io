@@ -357,7 +357,8 @@ function add_badges() {
             player.innerHTML += `<img src='/static/images/badges/top${rank}.png' class="badge">`;
         }
 
-        if (get_role(info["username"]) != "") {
+        let role = get_role(info["username"]);
+        if (role != "" && !role.includes("Former")) {
             player.innerHTML += `<img src='/static/images/badges/staff.png' class="badge">`;
         }
 
