@@ -243,7 +243,7 @@ p {
     color: #49559e;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1080px) {
     #left, #right {
         min-width: 0;
     }
