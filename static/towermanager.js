@@ -348,6 +348,10 @@ function add_badges() {
             player.innerHTML += `<img src='/static/images/badges/top${rank}.png' class="badge">`;
         }
 
+        if (get_role(info["username"]) != "") {
+            player.innerHTML += `<img src='/static/images/badges/staff.png' class="badge">`;
+        }
+
         let scs = info["completions"].length;
         let sc_levels = [25, 50, 100, 200, 300];
         let sc_badge = "";
