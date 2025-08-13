@@ -287,6 +287,11 @@ p {
 
 #home-page {
     overflow: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+#home-page::-webkit-scrollbar {
+    display: none;
 }
 
 .badge {
