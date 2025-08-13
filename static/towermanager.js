@@ -362,7 +362,7 @@ function add_badges() {
         }
 
         let scs = info["completions"].length;
-        let sc_levels = [25, 50, 100, 200, 300];
+        let sc_levels = [50, 100, 200, 300, 400];
         let sc_badge = "";
 
         for (let level of sc_levels) {
