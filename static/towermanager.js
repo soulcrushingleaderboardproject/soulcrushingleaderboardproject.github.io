@@ -241,7 +241,7 @@ function format_level(exp, level_only) {
 
 function get_total_exp(player) {
     c = player_from_name(player)["completions"];
-    total_exp = 0;
+    let total_exp = 0;
     for (let comp_index = 0; comp_index < c.length; comp_index++) {
         total_exp += tower_from_id(c[comp_index])["exp"];
     }
@@ -338,6 +338,15 @@ function open_player(name) {
     $("#player-data").html(extra);
 }
 
+function get_hardest_tower(x) {
+    let highest_diff = 0;
+    for (let id of x) {
+        let tower = tower_from_id(id);
+        highest_diff = Math.max(highest_diff, tower["difficulty"]);
+    }
+    return highest_diff;
+}
+
 function add_badges() {
     for (let player of $("#leaderboard").find(".player-button")) {
         let parent = player.parentNode;
@@ -362,6 +371,11 @@ function add_badges() {
             }
         }
         player.innerHTML += sc_badge;
+
+        let hardest_diff = get_hardest_tower(info["completions"]);
+        if (hardest_diff >= 1000) {
+            player.innerHTML += `<img src='/static/images/badges/${difficulty_to_name(hardest_diff).toLowerCase()}.png' class="badge">`;
+        }
     }
 }
 
