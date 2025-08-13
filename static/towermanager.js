@@ -302,10 +302,11 @@ function format_ratio(a, b) {
 
 function get_role(x, t=false) {
     let role = "";
+    let tag = t ? "span" : "p";
     for (let [r, users] of Object.entries(credits)) {
         if (users.includes(x)) {
             let text = t ? x : r;
-            role = `<p class="${r.toLowerCase().replaceAll(" ", "-")}" ${t ? "style='margin: 0;'" : ""}>${text}</p>`;
+            role = `<${tag} class="${r.toLowerCase().replaceAll(" ", "-")}" ${t ? "style='width: unset; padding: unset;'" : ""}>${text}</${tag}>`;
             break;
         }
     }
