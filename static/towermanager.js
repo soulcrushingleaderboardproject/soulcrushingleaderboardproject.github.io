@@ -338,6 +338,17 @@ function open_player(name) {
     $("#player-data").html(extra);
 }
 
+function add_badges() {
+    for (let player of $("#leaderboard").find(".player-button")) {
+        let parent = player.parentNode;
+        let rank = parent.children[0].innerText.slice(1);
+
+        if (rank <= 3) {
+            player.innerHTML += `<img src='/static/images/badges/${rank}.png' class="badge">`;
+        }
+    }
+}
+
 function list_players() {
     var p = "<br>";
     for (let i = 0; i < completions.length; i++) {
@@ -348,7 +359,7 @@ function list_players() {
 
         p += `<div id='item'>
             <span>#${p_rank}</span>
-            <button class='player-button' onclick='open_player("${p_name}")'><b>${get_role(p_name, true)}</b> ${p_rank <= 3 ? `<img src='/static/images/badges/${p_rank}.png' class="badge">` : ''}</button> Level ${format_level(p_exp, true)}
+            <button class='player-button' onclick='open_player("${p_name}")'><b>${get_role(p_name, true)}</b></button> Level ${format_level(p_exp, true)}
         `;
 
         if ($("#extra-player-info").prop("checked")) {
@@ -358,6 +369,7 @@ function list_players() {
         p += "</div>";
     }
     $("#leaderboard").html(p);
+    add_badges();
 }
 list_players();
 
