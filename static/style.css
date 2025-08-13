@@ -110,6 +110,8 @@ span {
 .player-button {
     width: 15em;
     text-align: left;
+    white-space: nowrap;
+    overflow: scroll;
 }
 
 #tower-button-crossed {
