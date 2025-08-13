@@ -342,10 +342,13 @@ function add_badges() {
     for (let player of $("#leaderboard").find(".player-button")) {
         let parent = player.parentNode;
         let rank = parent.children[0].innerText.slice(1);
+        let info = completions[rank - 1];
 
         if (rank <= 3) {
-            player.innerHTML += `<img src='/static/images/badges/${rank}.png' class="badge">`;
+            player.innerHTML += `<img src='/static/images/badges/top${rank}.png' class="badge">`;
         }
+
+        let scs = info["completions"].length;
     }
 }
 
