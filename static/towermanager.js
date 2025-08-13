@@ -348,7 +348,7 @@ function list_players() {
 
         p += `<div id='item'>
             <span>#${p_rank}</span>
-            <button id='player-button' onclick='open_player("${p_name}")'><b>${get_role(p_name, true)}</b> ${p_rank <= 3 ? `<img src='/static/images/badges/${p_rank}.png' class="badge">` : ''}</button> Level ${format_level(p_exp, true)}
+            <button class='player-button' onclick='open_player("${p_name}")'><b>${get_role(p_name, true)}</b> ${p_rank <= 3 ? `<img src='/static/images/badges/${p_rank}.png' class="badge">` : ''}</button> Level ${format_level(p_exp, true)}
         `;
 
         if ($("#extra-player-info").prop("checked")) {
