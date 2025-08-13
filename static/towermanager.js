@@ -349,6 +349,15 @@ function add_badges() {
         }
 
         let scs = info["completions"].length;
+        let sc_levels = [25, 50, 100, 200, 300];
+        let sc_badge = "";
+
+        for (let level of sc_levels) {
+            if (scs >= level) {
+                sc_badge = `<img src='/static/images/badges/${level}.png' class="badge">`;
+            }
+        }
+        player.innerHTML += sc_badge;
     }
 }
 
