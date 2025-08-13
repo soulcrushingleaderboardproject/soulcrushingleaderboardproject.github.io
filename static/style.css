@@ -111,7 +111,12 @@ span {
     width: 15em;
     text-align: left;
     white-space: nowrap;
-    overflow: scroll;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.player-button::-webkit-scrollbar {
+    display: none;
 }
 
 #tower-button-crossed {
