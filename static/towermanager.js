@@ -29,7 +29,7 @@ all_towers.sort((a, b) => b["id"] - a["id"]);
 all_towers.sort((a, b) => b["difficulty"] - a["difficulty"]);
 for (let t = 0; t < all_towers.length; t++) {
     all_towers[t]["rank"] = t + 1;
-    all_towers[t]["exp"] = Math.floor((3 ** ((all_towers[t]["difficulty"] - 800) / 100)) * 100);
+    all_towers[t]["xp"] = Math.floor((3 ** ((all_towers[t]["difficulty"] - 800) / 100)) * 100);
 
     if (all_towers[t]["game"] != null) {
         all_towers[t]["places"].push(["Place", ""])
@@ -38,10 +38,10 @@ for (let t = 0; t < all_towers.length; t++) {
 
 var towers = all_towers;
 for (let player = 0; player < all_completions.length; player++) {
-    all_completions[player]["exp"] = get_total_exp(all_completions[player]["username"]);
+    all_completions[player]["xp"] = get_total_xp(all_completions[player]["username"]);
 }
 
-all_completions.sort((a, b) => b["exp"] - a["exp"]);
+all_completions.sort((a, b) => b["xp"] - a["xp"]);
 for (let player = 0; player < all_completions.length; player++) {
     all_completions[player]["rank"] = player + 1;
 }
@@ -158,7 +158,7 @@ function open_extra(id) {
         <br>Location: ${format_location(tower, 0, 1)}
         ${other_locations}
         <br>Rank: #${tower["rank"]}
-        <br>EXP for completion: ${tower["exp"]}
+        <br>XP for completion: ${tower["xp"]}
         <br>Victors: ${get_victors(id)}
         <br><i id="small">Tower ID: ${id}</i>
     `;
@@ -182,7 +182,7 @@ function list_towers() {
 
             if ($("#extra-tower-info").prop("checked")) {
                 r += "<i id='small'><br><span></span>";
-                r += `(${formatNumber(t["difficulty"] / 100)} - ${t["places"][0][0]} - ${t["exp"]} EXP)</i>`;
+                r += `(${formatNumber(t["difficulty"] / 100)} - ${t["places"][0][0]} - ${t["xp"]} XP)</i>`;
             }
             r += "</div>";
         }
@@ -193,7 +193,7 @@ function list_towers() {
                 <div id="item">
                     <span class="${difficulty_to_name(t["difficulty"])}">#${t["rank"]}</span>
                     <button id="tower-button" onclick="open_extra(${t["id"]})"><b>${t["name"]}</b></button>
-                    ${$("#extra-tower-info").prop("checked") ? `<i id="small"><br><span></span>(${formatNumber(t["difficulty"] / 100)} - ${t["places"][0][0]} - ${t["exp"]} EXP)</i>` : ''}
+                    ${$("#extra-tower-info").prop("checked") ? `<i id="small"><br><span></span>(${formatNumber(t["difficulty"] / 100)} - ${t["places"][0][0]} - ${t["xp"]} XP)</i>` : ''}
                 </div>
             `;          
         }
@@ -213,39 +213,39 @@ function player_from_name(name) {
     return false;
 }
 
-function format_level(exp, level_only) {
+function format_level(xp, level_only) {
     let current_level = 0;
-    let last_exp = 150;
+    let last_xp = 150;
     let total = 0;
 
-    if (exp < 175) {
+    if (xp < 175) {
         if (level_only == true) {
             return "0";
         } else {
-            return "0 (" + exp + "/175)";
+            return "0 (" + xp + "/175)";
         }
     }
 
-    while (total <= exp) {
+    while (total <= xp) {
         current_level += 1;
-        last_exp = 150 + (25 * (current_level ** 2));
-        total += last_exp;
+        last_xp = 150 + (25 * (current_level ** 2));
+        total += last_xp;
     }
 
     if (level_only == true) {
         return current_level - 1;
     } else {
-        return (current_level - 1) + " (" + (exp - (total - last_exp)) + "/" + (150 + (25 * (current_level ** 2))) + ")";
+        return (current_level - 1) + " (" + (xp - (total - last_xp)) + "/" + (150 + (25 * (current_level ** 2))) + ")";
     }
 }
 
-function get_total_exp(player) {
+function get_total_xp(player) {
     c = player_from_name(player)["completions"];
-    let total_exp = 0;
+    let total_xp = 0;
     for (let comp_index = 0; comp_index < c.length; comp_index++) {
-        total_exp += tower_from_id(c[comp_index])["exp"];
+        total_xp += tower_from_id(c[comp_index])["xp"];
     }
-    return total_exp;
+    return total_xp;
 }
 
 function psearch(s) {
@@ -338,8 +338,8 @@ function open_player(name) {
 
     $("#playername").html(name);
     $("#playerrole").html(`<span class="${role.toLowerCase().replaceAll(" ", "-")}">${role}</span>`);
-    $("#playerexp").html(formatNumber(player["exp"]));
-    $("#playerlevel").html(format_level(player["exp"]));
+    $("#playerxp").html(formatNumber(player["xp"]));
+    $("#playerlevel").html(format_level(player["xp"]));
     $("#playerrank").html(`#${player["rank"]}`);
     $("#playerlink").html(`<a href="https://${completion_link}">${completion_link}</a>`);
 
@@ -384,17 +384,17 @@ function list_players() {
     for (let i = 0; i < completions.length; i++) {
         let p_name = completions[i]["username"];
         let p_comps = completions[i]["completions"];
-        let p_exp = completions[i]["exp"];
+        let p_xp = completions[i]["xp"];
         let p_rank = completions[i]["rank"];
 
         p += `<div id='item'>
             <span>#${p_rank}</span>
-            <button class='player-button' onclick='open_player("${p_name}")'><b>${get_role(p_name, true)}</b></button> Level ${format_level(p_exp, true)}
+            <button class='player-button' onclick='open_player("${p_name}")'><b>${get_role(p_name, true)}</b></button> Level ${format_level(p_xp, true)}
         `;
 
         if ($("#extra-player-info").prop("checked")) {
             p += "<i id='small'><br><span></span>";
-            p += `(${p_comps.length} SCs - ${p_exp} Total EXP)</i>`;
+            p += `(${p_comps.length} SCs - ${p_xp} Total XP)</i>`;
         }
         p += "</div>";
     }
