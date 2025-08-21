@@ -37,8 +37,8 @@ for (let t = 0; t < all_towers.length; t++) {
 }
 
 var towers = all_towers;
-for (let player = 0; player < all_completions.length; player++) {
-    all_completions[player]["xp"] = get_total_xp(all_completions[player]["username"]);
+for (let player of all_completions) {
+    player["xp"] = get_total_xp(player["username"]);
 }
 
 all_completions.sort((a, b) => b["xp"] - a["xp"]);
@@ -99,9 +99,8 @@ function format_location(tower, start, end) {
 }
 
 function is_tower_in_place(places, place) {
-    for (let i = 0; i < places.length; i++) {
-        let game = places[i][0];
-        if (game == place) {
+    for (let i of places) {
+        if (i[0] == place) {
             return true;
         }
     }
@@ -118,8 +117,7 @@ function search(s) {
             allowed_difficulties.push(i);
         }
     }
-    for (let tower_search = 0; tower_search < all_towers.length; tower_search++) {
-        let tower = all_towers[tower_search];
+    for (let tower of all_towers) {
         if (getAbbr(tower["name"]).toLowerCase().includes(s.toLowerCase()) || tower["name"].toLowerCase().includes(s.toLowerCase())) {
             if (allowed_difficulties.includes(Math.floor(tower["difficulty"] / 100))
             && (place_filter == "" || is_tower_in_place(tower["places"], place_filter))) {
@@ -131,22 +129,23 @@ function search(s) {
 }
 
 function tower_from_id(id) {
-    for (let i = 0; i < all_towers.length; i++) {
-        if (all_towers[i]["id"] == id) {
-            return all_towers[i];
+    for (let i of all_towers) {
+        if (i["id"] == id) {
+            return i;
         }
     }
 }
 
 function get_victors(id) {
     let victors = 0;
-    for (let p = 0; p < all_completions.length; p++) {
-        if (all_completions[p]["completions"].includes(id)) {
+    for (let p of all_completions) {
+        if (p["completions"].includes(id)) {
             victors += 1;
         }
     }
     return victors;
 }
+
 function open_extra(id) {
     var tower = tower_from_id(id);
     let other_locations = tower["places"].length > 1 ? `<br><i id="small">Other Locations: ${format_location(tower, 1, tower["places"].length)}</i>` : "";
@@ -169,8 +168,7 @@ function list_towers() {
     var r = "<br>";
     let player = player_from_name($("#checklist-player").val());
     if (player) {
-        for (let i = 0; i < towers.length; i++) {
-            let t = towers[i];
+        for (let t of towers) {
             r += "<div id='item'>";
             r += "<span class='" + difficulty_to_name(t["difficulty"]) + "'>#" + t["rank"] + "</span>";
             
@@ -187,8 +185,7 @@ function list_towers() {
             r += "</div>";
         }
     } else {
-        for (let i = 0; i < towers.length; i++) {
-            let t = towers[i];
+        for (let t of towers) {
             r += `
                 <div id="item">
                     <span class="${difficulty_to_name(t["difficulty"])}">#${t["rank"]}</span>
@@ -203,11 +200,10 @@ function list_towers() {
 $("#checklist-player").val(localStorage.getItem("sclp-username") || "");
 list_towers();
 
-// player leaderboard
 function player_from_name(name) {
-    for (let i = 0; i < all_completions.length; i++) {
-        if (all_completions[i]["username"] == name) {
-            return all_completions[i];
+    for (let i of all_completions) {
+        if (i["username"] == name) {
+            return i;
         }
     }
     return false;
@@ -242,16 +238,15 @@ function format_level(xp, level_only) {
 function get_total_xp(player) {
     c = player_from_name(player)["completions"];
     let total_xp = 0;
-    for (let comp_index = 0; comp_index < c.length; comp_index++) {
-        total_xp += tower_from_id(c[comp_index])["xp"];
+    for (let id of c) {
+        total_xp += tower_from_id(id)["xp"];
     }
     return total_xp;
 }
 
 function psearch(s) {
     new_players = [];
-    for (let player_search = 0; player_search < all_completions.length; player_search++) {
-        player = all_completions[player_search];
+    for (let player of all_completions) {
         if (player["username"].toLowerCase().includes(s.toLowerCase())) {
             new_players.push(player)
         }
@@ -319,12 +314,8 @@ function open_player(name) {
     get_dp(comps);
 
     $("#playername").html(name);
-    if (role) {
-        $("#playerrole").html(`<span class="${role.toLowerCase().replaceAll(" ", "-")}">${role}</span>`)
-    } else {
-        $("#playerrole").html("");
-    }
-
+    $("#playerrole").html("");
+    if (role) $("#playerrole").html(`<span class="${role.toLowerCase().replaceAll(" ", "-")}">${role}</span>`);
     $("#playerxp").html(formatNumber(player["xp"]));
     $("#playerlevel").html(format_level(player["xp"]));
     $("#playerrank").html(`#${player["rank"]}`);
@@ -377,11 +368,11 @@ function get_hardest_tower(x) {
 
 function list_players() {
     var p = "<br>";
-    for (let i = 0; i < completions.length; i++) {
-        let p_name = completions[i]["username"];
-        let p_comps = completions[i]["completions"];
-        let p_xp = completions[i]["xp"];
-        let p_rank = completions[i]["rank"];
+    for (let i of completions) {
+        let p_name = i["username"];
+        let p_comps = i["completions"];
+        let p_xp = i["xp"];
+        let p_rank = i["rank"];
 
         p += `<div id='item'>
             <span>#${p_rank}</span>
@@ -398,20 +389,17 @@ function list_players() {
 }
 list_players();
 
-// game links
 function game_from_abbr(abbr) {
-    for (let gm = 0; gm < games.length; gm++) {
-        if (abbr == games[gm]["abbr"]) {
-            return games[gm];
+    for (let gm of games) {
+        if (abbr == gm["abbr"]) {
+            return gm;
         }
     }
     return false;
 }
 
-// idfk what im doing anymore
 gm = "<option value=''>All</option><option value='Place'>Place</option>";
-for (let i = 0; i < all_games.length; i++) {
-    game = all_games[i];
+for (let game of all_games) {
     gm += `<option value='${game["abbr"]}'>${game["abbr"]}</option>`;
 }
 $("#game-select").html(gm);
@@ -421,6 +409,7 @@ function scaleLayout() {
     const screenWidth = window.innerWidth;
     const scale = Math.min(screenWidth / designedWidth, 1);
     const main = document.getElementById('main');
+
     if (screenWidth < designedWidth) {
         main.style.transform = `scale(${scale})`;
         main.style.transformOrigin = 'top left';
