@@ -9,28 +9,25 @@ for (let [role, users] of Object.entries(credits)) {
     $("#credits").append(`<h3><div class="${role.toLowerCase().replaceAll(" ", "-")}">[${role}]</div>${users.join(", ")}</h3>`);
 }
 
-all_towers.sort((a, b) => b["id"] - a["id"]);
-all_towers.sort((a, b) => b["difficulty"] - a["difficulty"]);
-for (let t = 0; t < all_towers.length; t++) {
-    all_towers[t]["rank"] = t + 1;
-    all_towers[t]["xp"] = Math.floor((3 ** ((all_towers[t]["difficulty"] - 800) / 100)) * 100);
+towers.sort((a, b) => b["id"] - a["id"]);
+towers.sort((a, b) => b["difficulty"] - a["difficulty"]);
+for (let t = 0; t < towers.length; t++) {
+    towers[t]["rank"] = t + 1;
+    towers[t]["xp"] = Math.floor((3 ** ((towers[t]["difficulty"] - 800) / 100)) * 100);
 
-    if (all_towers[t]["game"] != null) {
-        all_towers[t]["places"].push(["Place", ""])
+    if (towers[t]["game"] != null) {
+        towers[t]["places"].push(["Place", ""])
     }
 }
 
-var towers = all_towers;
-for (let player of all_completions) {
+for (let player of completions) {
     player["xp"] = get_total_xp(player["username"]);
 }
 
-all_completions.sort((a, b) => b["xp"] - a["xp"]);
-for (let player = 0; player < all_completions.length; player++) {
-    all_completions[player]["rank"] = player + 1;
+completions.sort((a, b) => b["xp"] - a["xp"]);
+for (let player = 0; player < completions.length; player++) {
+    completions[player]["rank"] = player + 1;
 }
-var completions = all_completions;
-var games = all_games;
 
 $("#sclp-tower-search").on("input", function () {
     towers = search($(this).val());
@@ -79,7 +76,7 @@ function search(s) {
             allowed_difficulties.push(i);
         }
     }
-    for (let tower of all_towers) {
+    for (let tower of towers) {
         if (getAbbr(tower["name"]).toLowerCase().includes(s.toLowerCase()) || tower["name"].toLowerCase().includes(s.toLowerCase())) {
             if (allowed_difficulties.includes(Math.floor(tower["difficulty"] / 100))
             && (place_filter == "" || is_tower_in_place(tower["places"], place_filter))) {
@@ -91,7 +88,7 @@ function search(s) {
 }
 
 function tower_from_id(id) {
-    for (let i of all_towers) {
+    for (let i of towers) {
         if (i["id"] == id) {
             return i;
         }
@@ -100,7 +97,7 @@ function tower_from_id(id) {
 
 function get_victors(id) {
     let victors = 0;
-    for (let p of all_completions) {
+    for (let p of completions) {
         if (p["completions"].includes(id)) {
             victors += 1;
         }
@@ -163,7 +160,7 @@ $("#checklist-player").val(localStorage.getItem("sclp-username") || "");
 list_towers();
 
 function player_from_name(name) {
-    for (let i of all_completions) {
+    for (let i of completions) {
         if (i["username"] == name) {
             return i;
         }
@@ -208,7 +205,7 @@ function get_total_xp(player) {
 
 function psearch(s) {
     new_players = [];
-    for (let player of all_completions) {
+    for (let player of completions) {
         if (player["username"].toLowerCase().includes(s.toLowerCase())) {
             new_players.push(player)
         }
@@ -255,7 +252,7 @@ function add_badges(rank, role, comps) {
 let dp = {};
 function get_dp(comps) {
     dp = {};
-    for (let tower of all_towers) {
+    for (let tower of towers) {
         let diff = difficulty_to_name(tower["difficulty"]);
         if (!dp[diff]) {
             dp[diff] = [0, 1];
@@ -305,7 +302,7 @@ function open_player(name) {
     }
     
     $("#playercompletions").html("");
-    for (let tower of all_towers) {
+    for (let tower of towers) {
         if (comps.includes(tower["id"])) {
             let row = `
                 <tr>
@@ -361,7 +358,7 @@ function game_from_abbr(abbr) {
 }
 
 gm = "<option value=''>All</option><option value='Place'>Place</option>";
-for (let game of all_games) {
+for (let game of games) {
     gm += `<option value='${game["abbr"]}'>${game["abbr"]}</option>`;
 }
 $("#game-select").html(gm);
