@@ -415,14 +415,6 @@ for (let i = 0; i < all_games.length; i++) {
 }
 $("#game-select").html(gm);
 
-$("#towers-page").hide();
-$("#leaderboard-page").hide();
-
-let pages = ["Home", "Towers", "Leaderboard"];
-for (let page of pages) {
-    $("#links").append(`<button class="seamless-button" onclick="open_page('${page}')">${page}</button>`);
-}
-
 function scaleLayout() {
     const designedWidth = 800;
     const screenWidth = window.innerWidth;
@@ -442,7 +434,20 @@ function scaleLayout() {
 
 window.addEventListener('resize', scaleLayout);
 scaleLayout();
-            
+
+let old_url = "soulcrushingleaderboardproject.github.io";
+if (window.location.hostname == old_url) {
+    window.location.href = window.location.href.replace(old_url, "sclp.vercel.app");
+}
+
+let inputs = document.querySelectorAll("input");
+inputs.forEach(input => {
+    input.setAttribute("autocomplete", "off");
+    input.setAttribute("autocorrect", "off");
+    input.setAttribute("autocapitalize", "off");
+    input.setAttribute("spellcheck", false);
+});
+
 function open_page(page_name) {
     for (let page of pages) {
         $(`#${page.toLowerCase()}-page`).hide();
@@ -457,15 +462,8 @@ if (params.get("u")) {
     open_player(params.get("u"));
 }
 
-let old_url = "soulcrushingleaderboardproject.github.io";
-if (window.location.hostname == old_url) {
-    window.location.href = window.location.href.replace(old_url, "sclp.vercel.app");
+let pages = ["Home", "Towers", "Leaderboard"];
+for (let page of pages) {
+    $("#links").append(`<button class="seamless-button" onclick="open_page('${page}')">${page}</button>`);
 }
-
-let inputs = document.querySelectorAll("input");
-inputs.forEach(input => {
-    input.setAttribute("autocomplete", "off");
-    input.setAttribute("autocorrect", "off");
-    input.setAttribute("autocapitalize", "off");
-    input.setAttribute("spellcheck", false);
-})
+open_page("Home");
