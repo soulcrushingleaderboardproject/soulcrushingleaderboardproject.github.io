@@ -304,9 +304,10 @@ function get_role(x, t=false) {
     for (let [r, users] of Object.entries(credits)) {
         if (users.includes(x)) {
             if (!t) return r;
-            return `<span class="${r.toLowerCase().replaceAll(" ", "-")}" style='width: unset; padding: unset;'>${x}</span>`;
+            return `<span class="${r.toLowerCase().replaceAll(" ", "-")}">${x}</span>`;
         }
     }
+    return x;
 }
 
 function add_badges(rank, role, comps) {
@@ -341,7 +342,7 @@ function open_player(name) {
     let role = get_role(player["username"]);
 
     $("#playername").html(name);
-    $("#playerrole").html(role);
+    $("#playerrole").html(`<span class="${role.toLowerCase().replaceAll(" ", "-")}">${role}</span>`);
     $("#playerexp").html(formatNumber(player["exp"]));
     $("#playerlevel").html(format_level(player["exp"]));
     $("#playerrank").html(`#${player["rank"]}`);
