@@ -147,7 +147,7 @@ p {
     margin: 5px 0 5px 0 !important;
 }
 
-#small {
+.small {
     font-size: 15px;
 }
 
@@ -264,7 +264,7 @@ p {
         font-size: 1.2em;
     }
 
-    #small {
+    .small {
         font-size: 0.6em;
     }
 

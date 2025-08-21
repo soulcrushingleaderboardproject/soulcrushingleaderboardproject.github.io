@@ -107,19 +107,18 @@ function get_victors(id) {
 
 function open_tower(id) {
     var tower = tower_from_id(id);
-    let other_locations = tower["places"].length > 1 ? `<br><i id="small">Other Locations: ${format_location(tower, 1, tower["places"].length)}</i>` : "";
     let diff = difficulty_to_name(tower["difficulty"]);
 
     $("#towername").html(`(${getAbbr(tower["name"])}) ${tower["name"]}`);
     $("#towerdifficulty").html(`<span class="${diff}">${difficulty_to_range(tower["difficulty"])} ${diff}</span> (${formatNumber(tower["difficulty"] / 100)})`);
     $("#towerlocation").html(format_location(tower, 0, 1));
+    $("#otherlocations").html(tower["places"].length > 1 ? `<i>Other Locations: ${format_location(tower, 1, tower["places"].length)}</i>` : "");
 
     var extra = `
-        ${other_locations}
         <br>Rank: #${tower["rank"]}
         <br>XP for completion: ${tower["xp"]}
         <br>Victors: ${get_victors(id)}
-        <br><i id="small">Tower ID: ${id}</i>
+        <br><i class="small">Tower ID: ${id}</i>
     `;
     $("#tower-data").append(extra);
 }
@@ -150,7 +149,7 @@ function list_towers() {
                 <div id="item">
                     <span class="${difficulty_to_name(t["difficulty"])}">#${t["rank"]}</span>
                     <button class="tower-button" onclick="open_tower(${t["id"]})"><b>${t["name"]}</b></button>
-                    ${$("#extra-tower-info").prop("checked") ? `<i id="small"><br><span></span>(${formatNumber(t["difficulty"] / 100)} - ${t["places"][0][0]} - ${t["xp"]} XP)</i>` : ''}
+                    ${$("#extra-tower-info").prop("checked") ? `<i class="small"><br><span></span>(${formatNumber(t["difficulty"] / 100)} - ${t["places"][0][0]} - ${t["xp"]} XP)</i>` : ''}
                 </div>
             `;          
         }
