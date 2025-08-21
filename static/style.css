@@ -131,11 +131,6 @@ span {
     background: #363840;
 }
 
-.difficulty-display {
-    width: 8em;
-    text-align: right;
-}
-
 #item {
     border-radius: 8px;
     padding: 6px;
@@ -301,9 +296,9 @@ p {
 }
 
 #difficulty-progress {
-    text-align: right;
+    text-align: left;
 }
 
 #difficulty-progress th, #difficulty-progress td {
-    border: 1px solid white;
+    padding: 0 1em;
 }

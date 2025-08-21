@@ -356,7 +356,7 @@ function open_player(name) {
         let diff = difficulty_to_name(d * 100);
         row = `
             <tr>
-                <td class="difficulty-display ${diff}">${diff}</td>
+                <td class="${diff}">${diff}</td>
                 <td>${dp[diff][0]}/${dp[diff][1]}</td>
                 <td>${+(dp[diff][0] / dp[diff][1] * 100).toFixed(2)}%</td>
             </tr>
