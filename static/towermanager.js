@@ -266,7 +266,7 @@ function get_role(x, t=false) {
             return `<span class="${r.toLowerCase().replaceAll(" ", "-")}">${x}</span>`;
         }
     }
-    return x;
+    return t ? x : "";
 }
 
 function add_badges(rank, role, comps) {
@@ -319,7 +319,12 @@ function open_player(name) {
     get_dp(comps);
 
     $("#playername").html(name);
-    $("#playerrole").html(`<span class="${role.toLowerCase().replaceAll(" ", "-")}">${role}</span>`);
+    if (role) {
+        $("#playerrole").html(`<span class="${role.toLowerCase().replaceAll(" ", "-")}">${role}</span>`)
+    } else {
+        $("#playerrole").html("");
+    }
+
     $("#playerxp").html(formatNumber(player["xp"]));
     $("#playerlevel").html(format_level(player["xp"]));
     $("#playerrank").html(`#${player["rank"]}`);
@@ -346,7 +351,7 @@ function open_player(name) {
         $("#difficulty-progress").append(row);
     }
     
-    $("#playercompletions").html();
+    $("#playercompletions").html("");
     for (let tower of all_towers) {
         if (comps.includes(tower["id"])) {
             let row = `
