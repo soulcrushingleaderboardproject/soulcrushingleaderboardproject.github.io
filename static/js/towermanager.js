@@ -113,14 +113,10 @@ function open_tower(id) {
     $("#towerdifficulty").html(`<span class="${diff}">${difficulty_to_range(tower["difficulty"])} ${diff}</span> (${formatNumber(tower["difficulty"] / 100)})`);
     $("#towerlocation").html(format_location(tower, 0, 1));
     $("#otherlocations").html(tower["places"].length > 1 ? `<i>Other Locations: ${format_location(tower, 1, tower["places"].length)}</i>` : "");
-
-    var extra = `
-        <br>Rank: #${tower["rank"]}
-        <br>XP for completion: ${tower["xp"]}
-        <br>Victors: ${get_victors(id)}
-        <br><i class="small">Tower ID: ${id}</i>
-    `;
-    $("#tower-data").append(extra);
+    $("#towerrank").html(tower["rank"]);
+    $("#towerxp").html(tower["xp"]);
+    $("#towervictors").html(get_victors(id));
+    $("#towerid").html(id);
 }
 
 function list_towers() {
