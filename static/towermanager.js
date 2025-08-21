@@ -353,7 +353,15 @@ function open_player(name) {
     `;
 
     for (let d = 8; d < 14; d++) {
-        extra += `<br><span class="${difficulty_to_name(d * 100)}" class="difficulty-display">${difficulty_to_name(d * 100)}</span> ${format_ratio(get_towers_within_range(get_completed_data(player["completions"]), d * 100, (d * 100) + 99).length, get_towers_within_range(all_towers, d * 100, (d * 100) + 99).length)}`;
+        let row = `
+            <tr>
+                <td class="difficulty-display ${difficulty_to_name(d * 100)}">${difficulty_to_name(d * 100)}</td>
+                <td>###/###</td>
+                <td>##.##%</td>
+            </tr>
+        `;
+        $("#difficulty-progress").append(row);
+        // `${format_ratio(get_towers_within_range(get_completed_data(player["completions"]), d * 100, (d * 100) + 99).length, get_towers_within_range(all_towers, d * 100, (d * 100) + 99).length)}`
     }
     
     extra += "<br><br><b class='big'>Completions</b><br><br>";
