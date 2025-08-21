@@ -52,7 +52,18 @@
                     <input type="text" id="sclp-player-search" placeholder="Search...">
                     <input type="checkbox" id="extra-player-info" onclick="completions=psearch($('#sclp-player-search').val());list_players();">Show extra info
                 </div>
-                <div id="player-data">Click on a player to see extra info here</div>
+
+                <div id="player-data">
+                    <p class="big" id="playername"></p>
+                    <p id="playerrole"></p><br>
+
+                    <p>Total EXP: <span id="playerexp"></span></p>
+                    <p>Level: <span id="playerlevel"></span></p>
+                    <p>Rank: <span id="playerrank"></span></p>
+                    <p id="playerlink"></p><br>
+
+                    <p class="big">Stats</p><br>
+                </div>
             </div>
         </div>
     </div>

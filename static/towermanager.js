@@ -340,15 +340,14 @@ function open_player(name) {
     var completion_link = "sclp.vercel.app?u=" + name;
     let role = get_role(player["username"]);
 
+    $("#playername").html(name);
+    $("#playerrole").html(role);
+    $("#playerexp").html(formatNumber(player["exp"]));
+    $("#playerlevel").html(format_level(player["exp"]));
+    $("#playerrank").html(`#${player["rank"]}`);
+    $("#playerlink").html(`<a href="https://${completion_link}">${completion_link}</a>`);
+
     var extra = `
-        <p class="big" id="playername">${name}</p>
-        <p class="playerrole">${role}</p>
-        <br>
-        <p id="playerexp">Total EXP: ${formatNumber(player["exp"])}</p>
-        <p id="playerlevel">Level: ${format_level(player["exp"])}</p>
-        <p id="playerrank">Rank: #${player["rank"]}</p>
-        <p id="playerlink"><a href="https://${completion_link}">${completion_link}</a></p>
-        <br><p class="big">Stats</p><br>
         <span class='difficulty-display' style="width: 3em;"><b>TOTAL</b></span> ${format_ratio(player["completions"].length, all_towers.length)}
     `;
 
@@ -358,7 +357,7 @@ function open_player(name) {
     
     extra += "<br><br><b class='big'>Completions</b><br><br>";
     extra += format_comps(player["completions"]);
-    $("#player-data").html(extra);
+    $("#player-data").append(extra);
     add_badges(player["rank"], role, player["completions"]);
 }
 
