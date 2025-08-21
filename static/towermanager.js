@@ -175,9 +175,9 @@ function list_towers() {
             r += "<span class='" + difficulty_to_name(t["difficulty"]) + "'>#" + t["rank"] + "</span>";
             
             if (player["completions"].includes(t["id"])) {
-                r += `<button id='tower-button-crossed' onclick='open_extra(${t["id"]})' style="margin-left: 5px;"><b><s>${t["name"]}</s></b></button>`;
+                r += `<button class='tower-button-crossed' onclick='open_extra(${t["id"]})' style="margin-left: 5px;"><b><s>${t["name"]}</s></b></button>`;
             } else {
-                r += `<button id='tower-button' onclick='open_extra(${t["id"]})' style="margin-left: 5px;"><b>${t["name"]}</b></button>`;
+                r += `<button class='tower-button' onclick='open_extra(${t["id"]})' style="margin-left: 5px;"><b>${t["name"]}</b></button>`;
             }
 
             if ($("#extra-tower-info").prop("checked")) {
@@ -192,7 +192,7 @@ function list_towers() {
             r += `
                 <div id="item">
                     <span class="${difficulty_to_name(t["difficulty"])}">#${t["rank"]}</span>
-                    <button id="tower-button" onclick="open_extra(${t["id"]})"><b>${t["name"]}</b></button>
+                    <button class="tower-button" onclick="open_extra(${t["id"]})"><b>${t["name"]}</b></button>
                     ${$("#extra-tower-info").prop("checked") ? `<i id="small"><br><span></span>(${formatNumber(t["difficulty"] / 100)} - ${t["places"][0][0]} - ${t["xp"]} XP)</i>` : ''}
                 </div>
             `;          
@@ -259,25 +259,6 @@ function psearch(s) {
     return new_players;
 }
 
-function format_comps(c) {
-    let f = "";
-    let rank = 1;
-
-    for (let t = 0; t < all_towers.length; t++) {
-        if (c.includes(all_towers[t]["id"])) {
-            let tower = all_towers[t];
-
-            f += `
-                <span class="${difficulty_to_name(tower["difficulty"])}">#${tower["rank"]}</span>
-                <button id="tower-button" onclick="open_page('Towers');open_extra(${tower["id"]})"><b>${tower["name"]}</b></button>
-                <br>
-            `;          
-            rank++;
-        }
-    }
-    return f;
-}
-
 function get_role(x, t=false) {
     for (let [r, users] of Object.entries(credits)) {
         if (users.includes(x)) {
@@ -334,7 +315,8 @@ function get_dp(comps) {
 function open_player(name) {
     var player = player_from_name(name);
     let role = get_role(player["username"]);
-    get_dp(player["completions"]);
+    let comps = player["completions"];
+    get_dp(comps);
 
     $("#playername").html(name);
     $("#playerrole").html(`<span class="${role.toLowerCase().replaceAll(" ", "-")}">${role}</span>`);
@@ -364,9 +346,19 @@ function open_player(name) {
         $("#difficulty-progress").append(row);
     }
     
-    let extra = format_comps(player["completions"]);
-    $("#player-data").append(extra);
-    add_badges(player["rank"], role, player["completions"]);
+    $("#playercompletions").html();
+    for (let tower of all_towers) {
+        if (comps.includes(tower["id"])) {
+            let row = `
+                <tr>
+                    <td class="${difficulty_to_name(tower["difficulty"])}">#${tower["rank"]}</td>
+                    <td><button class="tower-button" onclick="open_page('Towers');open_extra(${tower["id"]})"><b>${tower["name"]}</b></button></td>
+                </tr>
+            `;
+            $("#playercompletions").append(row);
+        }
+    }
+    add_badges(player["rank"], role, comps);
 }
 
 function get_hardest_tower(x) {

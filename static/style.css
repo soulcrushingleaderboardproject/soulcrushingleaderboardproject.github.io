@@ -97,7 +97,7 @@ span {
     text-decoration: underline;
 }
 
-#tower-button, .player-button {
+.tower-button, .player-button {
     font-size: 20px;
     border-radius: 8px;
     background: #00000000;
@@ -118,7 +118,7 @@ span {
     display: none;
 }
 
-#tower-button-crossed {
+.tower-button-crossed {
     font-size: 20px;
     border-radius: 8px;
     background: #00000000;
@@ -127,7 +127,7 @@ span {
     font-family: "Montserrat", sans-serif;
 }
 
-#tower-button:hover, #tower-button-crossed:hover, .player-button:hover {
+.tower-button:hover, .tower-button-crossed:hover, .player-button:hover {
     background: #363840;
 }
 
@@ -253,7 +253,7 @@ p {
         height: 1.5em;
     }
 
-    #tower-button, .player-button, #tower-button-crossed {
+    .tower-button, .player-button, .tower-button-crossed {
         font-size: 0.8em;
     }
 
@@ -295,7 +295,7 @@ p {
     padding-left: 5px;
 }
 
-#difficulty-progress {
+#difficulty-progress, #playercompletions {
     text-align: left;
 }
 
