@@ -347,39 +347,6 @@ function get_hardest_tower(x) {
     return highest_diff;
 }
 
-function add_badges() {
-    for (let player of $("#leaderboard").find(".player-button")) {
-        let parent = player.parentNode;
-        let rank = parent.children[0].innerText.slice(1);
-        let info = all_completions[rank - 1];
-
-        if (rank <= 3) {
-            player.innerHTML += `<img src='/static/images/badges/top${rank}.png' class="badge">`;
-        }
-
-        let role = get_role(info["username"]);
-        if (role != "" && !role.includes("Former")) {
-            player.innerHTML += `<img src='/static/images/badges/staff.png' class="badge">`;
-        }
-
-        let scs = info["completions"].length;
-        let sc_levels = [50, 100, 200, 300, 400];
-        let sc_badge = "";
-
-        for (let level of sc_levels) {
-            if (scs >= level) {
-                sc_badge = `<img src='/static/images/badges/${level}.png' class="badge">`;
-            }
-        }
-        player.innerHTML += sc_badge;
-
-        let hardest_diff = get_hardest_tower(info["completions"]);
-        if (hardest_diff >= 1100) {
-            player.innerHTML += `<img src='/static/images/badges/${difficulty_to_name(hardest_diff).toLowerCase()}.png' class="badge">`;
-        }
-    }
-}
-
 function list_players() {
     var p = "<br>";
     for (let i = 0; i < completions.length; i++) {
@@ -400,7 +367,6 @@ function list_players() {
         p += "</div>";
     }
     $("#leaderboard").html(p);
-    add_badges();
 }
 list_players();
 
