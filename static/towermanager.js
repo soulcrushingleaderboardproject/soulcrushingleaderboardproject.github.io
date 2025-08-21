@@ -313,10 +313,29 @@ function get_role(x, t=false) {
     return t && role == "" ? x : role;
 }
 
-function add_badges(rank) {
+function add_badges(rank, role, comps) {
     let e = document.getElementById("playername");
     if (rank <= 3) {
         e.innerHTML += `<img src='/static/images/badges/top${rank}.png' class="badge">`;
+    }
+
+    if (role != "" && !role.includes("Former")) {
+        e.innerHTML += `<img src='/static/images/badges/staff.png' class="badge">`;
+    }
+
+    let scs = comps.length;
+    let sc_levels = [50, 100, 200, 300, 400];
+    let sc_badge = "";
+    for (let level of sc_levels) {
+        if (scs >= level) {
+            sc_badge = `<img src='/static/images/badges/${level}.png' class="badge">`;
+        }
+    }
+    e.innerHTML += sc_badge;
+
+    let hardest_diff = get_hardest_tower(comps);
+    if (hardest_diff >= 1100) {
+        e.innerHTML += `<img src='/static/images/badges/${difficulty_to_name(hardest_diff).toLowerCase()}.png' class="badge">`;
     }
 }
 
@@ -343,7 +362,7 @@ function open_player(name) {
     extra += "<br><br><b class='big'>Completions</b><br><br>";
     extra += format_comps(player["completions"]);
     $("#player-data").html(extra);
-    add_badges(player["rank"]);
+    add_badges(player["rank"], role, player["completions"]);
 }
 
 function get_hardest_tower(x) {
