@@ -316,6 +316,7 @@ function add_badges(rank, role, comps) {
 
 let dp = {};
 function get_dp(comps) {
+    dp = {};
     for (let tower of all_towers) {
         let diff = difficulty_to_name(tower["difficulty"]);
         if (!dp[diff]) {
@@ -332,7 +333,6 @@ function get_dp(comps) {
 
 function open_player(name) {
     var player = player_from_name(name);
-    var completion_link = "sclp.vercel.app?u=" + name;
     let role = get_role(player["username"]);
     get_dp(player["completions"]);
 
@@ -341,7 +341,7 @@ function open_player(name) {
     $("#playerxp").html(formatNumber(player["xp"]));
     $("#playerlevel").html(format_level(player["xp"]));
     $("#playerrank").html(`#${player["rank"]}`);
-    $("#playerlink").html(`<a href="https://${completion_link}">${completion_link}</a>`);
+    $("#playerlink").html(`<a href="https://sclp.vercel.app?u=${name}">sclp.vercel.app?u=${name}</a>`);
 
     let c1 = Object.values(dp).reduce((a,[x])=>a+x,0);
     let c2 = Object.values(dp).reduce((a,[,y])=>a+y,0);
@@ -364,8 +364,7 @@ function open_player(name) {
         $("#difficulty-progress").append(row);
     }
     
-    let extra = "<br><br><b class='big'>Completions</b><br><br>";
-    extra += format_comps(player["completions"]);
+    let extra = format_comps(player["completions"]);
     $("#player-data").append(extra);
     add_badges(player["rank"], role, player["completions"]);
 }
