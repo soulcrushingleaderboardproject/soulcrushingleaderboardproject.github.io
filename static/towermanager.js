@@ -153,7 +153,7 @@ function open_extra(id) {
     
     let diff = difficulty_to_name(tower["difficulty"]);
     var extra = `
-        <p id="big"><b>(${getAbbr(tower["name"])})</b> ${tower["name"]}</p>
+        <p class="big"><b>(${getAbbr(tower["name"])})</b> ${tower["name"]}</p>
         <br>Difficulty: <span class="${diff}" style="display: inline; width: auto; padding: 0;">${difficulty_to_range(tower["difficulty"])} ${diff}</span> (${formatNumber(tower["difficulty"] / 100)})
         <br>Location: ${format_location(tower, 0, 1)}
         ${other_locations}
@@ -313,19 +313,26 @@ function get_role(x, t=false) {
     return t && role == "" ? x : role;
 }
 
+function add_badges(rank) {
+    let e = document.getElementById("playername");
+    if (rank <= 3) {
+        e.innerHTML += `<img src='/static/images/badges/top${rank}.png' class="badge">`;
+    }
+}
+
 function open_player(name) {
     var player = player_from_name(name);
     var completion_link = "sclp.vercel.app?u=" + name;
     let role = get_role(player["username"]);
 
     var extra = `
-        <p id="big"><b>${name}</b></p>
+        <p class="big"><b id="playername">${name}</b></p>
         ${role}
         <br>Total EXP: ${formatNumber(player["exp"])}
         <br>Level: ${format_level(player["exp"])}
         <br>Rank: #${player["rank"]}
         <br><a href="https://${completion_link}">${completion_link}</a>
-        <br><br><b id='big'>Stats</b><br><br>
+        <br><br><b class='big'>Stats</b><br><br>
         <span class='difficulty-display' style="width: 3em;"><b>TOTAL</b></span> ${format_ratio(player["completions"].length, all_towers.length)}
     `;
 
@@ -333,9 +340,10 @@ function open_player(name) {
         extra += `<br><span class="${difficulty_to_name(d * 100)}" class="difficulty-display">${difficulty_to_name(d * 100)}</span> ${format_ratio(get_towers_within_range(get_completed_data(player["completions"]), d * 100, (d * 100) + 99).length, get_towers_within_range(all_towers, d * 100, (d * 100) + 99).length)}`;
     }
     
-    extra += "<br><br><b id='big'>Completions</b><br><br>";
+    extra += "<br><br><b class='big'>Completions</b><br><br>";
     extra += format_comps(player["completions"]);
     $("#player-data").html(extra);
+    add_badges(player["rank"]);
 }
 
 function get_hardest_tower(x) {

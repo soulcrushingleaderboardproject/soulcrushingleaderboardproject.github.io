@@ -144,7 +144,7 @@ span {
     background: #00000000;
 }
 
-#big {
+.big {
     font-size: 30px;
 }
 
@@ -266,7 +266,7 @@ p {
         font-size: 0.8em;
     }
 
-    #big {
+    .big {
         font-size: 1.2em;
     }
 
@@ -295,7 +295,7 @@ p {
 }
 
 .badge {
-    height: 1.5em;
+    height: 1.2em;
     vertical-align: middle;
     padding-left: 5px;
 }
