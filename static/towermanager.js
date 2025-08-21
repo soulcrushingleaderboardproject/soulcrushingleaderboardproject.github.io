@@ -301,16 +301,12 @@ function format_ratio(a, b) {
 }
 
 function get_role(x, t=false) {
-    let role = "";
-    let tag = t ? "span" : "p";
     for (let [r, users] of Object.entries(credits)) {
         if (users.includes(x)) {
-            let text = t ? x : r;
-            role = `<${tag} class="${r.toLowerCase().replaceAll(" ", "-")}" ${t ? "style='width: unset; padding: unset;'" : ""}>${text}</${tag}>`;
-            break;
+            if (!t) return r;
+            return `<span class="${r.toLowerCase().replaceAll(" ", "-")}" style='width: unset; padding: unset;'>${x}</span>`;
         }
     }
-    return t && role == "" ? x : role;
 }
 
 function add_badges(rank, role, comps) {
@@ -345,12 +341,13 @@ function open_player(name) {
     let role = get_role(player["username"]);
 
     var extra = `
-        <p class="big" id="playername">${name}</p><br>
-        ${role}
-        <p>Total EXP: ${formatNumber(player["exp"])}</p>
-        <p>Level: ${format_level(player["exp"])}</p>
-        <p>Rank: #${player["rank"]}</p>
-        <p><a href="https://${completion_link}">${completion_link}</a></p>
+        <p class="big" id="playername">${name}</p>
+        <p class="playerrole">${role}</p>
+        <br>
+        <p id="playerexp">Total EXP: ${formatNumber(player["exp"])}</p>
+        <p id="playerlevel">Level: ${format_level(player["exp"])}</p>
+        <p id="playerrank">Rank: #${player["rank"]}</p>
+        <p id="playerlink"><a href="https://${completion_link}">${completion_link}</a></p>
         <br><p class="big">Stats</p><br>
         <span class='difficulty-display' style="width: 3em;"><b>TOTAL</b></span> ${format_ratio(player["completions"].length, all_towers.length)}
     `;
