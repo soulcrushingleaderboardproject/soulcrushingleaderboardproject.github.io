@@ -182,7 +182,7 @@ p {
     height: 100%;
 }
 
-#extra-data, #player-data {
+#tower-data, #player-data {
     width: 100%;
     flex-grow: 1;
     border-radius: 8px;
