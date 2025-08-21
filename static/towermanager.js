@@ -153,7 +153,7 @@ function open_extra(id) {
     
     let diff = difficulty_to_name(tower["difficulty"]);
     var extra = `
-        <p class="big"><b>(${getAbbr(tower["name"])})</b> ${tower["name"]}</p>
+        <p class="big">(${getAbbr(tower["name"])}) ${tower["name"]}</p>
         <br>Difficulty: <span class="${diff}" style="display: inline; width: auto; padding: 0;">${difficulty_to_range(tower["difficulty"])} ${diff}</span> (${formatNumber(tower["difficulty"] / 100)})
         <br>Location: ${format_location(tower, 0, 1)}
         ${other_locations}
@@ -345,13 +345,13 @@ function open_player(name) {
     let role = get_role(player["username"]);
 
     var extra = `
-        <p class="big"><b id="playername">${name}</b></p>
+        <p class="big" id="playername">${name}</p><br>
         ${role}
-        <br>Total EXP: ${formatNumber(player["exp"])}
-        <br>Level: ${format_level(player["exp"])}
-        <br>Rank: #${player["rank"]}
-        <br><a href="https://${completion_link}">${completion_link}</a>
-        <br><br><b class='big'>Stats</b><br><br>
+        <p>Total EXP: ${formatNumber(player["exp"])}</p>
+        <p>Level: ${format_level(player["exp"])}</p>
+        <p>Rank: #${player["rank"]}</p>
+        <p><a href="https://${completion_link}">${completion_link}</a></p>
+        <br><p class="big">Stats</p><br>
         <span class='difficulty-display' style="width: 3em;"><b>TOTAL</b></span> ${format_ratio(player["completions"].length, all_towers.length)}
     `;
 
@@ -443,6 +443,12 @@ inputs.forEach(input => {
     input.setAttribute("spellcheck", false);
 });
 
+let pages = ["Home", "Towers", "Leaderboard"];
+for (let page of pages) {
+    $("#links").append(`<button class="seamless-button" onclick="open_page('${page}')">${page}</button>`);
+}
+open_page("Home");
+
 function open_page(page_name) {
     for (let page of pages) {
         $(`#${page.toLowerCase()}-page`).hide();
@@ -456,9 +462,3 @@ if (params.get("u")) {
     open_page("Leaderboard");
     open_player(params.get("u"));
 }
-
-let pages = ["Home", "Towers", "Leaderboard"];
-for (let page of pages) {
-    $("#links").append(`<button class="seamless-button" onclick="open_page('${page}')">${page}</button>`);
-}
-open_page("Home");

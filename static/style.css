@@ -144,8 +144,14 @@ span {
     background: #00000000;
 }
 
+p {
+    margin: 0;
+}
+
 .big {
     font-size: 30px;
+    font-weight: bold;
+    margin: 5px 0 5px 0 !important;
 }
 
 #small {
@@ -197,11 +203,6 @@ span {
 
 #options {
     display: inline;
-}
-
-p {
-    margin-top: 5px;
-    margin-bottom: 5px;
 }
 
 .Insane {
