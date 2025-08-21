@@ -111,10 +111,10 @@ function open_tower(id) {
     let diff = difficulty_to_name(tower["difficulty"]);
 
     $("#towername").html(`(${getAbbr(tower["name"])}) ${tower["name"]}`);
-    
+    $("#towerdifficulty").html(`<span class="${diff}">${difficulty_to_range(tower["difficulty"])} ${diff}</span> (${formatNumber(tower["difficulty"] / 100)})`);
+    $("#towerlocation").html(format_location(tower, 0, 1));
+
     var extra = `
-        <br>Difficulty: <span class="${diff}" style="display: inline; width: auto; padding: 0;">${difficulty_to_range(tower["difficulty"])} ${diff}</span> (${formatNumber(tower["difficulty"] / 100)})
-        <br>Location: ${format_location(tower, 0, 1)}
         ${other_locations}
         <br>Rank: #${tower["rank"]}
         <br>XP for completion: ${tower["xp"]}
