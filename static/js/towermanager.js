@@ -108,10 +108,11 @@ function get_victors(id) {
 function open_tower(id) {
     var tower = tower_from_id(id);
     let other_locations = tower["places"].length > 1 ? `<br><i id="small">Other Locations: ${format_location(tower, 1, tower["places"].length)}</i>` : "";
-    
     let diff = difficulty_to_name(tower["difficulty"]);
+
+    $("#towername").html(`(${getAbbr(tower["name"])}) ${tower["name"]}`);
+    
     var extra = `
-        <p class="big">(${getAbbr(tower["name"])}) ${tower["name"]}</p>
         <br>Difficulty: <span class="${diff}" style="display: inline; width: auto; padding: 0;">${difficulty_to_range(tower["difficulty"])} ${diff}</span> (${formatNumber(tower["difficulty"] / 100)})
         <br>Location: ${format_location(tower, 0, 1)}
         ${other_locations}
@@ -120,7 +121,7 @@ function open_tower(id) {
         <br>Victors: ${get_victors(id)}
         <br><i id="small">Tower ID: ${id}</i>
     `;
-    $("#tower-data").html(extra);
+    $("#tower-data").append(extra);
 }
 
 function list_towers() {
