@@ -259,24 +259,6 @@ function psearch(s) {
     return new_players;
 }
 
-function get_towers_within_range(towers, minimum, maximum) {
-    let towers_within_range = [];
-    for (let i = 0; i < towers.length; i++) {
-        if (minimum <= towers[i]["difficulty"] && towers[i]["difficulty"] <= maximum) {
-            towers_within_range.push(towers[i]);
-        }
-    }
-    return towers_within_range;
-}
-
-function get_completed_data(c) {
-    let c_data = [];
-    for (let comp = 0; comp < c.length; comp++) {
-        c_data.push(tower_from_id(c[comp]));
-    }
-    return c_data;
-}
-
 function format_comps(c) {
     let f = "";
     let rank = 1;
@@ -294,10 +276,6 @@ function format_comps(c) {
         }
     }
     return f;
-}
-
-function format_ratio(a, b) {
-    return `<span class="difficulty-display">${a}/${b}</span><span class="difficulty-display">${formatNumber(((a / b) * 100).toFixed(2))}%</span>`;
 }
 
 function get_role(x, t=false) {
@@ -365,23 +343,28 @@ function open_player(name) {
     $("#playerrank").html(`#${player["rank"]}`);
     $("#playerlink").html(`<a href="https://${completion_link}">${completion_link}</a>`);
 
-    var extra = `
-        <span class='difficulty-display' style="width: 3em;"><b>TOTAL</b></span> ${format_ratio(player["completions"].length, all_towers.length)}
+    let c1 = Object.values(dp).reduce((a,[x])=>a+x,0);
+    let c2 = Object.values(dp).reduce((a,[,y])=>a+y,0);
+    let row = `
+        <th>TOTAL</th>
+        <th>${c1}/${c2}</th>
+        <th>${+(c1 / c2 * 100).toFixed(2)}%</th>
     `;
+    $("#difficulty-progress").html(row);
 
     for (let d = 8; d < 14; d++) {
-        let row = `
+        let diff = difficulty_to_name(d * 100);
+        row = `
             <tr>
-                <td class="difficulty-display ${difficulty_to_name(d * 100)}">${difficulty_to_name(d * 100)}</td>
-                <td>###/###</td>
-                <td>##.##%</td>
+                <td class="difficulty-display ${diff}">${diff}</td>
+                <td>${dp[diff][0]}/${dp[diff][1]}</td>
+                <td>${+(dp[diff][0] / dp[diff][1] * 100).toFixed(2)}%</td>
             </tr>
         `;
         $("#difficulty-progress").append(row);
-        // `${format_ratio(get_towers_within_range(get_completed_data(player["completions"]), d * 100, (d * 100) + 99).length, get_towers_within_range(all_towers, d * 100, (d * 100) + 99).length)}`
     }
     
-    extra += "<br><br><b class='big'>Completions</b><br><br>";
+    let extra = "<br><br><b class='big'>Completions</b><br><br>";
     extra += format_comps(player["completions"]);
     $("#player-data").append(extra);
     add_badges(player["rank"], role, player["completions"]);
