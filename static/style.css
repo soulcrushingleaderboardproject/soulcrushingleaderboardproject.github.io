@@ -124,6 +124,7 @@ span {
     color: #FFFFFF20;
     border: none;
     font-family: "Montserrat", sans-serif;
+    text-decoration: line-through;
 }
 
 .tower-button:hover, .tower-button-crossed:hover, .player-button:hover {

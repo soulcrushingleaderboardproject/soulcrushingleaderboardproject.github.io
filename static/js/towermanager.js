@@ -127,11 +127,8 @@ function list_towers() {
             r += "<div id='item'>";
             r += "<span class='" + difficulty_to_name(t["difficulty"]) + "'>#" + t["rank"] + "</span>";
             
-            if (player["completions"].includes(t["id"])) {
-                r += `<button class='tower-button-crossed' onclick='open_tower(${t["id"]})' style="margin-left: 5px;"><b><s>${t["name"]}</s></b></button>`;
-            } else {
-                r += `<button class='tower-button' onclick='open_tower(${t["id"]})' style="margin-left: 5px;"><b>${t["name"]}</b></button>`;
-            }
+            let c = player["completions"].includes(t["id"]) ? "tower-button-crossed" : "tower-button";
+            r += `<button class='${c}' onclick='open_tower(${t["id"]})'><b>${t["name"]}</b></button>`;
 
             if ($("#extra-tower-info").prop("checked")) {
                 r += "<i id='small'><br><span></span>";
