@@ -336,10 +336,27 @@ function add_badges(rank, role, comps) {
     }
 }
 
+let dp = {};
+function get_dp(comps) {
+    for (let tower of all_towers) {
+        let diff = difficulty_to_name(tower["difficulty"]);
+        if (!dp[diff]) {
+            dp[diff] = [0, 1];
+        } else {
+            dp[diff][1] += 1;
+        }
+
+        if (comps.includes(tower["id"])) {
+            dp[diff][0] += 1;
+        }
+    }
+}
+
 function open_player(name) {
     var player = player_from_name(name);
     var completion_link = "sclp.vercel.app?u=" + name;
     let role = get_role(player["username"]);
+    get_dp(player["completions"]);
 
     $("#playername").html(name);
     $("#playerrole").html(`<span class="${role.toLowerCase().replaceAll(" ", "-")}">${role}</span>`);
