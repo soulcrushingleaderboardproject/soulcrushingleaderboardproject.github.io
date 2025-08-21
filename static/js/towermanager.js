@@ -128,7 +128,7 @@ function list_towers() {
             r += "<span class='" + difficulty_to_name(t["difficulty"]) + "'>#" + t["rank"] + "</span>";
             
             let c = player["completions"].includes(t["id"]) ? "tower-button-crossed" : "tower-button";
-            r += `<button class='${c}' onclick='open_tower(${t["id"]})'><b>${t["name"]}</b></button>`;
+            r += `<button class='${c}' onclick='open_tower(${t["id"]})'>${t["name"]}</button>`;
 
             if ($("#extra-tower-info").prop("checked")) {
                 r += "<i id='small'><br><span></span>";
@@ -141,7 +141,7 @@ function list_towers() {
             r += `
                 <div id="item">
                     <span class="${difficulty_to_name(t["difficulty"])}">#${t["rank"]}</span>
-                    <button class="tower-button" onclick="open_tower(${t["id"]})"><b>${t["name"]}</b></button>
+                    <button class="tower-button" onclick="open_tower(${t["id"]})">${t["name"]}</button>
                     ${$("#extra-tower-info").prop("checked") ? `<i class="small"><br><span></span>(${formatNumber(t["difficulty"] / 100)} - ${t["places"][0][0]} - ${t["xp"]} XP)</i>` : ''}
                 </div>
             `;          
@@ -300,7 +300,7 @@ function open_player(name) {
             let row = `
                 <tr>
                     <td class="${difficulty_to_name(tower["difficulty"])}">#${tower["rank"]}</td>
-                    <td><button class="tower-button" onclick="open_page('Towers');open_tower(${tower["id"]})"><b>${tower["name"]}</b></button></td>
+                    <td><button class="tower-button" onclick="open_page('Towers');open_tower(${tower["id"]})">${tower["name"]}</button></td>
                 </tr>
             `;
             $("#playercompletions").append(row);
@@ -328,7 +328,7 @@ function list_players() {
 
         p += `<div id='item'>
             <span>#${p_rank}</span>
-            <button class='player-button' onclick='open_player("${p_name}")'><b>${get_role(p_name, true)}</b></button> Level ${format_level(p_xp, true)}
+            <button class='player-button' onclick='open_player("${p_name}")'>${get_role(p_name, true)}</button> Level ${format_level(p_xp, true)}
         `;
 
         if ($("#extra-player-info").prop("checked")) {
@@ -350,11 +350,10 @@ function game_from_abbr(abbr) {
     return false;
 }
 
-gm = "<option value=''>All</option><option value='Place'>Place</option>";
+$("#game-select").html("<option value=''>All</option><option value='Place'>Place</option>");
 for (let game of games) {
-    gm += `<option value='${game["abbr"]}'>${game["abbr"]}</option>`;
+    $("#game-select").append(`<option value='${game["abbr"]}'>${game["abbr"]}</option>`);
 }
-$("#game-select").html(gm);
 
 let pages = ["Home", "Towers", "Leaderboard"];
 for (let page of pages) {
