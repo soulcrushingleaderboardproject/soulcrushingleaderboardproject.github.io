@@ -378,3 +378,6 @@ if (params.get("u")) {
     open_page("Leaderboard");
     open_player(params.get("u"));
 }
+
+open_tower(towers[0]["id"]);
+open_player(completions[0]["username"]);
