@@ -1,8 +1,8 @@
 const credits = {
-    "Owners": ["thej10n", "PrestigeUE"],
+    "Owners": ["Z_Exzer", "PrestigeUE"],
     "Developer": ["TheHaloDeveloper"],
-    "Managers": ["Z_Exzer", "ThePhantomDevil666", "Spitfire_YT5", "XChocolateMLGX", "jarofjam_14", "DJdestroyer916539", "vt_et", "jumper101110"],
-    "Former Staff": ["arthraix"]
+    "Managers": ["thej10n", "XChocolateMLGX", "jarofjam_14", "DJdestroyer916539", "vt_et", "jumper101110", "zFinzora"],
+    "Former Staff": ["ThePhantomDevil666", "Spitfire_YT5"]
 }
 
 for (let [role, users] of Object.entries(credits)) {
