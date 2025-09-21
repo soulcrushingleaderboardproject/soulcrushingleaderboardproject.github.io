@@ -8,7 +8,6 @@ function init_towers() {
                 data-places="${t["places"].map(p => p[0]).join(",")}">
                 <td class="${difficulty_to_name(t["difficulty"])}">#${t["rank"]}</td>
                 <td><button class="tower-button" onclick="open_tower(${t["id"]})">${t["name"]}</button></td>
-                <td style="display: none;">${$("#extra-tower-info").prop("checked") ? `(${formatNumber(t["difficulty"]/100)} - ${t["places"][0][0]} - ${t["xp"]} XP)` : ''}</td>
             </tr>
         `;
     }
@@ -56,7 +55,6 @@ function init_players() {
                 <td>#${p_rank}</td>
                 <td><button class="player-button" onclick='open_player("${p_name}")'>${get_role(p_name, true)}</button></td>
                 <td>Level ${format_level(p_xp, true)}</td>
-                <td>${$("#extra-player-info").prop("checked") ? `(${p_comps.length} SCs - ${p_xp} Total XP)` : ''}</td>
             </tr>
         `;
     }
