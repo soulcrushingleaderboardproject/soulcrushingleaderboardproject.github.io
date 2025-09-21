@@ -296,9 +296,15 @@ p {
     overflow: scroll;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    padding: 50px;
 }
+
 #home-page::-webkit-scrollbar {
     display: none;
+}
+
+h1:first-of-type {
+    margin: 0;
 }
 
 .badge {
