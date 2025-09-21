@@ -104,7 +104,6 @@
         towers = {{ all_towers | tojson }};
         games = {{ all_games | tojson }};
 
-        towers.sort((a, b) => b["difficulty"] - a["difficulty"]);
         completions.sort((a, b) => b["xp"] - a["xp"]);
     </script>
 

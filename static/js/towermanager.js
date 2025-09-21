@@ -1,12 +1,3 @@
-for (let t = 0; t < towers.length; t++) {
-    towers[t]["rank"] = t + 1;
-    towers[t]["xp"] = Math.floor((3 ** ((towers[t]["difficulty"] - 800) / 100)) * 100);
-
-    if (towers[t]["game"] != null) {
-        towers[t]["places"].push(["Place", ""])
-    }
-}
-
 for (let player of completions) {
     player["xp"] = get_total_xp(player["username"]);
 }

@@ -2,6 +2,7 @@ from flask import Flask, render_template, make_response, send_from_directory, js
 import os
 from dotenv import load_dotenv
 import utils.funcs as funcs
+import math
 load_dotenv()
 
 app = Flask(__name__)
@@ -20,6 +21,7 @@ all_games = funcs.get_data("games!A:C")
 for tower in all_towers:
     tower["id"] = int(tower["id"])
     tower["difficulty"] = int(tower["difficulty"])
+    tower["xp"] = math.floor((3 ** ((tower["difficulty"] - 800) / 100)) * 100)
     
     raw = tower.get("places", "").strip()
     if not raw or raw == ";":
@@ -37,6 +39,12 @@ for tower in all_towers:
     
     if tower["game"] == "":
         tower["game"] = None
+    else:
+        tower["places"].append(["Place", ""])
+        
+all_towers.sort(key=lambda x: x["difficulty"], reverse=True)
+for t in range(len(all_towers)):
+    all_towers[t]["rank"] = t + 1
         
 @app.route("/tower_data")
 def tower_data():
