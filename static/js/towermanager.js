@@ -134,7 +134,7 @@ function list_towers() {
         `;
     }
 
-    $("#searchmenu-table tbody").html(tbody);
+    $("#searchmenu-table").html(tbody);
 }
 $("#checklist-player").val(localStorage.getItem("sclp-username") || "");
 list_towers();
