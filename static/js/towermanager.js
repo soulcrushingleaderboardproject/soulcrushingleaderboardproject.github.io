@@ -25,7 +25,7 @@ function init_towers() {
                 data-places="${t["places"].map(p => p[0]).join(",")}">
                 <td class="${difficulty_to_name(t["difficulty"])}">#${t["rank"]}</td>
                 <td><button class="tower-button" onclick="open_tower(${t["id"]})">${t["name"]}</button></td>
-                <td>${$("#extra-tower-info").prop("checked") ? `(${formatNumber(t["difficulty"]/100)} - ${t["places"][0][0]} - ${t["xp"]} XP)` : ''}</td>
+                <td style="display: none;">${$("#extra-tower-info").prop("checked") ? `(${formatNumber(t["difficulty"]/100)} - ${t["places"][0][0]} - ${t["xp"]} XP)` : ''}</td>
             </tr>
         `;
     }

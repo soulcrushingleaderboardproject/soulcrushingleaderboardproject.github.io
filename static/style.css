@@ -96,6 +96,10 @@ span {
     text-decoration: underline;
 }
 
+#searchmenu-table, #leaderboard-table {
+    width: 100%;
+}
+
 .tower-button, .player-button {
     font-size: 20px;
     border-radius: 8px;
@@ -107,7 +111,7 @@ span {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 75%;
+    width: 75%;
 }
 
 .player-button {
@@ -118,6 +122,7 @@ span {
     scrollbar-width: none;
     -ms-overflow-style: none;
 }
+
 .player-button::-webkit-scrollbar {
     display: none;
 }
@@ -160,6 +165,7 @@ p {
 #searchmenu, #leaderboard, #player-data {
     overflow-y: scroll;
     flex-grow: 1;
+    overflow-x: hidden;
 }
 
 #searchmenu-table {
