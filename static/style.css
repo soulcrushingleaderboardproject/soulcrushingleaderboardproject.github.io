@@ -103,6 +103,11 @@ span {
     color: #FFFFFF;
     border: none;
     font-family: "Montserrat", sans-serif;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 75%;
 }
 
 .player-button {
@@ -184,6 +189,7 @@ p {
     display: flex;
     flex-direction: column;
     height: 100%;
+    max-width: 45%;
 }
 
 #right {
@@ -303,7 +309,7 @@ p {
     display: none;
 }
 
-h1:first-of-type {
+#home-page h1 {
     margin: 0;
 }
 
