@@ -1,7 +1,3 @@
-for (let player = 0; player < completions.length; player++) {
-    completions[player]["rank"] = player + 1;
-}
-
 function init_towers() {
     let tbody = "";
     for (let t of towers) {

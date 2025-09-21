@@ -48,8 +48,11 @@ for c in all_completions:
     
 all_completions.sort(key=lambda x: x["xp"], reverse=True)
 all_towers.sort(key=lambda x: x["difficulty"], reverse=True)
+
 for t in range(len(all_towers)):
     all_towers[t]["rank"] = t + 1
+for c in range(len(all_completions)):
+    all_completions[c]["rank"] = c + 1
         
 @app.route("/tower_data")
 def tower_data():
