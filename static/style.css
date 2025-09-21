@@ -65,12 +65,13 @@ span {
     font-size: 20px;
     background: #505A64;
     padding: 2px;
+    padding-left: 15px;
 }
 
 #checklist-player {
     position: absolute;
     right: 15px;
-    background-color: #394148;
+    background-color: #161820;
 }
 
 #info-button {
@@ -365,7 +366,6 @@ p {
     scrollbar-width: none;
     -ms-overflow-style: none;
     padding: 60px;
-    background: linear-gradient(145deg, #161820, #1a1d23);
 }
 
 #home-page::-webkit-scrollbar {
