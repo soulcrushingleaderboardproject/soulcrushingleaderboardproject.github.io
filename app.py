@@ -41,21 +41,15 @@ for tower in all_towers:
         tower["game"] = None
     else:
         tower["places"].append(["Place", ""])
-        
-completions.sort(key=lambda x: x["xp"], reverse=True)
+    
+tower_xp = {t["id"]: t["xp"] for t in all_towers}
+for c in all_completions:
+    c["xp"] = sum(tower_xp.get(id, 0) for id in c["completions"])
+    
+all_completions.sort(key=lambda x: x["xp"], reverse=True)
 all_towers.sort(key=lambda x: x["difficulty"], reverse=True)
 for t in range(len(all_towers)):
     all_towers[t]["rank"] = t + 1
-    
-for c in all_completions:
-    total = 0
-    for id in c["completions"]:
-        for i in all_towers:
-            if i["id"] == id:
-                total += i["xp"]
-                break
-        
-    c["xp"] = total
         
 @app.route("/tower_data")
 def tower_data():
