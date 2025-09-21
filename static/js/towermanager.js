@@ -1,16 +1,3 @@
-const credits = {
-    "Owners": ["Z_Exzer", "PrestigeUE"],
-    "Developer": ["TheHaloDeveloper"],
-    "Managers": ["thej10n", "XChocolateMLGX", "jarofjam_14", "DJdestroyer916539", "vt_et", "jumper101110", "zFinzora"],
-    "Former Staff": ["ThePhantomDevil666", "Spitfire_YT5"]
-}
-
-for (let [role, users] of Object.entries(credits)) {
-    $("#credits").append(`<h3><div class="${role.toLowerCase().replaceAll(" ", "-")}">[${role}]</div>${users.join(", ")}</h3>`);
-}
-
-towers.sort((a, b) => b["id"] - a["id"]);
-towers.sort((a, b) => b["difficulty"] - a["difficulty"]);
 for (let t = 0; t < towers.length; t++) {
     towers[t]["rank"] = t + 1;
     towers[t]["xp"] = Math.floor((3 ** ((towers[t]["difficulty"] - 800) / 100)) * 100);
@@ -24,7 +11,6 @@ for (let player of completions) {
     player["xp"] = get_total_xp(player["username"]);
 }
 
-completions.sort((a, b) => b["xp"] - a["xp"]);
 for (let player = 0; player < completions.length; player++) {
     completions[player]["rank"] = player + 1;
 }
@@ -340,26 +326,6 @@ function game_from_abbr(abbr) {
 $("#game-select").html("<option value=''>All</option><option value='Place'>Place</option>");
 for (let game of games) {
     $("#game-select").append(`<option value='${game["abbr"]}'>${game["abbr"]}</option>`);
-}
-
-let pages = ["Home", "Towers", "Leaderboard"];
-for (let page of pages) {
-    $("#links").append(`<button class="seamless-button" onclick="open_page('${page}')">${page}</button>`);
-}
-open_page("Home");
-
-function open_page(page_name) {
-    for (let page of pages) {
-        $(`#${page.toLowerCase()}-page`).hide();
-    }
-    $(`#${page_name.toLowerCase()}-page`).css("display", "");
-}
-
-const url = window.location.search;
-const params = new URLSearchParams(url);
-if (params.get("u")) {
-    open_page("Leaderboard");
-    open_player(params.get("u"));
 }
 
 open_tower(towers[0]["id"]);

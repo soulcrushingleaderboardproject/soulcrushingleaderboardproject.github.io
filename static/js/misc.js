@@ -1,3 +1,14 @@
+const credits = {
+    "Owners": ["Z_Exzer", "PrestigeUE"],
+    "Developer": ["TheHaloDeveloper"],
+    "Managers": ["thej10n", "XChocolateMLGX", "jarofjam_14", "DJdestroyer916539", "vt_et", "jumper101110", "zFinzora"],
+    "Former Staff": ["ThePhantomDevil666", "Spitfire_YT5"]
+}
+
+for (let [role, users] of Object.entries(credits)) {
+    $("#credits").append(`<h3><div class="${role.toLowerCase().replaceAll(" ", "-")}">[${role}]</div>${users.join(", ")}</h3>`);
+}
+
 function formatNumber(num) {
     return new Intl.NumberFormat().format(num);
 }
@@ -65,3 +76,23 @@ inputs.forEach(input => {
     input.setAttribute("autocapitalize", "off");
     input.setAttribute("spellcheck", false);
 });
+
+let pages = ["Home", "Towers", "Leaderboard"];
+for (let page of pages) {
+    $("#links").append(`<button class="seamless-button" onclick="open_page('${page}')">${page}</button>`);
+}
+
+function open_page(page_name) {
+    for (let page of pages) {
+        $(`#${page.toLowerCase()}-page`).hide();
+    }
+    $(`#${page_name.toLowerCase()}-page`).css("display", "");
+}
+open_page("Home");
+
+const url = window.location.search;
+const params = new URLSearchParams(url);
+if (params.get("u")) {
+    open_page("Leaderboard");
+    open_player(params.get("u"));
+}
