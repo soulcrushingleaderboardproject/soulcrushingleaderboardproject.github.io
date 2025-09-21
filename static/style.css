@@ -210,21 +210,12 @@ p {
     width: 100%;
     flex-grow: 1;
     border-radius: 8px;
-    padding: 8px;
-    font-size: 20px;
-    background: #101214;
-}
-
-#tower-data {
-    background: #161820;
     padding: 12px;
+    font-size: 20px;
+    background: #161820;
     display: flex;
     flex-direction: column;
     gap: 6px;
-}
-
-#player-data {
-    overflow-y: scroll;
 }
 
 #options {
