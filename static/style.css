@@ -330,8 +330,8 @@ p {
     text-align: left;
 }
 
-#difficulty-progress th, #difficulty-progress td {
-    padding: 0 1em;
+#difficulty-progress {
+    width: 80%;
 }
 
 #right-panel {
