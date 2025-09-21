@@ -15,16 +15,87 @@ for (let player = 0; player < completions.length; player++) {
     completions[player]["rank"] = player + 1;
 }
 
-$("#sclp-tower-search").on("input", function () {
-    towers = search($(this).val());
-    list_towers();
-});
-$("#sclp-player-search").on("input", function(event) {
-    completions = psearch($(this).val());
-    list_players();
-})
+function init_towers() {
+    let tbody = "";
+    for (let t of towers) {
+        tbody += `
+            <tr data-name="${t["name"].toLowerCase()}" 
+                data-abbr="${getAbbr(t["name"]).toLowerCase()}" 
+                data-diff="${Math.floor(t["difficulty"]/100)}" 
+                data-places="${t["places"].map(p => p[0]).join(",")}">
+                <td class="${difficulty_to_name(t["difficulty"])}">#${t["rank"]}</td>
+                <td><button class="tower-button" onclick="open_tower(${t["id"]})">${t["name"]}</button></td>
+                <td>${$("#extra-tower-info").prop("checked") ? `(${formatNumber(t["difficulty"]/100)} - ${t["places"][0][0]} - ${t["xp"]} XP)` : ''}</td>
+            </tr>
+        `;
+    }
+    $("#searchmenu-table").html(tbody);
+}
+
+function filter_towers() {
+    const search = $("#sclp-tower-search").val().toLowerCase();
+    const allowed_difficulties = [];
+    const place_filter = $("#game-select").val();
+
+    for (let i = 8; i < 14; i++) {
+        if ($("#diff-" + i).prop("checked")) {
+            allowed_difficulties.push(i);
+        }
+    }
+
+    $("#searchmenu-table tr").each(function () {
+        const $row = $(this);
+        const name = $row.data("name");
+        const abbr = $row.data("abbr");
+        const diff = +$row.data("diff");
+        const places = $row.data("places");
+
+        let visible = true;
+
+        if (!(name.includes(search) || abbr.includes(search))) visible = false;
+        if (!allowed_difficulties.includes(diff)) visible = false;
+        if (place_filter && !places.includes(place_filter)) visible = false;
+
+        $row.toggle(visible);
+    });
+}
+
+function init_players() {
+    let tbody = "";
+    for (let i of completions) {
+        let p_name = i["username"];
+        let p_comps = i["completions"];
+        let p_xp = i["xp"];
+        let p_rank = i["rank"];
+
+        tbody += `
+            <tr data-name="${p_name.toLowerCase()}">
+                <td>#${p_rank}</td>
+                <td><button class="player-button" onclick='open_player("${p_name}")'>${get_role(p_name, true)}</button></td>
+                <td>Level ${format_level(p_xp, true)}</td>
+                <td>${$("#extra-player-info").prop("checked") ? `(${p_comps.length} SCs - ${p_xp} Total XP)` : ''}</td>
+            </tr>
+        `;
+    }
+    $("#leaderboard-table").html(tbody);
+}
+
+function filter_players() {
+    const search = $("#sclp-player-search").val().toLowerCase();
+
+    $("#leaderboard-table tr").each(function () {
+        const $row = $(this);
+        const name = $row.data("name");
+
+        let visible = name.includes(search);
+        $row.toggle(visible);
+    });
+}
+
+$("#sclp-tower-search, #game-select, [id^=diff-]").on("input change", filter_towers);
+$("#sclp-player-search").on("input", filter_players);
 $("#checklist-player").on("input", function () {
-    list_towers();
+    filter_towers();
     localStorage.setItem("sclp-username", $(this).val());
 });
 
@@ -50,27 +121,6 @@ function is_tower_in_place(places, place) {
         }
     }
     return false;
-}
-
-function search(s) {
-    let new_towers = [];
-    let allowed_difficulties = [];
-    let place_filter = $("#game-select").val();
-
-    for (let i = 8; i < 14; i++) {
-        if ($("#diff-" + i).prop("checked")) {
-            allowed_difficulties.push(i);
-        }
-    }
-    for (let tower of towers) {
-        if (getAbbr(tower["name"]).toLowerCase().includes(s.toLowerCase()) || tower["name"].toLowerCase().includes(s.toLowerCase())) {
-            if (allowed_difficulties.includes(Math.floor(tower["difficulty"] / 100))
-            && (place_filter == "" || is_tower_in_place(tower["places"], place_filter))) {
-            new_towers.push(tower)
-            }
-        }
-    }
-    return new_towers;
 }
 
 function tower_from_id(id) {
@@ -105,25 +155,9 @@ function open_tower(id) {
     $("#towerid").html(id);
 }
 
-function list_towers() {
-    let player = player_from_name($("#checklist-player").val());
-    let tbody = "";
-
-    for (let t of towers) {
-        let crossed = player && player["completions"].includes(t["id"]) ? "tower-button-crossed" : "tower-button";
-        tbody += `
-            <tr>
-                <td class="${difficulty_to_name(t["difficulty"])}">#${t["rank"]}</td>
-                <td><button class="${crossed}" onclick="open_tower(${t["id"]})">${t["name"]}</button></td>
-                <td>${$("#extra-tower-info").prop("checked") ? `(${formatNumber(t["difficulty"]/100)} - ${t["places"][0][0]} - ${t["xp"]} XP)` : ''}</td>
-            </tr>
-        `;
-    }
-
-    $("#searchmenu-table").html(tbody);
-}
 $("#checklist-player").val(localStorage.getItem("sclp-username") || "");
-list_towers();
+init_towers();
+init_players();
 
 function player_from_name(name) {
     for (let i of completions) {
@@ -167,16 +201,6 @@ function get_total_xp(player) {
         total_xp += tower_from_id(id)["xp"];
     }
     return total_xp;
-}
-
-function psearch(s) {
-    new_players = [];
-    for (let player of completions) {
-        if (player["username"].toLowerCase().includes(s.toLowerCase())) {
-            new_players.push(player)
-        }
-    }
-    return new_players;
 }
 
 function get_role(x, t=false) {
@@ -290,29 +314,6 @@ function get_hardest_tower(x) {
     }
     return highest_diff;
 }
-
-function list_players() {
-    let tbody = "";
-
-    for (let i of completions) {
-        let p_name = i["username"];
-        let p_comps = i["completions"];
-        let p_xp = i["xp"];
-        let p_rank = i["rank"];
-
-        tbody += `
-            <tr>
-                <td>#${p_rank}</td>
-                <td><button class="player-button" onclick='open_player("${p_name}")'>${get_role(p_name, true)}</button></td>
-                <td>Level ${format_level(p_xp, true)}</td>
-                <td>${$("#extra-player-info").prop("checked") ? `(${p_comps.length} SCs - ${p_xp} Total XP)` : ''}</td>
-            </tr>
-        `;
-    }
-
-    $("#leaderboard-table").html(tbody);
-}
-list_players();
 
 function game_from_abbr(abbr) {
     for (let gm of games) {

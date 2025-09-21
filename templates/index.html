@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div id="right">
-                <div id="options" oninput="towers=search($('#sclp-tower-search').val());list_towers();">
+                <div id="options" oninput="filter_towers()">
                     <h1>The List</h1>
                     <input type="text" id="sclp-tower-search" placeholder="Search...">
                     <br><br>
@@ -64,7 +64,7 @@
                 <div id="leaderboard-header">
                     <h1>The Top Obbyists</h1>
                     <input type="text" id="sclp-player-search" placeholder="Search...">
-                    <input type="checkbox" id="extra-player-info" onclick="completions=psearch($('#sclp-player-search').val());list_players();">Show extra info
+                    <input type="checkbox" id="extra-player-info" onclick="filter_players()">Show extra info
                 </div>
 
                 <div id="player-data">
