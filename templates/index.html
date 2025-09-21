@@ -103,8 +103,6 @@
         completions = {{ all_completions | tojson }};
         towers = {{ all_towers | tojson }};
         games = {{ all_games | tojson }};
-
-        completions.sort((a, b) => b["xp"] - a["xp"]);
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>

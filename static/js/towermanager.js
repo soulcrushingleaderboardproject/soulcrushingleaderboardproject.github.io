@@ -1,7 +1,3 @@
-for (let player of completions) {
-    player["xp"] = get_total_xp(player["username"]);
-}
-
 for (let player = 0; player < completions.length; player++) {
     completions[player]["rank"] = player + 1;
 }
@@ -183,15 +179,6 @@ function format_level(xp, level_only) {
     } else {
         return (current_level - 1) + " (" + (xp - (total - last_xp)) + "/" + (150 + (25 * (current_level ** 2))) + ")";
     }
-}
-
-function get_total_xp(player) {
-    c = player_from_name(player)["completions"];
-    let total_xp = 0;
-    for (let id of c) {
-        total_xp += tower_from_id(id)["xp"];
-    }
-    return total_xp;
 }
 
 function get_role(x, t=false) {
