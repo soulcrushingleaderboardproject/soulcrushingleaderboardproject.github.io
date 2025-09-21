@@ -220,7 +220,7 @@ p {
 
 #options {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
     gap: 15px 20px;
 }
 
@@ -350,9 +350,12 @@ p {
     flex-direction: column;
     gap: 6px;
 }
-
 .checkbox-group {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, max-content);
     gap: 5px 10px;
+}
+
+.checkbox-group label {
+    white-space: nowrap;
 }
