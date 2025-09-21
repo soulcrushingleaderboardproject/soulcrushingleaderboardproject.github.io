@@ -58,7 +58,7 @@ function init_players() {
             <tr data-name="${p_name.toLowerCase()}">
                 <td>#${p_rank}</td>
                 <td><button class="player-button" onclick='open_player("${p_name}")'>${get_role(p_name, true)}</button></td>
-                <td>Level ${format_level(p_xp, true)}</td>
+                <td style="text-align: right;">Level ${format_level(p_xp, true)}</td>
             </tr>
         `;
     }

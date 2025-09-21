@@ -359,6 +359,10 @@ p {
     #searchmenu-table td:first-child, #leaderboard-table td:first-child {
         width: 50px;
     }
+
+    #searchmenu-table td, #leaderboard-table td {
+        font-size: 0.8em;
+    }
 }
 
 #home-page {
