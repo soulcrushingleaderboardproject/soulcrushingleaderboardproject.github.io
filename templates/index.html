@@ -27,30 +27,41 @@
                 </div>
             </div>
             <div id="right">
-                <div id="options" oninput="filter_towers()">
-                    <h1>The List</h1>
-                    <input type="text" id="sclp-tower-search" placeholder="Search...">
-                    <br><br>
-                    <input type="checkbox" id="diff-8" checked>Insane
-                    <input type="checkbox" id="diff-9" checked>Extreme
-                    <input type="checkbox" id="diff-10" checked>Terrifying
-                    <input type="checkbox" id="diff-11" checked>Catastrophic
-                    <input type="checkbox" id="diff-12" checked>Horrific
-                    <input type="checkbox" id="diff-13" checked>Unreal
-                    <br>
-                    Game: <select name="game-select" id="game-select"></select>
-                    <input type="checkbox" id="extra-tower-info">Show extra info
-                </div>
-
-                <div id="tower-data">
-                    <p class="big" id="towername"></p> <br>
-                    <p>Difficulty: <span id="towerdifficulty"></span></p>
-                    <p>Location: <span id="towerlocation"></span></p>
-                    <p class="small" id="otherlocations"></p>
-                    <p>Rank: #<span id="towerrank"></span></p>
-                    <p>XP for completion: <span id="towerxp"></span></p>
-                    <p>Victors: <span id="towervictors"></span></p>
-                    <p class="small"><i>Tower ID: <span id="towerid"></span></i></p>
+                <div id="right-panel">
+                    <div id="options">
+                        <h1>The List</h1>
+                        <div class="filter-section" id="search-filter">
+                            <input type="text" id="sclp-tower-search" placeholder="Search...">
+                        </div>
+                        <div class="filter-section" id="difficulty-filter">
+                            <p>Difficulty:</p>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" id="diff-8" checked> Insane</label>
+                                <label><input type="checkbox" id="diff-9" checked> Extreme</label>
+                                <label><input type="checkbox" id="diff-10" checked> Terrifying</label>
+                                <label><input type="checkbox" id="diff-11" checked> Catastrophic</label>
+                                <label><input type="checkbox" id="diff-12" checked> Horrific</label>
+                                <label><input type="checkbox" id="diff-13" checked> Unreal</label>
+                            </div>
+                        </div>
+                        <div class="filter-section" id="game-filter">
+                            <label>Game: <select name="game-select" id="game-select"></select></label>
+                        </div>
+                        <div class="filter-section" id="extra-info-filter">
+                            <label><input type="checkbox" id="extra-tower-info"> Show extra info</label>
+                        </div>
+                    </div>
+            
+                    <div id="tower-data">
+                        <p class="big" id="towername"></p> <br>
+                        <p>Difficulty: <span id="towerdifficulty"></span></p>
+                        <p>Location: <span id="towerlocation"></span></p>
+                        <p class="small" id="otherlocations"></p>
+                        <p>Rank: #<span id="towerrank"></span></p>
+                        <p>XP for completion: <span id="towerxp"></span></p>
+                        <p>Victors: <span id="towervictors"></span></p>
+                        <p class="small"><i>Tower ID: <span id="towerid"></span></i></p>
+                    </div>
                 </div>
             </div>
         </div>

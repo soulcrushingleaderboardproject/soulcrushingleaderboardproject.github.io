@@ -209,12 +209,22 @@ p {
     background: #101214;
 }
 
+#tower-data {
+    background: #161820;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
 #player-data {
     overflow-y: scroll;
 }
 
 #options {
-    display: inline;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px 20px;
 }
 
 .Insane {
@@ -325,4 +335,27 @@ p {
 
 #difficulty-progress th, #difficulty-progress td {
     padding: 0 1em;
+}
+
+#right-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 15px;
+    background: #101214;
+    border-radius: 10px;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.filter-section {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.checkbox-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px 10px;
 }
