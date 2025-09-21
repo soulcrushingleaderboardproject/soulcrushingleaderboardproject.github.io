@@ -163,6 +163,12 @@ p {
     border-spacing: 0 5px;
 }
 
+#leaderboard-table {
+    padding: 30px;
+    border-collapse: separate;
+    border-spacing: 0 5px;
+}
+
 #navigation {
     background: #505A64;
     width: 100%;

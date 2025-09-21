@@ -306,25 +306,25 @@ function get_hardest_tower(x) {
 }
 
 function list_players() {
-    var p = "<br>";
+    let tbody = "";
+
     for (let i of completions) {
         let p_name = i["username"];
         let p_comps = i["completions"];
         let p_xp = i["xp"];
         let p_rank = i["rank"];
 
-        p += `<div id='item'>
-            <span>#${p_rank}</span>
-            <button class='player-button' onclick='open_player("${p_name}")'>${get_role(p_name, true)}</button> Level ${format_level(p_xp, true)}
+        tbody += `
+            <tr>
+                <td>#${p_rank}</td>
+                <td><button class="player-button" onclick='open_player("${p_name}")'>${get_role(p_name, true)}</button></td>
+                <td>Level ${format_level(p_xp, true)}</td>
+                <td>${$("#extra-player-info").prop("checked") ? `(${p_comps.length} SCs - ${p_xp} Total XP)` : ''}</td>
+            </tr>
         `;
-
-        if ($("#extra-player-info").prop("checked")) {
-            p += "<i id='small'><br><span></span>";
-            p += `(${p_comps.length} SCs - ${p_xp} Total XP)</i>`;
-        }
-        p += "</div>";
     }
-    $("#leaderboard").html(p);
+
+    $("#leaderboard-table").html(tbody);
 }
 list_players();
 
