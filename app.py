@@ -47,6 +47,7 @@ for c in all_completions:
     c["xp"] = sum(tower_xp.get(id, 0) for id in c["completions"])
     
 all_completions.sort(key=lambda x: x["xp"], reverse=True)
+all_towers.sort(key=lambda x: x["id"], reverse=True)
 all_towers.sort(key=lambda x: x["difficulty"], reverse=True)
 
 for t in range(len(all_towers)):
