@@ -12,6 +12,10 @@ function init_towers() {
         `;
     }
     $("#searchmenu-table").html(tbody);
+    
+    $("#searchmenu-table").css('table-layout', 'fixed');
+    $("#searchmenu-table td:first-child").css('width', '60px');
+    $("#searchmenu-table td:first-child").css('text-align', 'right');
 }
 
 function filter_towers() {

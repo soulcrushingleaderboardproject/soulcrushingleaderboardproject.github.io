@@ -111,7 +111,7 @@ span {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 75%;
+    width: 110%;
 }
 
 .player-button {
@@ -170,8 +170,9 @@ p {
 
 #searchmenu-table {
     padding: 30px;
+    padding-left: 0;
     border-collapse: separate;
-    border-spacing: 0 5px;
+    border-spacing: 20px 5px;
 }
 
 #leaderboard-table {
