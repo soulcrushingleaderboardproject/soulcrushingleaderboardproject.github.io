@@ -22,7 +22,17 @@
         </div>
         <div id="towers-page">
             <div id="left">
-                <div id="searchmenu"></div>
+                <div id="searchmenu">
+                    <table id="searchmenu-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Tower Name</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
             </div>
             <div id="right">
                 <div id="options" oninput="towers=search($('#sclp-tower-search').val());list_towers();">

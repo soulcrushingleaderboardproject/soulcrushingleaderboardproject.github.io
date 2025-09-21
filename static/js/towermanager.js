@@ -120,34 +120,21 @@ function open_tower(id) {
 }
 
 function list_towers() {
-    var r = "<br>";
     let player = player_from_name($("#checklist-player").val());
-    if (player) {
-        for (let t of towers) {
-            r += "<div id='item'>";
-            r += "<span class='" + difficulty_to_name(t["difficulty"]) + "'>#" + t["rank"] + "</span>";
-            
-            let c = player["completions"].includes(t["id"]) ? "tower-button-crossed" : "tower-button";
-            r += `<button class='${c}' onclick='open_tower(${t["id"]})'>${t["name"]}</button>`;
+    let tbody = "";
 
-            if ($("#extra-tower-info").prop("checked")) {
-                r += "<i id='small'><br><span></span>";
-                r += `(${formatNumber(t["difficulty"] / 100)} - ${t["places"][0][0]} - ${t["xp"]} XP)</i>`;
-            }
-            r += "</div>";
-        }
-    } else {
-        for (let t of towers) {
-            r += `
-                <div id="item">
-                    <span class="${difficulty_to_name(t["difficulty"])}">#${t["rank"]}</span>
-                    <button class="tower-button" onclick="open_tower(${t["id"]})">${t["name"]}</button>
-                    ${$("#extra-tower-info").prop("checked") ? `<i class="small"><br><span></span>(${formatNumber(t["difficulty"] / 100)} - ${t["places"][0][0]} - ${t["xp"]} XP)</i>` : ''}
-                </div>
-            `;          
-        }
+    for (let t of towers) {
+        let crossed = player && player["completions"].includes(t["id"]) ? "tower-button-crossed" : "tower-button";
+        tbody += `
+            <tr>
+                <td class="${difficulty_to_name(t["difficulty"])}">#${t["rank"]}</td>
+                <td><button class="${crossed}" onclick="open_tower(${t["id"]})">${t["name"]}</button></td>
+                <td>${$("#extra-tower-info").prop("checked") ? `(${formatNumber(t["difficulty"]/100)} - ${t["places"][0][0]} - ${t["xp"]} XP)` : ''}</td>
+            </tr>
+        `;
     }
-    $("#searchmenu").html(r);
+
+    $("#searchmenu-table tbody").html(tbody);
 }
 $("#checklist-player").val(localStorage.getItem("sclp-username") || "");
 list_towers();
