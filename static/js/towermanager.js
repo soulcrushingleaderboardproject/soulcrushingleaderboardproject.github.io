@@ -16,6 +16,8 @@ function init_towers() {
     $("#searchmenu-table").css('table-layout', 'fixed');
     $("#searchmenu-table td:first-child").css('width', '60px');
     $("#searchmenu-table td:first-child").css('text-align', 'right');
+
+    filter_towers();
 }
 
 function filter_towers() {
@@ -29,6 +31,7 @@ function filter_towers() {
         }
     }
 
+    let comps = player_from_name($("#checklist-player").val());
     $("#searchmenu-table tr").each(function () {
         const $row = $(this);
         const name = $row.data("name");
@@ -43,6 +46,19 @@ function filter_towers() {
         if (place_filter && !places.includes(place_filter)) visible = false;
 
         $row.toggle(visible);
+        
+        
+        if (comps) {
+            for (let c of comps["completions"]) {
+                if (tower_from_id(c)["name"].toLowerCase() == name) {
+                    $row.find("button").removeClass("tower-button");
+                    $row.find("button").addClass("tower-button-crossed");
+                }
+            }
+        } else {
+            $row.find("button").removeClass("tower-button-crossed");
+            $row.find("button").addClass("tower-button");
+        }
     });
 }
 
@@ -50,7 +66,6 @@ function init_players() {
     let tbody = "";
     for (let i of completions) {
         let p_name = i["username"];
-        let p_comps = i["completions"];
         let p_xp = i["xp"];
         let p_rank = i["rank"];
 
