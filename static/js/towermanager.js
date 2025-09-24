@@ -31,7 +31,6 @@ function filter_towers() {
         }
     }
 
-    let comps = player_from_name($("#checklist-player").val());
     $("#searchmenu-table tr").each(function () {
         const $row = $(this);
         const name = $row.data("name");
@@ -47,14 +46,9 @@ function filter_towers() {
 
         $row.toggle(visible);
         
-        
-        if (comps) {
-            for (let c of comps["completions"]) {
-                if (tower_from_id(c)["name"].toLowerCase() == name) {
-                    $row.find("button").removeClass("tower-button");
-                    $row.find("button").addClass("tower-button-crossed");
-                }
-            }
+        if (mapped_towers.includes(name)) {
+            $row.find("button").removeClass("tower-button");
+            $row.find("button").addClass("tower-button-crossed");
         } else {
             $row.find("button").removeClass("tower-button-crossed");
             $row.find("button").addClass("tower-button");
@@ -156,6 +150,15 @@ function open_tower(id) {
 }
 
 $("#checklist-player").val(localStorage.getItem("sclp-username") || "");
+let mapped_towers = [];
+let comps = player_from_name($("#checklist-player").val());
+
+if (comps) {
+    for (let c of comps["completions"]) {
+        mapped_towers.push(tower_from_id(c)["name"].toLowerCase());
+    }
+}
+
 init_towers();
 init_players();
 
