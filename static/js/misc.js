@@ -89,10 +89,3 @@ function open_page(page_name) {
     $(`#${page_name.toLowerCase()}-page`).css("display", "");
 }
 open_page("Home");
-
-const url = window.location.search;
-const params = new URLSearchParams(url);
-if (params.get("u")) {
-    open_page("Leaderboard");
-    open_player(params.get("u"));
-}

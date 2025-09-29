@@ -1,13 +1,15 @@
 function init_towers() {
     let tbody = "";
     for (let t of towers) {
+        let diff = t["difficulty"] / 100;
         tbody += `
             <tr data-name="${t["name"].toLowerCase()}" 
                 data-abbr="${getAbbr(t["name"]).toLowerCase()}" 
-                data-diff="${Math.floor(t["difficulty"]/100)}" 
+                data-diff="${Math.floor(diff)}" 
                 data-places="${t["places"].map(p => p[0]).join(",")}">
                 <td class="${difficulty_to_name(t["difficulty"])}">#${t["rank"]}</td>
                 <td><button class="tower-button" onclick="open_tower(${t["id"]})">${t["name"]}</button></td>
+                <td>${formatNumber(diff)}</td>
             </tr>
         `;
     }
@@ -326,3 +328,10 @@ for (let game of games) {
 
 open_tower(towers[0]["id"]);
 open_player(completions[0]["username"]);
+
+const url = window.location.search;
+const params = new URLSearchParams(url);
+if (params.get("u")) {
+    open_page("Leaderboard");
+    open_player(params.get("u"));
+}

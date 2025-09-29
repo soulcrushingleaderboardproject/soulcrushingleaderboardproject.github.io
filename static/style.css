@@ -102,6 +102,10 @@ span {
     table-layout: fixed;
 }
 
+#searchmenu-table tr td:last-child {
+    width: 60px;
+}
+
 .tower-button, .player-button {
     font-size: 20px;
     border-radius: 8px;
@@ -113,7 +117,7 @@ span {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 110%;
+    width: 100%;
 }
 
 .player-button {
@@ -444,6 +448,7 @@ p {
     flex-direction: column;
     gap: 6px;
 }
+
 .checkbox-group {
     display: grid;
     grid-template-columns: repeat(2, max-content);
