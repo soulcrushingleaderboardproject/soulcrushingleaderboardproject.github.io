@@ -458,3 +458,22 @@ p {
 .checkbox-group label {
     white-space: nowrap;
 }
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+  
+::-webkit-scrollbar-track {
+    background: transparent; 
+}
+  
+::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 10px;
+    border: 2px solid transparent;
+}
+  
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #555 transparent;
+}
