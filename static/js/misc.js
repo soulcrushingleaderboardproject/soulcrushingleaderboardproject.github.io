@@ -10,7 +10,7 @@ for (let [role, users] of Object.entries(credits)) {
 }
 
 function formatNumber(num) {
-    return new Intl.NumberFormat().format(num);
+    return new Intl.NumberFormat("en-US", {minimumFractionDigits: 2}).format(num);
 }
 
 function getAbbr(x) {
