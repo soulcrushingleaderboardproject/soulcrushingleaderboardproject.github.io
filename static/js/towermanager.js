@@ -158,6 +158,20 @@ function open_tower(id) {
     $("#towerxp").html(tower["xp"]);
     $("#towervictors").html(get_victors(id));
     $("#towerid").html(id);
+
+    $("#towervictorstable").html("");
+    for (let player of completions) {
+        if (player["completions"].includes(id)) {
+            let row = `
+                <tr data-name="${player["username"].toLowerCase()}">
+                    <td>#${player["rank"]}</td>
+                    <td><button class="player-button" onclick='open_player("${player["username"]}")'>${get_role(player["username"], true)}</button></td>
+                    <td style="text-align: right;">Level ${format_level(player["xp"], true)}</td>
+                </tr>
+            `;
+            $("#towervictorstable").append(row);
+        }
+    }
 }
 
 $("#checklist-player").val(localStorage.getItem("sclp-username") || "");

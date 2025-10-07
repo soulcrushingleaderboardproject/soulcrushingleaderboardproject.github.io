@@ -422,12 +422,51 @@ p {
     padding-left: 5px;
 }
 
-#difficulty-progress, #playercompletions {
+#difficulty-progress, #playercompletions, #towervictorstable {
     text-align: left;
 }
 
 #difficulty-progress {
     width: 80%;
+}
+
+#towervictorstable {
+    width: 100%;
+    max-width: 100%;
+    table-layout: auto;
+    border-collapse: collapse;
+    word-break: break-word;
+    font-size: 1em;
+}
+
+#towervictorstable td,
+#towervictorstable th {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 6px 8px;
+    line-height: 1.3em;
+}
+
+@media (max-width: 1000px) {
+    #towervictorstable {
+        font-size: 0.9em;
+    }
+    #towervictorstable td,
+    #towervictorstable th {
+        padding: 4px 6px;
+    }
+}
+
+@media (max-width: 600px) {
+    #towervictorstable {
+        font-size: 0.8em;
+    }
+    #towervictorstable td,
+    #towervictorstable th {
+        padding: 3px 5px;
+        white-space: normal;
+    }
 }
 
 #right-panel {
