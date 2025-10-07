@@ -3,6 +3,7 @@ import os
 from dotenv import load_dotenv
 import utils.funcs as funcs
 import math
+import requests
 load_dotenv()
 
 app = Flask(__name__)
@@ -60,9 +61,11 @@ def tower_data():
     updated = funcs.get_data("towers!A:E")
     return jsonify(updated)
 
+cool_members = requests.get("https://towerstatsdata-production.up.railway.app/cool_members").json()
+
 @app.route("/")
 def home():
-    return render_template("index.html", all_completions=all_completions, all_towers=all_towers, all_games=all_games)
+    return render_template("index.html", all_completions=all_completions, all_towers=all_towers, all_games=all_games, cool_members=cool_members)
 
 @app.route("/static/<path:filename>")
 def static_files(filename):

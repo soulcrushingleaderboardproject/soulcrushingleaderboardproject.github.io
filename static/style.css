@@ -324,6 +324,10 @@ p {
     color: #49559e;
 }
 
+.cool {
+    color: #3498db;
+}
+
 @media (max-width: 1080px) {
     #left, #right {
         min-width: 0;
@@ -444,7 +448,7 @@ p {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    padding: 6px 8px;
+    padding: 3px 4px;
     line-height: 1.3em;
 }
 
@@ -452,8 +456,7 @@ p {
     #towervictorstable {
         font-size: 0.9em;
     }
-    #towervictorstable td,
-    #towervictorstable th {
+    #towervictorstable td {
         padding: 4px 6px;
     }
 }
@@ -462,8 +465,7 @@ p {
     #towervictorstable {
         font-size: 0.8em;
     }
-    #towervictorstable td,
-    #towervictorstable th {
+    #towervictorstable td {
         padding: 3px 5px;
         white-space: normal;
     }

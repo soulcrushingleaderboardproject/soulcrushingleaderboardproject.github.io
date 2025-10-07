@@ -147,6 +147,7 @@ function get_victors(id) {
 }
 
 function open_tower(id) {
+    open_page("Towers");
     var tower = tower_from_id(id);
     let diff = difficulty_to_name(tower["difficulty"]);
 
@@ -229,6 +230,9 @@ function get_role(x, t=false) {
             return `<span class="${r.toLowerCase().replaceAll(" ", "-")}">${x}</span>`;
         }
     }
+    if (t && cool_members.includes(x)) {
+        return `<span class="cool">${x}</span>`;
+    }
     return t ? x : "";
 }
 
@@ -276,6 +280,7 @@ function get_dp(comps) {
 }
 
 function open_player(name) {
+    open_page("Leaderboard");
     var player = player_from_name(name);
     let role = get_role(player["username"]);
     let comps = player["completions"];
@@ -316,7 +321,7 @@ function open_player(name) {
             let row = `
                 <tr>
                     <td class="${difficulty_to_name(tower["difficulty"])}">#${tower["rank"]}</td>
-                    <td><button class="tower-button" onclick="open_page('Towers');open_tower(${tower["id"]})">${tower["name"]}</button></td>
+                    <td><button class="tower-button" onclick="open_tower(${tower["id"]})">${tower["name"]}</button></td>
                 </tr>
             `;
             $("#playercompletions").append(row);
