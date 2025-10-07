@@ -160,8 +160,11 @@ function open_tower(id) {
     $("#towerid").html(id);
 
     $("#towervictorstable").html("");
+    let hasVictors = false;
+    
     for (let player of completions) {
         if (player["completions"].includes(id)) {
+            hasVictors = true;
             let row = `
                 <tr data-name="${player["username"].toLowerCase()}">
                     <td>#${player["rank"]}</td>
@@ -171,6 +174,11 @@ function open_tower(id) {
             `;
             $("#towervictorstable").append(row);
         }
+    }
+    
+    if (!hasVictors) {
+        let row = `<tr><td colspan="3" style="text-align: center; font-style: italic; color: #ccc;">No victors yet</td></tr>`;
+        $("#towervictorstable").append(row);
     }
 }
 
