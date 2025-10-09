@@ -178,7 +178,7 @@ function open_tower(id) {
     }
     
     if (!hasVictors) {
-        let row = `<tr><td colspan="3" style="text-align: center; font-style: italic; color: #ccc;">No victors yet</td></tr>`;
+        let row = `<tr><td colspan="3" style="text-align: center; font-style: italic; color: #ccc;">No SCLP victors yet</td></tr>`;
         $("#towervictorstable").append(row);
     }
 }
