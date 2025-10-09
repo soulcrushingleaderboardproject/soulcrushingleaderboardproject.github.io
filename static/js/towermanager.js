@@ -318,10 +318,12 @@ function open_player(name) {
     $("#playercompletions").html("");
     for (let tower of towers) {
         if (comps.includes(tower["id"])) {
+            let diff = tower["difficulty"];
             let row = `
                 <tr>
-                    <td class="${difficulty_to_name(tower["difficulty"])}">#${tower["rank"]}</td>
+                    <td class="${difficulty_to_name(diff)}">#${tower["rank"]}</td>
                     <td><button class="tower-button" onclick="open_tower(${tower["id"]})">${tower["name"]}</button></td>
+                    <td><span class="${difficulty_to_name(diff)}">${formatNumber(diff / 100)}</span></td>
                 </tr>
             `;
             $("#playercompletions").append(row);

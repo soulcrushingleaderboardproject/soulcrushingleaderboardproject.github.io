@@ -518,3 +518,52 @@ p {
     scrollbar-width: thin;
     scrollbar-color: #555 transparent;
 }
+
+#playercompletions {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+#playercompletions td:first-child {
+    width: 80px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+#playercompletions td:nth-child(2) {
+    width: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#playercompletions td:last-child {
+    width: 100px;
+    text-align: right;
+    white-space: nowrap;
+}
+
+@media (max-width: 1080px) {
+    #playercompletions td:first-child {
+        width: 60px;
+        font-size: 0.8em;
+    }
+    
+    #playercompletions td:last-child {
+        width: 80px;
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 600px) {
+    #playercompletions td:first-child {
+        width: 50px;
+        font-size: 0.7em;
+    }
+    
+    #playercompletions td:last-child {
+        width: 70px;
+        font-size: 0.7em;
+    }
+}
