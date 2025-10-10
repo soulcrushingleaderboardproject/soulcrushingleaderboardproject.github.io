@@ -75,6 +75,8 @@ function init_players() {
         players.sort((a, b) => b.xp - a.xp);
     } else if (sort === "completions") {
         players.sort((a, b) => b.completions.length - a.completions.length || b.xp - a.xp);
+    } else if (sort === "hardest") {
+        players.sort((a, b) => get_hardest_tower(b.completions) - get_hardest_tower(a.completions) || b.xp - a.xp);
     }
 
     let tbody = "";
@@ -82,12 +84,21 @@ function init_players() {
         let p_name = i["username"];
         let p_xp = i["xp"];
         let display_rank = index + 1;
-        let third_column = sort === "xp" ? `Level ${format_level(p_xp, true)}` : `${i["completions"].length} SCs`;
+        let third_column;
+        if (sort === "xp") {
+            third_column = `Level ${format_level(p_xp, true)}`;
+        } else if (sort === "completions") {
+            third_column = `${i["completions"].length} SCs`;
+        } else if (sort === "hardest") {
+            let hardest_diff = get_hardest_tower(i["completions"]);
+            let diff_class = difficulty_to_name(hardest_diff);
+            third_column = `<span class="${diff_class}">${formatNumber(hardest_diff / 100)}</span>`;
+        }
 
         tbody += `
             <tr data-name="${p_name.toLowerCase()}">
                 <td>#${display_rank}</td>
-                <td><button class="player-button" onclick='open_player("${p_name}", ${display_rank})'>${get_role(p_name, true)}</button></td>
+                <td><button class="player-button" onclick='open_player("${p_name}")'>${get_role(p_name, true)}</button></td>
                 <td style="text-align: right;">${third_column}</td>
             </tr>
         `;
