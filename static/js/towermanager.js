@@ -373,11 +373,10 @@ window.addEventListener('popstate', function(event) {
 const url = window.location.search;
 const params = new URLSearchParams(url);
 
+open_tower(towers[0]["id"]);
+open_player(completions[0]["username"]);
 if (params.get("t")) {
     open_tower(parseInt(params.get("t")));
 } else if (params.get("u")) {
     open_player(params.get("u"));
-} else {
-    open_tower(towers[0]["id"]);
-    open_player(completions[0]["username"]);
 }
