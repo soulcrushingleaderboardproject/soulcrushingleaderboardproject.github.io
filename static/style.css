@@ -567,3 +567,11 @@ p {
         font-size: 0.7em;
     }
 }
+
+#player-sort {
+    margin-left: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif;
+}

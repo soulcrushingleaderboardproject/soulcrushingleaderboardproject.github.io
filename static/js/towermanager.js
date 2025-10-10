@@ -68,20 +68,29 @@ function filter_towers() {
 }
 
 function init_players() {
+    let sort = $("#player-sort").val() || "xp";
+    let players = [...completions];
+
+    if (sort === "xp") {
+        players.sort((a, b) => b.xp - a.xp);
+    } else if (sort === "completions") {
+        players.sort((a, b) => b.completions.length - a.completions.length || b.xp - a.xp);
+    }
+
     let tbody = "";
-    for (let i of completions) {
+    players.forEach((i, index) => {
         let p_name = i["username"];
         let p_xp = i["xp"];
-        let p_rank = i["rank"];
+        let display_rank = index + 1;
 
         tbody += `
             <tr data-name="${p_name.toLowerCase()}">
-                <td>#${p_rank}</td>
+                <td>#${display_rank}</td>
                 <td><button class="player-button" onclick='open_player("${p_name}")'>${get_role(p_name, true)}</button></td>
                 <td style="text-align: right;">Level ${format_level(p_xp, true)}</td>
             </tr>
         `;
-    }
+    });
     $("#leaderboard-table").html(tbody);
 }
 
@@ -102,6 +111,10 @@ $("#sclp-player-search").on("input", filter_players);
 $("#checklist-player").on("input", function () {
     filter_towers();
     localStorage.setItem("sclp-username", $(this).val());
+});
+$("#player-sort").on("change", function() {
+    init_players();
+    filter_players();
 });
 
 function format_location(tower, start, end) {
