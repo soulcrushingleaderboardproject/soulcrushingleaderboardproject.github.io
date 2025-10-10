@@ -19,6 +19,9 @@ all_completions = funcs.get_data("comps!A:C")
 all_towers = funcs.get_data("towers!A:E")
 all_games = funcs.get_data("games!A:C")
 
+for c in all_completions:
+    c["completions"] = list(set(c["completions"]))
+
 for tower in all_towers:
     tower["id"] = int(tower["id"])
     tower["difficulty"] = int(tower["difficulty"])
