@@ -82,12 +82,13 @@ function init_players() {
         let p_name = i["username"];
         let p_xp = i["xp"];
         let display_rank = index + 1;
+        let third_column = sort === "xp" ? `Level ${format_level(p_xp, true)}` : `${i["completions"].length} SCs`;
 
         tbody += `
             <tr data-name="${p_name.toLowerCase()}">
                 <td>#${display_rank}</td>
                 <td><button class="player-button" onclick='open_player("${p_name}")'>${get_role(p_name, true)}</button></td>
-                <td style="text-align: right;">Level ${format_level(p_xp, true)}</td>
+                <td style="text-align: right;">${third_column}</td>
             </tr>
         `;
     });
