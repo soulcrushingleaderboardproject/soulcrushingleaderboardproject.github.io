@@ -295,7 +295,6 @@ function open_player(name) {
     $("#playerxp").html(formatNumber(player["xp"]));
     $("#playerlevel").html(format_level(player["xp"]));
     $("#playerrank").html(`#${player["rank"]}`);
-    $("#playerlink").html(`<a href="https://sclp.vercel.app?u=${name}">sclp.vercel.app?u=${name}</a>`);
 
     let c1 = Object.values(dp).reduce((a,[x])=>a+x,0);
     let c2 = Object.values(dp).reduce((a,[,y])=>a+y,0);
