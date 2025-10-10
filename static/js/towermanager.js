@@ -124,10 +124,13 @@ $("#checklist-player").on("input", function () {
     filter_towers();
     localStorage.setItem("sclp-username", $(this).val());
 });
+
 $("#player-sort").on("change", function() {
+    localStorage.setItem("sclp-player-sort", $(this).val());
     init_players();
     filter_players();
 });
+$("#player-sort").val(localStorage.getItem("sclp-player-sort") || "xp");
 
 function format_location(tower, start, end) {
     const places = tower["places"].slice(start, end);
