@@ -181,6 +181,9 @@ function open_tower(id) {
         let row = `<tr><td colspan="3" style="text-align: center; font-style: italic; color: #ccc;">No SCLP victors yet</td></tr>`;
         $("#towervictorstable").append(row);
     }
+
+    const newUrl = `${window.location.pathname}?t=${id}`;
+    window.history.pushState({type: 'tower', id: id}, '', newUrl);
 }
 
 $("#checklist-player").val(localStorage.getItem("sclp-username") || "");
@@ -330,6 +333,9 @@ function open_player(name) {
         }
     }
     add_badges(player["rank"], role, comps);
+
+    const newUrl = `${window.location.pathname}?u=${encodeURIComponent(name)}`;
+    window.history.pushState({type: 'player', name: name}, '', newUrl);
 }
 
 function get_hardest_tower(x) {
@@ -355,12 +361,24 @@ for (let game of games) {
     $("#game-select").append(`<option value='${game["abbr"]}'>${game["abbr"]}</option>`);
 }
 
-open_tower(towers[0]["id"]);
-open_player(completions[0]["username"]);
+window.addEventListener('popstate', function(event) {
+    if (event.state) {
+        if (event.state.type === 'tower') {
+            open_tower(event.state.id);
+        } else if (event.state.type === 'player') {
+            open_player(event.state.name);
+        }
+    }
+});
 
 const url = window.location.search;
 const params = new URLSearchParams(url);
-if (params.get("u")) {
-    open_page("Leaderboard");
+
+if (params.get("t")) {
+    open_tower(parseInt(params.get("t")));
+} else if (params.get("u")) {
     open_player(params.get("u"));
+} else {
+    open_tower(towers[0]["id"]);
+    open_player(completions[0]["username"]);
 }
