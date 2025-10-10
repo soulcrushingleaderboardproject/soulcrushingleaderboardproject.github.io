@@ -87,7 +87,7 @@ function init_players() {
         tbody += `
             <tr data-name="${p_name.toLowerCase()}">
                 <td>#${display_rank}</td>
-                <td><button class="player-button" onclick='open_player("${p_name}")'>${get_role(p_name, true)}</button></td>
+                <td><button class="player-button" onclick='open_player("${p_name}", ${display_rank})'>${get_role(p_name, true)}</button></td>
                 <td style="text-align: right;">${third_column}</td>
             </tr>
         `;
@@ -296,7 +296,7 @@ function get_dp(comps) {
     }
 }
 
-function open_player(name) {
+function open_player(name, rank) {
     open_page("Leaderboard");
     var player = player_from_name(name);
     let role = get_role(player["username"]);
@@ -308,7 +308,8 @@ function open_player(name) {
     if (role) $("#playerrole").html(`<span class="${role.toLowerCase().replaceAll(" ", "-")}">${role}</span>`);
     $("#playerxp").html(formatNumber(player["xp"]));
     $("#playerlevel").html(format_level(player["xp"]));
-    $("#playerrank").html(`#${player["rank"]}`);
+    let r = rank || player["rank"];
+    $("#playerrank").html(`#${r}`);
 
     let c1 = Object.values(dp).reduce((a,[x])=>a+x,0);
     let c2 = Object.values(dp).reduce((a,[,y])=>a+y,0);
