@@ -602,26 +602,34 @@ p {
 #packs-table {
     width: 100%;
     table-layout: fixed;
-    padding: 30px;
-    padding-left: 0;
-    border-collapse: separate;
-    border-spacing: 20px 5px;
+    border-collapse: collapse;
+}
+
+#packs-table td {
+    padding: 8px 10px;
 }
 
 #packs-table td:first-child {
-    width: 60px;
-    text-align: center;
-    padding-right: 10px;
+    width: 350px;
+    text-align: left;
 }
 
-#packs-table tr td:last-child {
-    width: 60px;
+#packs-table td:nth-child(2) {
+    width: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#packs-table td:last-child {
+    width: 120px;
+    text-align: right;
 }
 
 .pack-button {
     font-size: 20px;
     border-radius: 8px;
-    background: #00000000;
+    background: transparent;
     color: #FFFFFF;
     border: none;
     font-family: "Montserrat", sans-serif;
@@ -629,6 +637,11 @@ p {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    width: 100%;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    display: block;
 }
 
 .pack-button:hover {
@@ -677,27 +690,22 @@ p {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    padding: 3px 4px;
-    line-height: 1.3em;
+    padding: 8px 4px;
+    line-height: 1.4em;
 }
 
 #packtowers-table td:first-child {
     width: 80px;
     text-align: center;
-    white-space: nowrap;
 }
 
 #packtowers-table td:nth-child(2) {
     width: auto;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
 #packtowers-table td:last-child {
     width: 100px;
     text-align: right;
-    white-space: nowrap;
 }
 
 #playerpacks {
@@ -710,35 +718,32 @@ p {
 
 @media (max-width: 1080px) {
     .pack-button {
-        font-size: 0.8em;
-    }
-
-    #packs-table td:first-child {
-        width: 50px;
-    }
-
-    #packs-table td {
-        font-size: 0.8em;
+        font-size: 16px;
     }
 
     #packtowers-table td:first-child {
         width: 60px;
-        font-size: 0.8em;
     }
 
     #packtowers-table td:last-child {
         width: 80px;
-        font-size: 0.8em;
     }
 }
 
 @media (max-width: 600px) {
+    #packs-table td:first-child {
+        width: 120px;
+    }
+    
     #packtowers-table {
-        font-size: 0.8em;
+        font-size: 0.9em;
     }
 
     #packtowers-table td {
-        padding: 3px 5px;
-        white-space: normal;
+        padding: 6px 4px;
+    }
+    
+    .pack-button {
+        font-size: 14px;
     }
 }
