@@ -71,26 +71,30 @@ function init_players() {
     let sort = $("#player-sort").val() || "xp";
     let players = [...completions];
 
+    players.forEach(player => {
+        player.total_xp = player.xp + calculate_bonus_xp(player.completions);
+    });
+
     if (sort === "xp") {
-        players.sort((a, b) => b.xp - a.xp);
+        players.sort((a, b) => b.total_xp - a.total_xp);
     } else if (sort === "completions") {
-        players.sort((a, b) => b.completions.length - a.completions.length || b.xp - a.xp);
+        players.sort((a, b) => b.completions.length - a.completions.length || b.total_xp - a.total_xp);
     } else if (sort === "hardest") {
-        players.sort((a, b) => get_hardest_tower(b.completions) - get_hardest_tower(a.completions) || b.xp - a.xp);
+        players.sort((a, b) => get_hardest_tower(b.completions) - get_hardest_tower(a.completions) || b.total_xp - a.total_xp);
     }
 
     let tbody = "";
-    players.forEach((i, index) => {
-        let p_name = i["username"];
-        let p_xp = i["xp"];
+    players.forEach((player, index) => {
+        let p_name = player["username"];
+        let p_xp = player["total_xp"];
         let display_rank = index + 1;
         let third_column;
         if (sort === "xp") {
             third_column = `Level ${format_level(p_xp, true)}`;
         } else if (sort === "completions") {
-            third_column = `${i["completions"].length} SCs`;
+            third_column = `${player["completions"].length} SCs`;
         } else if (sort === "hardest") {
-            let hardest_diff = get_hardest_tower(i["completions"]);
+            let hardest_diff = get_hardest_tower(player["completions"]);
             let diff_class = difficulty_to_name(hardest_diff);
             third_column = `<span class="${diff_class}">${formatNumber(hardest_diff / 100)}</span>`;
         }
@@ -98,7 +102,7 @@ function init_players() {
         tbody += `
             <tr data-name="${p_name.toLowerCase()}">
                 <td>#${display_rank}</td>
-                <td><button class="player-button" onclick='open_player("${p_name}")'>${get_role(p_name, true)}</button></td>
+                <td><button class="player-button" onclick='open_player("${p_name}", ${display_rank})'>${get_role(p_name, true)}</button></td>
                 <td style="text-align: right;">${third_column}</td>
             </tr>
         `;
@@ -363,13 +367,15 @@ function open_player(name, rank) {
     var player = player_from_name(name);
     let role = get_role(player["username"]);
     let comps = player["completions"];
+    let bonus_xp = calculate_bonus_xp(comps);
+    let total_xp = player["xp"] + bonus_xp;
     get_dp(comps);
 
     $("#playername").html(name);
     $("#playerrole").html("");
     if (role) $("#playerrole").html(`<span class="${role.toLowerCase().replaceAll(" ", "-")}">${role}</span>`);
-    $("#playerxp").html(formatNumber(player["xp"]));
-    $("#playerlevel").html(format_level(player["xp"]));
+    $("#playerxp").html(formatNumber(total_xp));
+    $("#playerlevel").html(format_level(total_xp));
     let r = rank || player["rank"];
     $("#playerrank").html(`#${r}`);
 

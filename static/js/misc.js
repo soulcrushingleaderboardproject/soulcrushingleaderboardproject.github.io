@@ -49,6 +49,17 @@ function difficulty_to_range(d) {
     return "Peak";
 }
 
+function calculate_bonus_xp(completions) {
+    let bonus_xp = 0;
+    let completed_packs = packs.filter(pack => pack.towers.every(id => completions.includes(parseInt(id))));
+    completed_packs.forEach(pack => {
+        let tower_xp = pack.towers.map(id => towers.find(t => t.id === parseInt(id))?.xp || 0);
+        let pack_bonus = pack.towers.length ? Math.floor(tower_xp.reduce((sum, xp) => sum + xp, 0) / pack.towers.length) : 0;
+        bonus_xp += pack_bonus;
+    });
+    return bonus_xp;
+}
+
 function scaleLayout() {
     const designedWidth = 800;
     const screenWidth = window.innerWidth;
