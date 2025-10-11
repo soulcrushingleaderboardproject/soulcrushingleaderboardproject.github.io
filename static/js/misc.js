@@ -10,7 +10,8 @@ for (let [role, users] of Object.entries(credits)) {
 }
 
 function formatNumber(num) {
-    return new Intl.NumberFormat("en-US", {minimumFractionDigits: 2}).format(num);
+    let d = num < 20 ? 2 : 0;
+    return new Intl.NumberFormat("en-US", {minimumFractionDigits: d}).format(num);
 }
 
 function getAbbr(x) {
