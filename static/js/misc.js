@@ -77,7 +77,7 @@ inputs.forEach(input => {
     input.setAttribute("spellcheck", false);
 });
 
-let pages = ["Home", "Towers", "Leaderboard"];
+let pages = ["Home", "Towers", "Leaderboard", "Packs"];
 for (let page of pages) {
     $("#links").append(`<button class="seamless-button" onclick="open_page('${page}')">${page}</button>`);
 }
