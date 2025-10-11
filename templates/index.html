@@ -9,8 +9,7 @@
 </head>
 <body>
     <div id="main">
-        <div id="navigation">
-            <div id="links"></div>
+        <div id="navigation"></div>
             <input type="text" id="checklist-player" placeholder="Player...">
         </div>
         <div id="home-page">
@@ -90,6 +89,8 @@
                         <p>Total XP: <span id="playerxp"></span></p>
                         <p>Level: <span id="playerlevel"></span></p>
                         <p>Rank: <span id="playerrank"></span></p>
+                        <p class="big">Completed Packs</p>
+                        <div id="playerpacks"></div><br>
         
                         <p class="big">Stats</p>
                         <table id="difficulty-progress"></table><br>
@@ -100,12 +101,34 @@
                 </div>
             </div>
         </div>
+        <div id="packs-page">
+            <div id="left">
+                <div id="packs">
+                    <table id="packs-table"></table>
+                </div>
+            </div>
+            <div id="right">
+                <div id="right-panel">
+                    <div id="packs-header">
+                        <h1>Packs</h1>
+                    </div>
+                    <div id="pack-data">
+                        <p class="big" id="packname"></p>
+                        <p>Progress: <span id="packprogress"></span></p>
+                        <p>Bonus XP: <span id="packbonus"></span></p><br>
+                        <p class="big">Towers</p>
+                        <table id="packtowers-table"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
         completions = {{ all_completions | tojson }};
         towers = {{ all_towers | tojson }};
         games = {{ all_games | tojson }};
+        packs = {{ all_packs | tojson }};
         cool_members = {{ cool_members | tojson }};
     </script>
 

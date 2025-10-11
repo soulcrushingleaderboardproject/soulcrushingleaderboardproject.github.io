@@ -76,8 +76,6 @@ for pack in raw_packs:
         "name": pack["name"],
         "towers": t
     })
-            
-print(packs)
         
 @app.route("/tower_data")
 def tower_data():
@@ -88,7 +86,7 @@ cool_members = requests.get("https://towerstatsdata-production.up.railway.app/co
 
 @app.route("/")
 def home():
-    return render_template("index.html", all_completions=all_completions, all_towers=all_towers, all_games=all_games, cool_members=cool_members)
+    return render_template("index.html", all_completions=all_completions, all_towers=all_towers, all_games=all_games, cool_members=cool_members, packs=packs)
 
 @app.route("/static/<path:filename>")
 def static_files(filename):
