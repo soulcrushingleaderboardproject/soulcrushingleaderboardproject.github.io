@@ -58,6 +58,23 @@ for t in range(len(all_towers)):
     all_towers[t]["rank"] = t + 1
 for c in range(len(all_completions)):
     all_completions[c]["rank"] = c + 1
+    
+raw_packs = funcs.get_data("packs!A:M")
+packs = []
+for pack in raw_packs:
+    t = []
+    for i in range(1, 11):
+        current = pack[f"tower{i}"]
+        if current != "":
+            t.append(current)
+            
+    packs.append({
+        "id": pack["id"],
+        "name": pack["name"],
+        "towers": t
+    })
+            
+print(packs)
         
 @app.route("/tower_data")
 def tower_data():
