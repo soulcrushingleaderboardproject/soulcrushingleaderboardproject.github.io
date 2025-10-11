@@ -469,13 +469,13 @@ init_packs();
 const url = window.location.search;
 const params = new URLSearchParams(url);
 
+open_tower(towers[0]["id"]);
+open_player(completions[0]["username"]);
+
 if (params.get("t")) {
     open_tower(parseInt(params.get("t")));
 } else if (params.get("u")) {
     open_player(params.get("u"));
 } else if (params.get("p")) {
     open_pack(params.get("p"));
-} else {
-    open_tower(towers[0]["id"]);
-    open_player(completions[0]["username"]);
 }
