@@ -62,6 +62,9 @@ for c in range(len(all_completions)):
 raw_packs = funcs.get_data("packs!A:M")
 packs = []
 for pack in raw_packs:
+    if not pack["id"]:
+        continue
+    
     t = []
     for i in range(1, 11):
         current = pack[f"tower{i}"]
