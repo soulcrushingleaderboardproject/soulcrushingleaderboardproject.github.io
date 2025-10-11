@@ -49,7 +49,7 @@ span {
     overflow: hidden;
 }
 
-#towers-page, #leaderboard-page {
+#towers-page, #leaderboard-page, #packs-page {
     flex-grow: 1;
     display: flex;
     flex-direction: row;
@@ -590,5 +590,156 @@ p {
         height: 1.5em;
         padding: 1px 8px 1px 12px;
         margin-left: 10px;
+    }
+}
+
+#packs {
+    overflow-y: scroll;
+    flex-grow: 1;
+    overflow-x: hidden;
+}
+
+#packs-table {
+    width: 100%;
+    table-layout: fixed;
+    padding: 30px;
+    padding-left: 0;
+    border-collapse: separate;
+    border-spacing: 20px 5px;
+}
+
+#packs-table td:first-child {
+    width: 60px;
+    text-align: center;
+    padding-right: 10px;
+}
+
+#packs-table tr td:last-child {
+    width: 60px;
+}
+
+.pack-button {
+    font-size: 20px;
+    border-radius: 8px;
+    background: #00000000;
+    color: #FFFFFF;
+    border: none;
+    font-family: "Montserrat", sans-serif;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.pack-button:hover {
+    background: #363840;
+}
+
+#pack-data {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+    flex-grow: 1;
+    background: linear-gradient(145deg, #1e2127, #252830);
+    border: 1px solid #303540;
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+#pack-data::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+}
+
+#packs-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 15px 20px;
+}
+
+#packtowers-table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    font-size: 1em;
+}
+
+#packtowers-table td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 3px 4px;
+    line-height: 1.3em;
+}
+
+#packtowers-table td:first-child {
+    width: 80px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+#packtowers-table td:nth-child(2) {
+    width: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#packtowers-table td:last-child {
+    width: 100px;
+    text-align: right;
+    white-space: nowrap;
+}
+
+#playerpacks {
+    font-size: 1em;
+}
+
+#playerpacks p {
+    margin: 5px 0;
+}
+
+@media (max-width: 1080px) {
+    .pack-button {
+        font-size: 0.8em;
+    }
+
+    #packs-table td:first-child {
+        width: 50px;
+    }
+
+    #packs-table td {
+        font-size: 0.8em;
+    }
+
+    #packtowers-table td:first-child {
+        width: 60px;
+        font-size: 0.8em;
+    }
+
+    #packtowers-table td:last-child {
+        width: 80px;
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 600px) {
+    #packtowers-table {
+        font-size: 0.8em;
+    }
+
+    #packtowers-table td {
+        padding: 3px 5px;
+        white-space: normal;
     }
 }

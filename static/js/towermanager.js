@@ -118,10 +118,61 @@ function filter_players() {
     });
 }
 
+function init_packs() {
+    let tbody = "";
+    packs.forEach(pack => {
+        let player = player_from_name($("#checklist-player").val());
+        let completed_count = player ? pack.towers.filter(id => player.completions.includes(parseInt(id))).length : 0;
+        let total_count = pack.towers.length;
+        let tower_xp = pack.towers.map(id => towers.find(t => t.id === parseInt(id))?.xp || 0);
+        let bonus_xp = total_count ? Math.floor(tower_xp.reduce((sum, xp) => sum + xp, 0) / total_count) : 0;
+        tbody += `
+            <tr>
+                <td><button class="pack-button" onclick="open_pack('${pack.id}')">${pack.name}</button></td>
+                <td style="text-align: right;">${completed_count}/${total_count}</td>
+                <td style="text-align: right;">${formatNumber(bonus_xp)} XP</td>
+            </tr>
+        `;
+    });
+    $("#packs-table").html(tbody);
+}
+
+function open_pack(id) {
+    open_page("Packs");
+    let pack = packs.find(p => p.id === id);
+    let player = player_from_name($("#checklist-player").val());
+    let completed_count = player ? pack.towers.filter(id => player.completions.includes(parseInt(id))).length : 0;
+    let total_count = pack.towers.length;
+    let tower_xp = pack.towers.map(id => towers.find(t => t.id === parseInt(id))?.xp || 0);
+    let bonus_xp = total_count ? Math.floor(tower_xp.reduce((sum, xp) => sum + xp, 0) / total_count) : 0;
+
+    $("#packname").html(pack.name);
+    $("#packprogress").html(`${completed_count}/${total_count}`);
+    $("#packbonus").html(`${formatNumber(bonus_xp)} XP`);
+
+    let tbody = "";
+    pack.towers.forEach(id => {
+        let tower = towers.find(t => t.id === parseInt(id));
+        if (tower) {
+            let diff = tower.difficulty / 100;
+            let completed = player && player.completions.includes(parseInt(id));
+            tbody += `
+                <tr>
+                    <td class="${difficulty_to_name(tower.difficulty)}">#${tower.rank}</td>
+                    <td><button class="${completed ? 'tower-button-crossed' : 'tower-button'}" onclick="open_tower(${id})">${tower.name}</button></td>
+                    <td><span class="${difficulty_to_name(tower.difficulty)}">${formatNumber(diff)}</span></td>
+                </tr>
+            `;
+        }
+    });
+    $("#packtowers-table").html(tbody);
+}
+
 $("#sclp-tower-search, #game-select, [id^=diff-]").on("input change", filter_towers);
 $("#sclp-player-search").on("input", filter_players);
 $("#checklist-player").on("input", function () {
     filter_towers();
+    init_packs();
     localStorage.setItem("sclp-username", $(this).val());
 });
 
@@ -215,9 +266,6 @@ function open_tower(id) {
 }
 
 $("#checklist-player").val(localStorage.getItem("sclp-username") || "");
-
-init_towers();
-init_players();
 
 function player_from_name(name) {
     for (let i of completions) {
@@ -360,6 +408,19 @@ function open_player(name, rank) {
             $("#playercompletions").append(row);
         }
     }
+
+    $("#playerpacks").html("");
+    let completed_packs = packs.filter(pack => pack.towers.every(id => comps.includes(parseInt(id))));
+    if (completed_packs.length) {
+        completed_packs.forEach(pack => {
+            let tower_xp = pack.towers.map(id => towers.find(t => t.id === parseInt(id))?.xp || 0);
+            let bonus_xp = pack.towers.length ? Math.floor(tower_xp.reduce((sum, xp) => sum + xp, 0) / pack.towers.length) : 0;
+            $("#playerpacks").append(`<p>${pack.name} (${formatNumber(bonus_xp)} Bonus XP)</p>`);
+        });
+    } else {
+        $("#playerpacks").html("<p style='color: #ccc; font-style: italic;'>No packs completed</p>");
+    }
+
     add_badges(player["rank"], role, comps);
 
     const newUrl = `${window.location.pathname}?u=${encodeURIComponent(name)}`;
@@ -395,17 +456,26 @@ window.addEventListener('popstate', function(event) {
             open_tower(event.state.id);
         } else if (event.state.type === 'player') {
             open_player(event.state.name);
+        } else if (event.state.type === 'pack') {
+            open_pack(event.state.id);
         }
     }
 });
 
+init_towers();
+init_players();
+init_packs();
+
 const url = window.location.search;
 const params = new URLSearchParams(url);
 
-open_tower(towers[0]["id"]);
-open_player(completions[0]["username"]);
 if (params.get("t")) {
     open_tower(parseInt(params.get("t")));
 } else if (params.get("u")) {
     open_player(params.get("u"));
+} else if (params.get("p")) {
+    open_pack(params.get("p"));
+} else {
+    open_tower(towers[0]["id"]);
+    open_player(completions[0]["username"]);
 }
