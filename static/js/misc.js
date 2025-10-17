@@ -1,7 +1,7 @@
 const credits = {
     "Owners": ["Z_Exzer", "PrestigeUE"],
     "Developer": ["TheHaloDeveloper"],
-    "Managers": ["thej10n", "Spitfire_YT5", "vt_et", "zFinzora", "XChocolateMLGX", "jarofjam_14", "DJdestroyer916539"],
+    "Managers": ["thej10n", "Spitfire_YT5", "AddisonJudah", "vt_et", "zFinzora", "XChocolateMLGX", "jarofjam_14", "DJdestroyer916539"],
     "Former Staff": ["ThePhantomDevil666", "jumper101110"]
 }
 
