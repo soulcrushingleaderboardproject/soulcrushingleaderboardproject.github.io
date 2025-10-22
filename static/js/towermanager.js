@@ -125,16 +125,21 @@ function filter_players() {
 function init_packs() {
     let tbody = "";
     packs.forEach(pack => {
-        let player = player_from_name($("#checklist-player").val());
-        let completed_count = player ? pack.towers.filter(id => player.completions.includes(parseInt(id))).length : 0;
         let total_count = pack.towers.length;
         let tower_xp = pack.towers.map(id => towers.find(t => t.id === parseInt(id))?.xp || 0);
         let bonus_xp = total_count ? Math.floor(tower_xp.reduce((sum, xp) => sum + xp, 0) / total_count) : 0;
+        pack["xp"] = bonus_xp;
+    });
+
+    packs.sort((a, b) => a.xp - b.xp);
+    packs.forEach(pack => {
+        let player = player_from_name($("#checklist-player").val());
+        let completed_count = player ? pack.towers.filter(id => player.completions.includes(parseInt(id))).length : 0;
         tbody += `
             <tr>
                 <td><button class="pack-button" onclick="open_pack('${pack.id}')">${pack.name}</button></td>
-                <td style="text-align: right;">${completed_count}/${total_count}</td>
-                <td style="text-align: right;">${formatNumber(bonus_xp)} XP</td>
+                <td style="text-align: right;">${completed_count}/${pack.towers.length}</td>
+                <td style="text-align: right;">${formatNumber(pack["xp"])} XP</td>
             </tr>
         `;
     });
