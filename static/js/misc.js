@@ -1,10 +1,3 @@
-const credits = {
-    "Owners": ["Z_Exzer", "PrestigeUE"],
-    "Developer": ["TheHaloDeveloper"],
-    "Managers": ["thej10n", "Spitfire_YT5", "AddisonJudah", "vt_et", "zFinzora", "XChocolateMLGX", "jarofjam_14", "DJdestroyer916539"],
-    "Former Staff": ["ThePhantomDevil666", "jumper101110"]
-}
-
 for (let [role, users] of Object.entries(credits)) {
     $("#credits").append(`<h3><div class="${role.toLowerCase().replaceAll(" ", "-")}">[${role}]</div>${users.join(", ")}</h3>`);
 }
