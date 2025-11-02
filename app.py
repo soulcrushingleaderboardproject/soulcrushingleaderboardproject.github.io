@@ -1,6 +1,4 @@
 from flask import Flask, render_template, make_response, send_from_directory, jsonify
-from collections import OrderedDict
-import json
 import os
 from dotenv import load_dotenv
 import utils.funcs as funcs
@@ -87,30 +85,9 @@ def tower_data():
 cool_members = requests.get("https://towerstatsdata-production.up.railway.app/cool_members").json()
 staff = funcs.get_data("credits!A:B")
 
-groups = OrderedDict({
-    "Owners": [],
-    "Developer": [],
-    "Managers": [],
-    "Former Staff": []
-})
-
-for entry in staff:
-    role = entry["role"].strip().lower()
-    if role == "owner":
-        groups["Owners"].append(entry["username"])
-    elif role == "developer":
-        groups["Developer"].append(entry["username"])
-    elif role == "manager":
-        groups["Managers"].append(entry["username"])
-    elif role == "former staff":
-        groups["Former Staff"].append(entry["username"])
-
-for key in groups:
-    groups[key].sort()
-
 @app.route("/")
 def home():
-    return render_template("index.html", all_completions=all_completions, all_towers=all_towers, all_games=all_games, cool_members=cool_members, packs=packs, credits=groups)
+    return render_template("index.html", all_completions=all_completions, all_towers=all_towers, all_games=all_games, cool_members=cool_members, packs=packs, credits=staff)
 
 @app.route("/static/<path:filename>")
 def static_files(filename):

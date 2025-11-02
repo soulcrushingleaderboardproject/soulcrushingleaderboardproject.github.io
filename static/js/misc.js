@@ -1,5 +1,21 @@
+function toTitleCase(str) {
+    return str.replace(
+      /\w\S*/g,
+      text => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
+    );
+}
+
+let credits = {};
+for (let entry of rawcredits) {
+    if (entry.role in credits) {
+        credits[entry.role].push(entry.username);
+    } else {
+        credits[entry.role] = [entry.username];
+    }
+}
+
 for (let [role, users] of Object.entries(credits)) {
-    $("#credits").append(`<h3><div class="${role.toLowerCase().replaceAll(" ", "-")}">[${role}]</div>${users.join(", ")}</h3>`);
+    $("#credits").append(`<h3><div class="${role.toLowerCase().replaceAll(" ", "-")}">[${toTitleCase(role)}]</div>${users.join(", ")}</h3>`);
 }
 
 function formatNumber(num) {
