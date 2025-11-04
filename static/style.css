@@ -747,3 +747,19 @@ p {
         font-size: 14px;
     }
 }
+
+.fi {
+    width: 1.5em !important;
+    height: 1em !important;
+}
+
+.fi-placeholder {
+    display: inline-block;
+    width: 32px;
+    height: 20px;
+    border: 2px dashed #aaa;
+    border-radius: 4px;
+    background-color: transparent;
+    vertical-align: middle;
+    margin-left: 6px;
+}

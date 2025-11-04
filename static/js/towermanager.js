@@ -367,6 +367,11 @@ function get_dp(comps) {
     }
 }
 
+function getFlag(x) {
+    if (!x) return `<span class="fi-placeholder" title="Unknown"></span>`;
+    return `<span class="fi fi-${x.toLowerCase()}" title="${x.toUpperCase()}"></span>`;
+}
+
 function open_player(name, rank) {
     open_page("Leaderboard");
     var player = player_from_name(name);
@@ -376,7 +381,9 @@ function open_player(name, rank) {
     let total_xp = player["xp"] + bonus_xp;
     get_dp(comps);
 
-    $("#playername").html(name);
+    let nationalityFlag = getFlag(player["nationality"]);
+    $("#playername").html(name + " " + nationalityFlag);
+
     $("#playerrole").html("");
     if (role) $("#playerrole").html(`<span class="${role.toLowerCase().replaceAll(" ", "-")}">${role}</span>`);
     $("#playerxp").html(formatNumber(total_xp));
