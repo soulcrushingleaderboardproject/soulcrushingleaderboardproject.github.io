@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 import utils.funcs as funcs
 import math
 import requests
+import pycountry
 load_dotenv()
 
 app = Flask(__name__)
@@ -15,6 +16,10 @@ def add_no_cache_headers(response):
     response.headers['Expires'] = '0'
     return response
 
+def country_code(x):
+    country = pycountry.countries.lookup(x)
+    return country.alpha_2.lower()
+
 all_completions = funcs.get_data("comps!A:C")
 all_towers = funcs.get_data("towers!A:E")
 all_games = funcs.get_data("games!A:C")
@@ -22,7 +27,7 @@ countries = funcs.get_data("nationalities!A:B")
 countries_map = {}
 
 for c in countries:
-    countries_map[c["username"]] = c["nationality"]
+    countries_map[c["username"]] = country_code(c["nationality"])
 
 for c in all_completions:
     c["completions"] = list(set(c["completions"]))
