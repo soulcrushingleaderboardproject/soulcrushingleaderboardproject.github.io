@@ -18,6 +18,11 @@ def add_no_cache_headers(response):
 all_completions = funcs.get_data("comps!A:C")
 all_towers = funcs.get_data("towers!A:E")
 all_games = funcs.get_data("games!A:C")
+countries = funcs.get_data("nationalities!A:B")
+countries_map = {}
+
+for c in countries:
+    countries_map[c["username"]] = c["nationality"]
 
 for c in all_completions:
     c["completions"] = list(set(c["completions"]))
@@ -48,6 +53,10 @@ for tower in all_towers:
     
 tower_xp = {t["id"]: t["xp"] for t in all_towers}
 for c in all_completions:
+    try:
+        c["nationality"] = countries_map[c["username"]]
+    except:
+        c["nationality"] = None
     c["xp"] = sum(tower_xp.get(id, 0) for id in c["completions"])
     
 all_completions.sort(key=lambda x: x["xp"], reverse=True)
