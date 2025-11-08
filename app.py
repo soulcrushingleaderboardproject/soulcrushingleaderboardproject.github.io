@@ -8,6 +8,7 @@ import pycountry
 import time
 from datetime import datetime, timedelta
 from apscheduler.schedulers.background import BackgroundScheduler
+import random
 load_dotenv()
 
 app = Flask(__name__)
@@ -28,9 +29,20 @@ current_scotw = funcs.get_data("scotw!A:B")[0]
 start_time = datetime.fromtimestamp(int(current_scotw['Time']))
 target_time = start_time + timedelta(weeks=1)
 
+scotw_chances = {
+    "Insane": 45,
+    "Extreme": 45,
+    "Terrifying": 9,
+    "Catastrophic": 1
+}
+scotw_diffs = []
+for k, v in scotw_chances.items():
+    scotw_diffs.extend([k] * v)
+
 def refresh_scotw():
     global current_scotw, start_time, target_time
     print("Refreshing Tower of the Week...")
+    diff = random.choice(scotw_diffs)
     
     current_scotw['Tower'] = 'New Tower Name'
     current_scotw['Time'] = str(int(datetime.now().timestamp()))
