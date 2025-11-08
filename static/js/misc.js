@@ -124,7 +124,7 @@ function init_scotw() {
         tbody += `
             <tr data-name="${e.username.toLowerCase()}">
                 <td>#${rank}</td>
-                <td><button class="player-button">${e.username}</button></td>
+                <td><button class="player-button" onclick='open_player("${e.username}", ${rank})'>${get_role(e.username, true)}</button></td>
                 <td style="text-align:right;">${e.points} pts</td>
             </tr>`;
     });
