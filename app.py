@@ -24,42 +24,6 @@ def country_code(x):
     country = pycountry.countries.lookup(x)
     return country.alpha_2.lower()
 
-scotw_points = funcs.get_data("scotwpoints!A:B")
-current_scotw = funcs.get_data("scotw!A:B")[0]
-start_time = datetime.fromtimestamp(int(current_scotw['Time']))
-target_time = start_time + timedelta(weeks=1)
-
-scotw_chances = {
-    "Insane": 45,
-    "Extreme": 45,
-    "Terrifying": 9,
-    "Catastrophic": 1
-}
-scotw_diffs = []
-for k, v in scotw_chances.items():
-    scotw_diffs.extend([k] * v)
-
-def refresh_scotw():
-    global current_scotw, start_time, target_time
-    print("Refreshing Tower of the Week...")
-    diff = random.choice(scotw_diffs)
-    
-    current_scotw['Tower'] = 'New Tower Name'
-    current_scotw['Time'] = str(int(datetime.now().timestamp()))
-    
-    start_time = datetime.fromtimestamp(int(current_scotw['Time']))
-    target_time = start_time + timedelta(weeks=1)
-
-def check_scotw():
-    global target_time
-    if datetime.now() >= target_time:
-        refresh_scotw()
-
-check_scotw()
-scheduler = BackgroundScheduler()
-scheduler.add_job(check_scotw, 'interval', minutes=1)
-scheduler.start()
-
 all_completions = funcs.get_data("comps!A:C")
 all_towers = funcs.get_data("towers!A:E")
 all_games = funcs.get_data("games!A:C")
@@ -154,6 +118,60 @@ def static_files(filename):
 @app.route("/favicon.ico")
 def favicon():
     return app.send_static_file("images/sclp.png")
+
+def difficulty_to_name(d):
+    if d < 900: return "Insane"
+    if d < 1000: return "Extreme"
+    if d < 1100: return "Terrifying"
+    if d < 1200: return "Catastrophic"
+    if d < 1300: return "Horrific"
+    if d < 1400: return "Unreal"
+    return "Nil"
+
+scotw_points = funcs.get_data("scotwpoints!A:B")
+current_scotw = funcs.get_data("scotw!A:B")[0]
+start_time = datetime.fromtimestamp(int(current_scotw['Time']))
+target_time = start_time + timedelta(weeks=1)
+
+scotw_chances = {
+    "Insane": 45,
+    "Extreme": 45,
+    "Terrifying": 9,
+    "Catastrophic": 1
+}
+scotw_diffs = []
+for k, v in scotw_chances.items():
+    scotw_diffs.extend([k] * v)
+
+def refresh_scotw():
+    global current_scotw, start_time, target_time
+    diff = random.choice(scotw_diffs)
+    tower_set = []
+    
+    for tower in all_towers:
+        if difficulty_to_name(tower["difficulty"]) == diff:
+            tower_set.append(tower)
+            
+    selection = random.choice(tower_set)
+    
+    print(diff)
+    print(selection)
+    
+    current_scotw['Tower'] = 'New Tower Name'
+    current_scotw['Time'] = str(int(datetime.now().timestamp()))
+    
+    start_time = datetime.fromtimestamp(int(current_scotw['Time']))
+    target_time = start_time + timedelta(weeks=1)
+
+def check_scotw():
+    global target_time
+    if datetime.now() >= target_time:
+        refresh_scotw()
+
+check_scotw()
+scheduler = BackgroundScheduler()
+scheduler.add_job(check_scotw, 'interval', minutes=1)
+scheduler.start()
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True, port=5000)
