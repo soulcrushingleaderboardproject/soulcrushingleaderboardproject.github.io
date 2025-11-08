@@ -792,10 +792,6 @@ p {
     font-size: 2.5em;
     font-weight: bold;
     margin: 0;
-    background: linear-gradient(90deg, #FFFFFF, #a0a8b0);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
     letter-spacing: 2px;
 }
 

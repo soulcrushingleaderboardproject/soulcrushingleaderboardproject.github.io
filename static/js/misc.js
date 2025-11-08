@@ -112,7 +112,9 @@ function open_page(page_name) {
 open_page("Home");
 
 function init_scotw() {
-    $("#scotw-title").text(current_scotw.Tower);
+    let scotw = tower_from_id(current_scotw.Tower);
+    $("#scotw-title").text(scotw.name);
+    $("#scotw-title").attr("class", difficulty_to_name(scotw.difficulty));
 
     const lb = scotw_points.map(p => ({ username: p.username, points: +p.points })).sort((a, b) => b.points - a.points || a.username.localeCompare(b.username));
 

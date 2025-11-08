@@ -161,7 +161,7 @@ def refresh_scotw():
     tower_set = [t for t in all_towers if difficulty_to_name(t["difficulty"]) == diff]   
     selection = random.choice(tower_set)
     
-    current_scotw['Tower'] = selection["name"]
+    current_scotw['Tower'] = selection["id"]
     current_scotw['Time'] = str(int(datetime.now(tz=timezone.utc).timestamp()))
     
     start_time = datetime.fromtimestamp(int(current_scotw['Time']), tz=timezone.utc)
