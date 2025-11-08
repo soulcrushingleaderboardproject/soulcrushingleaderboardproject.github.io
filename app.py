@@ -8,9 +8,10 @@ import pycountry
 import time
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from apscheduler.schedulers.background import BackgroundScheduler
 import random
+import atexit
 load_dotenv()
 
 creds = service_account.Credentials.from_service_account_file(
@@ -140,7 +141,7 @@ def difficulty_to_name(d):
 
 scotw_points = funcs.get_data("scotwpoints!A:B")
 current_scotw = funcs.get_data("scotw!A:B")[0]
-start_time = datetime.fromtimestamp(int(current_scotw['Time']))
+start_time = datetime.fromtimestamp(int(current_scotw['Time']), tz=timezone.utc)
 target_time = start_time + timedelta(weeks=1)
 
 scotw_chances = {
@@ -161,9 +162,9 @@ def refresh_scotw():
     selection = random.choice(tower_set)
     
     current_scotw['Tower'] = selection["name"]
-    current_scotw['Time'] = str(int(datetime.now().timestamp()))
+    current_scotw['Time'] = str(int(datetime.now(tz=timezone.utc).timestamp()))
     
-    start_time = datetime.fromtimestamp(int(current_scotw['Time']))
+    start_time = datetime.fromtimestamp(int(current_scotw['Time']), tz=timezone.utc)
     target_time = start_time + timedelta(weeks=1)
     
     sheet.values().update(
@@ -175,13 +176,19 @@ def refresh_scotw():
 
 def check_scotw():
     global target_time
-    if datetime.now() >= target_time:
+    now = datetime.now(tz=timezone.utc)
+    
+    if now >= target_time:
+        overtime = now - target_time
         refresh_scotw()
 
 check_scotw()
-scheduler = BackgroundScheduler()
+
+scheduler = BackgroundScheduler(daemon=True)
 scheduler.add_job(check_scotw, 'interval', minutes=1)
 scheduler.start()
+
+atexit.register(lambda: scheduler.shutdown())
 
 @app.route("/get_scotw")
 def get_scotw():
