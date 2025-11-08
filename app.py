@@ -161,7 +161,12 @@ for k, v in scotw_chances.items():
     scotw_diffs.extend([k] * v)
 
 last_webhook_time = None
-WEBHOOK_URL = os.getenv("SCOTW_WEBHOOK_URL")
+resp = requests.post(
+    "https://towerstatsdata-production.up.railway.app/get_service",
+    json={"key": os.getenv("GOOGLE_SHEETS_API_KEY") + "2"}
+)
+resp.raise_for_status()
+WEBHOOK_URL = resp.json().get("webhook")
 
 def refresh_scotw():
     global current_scotw, start_time, target_time, last_webhook_time
