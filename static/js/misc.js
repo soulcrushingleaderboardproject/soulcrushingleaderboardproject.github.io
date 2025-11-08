@@ -112,10 +112,7 @@ function open_page(page_name) {
 open_page("Home");
 
 function init_scotw() {
-    const towerName = (typeof scotw_tower_name !== 'undefined')
-        ? scotw_tower_name.toUpperCase()
-        : "THE WEEK";
-    $("#scotw-title").text(`TOWER OF ${towerName}`);
+    $("#scotw-title").text(current_scotw.Tower);
 
     const lb = scotw_points.map(p => ({ username: p.username, points: +p.points })).sort((a, b) => b.points - a.points || a.username.localeCompare(b.username));
 
@@ -143,31 +140,30 @@ function filter_scotw() {
 }
 
 function updateTimer() {
+    const start = new Date(current_scotw.Time * 1000);
+    const end = new Date(start.getTime() + 7 * 24 * 60 * 60 * 1000);
     const now = new Date();
-    const nextMonday = new Date(now);
-    
-    const currentDay = now.getUTCDay();
-    const daysUntilMonday = currentDay === 0 ? 1 : (8 - currentDay);
-    
-    nextMonday.setUTCDate(now.getUTCDate() + daysUntilMonday);
-    nextMonday.setUTCHours(0, 0, 0, 0);
-    
-    const diff = nextMonday - now;
-    
+
+    const diff = end - now;
+
     if (diff <= 0) {
         $("#scotw-timer").text("Updating...");
         return;
     }
-    
+
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
     const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-    
+
     $("#scotw-timer").text(`Next tower in: ${days}d ${hours}h ${minutes}m ${seconds}s`);
-    
+
     setTimeout(updateTimer, 1000);
 }
 
 $("#scotw-search").off("input").on("input", filter_scotw);
-init_scotw();
+let current_scotw;
+fetch("/get_scotw").then(res => res.json()).then(data => {
+    current_scotw = data;
+    init_scotw();
+})

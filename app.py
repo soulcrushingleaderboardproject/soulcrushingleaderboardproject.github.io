@@ -183,5 +183,9 @@ scheduler = BackgroundScheduler()
 scheduler.add_job(check_scotw, 'interval', minutes=1)
 scheduler.start()
 
+@app.route("/get_scotw")
+def get_scotw():
+    return jsonify(current_scotw)
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True, port=5000)
