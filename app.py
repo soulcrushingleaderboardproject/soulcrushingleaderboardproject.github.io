@@ -160,25 +160,56 @@ scotw_diffs = []
 for k, v in scotw_chances.items():
     scotw_diffs.extend([k] * v)
 
+last_webhook_time = None
+WEBHOOK_URL = os.getenv("SCOTW_WEBHOOK_URL")
+
 def refresh_scotw():
-    global current_scotw, start_time, target_time
+    global current_scotw, start_time, target_time, last_webhook_time
+
+    now = datetime.now(tz=timezone.utc)
+    if last_webhook_time and (now - last_webhook_time) < timedelta(minutes=10):
+        return 
+
     diff = random.choice(scotw_diffs)
-    
     tower_set = [t for t in all_towers if difficulty_to_name(t["difficulty"]) == diff]   
     selection = random.choice(tower_set)
-    
+
     current_scotw['Tower'] = selection["id"]
     current_scotw['Time'] = str(int(datetime.now(tz=timezone.utc).timestamp()))
     
     start_time = datetime.fromtimestamp(int(current_scotw['Time']), tz=timezone.utc)
     target_time = start_time + timedelta(weeks=1)
-    
+
     sheet.values().update(
         spreadsheetId=SHEET_ID,
         range="scotw!A2:B2",
         valueInputOption="RAW",
         body={"values": [[current_scotw['Tower'], current_scotw['Time']]]}
     ).execute()
+
+    tickets = math.floor((3 ** ((selection["difficulty"] - 800) / 100)) * 100 / 100)
+
+    diff_name = difficulty_to_name(selection["difficulty"])
+    diff_emoji = {
+        "Insane": "<:insane:1306835966765437058>",
+        "Extreme": "<:extreme:1306835963850264598>",
+        "Terrifying": "<:terrifying:1306835967855820810>",
+        "Catastrophic": "<:catastrophic:1306835963166720000>"
+    }.get(diff_name, "")
+
+    discord_ts = int(target_time.timestamp())
+
+    webhook_content = f"""<@&1387969989142909099>
+SC of the Week
+# [{selection['name']}](https://sclp.vercel.app/?t={selection['id']})
+
+Difficulty: {diff_emoji} {diff_name}
+
+Beat this tower <t:{discord_ts}:R> for {tickets} Weekly Tickets!
+"""
+
+    requests.post(WEBHOOK_URL, json={"content": webhook_content})
+    last_webhook_time = now
 
 def check_scotw():
     global target_time
