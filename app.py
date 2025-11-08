@@ -5,6 +5,9 @@ import utils.funcs as funcs
 import math
 import requests
 import pycountry
+import time
+from datetime import datetime, timedelta
+from apscheduler.schedulers.background import BackgroundScheduler
 load_dotenv()
 
 app = Flask(__name__)
@@ -20,9 +23,33 @@ def country_code(x):
     country = pycountry.countries.lookup(x)
     return country.alpha_2.lower()
 
+scotw_points = funcs.get_data("scotwpoints!A:B")
+current_scotw = funcs.get_data("scotw!A:B")[0]
+start_time = datetime.fromtimestamp(int(current_scotw['Time']))
+target_time = start_time + timedelta(weeks=1)
+
+def refresh_scotw():
+    global current_scotw, start_time, target_time
+    print("Refreshing Tower of the Week...")
+    
+    current_scotw['Tower'] = 'New Tower Name'
+    current_scotw['Time'] = str(int(datetime.now().timestamp()))
+    
+    start_time = datetime.fromtimestamp(int(current_scotw['Time']))
+    target_time = start_time + timedelta(weeks=1)
+
+def check_scotw():
+    global target_time
+    if datetime.now() >= target_time:
+        refresh_scotw()
+
+check_scotw()
+scheduler = BackgroundScheduler()
+scheduler.add_job(check_scotw, 'interval', minutes=1)
+scheduler.start()
+
 all_completions = funcs.get_data("comps!A:C")
 all_towers = funcs.get_data("towers!A:E")
-scotw_points = funcs.get_data("scotwpoints!A:B")
 all_games = funcs.get_data("games!A:C")
 countries = funcs.get_data("nationalities!A:B")
 countries_map = {}
