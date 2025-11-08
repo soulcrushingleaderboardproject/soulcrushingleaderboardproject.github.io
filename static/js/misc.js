@@ -169,3 +169,7 @@ fetch("/get_scotw").then(res => res.json()).then(data => {
     current_scotw = data;
     init_scotw();
 })
+
+document.getElementById('discord').addEventListener('click', function() {
+    window.open('https://discord.gg/t9crQndHyn', '_blank');
+});

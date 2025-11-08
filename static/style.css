@@ -897,6 +897,11 @@ p {
         font-size: 0.8em;
         height: 1.5em;
     }
+
+    #discord {
+        width: 30px !important;
+        right: 225px !important;
+    }
 }
 
 @media (max-width: 600px) {
@@ -924,4 +929,11 @@ p {
     #scotw-table td:last-child {
         width: 80px;
     }
+}
+
+#discord {
+    position: absolute;
+    width: 35px;
+    right: 270px;
+    cursor: pointer;
 }
