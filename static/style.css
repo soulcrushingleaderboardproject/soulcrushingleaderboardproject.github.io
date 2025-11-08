@@ -808,8 +808,18 @@ p {
 }
 
 #scotw-search {
-    width: 100%;
-    max-width: 400px;
+    display: inline-block;
+    vertical-align: middle;
+    border: none;
+    border-radius: 8px;
+    height: 36px;
+    font-size: 20px;
+    background: #505A64;
+    padding: 2px;
+    padding-left: 15px;
+    color: #FFFFFF;
+    font-family: "Montserrat", sans-serif;
+    letter-spacing: 1;
 }
 
 #scotw-leaderboard {
@@ -881,6 +891,11 @@ p {
 
     #scotw-table td:last-child {
         width: 100px;
+    }
+
+    #scotw-search {
+        font-size: 0.8em;
+        height: 1.5em;
     }
 }
 
