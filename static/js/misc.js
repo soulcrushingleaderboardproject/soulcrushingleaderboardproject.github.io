@@ -98,7 +98,7 @@ inputs.forEach(input => {
     input.setAttribute("spellcheck", false);
 });
 
-let pages = ["Home", "Towers", "Leaderboard", "Packs"];
+let pages = ["Home", "Towers", "Leaderboard", "Packs", "SCOTW"];
 for (let page of pages) {
     $("#links").append(`<button class="seamless-button" onclick="open_page('${page}')">${page}</button>`);
 }
@@ -110,3 +110,95 @@ function open_page(page_name) {
     $(`#${page_name.toLowerCase()}-page`).css("display", "");
 }
 open_page("Home");
+
+function init_scotw() {
+    const towerName = typeof scotw_tower_name !== 'undefined' ? scotw_tower_name : "THE WEEK";
+    $("#scotw-title").text(`TOWER OF ${towerName.toUpperCase()}`);
+
+    const lb = scotw_points
+        .map(p => ({ username: p.username, points: +p.points }))
+        .sort((a, b) => b.points - a.points || a.username.localeCompare(b.username));
+
+    let tbody = "";
+    lb.forEach((e, i) => {
+        const rank = i + 1;
+        const medal = rank <= 3 ? `<img src='/static/images/badges/top${rank}.png' class="badge"> ` : "";
+        tbody += `
+            <tr data-name="${e.username.toLowerCase()}">
+                <td>#${rank}</td>
+                <td><button class="player-button">${medal}${e.username}</button></td>
+                <td style="text-align:right;">${e.points} pts</td>
+            </tr>`;
+    });
+    $("#scotw-table").html(tbody);
+    filter_scotw();
+}
+
+function filter_scotw() {
+    const q = $("#scotw-search").val().toLowerCase();
+    $("#scotw-table tr").each(function() {
+        $(this).toggle($(this).data("name").includes(q));
+    });
+}
+
+$("#scotw-search").on("input", filter_scotw);
+
+function init_scotw() {
+    const towerName = (typeof scotw_tower_name !== 'undefined')
+        ? scotw_tower_name.toUpperCase()
+        : "THE WEEK";
+    $("#scotw-title").text(`TOWER OF ${towerName}`);
+
+    const lb = scotw_points.map(p => ({ username: p.username, points: +p.points })).sort((a, b) => b.points - a.points || a.username.localeCompare(b.username));
+
+    let tbody = "";
+    lb.forEach((e, i) => {
+        const rank = i + 1;
+        tbody += `
+            <tr data-name="${e.username.toLowerCase()}">
+                <td>#${rank}</td>
+                <td><button class="player-button">${e.username}</button></td>
+                <td style="text-align:right;">${e.points} pts</td>
+            </tr>`;
+    });
+    $("#scotw-table").html(tbody);
+    filter_scotw();
+
+    updateScotWTimer();
+}
+
+function filter_scotw() {
+    const q = $("#scotw-search").val().toLowerCase();
+    $("#scotw-table tr").each(function () {
+        $(this).toggle($(this).data("name").includes(q));
+    });
+}
+
+function updateScotWTimer() {
+    const now = new Date();
+    const nextMonday = new Date(now);
+    
+    const currentDay = now.getUTCDay();
+    const daysUntilMonday = currentDay === 0 ? 1 : (8 - currentDay);
+    
+    nextMonday.setUTCDate(now.getUTCDate() + daysUntilMonday);
+    nextMonday.setUTCHours(0, 0, 0, 0);
+    
+    const diff = nextMonday - now;
+    
+    if (diff <= 0) {
+        $("#scotw-timer").text("Updating...");
+        return;
+    }
+    
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    
+    $("#scotw-timer").text(`Next tower in: ${days}d ${hours}h ${minutes}m ${seconds}s`);
+    
+    setTimeout(updateScotWTimer, 1000);
+}
+
+$("#scotw-search").off("input").on("input", filter_scotw);

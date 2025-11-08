@@ -761,3 +761,156 @@ p {
     background-color: transparent;
     vertical-align: middle;
 }
+
+#scotw-page {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 50px);
+    padding: 40px;
+    overflow-y: auto;
+}
+
+#scotw-container {
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+#scotw-header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+#scotw-title {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin: 0;
+    background: linear-gradient(90deg, #FFFFFF, #a0a8b0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 2px;
+}
+
+#scotw-timer {
+    font-size: 1.3em;
+    color: #a0a8b0;
+    margin: 0;
+    font-weight: 500;
+}
+
+#scotw-search-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+#scotw-search {
+    width: 100%;
+    max-width: 400px;
+}
+
+#scotw-leaderboard {
+    background: linear-gradient(145deg, #1e2127, #252830);
+    border: 1px solid #303540;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+#scotw-leaderboard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+}
+
+#scotw-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 5px;
+}
+
+#scotw-table td {
+    padding: 8px 10px;
+}
+
+#scotw-table td:first-child {
+    width: 80px;
+    text-align: center;
+    font-weight: 500;
+}
+
+#scotw-table td:nth-child(2) {
+    width: auto;
+}
+
+#scotw-table td:last-child {
+    width: 120px;
+    text-align: right;
+    font-weight: 600;
+}
+
+@media (max-width: 1080px) {
+    #scotw-page {
+        padding: 20px;
+    }
+
+    #scotw-title {
+        font-size: 2em;
+    }
+
+    #scotw-timer {
+        font-size: 1.1em;
+    }
+
+    #scotw-table td {
+        font-size: 0.9em;
+        padding: 6px 8px;
+    }
+
+    #scotw-table td:first-child {
+        width: 60px;
+    }
+
+    #scotw-table td:last-child {
+        width: 100px;
+    }
+}
+
+@media (max-width: 600px) {
+    #scotw-page {
+        padding: 15px;
+    }
+
+    #scotw-title {
+        font-size: 1.5em;
+    }
+
+    #scotw-timer {
+        font-size: 1em;
+    }
+
+    #scotw-table td {
+        font-size: 0.8em;
+        padding: 5px 6px;
+    }
+
+    #scotw-table td:first-child {
+        width: 50px;
+    }
+
+    #scotw-table td:last-child {
+        width: 80px;
+    }
+}

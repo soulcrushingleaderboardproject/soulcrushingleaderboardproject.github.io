@@ -115,7 +115,7 @@ staff = funcs.get_data("credits!A:B")
 
 @app.route("/")
 def home():
-    return render_template("index.html", all_completions=all_completions, all_towers=all_towers, all_games=all_games, cool_members=cool_members, packs=packs, credits=staff)
+    return render_template("index.html", all_completions=all_completions, all_towers=all_towers, all_games=all_games, cool_members=cool_members, packs=packs, credits=staff, scotw_points=scotw_points)
 
 @app.route("/static/<path:filename>")
 def static_files(filename):

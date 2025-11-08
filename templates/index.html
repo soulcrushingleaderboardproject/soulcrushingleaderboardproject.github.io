@@ -126,6 +126,22 @@
                 </div>
             </div>
         </div>
+        <div id="scotw-page" style="display:none;">
+            <div id="scotw-container">
+                <div id="scotw-header">
+                    <h1 id="scotw-title">TOWER OF THE WEEK</h1>
+                    <p id="scotw-timer">Next tower in: 5d 12h 34m</p>
+                </div>
+        
+                <div id="scotw-search-wrapper">
+                    <input type="text" id="scotw-search" placeholder="Search player...">
+                </div>
+        
+                <div id="scotw-leaderboard">
+                    <table id="scotw-table"></table>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -135,6 +151,7 @@
         packs = {{ packs | tojson }};
         cool_members = {{ cool_members | tojson }};
         rawcredits = {{ credits | tojson }};
+        scotw_points = {{ scotw_points | tojson }};
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
