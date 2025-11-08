@@ -6,10 +6,20 @@ import math
 import requests
 import pycountry
 import time
+from google.oauth2 import service_account
+from googleapiclient.discovery import build
 from datetime import datetime, timedelta
 from apscheduler.schedulers.background import BackgroundScheduler
 import random
 load_dotenv()
+
+creds = service_account.Credentials.from_service_account_file(
+    "service.json",
+    scopes=["https://www.googleapis.com/auth/spreadsheets"]
+)
+service = build("sheets", "v4", credentials=creds)
+sheet = service.spreadsheets()
+SHEET_ID = "1ffz-IFNSEDQay9jkR5JbOj7NPEljBX4jc2oIYzypRLc"
 
 app = Flask(__name__)
 
@@ -155,6 +165,13 @@ def refresh_scotw():
     
     start_time = datetime.fromtimestamp(int(current_scotw['Time']))
     target_time = start_time + timedelta(weeks=1)
+    
+    sheet.values().update(
+        spreadsheetId=SHEET_ID,
+        range="scotw!A2:B2",
+        valueInputOption="RAW",
+        body={"values": [[current_scotw['Tower'], current_scotw['Time']]]}
+    ).execute()
 
 def check_scotw():
     global target_time
