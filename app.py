@@ -146,18 +146,11 @@ for k, v in scotw_chances.items():
 def refresh_scotw():
     global current_scotw, start_time, target_time
     diff = random.choice(scotw_diffs)
-    tower_set = []
     
-    for tower in all_towers:
-        if difficulty_to_name(tower["difficulty"]) == diff:
-            tower_set.append(tower)
-            
+    tower_set = [t for t in all_towers if difficulty_to_name(t["difficulty"]) == diff]   
     selection = random.choice(tower_set)
     
-    print(diff)
-    print(selection)
-    
-    current_scotw['Tower'] = 'New Tower Name'
+    current_scotw['Tower'] = selection["name"]
     current_scotw['Time'] = str(int(datetime.now().timestamp()))
     
     start_time = datetime.fromtimestamp(int(current_scotw['Time']))
