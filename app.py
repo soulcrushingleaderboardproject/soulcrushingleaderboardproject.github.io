@@ -12,15 +12,21 @@ from datetime import datetime, timedelta, timezone
 from apscheduler.schedulers.background import BackgroundScheduler
 import random
 import atexit
+import requests
+import json
 load_dotenv()
 
-creds = service_account.Credentials.from_service_account_file(
-    "service.json",
-    scopes=["https://www.googleapis.com/auth/spreadsheets"]
+resp = requests.post(
+    "https://towerstatsdata-production.up.railway.app/get_service",
+    json={"key": os.getenv("GOOGLE_SHEETS_API_KEY")}
 )
-service = build("sheets", "v4", credentials=creds)
-sheet = service.spreadsheets()
-SHEET_ID = "1ffz-IFNSEDQay9jkR5JbOj7NPEljBX4jc2oIYzypRLc"
+resp.raise_for_status()
+service_json_str = resp.json().get("service")
+
+service_json = json.loads(service_json_str)
+
+if 'private_key' in service_json:
+    service_json['private_key'] = service_json['private_key'].replace('\\n', '\n')
 
 app = Flask(__name__)
 

@@ -5,3 +5,4 @@ pycountry
 google-auth
 google-api-python-client
 APScheduler
+requests
