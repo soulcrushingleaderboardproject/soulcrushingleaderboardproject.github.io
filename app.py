@@ -27,6 +27,12 @@ service_json = json.loads(service_json_str)
 
 if 'private_key' in service_json:
     service_json['private_key'] = service_json['private_key'].replace('\\n', '\n')
+    
+credentials = service_account.Credentials.from_service_account_info(service_json, scopes=["https://www.googleapis.com/auth/spreadsheets"])
+service = build("sheets", "v4", credentials=credentials)
+sheet = service.spreadsheets()
+
+SHEET_ID = "1ffz-IFNSEDQay9jkR5JbOj7NPEljBX4jc2oIYzypRLc"
 
 app = Flask(__name__)
 
