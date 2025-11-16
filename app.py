@@ -222,7 +222,7 @@ def refresh_scotw():
 
     discord_ts = int(target_time.timestamp())
 
-    webhook_content = f"""<@&1387969989142909099>
+    webhook_content = f"""
 SC of the Week
 # [{selection['name']}](https://sclp.vercel.app/?t={selection['id']})
 
