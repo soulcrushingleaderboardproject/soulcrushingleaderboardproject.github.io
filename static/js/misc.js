@@ -47,9 +47,10 @@ function difficulty_to_name(d) {
 
 function difficulty_to_range(d) {
     d %= 100;
-    if (d < 11) return "Bottom";
-    if (d < 22) return "Bottom-Low";
-    if (d < 33) return "Low";
+    if (d == 0) return "Baseline";
+    if (d < 12) return "Bottom";
+    if (d < 23) return "Bottom-Low";
+    if (d < 34) return "Low";
     if (d < 45) return "Low-Mid";
     if (d < 56) return "Mid";
     if (d < 67) return "Mid-High";
