@@ -53,7 +53,7 @@ function filter_towers() {
 
         if (!(name.includes(search) || abbr.includes(search))) visible = false;
         if (!allowed_difficulties.includes(diff)) visible = false;
-        if (place_filter && !places.includes(place_filter)) visible = false;
+        if (place_filter && !places.split(",").includes(place_filter)) visible = false;
 
         $row.toggle(visible);
         

@@ -29,7 +29,6 @@ if 'private_key' in service_json:
     key = key.encode('utf-8').decode('unicode_escape')
     service_json['private_key'] = key
 
-print("PREVIEW:\n", service_json['private_key'][:100])
 key = service_json["private_key"].strip()
 
 if not key.endswith("-----END PRIVATE KEY-----"):
