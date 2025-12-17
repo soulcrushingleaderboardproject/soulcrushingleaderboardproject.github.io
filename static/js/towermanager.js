@@ -335,7 +335,7 @@ function add_badges(rank, role, comps) {
     }
 
     let scs = comps.length;
-    let sc_levels = [50, 100, 200, 300, 400];
+    let sc_levels = [50, 100, 200, 300, 400, 500];
     let sc_badge = "";
     for (let level of sc_levels) {
         if (scs >= level) {
