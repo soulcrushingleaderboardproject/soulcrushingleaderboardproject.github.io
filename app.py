@@ -9,7 +9,6 @@ import time
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from datetime import datetime, timedelta, timezone
-from apscheduler.schedulers.background import BackgroundScheduler
 import random
 import atexit
 import requests
@@ -189,15 +188,13 @@ def refresh_scotw():
     global current_scotw, start_time, target_time, last_webhook_time
 
     now = datetime.now(tz=timezone.utc)
-    if last_webhook_time and (now - last_webhook_time) < timedelta(minutes=10):
-        return 
-
+    
     diff = random.choice(scotw_diffs)
     tower_set = [t for t in all_towers if difficulty_to_name(t["difficulty"]) == diff]   
     selection = random.choice(tower_set)
 
     current_scotw['Tower'] = selection["id"]
-    current_scotw['Time'] = str(int(datetime.now(tz=timezone.utc).timestamp()))
+    current_scotw['Time'] = str(int(now.timestamp()))
     
     start_time = datetime.fromtimestamp(int(current_scotw['Time']), tz=timezone.utc)
     target_time = start_time + timedelta(weeks=1)
@@ -231,26 +228,33 @@ Beat this tower <t:{discord_ts}:R> for {tickets} Weekly Tickets!
 """
 
     requests.post(WEBHOOK_URL, json={"content": webhook_content})
-    last_webhook_time = now
 
+@app.route("/api/cron/check_scotw")
 def check_scotw():
     global target_time
+    
+    sheet_data = sheet.values().get(spreadsheetId=SHEET_ID, range="scotw!A2:B2").execute()
+    rows = sheet_data.get('values', [])
+    if rows:
+        current_scotw['Tower'] = rows[0][0]
+        current_scotw['Time'] = rows[0][1]
+        start_time_sheet = datetime.fromtimestamp(int(current_scotw['Time']), tz=timezone.utc)
+        target_time = start_time_sheet + timedelta(weeks=1)
+
     now = datetime.now(tz=timezone.utc)
     
     if now >= target_time:
-        overtime = now - target_time
         refresh_scotw()
-
-check_scotw()
-
-scheduler = BackgroundScheduler(daemon=True)
-scheduler.add_job(check_scotw, 'interval', minutes=1)
-scheduler.start()
-
-atexit.register(lambda: scheduler.shutdown())
+        return jsonify({"status": "refreshed", "tower": current_scotw['Tower']})
+    
+    return jsonify({"status": "waiting", "target": str(target_time)})
 
 @app.route("/get_scotw")
 def get_scotw():
+    sheet_data = sheet.values().get(spreadsheetId=SHEET_ID, range="scotw!A2:B2").execute()
+    rows = sheet_data.get('values', [])
+    if rows:
+        return jsonify({"Tower": rows[0][0], "Time": rows[0][1]})
     return jsonify(current_scotw)
 
 if __name__ == "__main__":
