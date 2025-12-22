@@ -795,6 +795,16 @@ p {
     letter-spacing: 2px;
 }
 
+#scotw-title .tower-button {
+    font-size: inherit;
+    color: inherit;
+    width: auto;
+    font-weight: bold;
+    text-align: center;
+    display: inline-block;
+    padding: 0 15px;
+}
+
 #scotw-timer {
     font-size: 1.3em;
     color: #a0a8b0;

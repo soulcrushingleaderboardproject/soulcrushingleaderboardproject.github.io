@@ -114,8 +114,10 @@ open_page("Home");
 
 function init_scotw() {
     let scotw = tower_from_id(current_scotw.Tower);
-    $("#scotw-title").text(scotw.name);
-    $("#scotw-title").attr("class", difficulty_to_name(scotw.difficulty));
+    let diff = difficulty_to_name(scotw.difficulty);
+
+    $("#scotw-title").attr("class", diff);
+    $("#scotw-title").html(`<button class="tower-button" onclick="open_tower(${scotw.id})">${scotw.name}</button>`);
 
     const lb = scotw_points.map(p => ({ username: p.username, points: +p.points })).sort((a, b) => b.points - a.points || a.username.localeCompare(b.username));
 
