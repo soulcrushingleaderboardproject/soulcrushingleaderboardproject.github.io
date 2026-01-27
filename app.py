@@ -133,6 +133,23 @@ def tower_data():
     updated = funcs.get_data("towers!A:E")
     return jsonify(updated)
 
+@app.route("/tower_data_csv")
+def tower_data_csv():
+    updated = funcs.get_data("towers!A:E")
+    
+    sorted_towers = sorted(updated, key=lambda x: int(x["difficulty"]))
+    
+    csv_lines = ["difficulty,name"]
+    for tower in sorted_towers:
+        csv_lines.append(f'{tower["difficulty"]},{tower["name"]}')
+    
+    csv_content = "\n".join(csv_lines)
+    
+    response = make_response(csv_content)
+    response.headers['Content-Type'] = 'text/csv'
+    response.headers['Content-Disposition'] = 'attachment; filename=tower_data.csv'
+    return response
+
 cool_members = requests.get("https://towerstatsdata-production.up.railway.app/cool_members").json()
 staff = funcs.get_data("credits!A:B")
 
