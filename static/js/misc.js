@@ -1,3 +1,30 @@
+function tower_from_id(id) {
+    return tower_lookup[id];
+}
+
+function player_from_name(name) {
+    return player_lookup[name] || false;
+}
+
+function get_victors(id) {
+    return victors_cache[id] || 0;
+}
+
+function get_hardest_tower(x) {
+    if (typeof x === 'string') {
+        return hardest_cache[x] || 0;
+    }
+    
+    let highest_diff = 0;
+    for (let id of x) {
+        let tower = tower_lookup[id];
+        if (tower && tower.difficulty > highest_diff) {
+            highest_diff = tower.difficulty;
+        }
+    }
+    return highest_diff;
+}
+
 function toTitleCase(str) {
     return str.replace(
       /\w\S*/g,

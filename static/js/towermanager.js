@@ -1,23 +1,62 @@
+let victors_cache = {};
+let hardest_cache = {};
+let tower_lookup = {};
+let player_lookup = {};
+
+function precompute_caches() {
+    tower_lookup = {};
+    for (let tower of towers) {
+        tower_lookup[tower.id] = tower;
+    }
+    
+    player_lookup = {};
+    for (let player of completions) {
+        player_lookup[player.username] = player;
+    }
+    
+    victors_cache = {};
+    for (let tower of towers) {
+        victors_cache[tower.id] = 0;
+    }
+    for (let player of completions) {
+        for (let tower_id of player.completions) {
+            if (victors_cache[tower_id] !== undefined) {
+                victors_cache[tower_id]++;
+            }
+        }
+    }
+    
+    hardest_cache = {};
+    for (let player of completions) {
+        let highest_diff = 0;
+        for (let tower_id of player.completions) {
+            const tower = tower_lookup[tower_id];
+            if (tower && tower.difficulty > highest_diff) {
+                highest_diff = tower.difficulty;
+            }
+        }
+        hardest_cache[player.username] = highest_diff;
+    }
+}
+
 function init_towers() {
     let sort = $("#tower-sort").val() || "rank";
     let sorted_towers = [...towers];
 
-    if (sort === "rank") {
-        sorted_towers.sort((a, b) => a.rank - b.rank);
-    } else if (sort === "difficulty") {
+    if (sort === "difficulty") {
         sorted_towers.sort((a, b) => b.difficulty - a.difficulty || a.rank - b.rank);
     } else if (sort === "difficulty-asc") {
         sorted_towers.sort((a, b) => a.difficulty - b.difficulty || a.rank - b.rank);
     } else if (sort === "victors") {
-        sorted_towers.sort((a, b) => get_victors(b.id) - get_victors(a.id) || a.rank - b.rank);
+        sorted_towers.sort((a, b) => victors_cache[b.id] - victors_cache[a.id] || a.rank - b.rank);
     } else if (sort === "victors-asc") {
-        sorted_towers.sort((a, b) => get_victors(a.id) - get_victors(b.id) || a.rank - b.rank);
+        sorted_towers.sort((a, b) => victors_cache[a.id] - victors_cache[b.id] || a.rank - b.rank);
     }
 
     let tbody = "";
     for (let t of sorted_towers) {
         let diff = t["difficulty"] / 100;
-        let victors = get_victors(t["id"]);
+        let victors = victors_cache[t["id"]];
         
         let last;
         if (sort === "victors" || sort === "victors-asc") {
@@ -52,12 +91,15 @@ function filter_towers() {
     const allowed_difficulties = [];
     const place_filter = $("#game-select").val();
 
-    let mapped_towers = [];
-    let comps = player_from_name($("#checklist-player").val());
+    let mapped_towers = new Set();
+    let player = player_from_name($("#checklist-player").val());
 
-    if (comps) {
-        for (let c of comps["completions"]) {
-            mapped_towers.push(tower_from_id(c)["name"].toLowerCase());
+    if (player) {
+        for (let c of player["completions"]) {
+            let tower = tower_lookup[c];
+            if (tower) {
+                mapped_towers.add(tower["name"].toLowerCase());
+            }
         }
     }
 
@@ -82,7 +124,7 @@ function filter_towers() {
 
         $row.toggle(visible);
         
-        if (mapped_towers.includes(name)) {
+        if (mapped_towers.has(name)) {
             $row.find("button").removeClass("tower-button");
             $row.find("button").addClass("tower-button-crossed");
         } else {
@@ -105,7 +147,7 @@ function init_players() {
     } else if (sort === "completions") {
         players.sort((a, b) => b.completions.length - a.completions.length || b.total_xp - a.total_xp);
     } else if (sort === "hardest") {
-        players.sort((a, b) => get_hardest_tower(b.completions) - get_hardest_tower(a.completions) || b.total_xp - a.total_xp);
+        players.sort((a, b) => hardest_cache[b.username] - hardest_cache[a.username] || b.total_xp - a.total_xp);
     }
 
     let tbody = "";
@@ -119,7 +161,7 @@ function init_players() {
         } else if (sort === "completions") {
             third_column = `${player["completions"].length} SCs`;
         } else if (sort === "hardest") {
-            let hardest_diff = get_hardest_tower(player["completions"]);
+            let hardest_diff = hardest_cache[p_name];
             let diff_class = difficulty_to_name(hardest_diff);
             third_column = `<span class="${diff_class}">${formatNumber(hardest_diff / 100)}</span>`;
         }
@@ -151,7 +193,10 @@ function init_packs() {
     let tbody = "";
     packs.forEach(pack => {
         let total_count = pack.towers.length;
-        let tower_xp = pack.towers.map(id => towers.find(t => t.id === parseInt(id))?.xp || 0);
+        let tower_xp = pack.towers.map(id => {
+            let tower = tower_lookup[parseInt(id)];
+            return tower ? tower.xp : 0;
+        });
         let bonus_xp = total_count ? Math.floor(tower_xp.reduce((sum, xp) => sum + xp, 0) / total_count) : 0;
         pack["xp"] = bonus_xp;
     });
@@ -177,7 +222,10 @@ function open_pack(id) {
     let player = player_from_name($("#checklist-player").val());
     let completed_count = player ? pack.towers.filter(id => player.completions.includes(parseInt(id))).length : 0;
     let total_count = pack.towers.length;
-    let tower_xp = pack.towers.map(id => towers.find(t => t.id === parseInt(id))?.xp || 0);
+    let tower_xp = pack.towers.map(id => {
+        let tower = tower_lookup[parseInt(id)];
+        return tower ? tower.xp : 0;
+    });
     let bonus_xp = total_count ? Math.floor(tower_xp.reduce((sum, xp) => sum + xp, 0) / total_count) : 0;
 
     $("#packname").html(pack.name);
@@ -186,7 +234,7 @@ function open_pack(id) {
 
     let tbody = "";
     pack.towers.forEach(id => {
-        let tower = towers.find(t => t.id === parseInt(id));
+        let tower = tower_lookup[parseInt(id)];
         if (tower) {
             let diff = tower.difficulty / 100;
             let completed = player && player.completions.includes(parseInt(id));
@@ -250,27 +298,9 @@ function is_tower_in_place(places, place) {
     return false;
 }
 
-function tower_from_id(id) {
-    for (let i of towers) {
-        if (i["id"] == id) {
-            return i;
-        }
-    }
-}
-
-function get_victors(id) {
-    let victors = 0;
-    for (let p of completions) {
-        if (p["completions"].includes(id)) {
-            victors += 1;
-        }
-    }
-    return victors;
-}
-
 function open_tower(id) {
     open_page("Towers");
-    var tower = tower_from_id(id);
+    var tower = tower_lookup[id];
     let diff = difficulty_to_name(tower["difficulty"]);
 
     $("#towername").html(`(${getAbbr(tower["name"])}) ${tower["name"]}`);
@@ -279,7 +309,7 @@ function open_tower(id) {
     $("#otherlocations").html(tower["places"].length > 1 ? `<i>Other Locations: ${format_location(tower, 1, tower["places"].length)}</i>` : "");
     $("#towerrank").html(tower["rank"]);
     $("#towerxp").html(tower["xp"]);
-    $("#towervictors").html(get_victors(id));
+    $("#towervictors").html(victors_cache[id]);
     $("#towerid").html(id);
 
     $("#towervictorstable").html("");
@@ -309,15 +339,6 @@ function open_tower(id) {
 }
 
 $("#checklist-player").val(localStorage.getItem("sclp-username") || "");
-
-function player_from_name(name) {
-    for (let i of completions) {
-        if (i["username"] == name) {
-            return i;
-        }
-    }
-    return false;
-}
 
 function format_level(xp, level_only) {
     let current_level = 0;
@@ -408,7 +429,7 @@ function getFlag(x) {
 
 function open_player(name, rank) {
     open_page("Leaderboard");
-    var player = player_from_name(name);
+    var player = player_lookup[name];
     let role = get_role(player["username"]);
     let comps = player["completions"];
     let bonus_xp = calculate_bonus_xp(comps);
@@ -465,7 +486,10 @@ function open_player(name, rank) {
     let completed_packs = packs.filter(pack => pack.towers.every(id => comps.includes(parseInt(id))));
     if (completed_packs.length) {
         completed_packs.forEach(pack => {
-            let tower_xp = pack.towers.map(id => towers.find(t => t.id === parseInt(id))?.xp || 0);
+            let tower_xp = pack.towers.map(id => {
+                let tower = tower_lookup[parseInt(id)];
+                return tower ? tower.xp : 0;
+            });
             let bonus_xp = pack.towers.length ? Math.floor(tower_xp.reduce((sum, xp) => sum + xp, 0) / pack.towers.length) : 0;
             $("#playerpacks").append(`<p>${pack.name} (${formatNumber(bonus_xp)} Bonus XP)</p>`);
         });
@@ -477,15 +501,6 @@ function open_player(name, rank) {
 
     const newUrl = `${window.location.pathname}?u=${encodeURIComponent(name)}`;
     window.history.pushState({type: 'player', name: name}, '', newUrl);
-}
-
-function get_hardest_tower(x) {
-    let highest_diff = 0;
-    for (let id of x) {
-        let tower = tower_from_id(id);
-        highest_diff = Math.max(highest_diff, tower["difficulty"]);
-    }
-    return highest_diff;
 }
 
 function game_from_abbr(abbr) {
@@ -514,6 +529,7 @@ window.addEventListener('popstate', function(event) {
     }
 });
 
+precompute_caches();
 init_towers();
 init_players();
 init_packs();
