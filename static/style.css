@@ -783,6 +783,18 @@ p {
         width: 30px !important;
         right: 225px !important;
     }
+
+    #packvictorstable {
+        font-size: 0.9em;
+    }
+
+    #packvictorstable td:first-child {
+        width: 60px;
+    }
+
+    #packvictorstable td:last-child {
+        width: 80px;
+    }
 }
 
 @media (max-width: 1000px) {
@@ -854,4 +866,51 @@ p {
     #scotw-table td:last-child {
         width: 80px;
     }
+
+    #packvictorstable {
+        font-size: 0.8em;
+    }
+
+    #packvictorstable td {
+        padding: 4px 3px;
+    }
+
+    #packvictorstable td:first-child {
+        width: 50px;
+    }
+    
+    #packvictorstable td:last-child {
+        width: 70px;
+    }
+}
+
+#packvictorstable {
+    width: 100%;
+    max-width: 100%;
+    table-layout: auto;
+    border-collapse: separate;
+    border-spacing: 0 5px;
+    font-size: 1em;
+}
+
+#packvictorstable td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 5px 4px;
+    line-height: 1.3em;
+}
+
+#packvictorstable td:first-child {
+    width: 80px;
+    text-align: center;
+}
+
+#packvictorstable td:nth-child(2) {
+    width: auto;
+}
+
+#packvictorstable td:last-child {
+    width: 100px;
+    text-align: right;
 }

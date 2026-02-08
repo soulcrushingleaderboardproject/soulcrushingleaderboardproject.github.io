@@ -25,6 +25,10 @@ function get_hardest_tower(x) {
     return highest_diff;
 }
 
+function get_pack_victors(pack_id) {
+    return pack_victors_cache[pack_id] || [];
+}
+
 function toTitleCase(str) {
     return str.replace(
       /\w\S*/g,

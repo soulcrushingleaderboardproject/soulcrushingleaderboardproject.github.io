@@ -2,6 +2,7 @@ let victors_cache = {};
 let hardest_cache = {};
 let tower_lookup = {};
 let player_lookup = {};
+let pack_victors_cache = {};
 
 function precompute_caches() {
     tower_lookup = {};
@@ -36,6 +37,16 @@ function precompute_caches() {
             }
         }
         hardest_cache[player.username] = highest_diff;
+    }
+    
+    pack_victors_cache = {};
+    for (let pack of packs) {
+        pack_victors_cache[pack.id] = [];
+        for (let player of completions) {
+            if (pack.towers.every(id => player.completions.includes(parseInt(id)))) {
+                pack_victors_cache[pack.id].push(player.username);
+            }
+        }
     }
 }
 
@@ -231,6 +242,9 @@ function open_pack(id) {
     $("#packname").html(pack.name);
     $("#packprogress").html(`${completed_count}/${total_count}`);
     $("#packbonus").html(`${formatNumber(bonus_xp)} XP`);
+    
+    let victors = get_pack_victors(id);
+    $("#packvictors").html(victors.length);
 
     let tbody = "";
     pack.towers.forEach(id => {
@@ -248,6 +262,26 @@ function open_pack(id) {
         }
     });
     $("#packtowers-table").html(tbody);
+    
+    $("#packvictorstable").html("");
+    if (victors.length > 0) {
+        for (let username of victors) {
+            let v = player_lookup[username];
+            if (v) {
+                let row = `
+                    <tr data-name="${username.toLowerCase()}">
+                        <td>#${v.rank}</td>
+                        <td><button class="player-button" onclick='open_player("${username}")'>${get_role(username, true)}</button></td>
+                        <td style="text-align: right;">Level ${format_level(v.xp, true)}</td>
+                    </tr>
+                `;
+                $("#packvictorstable").append(row);
+            }
+        }
+    } else {
+        let row = `<tr><td colspan="3" style="text-align: center; font-style: italic; color: #ccc;">No pack victors yet</td></tr>`;
+        $("#packvictorstable").append(row);
+    }
 }
 
 $("#sclp-tower-search, #game-select, [id^=diff-], #tower-sort").on("input change", function() {
