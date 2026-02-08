@@ -1,0 +1,195 @@
+@media (max-width: 600px) {
+    #towervictorstable {
+        font-size: 0.8em;
+    }
+
+    #towervictorstable td {
+        padding: 3px 5px;
+        white-space: normal;
+    }
+
+    #playercompletions td:first-child, #packtowers-table td:first-child {
+        width: 50px;
+        font-size: 0.7em;
+    }
+
+    #playercompletions td:last-child, #packtowers-table td:last-child {
+        width: 70px;
+        font-size: 0.7em;
+    }
+
+    #packs-table td:first-child {
+        width: 120px;
+    }
+
+    #packtowers-table {
+        font-size: 0.9em;
+    }
+
+    #packtowers-table td {
+        padding: 6px 4px;
+    }
+
+    #pack-button {
+        font-size: 14px;
+    }
+
+    #scotw-page {
+        padding: 15px;
+    }
+
+    #scotw-title {
+        font-size: 1.5em;
+    }
+
+    #scotw-timer {
+        font-size: 1em;
+    }
+
+    #scotw-table td {
+        font-size: 0.8em;
+        padding: 5px 6px;
+    }
+
+    #scotw-table td:first-child {
+        width: 50px;
+    }
+
+    #scotw-table td:last-child {
+        width: 80px;
+    }
+
+    #packvictorstable {
+        font-size: 0.8em;
+    }
+
+    #packvictorstable td {
+        padding: 4px 3px;
+    }
+
+    #packvictorstable td:first-child {
+        width: 50px;
+    }
+
+    #packvictorstable td:last-child {
+        width: 70px;
+    }
+}
+
+@media (max-width: 1000px) {
+    #towervictorstable {
+        font-size: 0.9em;
+    }
+    #towervictorstable td {
+        padding: 4px 6px;
+    }
+}
+
+@media (max-width: 1080px) {
+    #left, #right {
+        min-width: 0;
+    }
+
+    #sclp-tower-search, #sclp-player-search, #checklist-player, #game-select, #scotw-search {
+        font-size: 0.8em;
+        height: 1.5em;
+    }
+
+    #tower-sort {
+        font-size: 0.8em;
+        height: 1.5em;
+        padding: 1px 8px 1px 12px;
+    }
+
+    #player-sort {
+        font-size: 0.8em;
+        height: 1.5em;
+        padding: 1px 8px 1px 12px;
+        margin-left: 10px;
+    }
+
+    .tower-button, .player-button, .tower-button-crossed, .pack-button {
+        font-size: 0.8em;
+    }
+
+    .seamless-button {
+        font-size: 0.8em;
+    }
+
+    .big {
+        font-size: 1.2em;
+    }
+
+    .small {
+        font-size: 0.6em;
+    }
+
+    input[type=checkbox] {
+        width: 0.8em;
+        height: 0.8em;
+    }
+
+    #searchmenu-table td:first-child, #leaderboard-table td:first-child {
+        width: 50px;
+    }
+
+    #searchmenu-table td, #leaderboard-table td {
+        font-size: 0.8em;
+    }
+
+    #playercompletions td:first-child, #packtowers-table td:first-child {
+        width: 60px;
+        font-size: 0.8em;
+    }
+
+    #playercompletions td:last-child, #packtowers-table td:last-child {
+        width: 80px;
+        font-size: 0.8em;
+    }
+
+    #packs-table td:nth-child(2) {
+        width: 80px;
+    }
+
+    #scotw-page {
+        padding: 20px;
+    }
+
+    #scotw-title {
+        font-size: 2em;
+    }
+
+    #scotw-timer {
+        font-size: 1.1em;
+    }
+
+    #scotw-table td {
+        font-size: 0.9em;
+        padding: 6px 8px;
+    }
+
+    #scotw-table td:first-child {
+        width: 60px;
+    }
+
+    #scotw-table td:last-child {
+        width: 100px;
+    }
+
+    #discord {
+        width: 30px !important;
+        right: 225px !important;
+    }
+
+    #packvictorstable {
+        font-size: 0.9em;
+    }
+
+    #packvictorstable td:first-child {
+        width: 60px;
+    }
+
+    #packvictorstable td:last-child {
+        width: 80px;
+    }
+}
