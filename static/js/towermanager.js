@@ -17,14 +17,24 @@ function init_towers() {
     let tbody = "";
     for (let t of sorted_towers) {
         let diff = t["difficulty"] / 100;
+        let victors = get_victors(t["id"]);
+        
+        let last;
+        if (sort === "victors" || sort === "victors-asc") {
+            last = `<span style="text-align: right;">${victors}</span>`;
+        } else {
+            last = `<span class="${difficulty_to_name(diff * 100)}">${formatNumber(diff)}</span>`;
+        }
+        
         tbody += `
             <tr data-name="${t["name"].toLowerCase()}" 
                 data-abbr="${getAbbr(t["name"]).toLowerCase()}" 
                 data-diff="${Math.floor(diff)}" 
-                data-places="${t["places"].map(p => p[0]).join(",")}">
+                data-places="${t["places"].map(p => p[0]).join(",")}"
+                data-victors="${victors}">
                 <td class="${difficulty_to_name(t["difficulty"])}">#${t["rank"]}</td>
                 <td><button class="tower-button" onclick="open_tower(${t["id"]})">${t["name"]}</button></td>
-                <td><span class="${difficulty_to_name(diff * 100)}">${formatNumber(diff)}</span></td>
+                <td style="text-align: right;">${last}</td>
             </tr>
         `;
     }
