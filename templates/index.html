@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons/css/flag-icons.min.css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat">
     <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/screens.css">
 </head>
 <body>
     <div id="main">
@@ -59,6 +60,14 @@
                         </div>
                         <div class="filter-section" id="game-filter">
                             <label>Game: <select name="game-select" id="game-select"></select></label>
+                            <label>Sort by: 
+                                <select id="tower-sort">
+                                    <option value="difficulty">Difficulty (↓)</option>
+                                    <option value="difficulty-asc">Difficulty (↑)</option>
+                                    <option value="victors">Victors (↓)</option>
+                                    <option value="victors-asc">Victors (↑)</option>
+                                </select>
+                            </label>
                         </div>
                     </div>
             
@@ -130,9 +139,12 @@
                     <div id="pack-data">
                         <p class="big" id="packname"></p>
                         <p>Progress: <span id="packprogress"></span></p>
-                        <p>Bonus XP: <span id="packbonus"></span></p><br>
+                        <p>Bonus XP: <span id="packbonus"></span></p>
+                        <p>Victors: <span id="packvictors"></span></p><br>
                         <p class="big">Towers</p>
-                        <table id="packtowers-table"></table>
+                        <table id="packtowers-table"></table><br>
+                        <p class="big">Victors</p>
+                        <table id="packvictorstable"></table>
                     </div>
                 </div>
             </div>
