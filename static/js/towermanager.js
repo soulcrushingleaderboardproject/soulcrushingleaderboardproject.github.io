@@ -1,6 +1,21 @@
 function init_towers() {
+    let sort = $("#tower-sort").val() || "rank";
+    let sorted_towers = [...towers];
+
+    if (sort === "rank") {
+        sorted_towers.sort((a, b) => a.rank - b.rank);
+    } else if (sort === "difficulty") {
+        sorted_towers.sort((a, b) => b.difficulty - a.difficulty || a.rank - b.rank);
+    } else if (sort === "difficulty-asc") {
+        sorted_towers.sort((a, b) => a.difficulty - b.difficulty || a.rank - b.rank);
+    } else if (sort === "victors") {
+        sorted_towers.sort((a, b) => get_victors(b.id) - get_victors(a.id) || a.rank - b.rank);
+    } else if (sort === "victors-asc") {
+        sorted_towers.sort((a, b) => get_victors(a.id) - get_victors(b.id) || a.rank - b.rank);
+    }
+
     let tbody = "";
-    for (let t of towers) {
+    for (let t of sorted_towers) {
         let diff = t["difficulty"] / 100;
         tbody += `
             <tr data-name="${t["name"].toLowerCase()}" 
@@ -177,7 +192,15 @@ function open_pack(id) {
     $("#packtowers-table").html(tbody);
 }
 
-$("#sclp-tower-search, #game-select, [id^=diff-]").on("input change", filter_towers);
+$("#sclp-tower-search, #game-select, [id^=diff-], #tower-sort").on("input change", function() {
+    if ($(this).attr('id') === 'tower-sort') {
+        localStorage.setItem("sclp-tower-sort", $(this).val());
+        init_towers();
+    } else {
+        filter_towers();
+    }
+});
+
 $("#sclp-player-search").on("input", filter_players);
 $("#checklist-player").on("input", function () {
     filter_towers();
@@ -191,6 +214,7 @@ $("#player-sort").on("change", function() {
     filter_players();
 });
 $("#player-sort").val(localStorage.getItem("sclp-player-sort") || "xp");
+$("#tower-sort").val(localStorage.getItem("sclp-tower-sort") || "rank");
 
 function format_location(tower, start, end) {
     const places = tower["places"].slice(start, end);
