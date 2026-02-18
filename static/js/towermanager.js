@@ -344,6 +344,16 @@ function open_tower(id) {
     $("#towerrank").html(tower["rank"]);
     $("#towerxp").html(tower["xp"]);
     $("#towervictors").html(victors_cache[id]);
+    
+    let tower_packs = packs.filter(pack => pack.towers.map(Number).includes(id));
+    if (tower_packs.length > 0) {
+        let pack_links = tower_packs.map(pack =>
+            `<a href="javascript:void(0)" onclick="open_pack('${pack.id}')">${pack.name}</a>`
+        ).join(", ");
+        $("#towerpacks").html(`Packs: ${pack_links}`);
+    } else {
+        $("#towerpacks").html("");
+    }
     $("#towerid").html(id);
 
     $("#towervictorstable").html("");
