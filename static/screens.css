@@ -176,9 +176,26 @@
         width: 100px;
     }
 
+    #nav-right {
+        gap: 10px;
+    }
+
     #discord {
-        width: 30px !important;
-        right: 225px !important;
+        width: 30px;
+    }
+
+    #clan-link {
+        height: 30px;
+        padding: 3px 8px 3px 5px;
+    }
+
+    #towerstats-icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    #clan-text {
+        font-size: 12px;
     }
 
     #packvictorstable {

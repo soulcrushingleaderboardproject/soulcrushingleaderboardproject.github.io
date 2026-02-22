@@ -105,6 +105,13 @@ p {
     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
 }
 
+#nav-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
 #left {
     flex: 45%;
     padding: 5px;
@@ -135,8 +142,6 @@ p {
 }
 
 #checklist-player {
-    position: absolute;
-    right: 15px;
     background-color: #161820;
 }
 
@@ -668,10 +673,40 @@ p {
 }
 
 #discord {
-    position: absolute;
     width: 35px;
-    right: 270px;
     cursor: pointer;
+}
+
+#clan-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    background: #505A64;
+    border-radius: 8px;
+    padding: 4px 10px 4px 6px;
+    transition: background 0.2s ease;
+    height: 36px;
+}
+
+#clan-link:hover {
+    background: #606870;
+}
+
+#towerstats-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+#clan-text {
+    color: #FFFFFF;
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-align: left;
+    display: inline-block;
 }
 
 ::-webkit-scrollbar {
