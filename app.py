@@ -16,7 +16,7 @@ import json
 load_dotenv()
 
 resp = requests.post(
-    "https://towerstatsdata-production.up.railway.app/get_service",
+    "http://51.68.198.167:8080/get_service",
     json={"key": os.getenv("GOOGLE_SHEETS_API_KEY")}
 )
 resp.raise_for_status()
