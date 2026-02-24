@@ -150,7 +150,7 @@ def tower_data_csv():
     response.headers['Content-Disposition'] = 'attachment; filename=tower_data.csv'
     return response
 
-cool_members = requests.get("https://towerstatsdata-production.up.railway.app/cool_members").json()
+cool_members = requests.get("http://51.68.198.167:8080/cool_members").json()
 staff = funcs.get_data("credits!A:B")
 
 @app.route("/")
@@ -195,7 +195,7 @@ for k, v in scotw_chances.items():
 
 last_webhook_time = None
 resp = requests.post(
-    "https://towerstatsdata-production.up.railway.app/get_service",
+    "http://51.68.198.167:8080/get_service",
     json={"key": os.getenv("GOOGLE_SHEETS_API_KEY") + "2"}
 )
 resp.raise_for_status()
